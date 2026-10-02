@@ -94,7 +94,7 @@ export function IssueList({ issues }: { issues: IssueItem[] }) {
   }, [base, cats, sort]);
 
   return (
-    <div className="grid content-start gap-4">
+    <div className="grid min-w-0 grid-cols-[minmax(0,1fr)] content-start gap-4">
       <div className="flex flex-wrap items-center justify-between gap-3">
         <h2 className="font-display text-[28px] font-bold leading-8 md:text-[32px] md:leading-9">Problèmes signalés</h2>
         <Segmented
@@ -112,7 +112,7 @@ export function IssueList({ issues }: { issues: IssueItem[] }) {
           ]}
         />
       </div>
-      <div className="flex flex-wrap items-start justify-between gap-3">
+      <div className="flex min-w-0 flex-wrap items-start justify-between gap-3">
         <CategoryChips value={cats} onChange={setCats} counts={counts} only={Object.keys(counts) as CategoryId[]} scroll />
         <label className="flex items-center gap-2 text-sm font-semibold">
           Trier
@@ -130,7 +130,7 @@ export function IssueList({ issues }: { issues: IssueItem[] }) {
           {tab === "active" ? "Aucun problème actif signalé ici pour l’instant." : "Aucun problème résolu pour l’instant."}
         </p>
       ) : (
-        <ul className="grid content-start gap-3">
+        <ul className="grid min-w-0 grid-cols-[minmax(0,1fr)] content-start gap-3">
           {list.slice(0, limit).map((i) => (
             <IssueRow key={`${i.id}-${votes ? "v" : "n"}`} issue={i} myVote={votes?.[i.id] ?? null} />
           ))}

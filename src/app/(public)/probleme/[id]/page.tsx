@@ -62,7 +62,7 @@ export default async function IssuePage({ params }: Props) {
         )}
       </article>
 
-      <div className="mt-8 grid gap-10 md:grid-cols-[minmax(0,1fr)_300px]">
+      <div className="mt-8 grid grid-cols-[minmax(0,1fr)] gap-10 md:grid-cols-[minmax(0,1fr)_300px]">
         <IssueActions issueId={issue.id} category={issue.category} upCount={issue.upCount} resolved={resolved} />
 
         <section aria-labelledby="timeline-title">

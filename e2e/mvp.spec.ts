@@ -95,7 +95,7 @@ test("carte : filtres et zoom sur une région", async ({ page }) => {
 });
 
 test("pages publiques sans débordement horizontal", async ({ page }) => {
-  for (const url of ["/", "/signaler", "/signaler?lycee=section-d-enseignement-professionnel-du-lycee-des-metiers-du-transport-de-la-logistique-et", "/comment-ca-marche", "/regles", "/aide", "/confidentialite", "/contact", "/lycee/lycee-general-et-technologique-carnot-dijon"]) {
+  for (const url of ["/", "/signaler", "/signaler?lycee=section-d-enseignement-professionnel-du-lycee-des-metiers-du-transport-de-la-logistique-et", "/comment-ca-marche", "/regles", "/aide", "/confidentialite", "/contact", "/lycee/lycee-general-et-technologique-carnot-dijon", "/lycee/lycee-jean-jaures-argenteuil", "/lycee/lycee-giocante-de-casabianca-bastia"]) {
     await page.goto(url);
     const overflow = await page.evaluate(() => document.documentElement.scrollWidth - window.innerWidth);
     expect(overflow, url).toBeLessThanOrEqual(1);

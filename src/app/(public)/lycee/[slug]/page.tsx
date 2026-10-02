@@ -118,7 +118,7 @@ export default async function SchoolPage({ params }: Props) {
         <p className="mt-3 text-[13px] text-ink-muted">Ces chiffres comptent des signalements de lycéens. Ils ne notent pas l’établissement.</p>
       </div>
 
-      <div className="mt-12 grid gap-10 lg:grid-cols-[minmax(0,1fr)_380px]">
+      <div className="mt-12 grid grid-cols-[minmax(0,1fr)] gap-10 lg:grid-cols-[minmax(0,1fr)_380px]">
         <IssueList issues={issues} />
 
         <aside className="grid content-start gap-5">
