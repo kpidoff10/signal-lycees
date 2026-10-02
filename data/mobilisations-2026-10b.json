@@ -1,0 +1,1962 @@
+{
+  "batch": "mobilisations-2026-10b",
+  "note": "Lycées bloqués ou mobilisés nommés dans la presse du 30/09 au 02/10/2026 (recherche par académie). Affichés 72 h après leur date. Retrait : npm run import:remove-mobilizations -- mobilisations-2026-10b",
+  "mobilizations": [
+    {
+      "school": "cite-scolaire-de-mazamet-lycee-general-et-technologique-marechal-soult-mazamet",
+      "date": "2026-10-02",
+      "sourceName": "La Dépêche du Midi (via Headtopics)",
+      "sourceUrl": "https://fr.headtopics.com/news/blocage-des-lycees-neuf-interpellations-dans-le-tarn-dans-88378473"
+    },
+    {
+      "school": "cite-scolaire-de-mazamet-lycee-polyvalent-marie-antoinette-riess-mazamet",
+      "date": "2026-10-02",
+      "sourceName": "La Dépêche du Midi (via Headtopics)",
+      "sourceUrl": "https://fr.headtopics.com/news/blocage-des-lycees-neuf-interpellations-dans-le-tarn-dans-88378473"
+    },
+    {
+      "school": "cite-scolaire-monnet-fourneyron-lycee-professionnel-benoit-fourneyron-site-metare-saint-et",
+      "date": "2026-10-01",
+      "sourceName": "Minformer",
+      "sourceUrl": "https://www.minformer.com/2026/10/01/blocage-des-lycees-la-mobilisation-des-lyceens-se-poursuit-dans-la-loire/"
+    },
+    {
+      "school": "lycee-albert-calmette-nice",
+      "date": "2026-10-01",
+      "sourceName": "France 3 Côte d'Azur",
+      "sourceUrl": "https://france3-regions.franceinfo.fr/provence-alpes-cote-d-azur/alpes-maritimes/nice/plusieurs-lycees-fermes-ce-vendredi-2-octobre-59-gardes-a-vue-le-blocus-des-lycees-se-poursuit-dans-les-alpes-maritimes-3426537.html"
+    },
+    {
+      "school": "lycee-albert-camus-nimes",
+      "date": "2026-10-01",
+      "sourceName": "Lamarsweb (via Headtopics)",
+      "sourceUrl": "https://fr.headtopics.com/news/a-n-mes-et-montpellier-la-quasi-totalite-des-lycees-sont-88341161"
+    },
+    {
+      "school": "lycee-albert-chatelet-douai",
+      "date": "2026-10-01",
+      "sourceName": "France 3 Hauts-de-France",
+      "sourceUrl": "https://france3-regions.franceinfo.fr/hauts-de-france/nord-0/lille/blocage-des-lycees-de-nombreux-etablissements-toujours-concernes-quelques-degradations-observees-3426069.html"
+    },
+    {
+      "school": "lycee-alexis-de-tocqueville-cherbourg-en-cotentin",
+      "date": "2026-10-01",
+      "sourceName": "Tendance Ouest",
+      "sourceUrl": "https://www.tendanceouest.com/actualite-443004-video-250-eleves-bloquent-le-lycee-victor-grignard-a-cherbourg"
+    },
+    {
+      "school": "lycee-alfred-sauvy-villelongue-dels-monts",
+      "date": "2026-10-01",
+      "sourceName": "ici Roussillon",
+      "sourceUrl": "https://www.ici.fr/occitanie/pyrenees-orientales-66/perpignan/plusieurs-lycees-des-pyrenees-orientales-bloques-ce-jeudi-dans-les-pyrenees-orientales-3884826"
+    },
+    {
+      "school": "lycee-alienor-d-aquitaine-poitiers",
+      "date": "2026-10-01",
+      "sourceName": "ici Poitou",
+      "sourceUrl": "https://www.ici.fr/nouvelle-aquitaine/vienne-86/poitiers/blocages-des-lycees-de-nouvelles-actions-a-poitiers-4846766"
+    },
+    {
+      "school": "lycee-alphonse-daudet-nimes",
+      "date": "2026-10-01",
+      "sourceName": "Lamarsweb (via Headtopics)",
+      "sourceUrl": "https://fr.headtopics.com/news/a-n-mes-et-montpellier-la-quasi-totalite-des-lycees-sont-88341161"
+    },
+    {
+      "school": "lycee-ampere-lyon",
+      "date": "2026-10-01",
+      "sourceName": "Lyon Capitale",
+      "sourceUrl": "https://www.lyoncapitale.fr/actualite/blocages-des-lycees-dans-le-rhone-en-direct-un-blesse-et-27-etablissements-concernes-ce-jeudi"
+    },
+    {
+      "school": "lycee-antoine-de-saint-exupery-la-rochelle",
+      "date": "2026-10-01",
+      "sourceName": "ici La Rochelle",
+      "sourceUrl": "https://www.ici.fr/nouvelle-aquitaine/charente-maritime-17/la-rochelle/blocus-des-lycees-suivez-la-situation-devant-les-etablissements-de-la-charente-maritime-et-de-la-charente-6241728"
+    },
+    {
+      "school": "lycee-antoine-de-saint-exupery-lyon",
+      "date": "2026-09-30",
+      "sourceName": "LyonMag",
+      "sourceUrl": "https://www.lyonmag.com/article/154207/une-dizaine-de-lycees-touches-par-des-rassemblements-violents-a-lyon-les-forces-de-l-ordre-deployees-en-nombre"
+    },
+    {
+      "school": "lycee-arago-paris",
+      "date": "2026-10-01",
+      "sourceName": "Yahoo Actualités",
+      "sourceUrl": "https://fr.news.yahoo.com/paris-pantin-lille-plusieurs-lyc%C3%A9es-062125171.html"
+    },
+    {
+      "school": "lycee-aristide-briand-saint-nazaire",
+      "date": "2026-10-01",
+      "sourceName": "ici Loire Océan",
+      "sourceUrl": "https://www.ici.fr/pays-de-la-loire/loire-atlantique-44/nantes/mobilisation-des-lyceens-plusieurs-blocages-a-nantes-l-etablissement-nelson-mandela-en-proie-aux-flammes-3890996"
+    },
+    {
+      "school": "lycee-auguste-et-jean-renoir-angers",
+      "date": "2026-10-01",
+      "sourceName": "My Angers",
+      "sourceUrl": "https://my-angers.info/10/01/blocus-des-lycees-a-angers-les-syndicats-appellent-au-dialogue-le-rn-denonce-des-violences-et-une-instrumentalisation/197484"
+    },
+    {
+      "school": "lycee-auguste-et-louis-lumiere-lyon",
+      "date": "2026-10-01",
+      "sourceName": "France 3 Auvergne-Rhône-Alpes",
+      "sourceUrl": "https://france3-regions.franceinfo.fr/auvergne-rhone-alpes/rhone/lyon/direct-blocage-des-lycees-a-lyon-pres-de-30-etablissements-touches-dix-interpellations-3426129.html"
+    },
+    {
+      "school": "lycee-auguste-renoir-limoges",
+      "date": "2026-10-01",
+      "sourceName": "Flash FM",
+      "sourceUrl": "https://www.flashfm.fr/mouvement-lyceen-pres-de-2-000-jeunes-mobilises-a-limoges"
+    },
+    {
+      "school": "lycee-balzac-tours",
+      "date": "2026-09-30",
+      "sourceName": "ici Touraine",
+      "sourceUrl": "https://www.ici.fr/centre-val-de-loire/indre-et-loire-37/tours/blocus-lyceens-a-tours-un-jeune-blesse-au-visage-devant-le-lycee-balzac-tensions-en-cours-avec-les-forces-de-l-ordre-1187910"
+    },
+    {
+      "school": "lycee-bernard-palissy-agen",
+      "date": "2026-10-02",
+      "sourceName": "France 3 Nouvelle-Aquitaine",
+      "sourceUrl": "https://france3-regions.franceinfo.fr/nouvelle-aquitaine/gironde/bordeaux/blocus-des-lycees-apres-les-violences-58-representants-lyceens-vont-etre-recus-par-les-autorites-a-bordeaux-3426702.html"
+    },
+    {
+      "school": "lycee-blaise-pascal-rouen",
+      "date": "2026-10-01",
+      "sourceName": "France 3 Normandie",
+      "sourceUrl": "https://france3-regions.franceinfo.fr/normandie/orne/alencon/en-images-blocus-lyceens-la-mobilisation-continue-et-se-renforce-en-normandie-3426141.html"
+    },
+    {
+      "school": "lycee-bonaparte-toulon",
+      "date": "2026-10-01",
+      "sourceName": "ici Provence",
+      "sourceUrl": "https://www.ici.fr/provence-alpes-cote-d-azur/bouches-du-rhone-13/de-nombreux-lycees-bloques-en-provence-1655475"
+    },
+    {
+      "school": "lycee-camille-guerin-poitiers",
+      "date": "2026-10-01",
+      "sourceName": "ici Poitou",
+      "sourceUrl": "https://www.ici.fr/nouvelle-aquitaine/vienne-86/poitiers/blocages-des-lycees-de-nouvelles-actions-a-poitiers-4846766"
+    },
+    {
+      "school": "lycee-camille-saint-saens-rouen",
+      "date": "2026-10-01",
+      "sourceName": "Tendance Ouest",
+      "sourceUrl": "https://www.tendanceouest.com/actualite-443002-photos-videos-mobilisation-lyceenne-quels-etablissements-sont-bloques-au-havre-fecamp-montivilliers-et-rouen"
+    },
+    {
+      "school": "lycee-carnot-cannes",
+      "date": "2026-10-01",
+      "sourceName": "France 3 Côte d'Azur",
+      "sourceUrl": "https://france3-regions.franceinfo.fr/provence-alpes-cote-d-azur/alpes-maritimes/nice/plusieurs-lycees-fermes-ce-vendredi-2-octobre-59-gardes-a-vue-le-blocus-des-lycees-se-poursuit-dans-les-alpes-maritimes-3426537.html"
+    },
+    {
+      "school": "lycee-cesar-baggio-lille",
+      "date": "2026-10-01",
+      "sourceName": "ici Nord",
+      "sourceUrl": "https://www.ici.fr/infos/economie-social/blocage-des-lycees-des-heurts-avec-la-police-au-lycee-faidherbe-de-lille-la-fac-de-droit-fermee-ce-jeudi-7963995"
+    },
+    {
+      "school": "lycee-charlemagne-paris",
+      "date": "2026-10-01",
+      "sourceName": "Yahoo Actualités",
+      "sourceUrl": "https://fr.news.yahoo.com/paris-pantin-lille-plusieurs-lyc%C3%A9es-062125171.html"
+    },
+    {
+      "school": "lycee-charles-peguy-orleans",
+      "date": "2026-10-01",
+      "sourceName": "ici Orléans",
+      "sourceUrl": "https://www.ici.fr/centre-val-de-loire/loiret-45/orleans/mobilisation-des-lyceens-plusieurs-etablissements-perturbes-a-orleans-quelques-tensions-sur-place-5855712"
+    },
+    {
+      "school": "lycee-chateaubriand-rennes",
+      "date": "2026-10-01",
+      "sourceName": "France 3 Bretagne",
+      "sourceUrl": "https://france3-regions.franceinfo.fr/bretagne/ille-et-vilaine/rennes/blocus-des-lycees-une-nouvelle-journee-de-mobilisation-ce-jeudi-face-a-face-tendu-dans-un-prestigieux-etablissement-de-rennes-3426036.html"
+    },
+    {
+      "school": "lycee-choiseul-tours",
+      "date": "2026-10-01",
+      "sourceName": "ici Touraine",
+      "sourceUrl": "https://www.ici.fr/centre-val-de-loire/indre-et-loire-37/tours/reconduction-des-blocages-a-tours-au-lendemain-de-la-blessure-au-visage-d-un-lyceen-3701154"
+    },
+    {
+      "school": "lycee-claude-lebois-saint-chamond",
+      "date": "2026-10-01",
+      "sourceName": "ici Saint-Étienne Loire",
+      "sourceUrl": "https://www.ici.fr/auvergne-rhone-alpes/loire-42/saint-etienne/mouvements-lyceens-des-lycees-bloques-dans-la-loire-et-la-haute-loire-4939441?at_locale=93"
+    },
+    {
+      "school": "lycee-claude-monet-le-havre",
+      "date": "2026-10-01",
+      "sourceName": "Tendance Ouest",
+      "sourceUrl": "https://www.tendanceouest.com/actualite-443002-photos-videos-mobilisation-lyceenne-quels-etablissements-sont-bloques-au-havre-fecamp-montivilliers-et-rouen"
+    },
+    {
+      "school": "lycee-claude-monet-paris",
+      "date": "2026-10-01",
+      "sourceName": "Yahoo Actualités",
+      "sourceUrl": "https://fr.news.yahoo.com/paris-pantin-lille-plusieurs-lyc%C3%A9es-062125171.html"
+    },
+    {
+      "school": "lycee-clemenceau-nantes",
+      "date": "2026-10-01",
+      "sourceName": "ici Loire Océan",
+      "sourceUrl": "https://www.ici.fr/pays-de-la-loire/loire-atlantique-44/nantes/mobilisation-des-lyceens-plusieurs-blocages-a-nantes-l-etablissement-nelson-mandela-en-proie-aux-flammes-3890996"
+    },
+    {
+      "school": "lycee-colbert-lyon",
+      "date": "2026-10-01",
+      "sourceName": "Lyon Capitale",
+      "sourceUrl": "https://www.lyoncapitale.fr/actualite/blocages-des-lycees-dans-le-rhone-en-direct-un-blesse-et-27-etablissements-concernes-ce-jeudi"
+    },
+    {
+      "school": "lycee-colbert-paris",
+      "date": "2026-10-01",
+      "sourceName": "Yahoo Actualités",
+      "sourceUrl": "https://fr.news.yahoo.com/paris-pantin-lille-plusieurs-lyc%C3%A9es-062125171.html"
+    },
+    {
+      "school": "lycee-condorcet-paris",
+      "date": "2026-09-29",
+      "sourceName": "Epoch Times France",
+      "sourceUrl": "https://www.epochtimes.fr/blocus-des-lycees-initialement-centre-sur-le-manque-de-moyens-le-mouvement-multiplie-les-violences-les-incendies-et-les-soutiens-a-la-palestine-3359659.html"
+    },
+    {
+      "school": "lycee-cordouan-royan",
+      "date": "2026-10-01",
+      "sourceName": "ici La Rochelle",
+      "sourceUrl": "https://www.ici.fr/nouvelle-aquitaine/charente-maritime-17/la-rochelle/blocus-des-lycees-suivez-la-situation-devant-les-etablissements-de-la-charente-maritime-et-de-la-charente-6241728"
+    },
+    {
+      "school": "lycee-de-cornouaille-quimper",
+      "date": "2026-10-01",
+      "sourceName": "ici Breizh Izel",
+      "sourceUrl": "https://www.ici.fr/bretagne/finistere-29/de-quimper-a-carhaix-la-mobilisation-dans-les-lycees-s-etend-dans-le-finistere-9063025"
+    },
+    {
+      "school": "lycee-de-l-escaut-valenciennes",
+      "date": "2026-10-01",
+      "sourceName": "France 3 Hauts-de-France",
+      "sourceUrl": "https://france3-regions.franceinfo.fr/hauts-de-france/nord-0/lille/blocage-des-lycees-de-nombreux-etablissements-toujours-concernes-quelques-degradations-observees-3426069.html"
+    },
+    {
+      "school": "lycee-de-l-observatoire-meudon",
+      "date": "2026-10-01",
+      "sourceName": "France 3 Paris Île-de-France",
+      "sourceUrl": "https://france3-regions.franceinfo.fr/paris-ile-de-france/paris/acte-deux-de-la-mobilisation-des-lyceens-le-point-sur-les-blocages-et-les-rassemblements-en-ile-de-france-3426024.html"
+    },
+    {
+      "school": "lycee-des-flandres-hazebrouck",
+      "date": "2026-10-01",
+      "sourceName": "France 3 Hauts-de-France",
+      "sourceUrl": "https://france3-regions.franceinfo.fr/hauts-de-france/nord-0/lille/blocage-des-lycees-de-nombreux-etablissements-toujours-concernes-quelques-degradations-observees-3426069.html"
+    },
+    {
+      "school": "lycee-des-metiers-de-l-arrouza-lourdes",
+      "date": "2026-10-01",
+      "sourceName": "ici Béarn Bigorre",
+      "sourceUrl": "https://www.ici.fr/nouvelle-aquitaine/pyrenees-atlantiques-64/blocage-des-lycees-plusieurs-etablissements-bloques-ce-jeudi-matin-en-bearn-et-en-bigorre-1067501"
+    },
+    {
+      "school": "lycee-des-metiers-du-tertiaire-jean-victor-poncelet-saint-avold",
+      "date": "2026-09-30",
+      "sourceName": "France 3 Grand Est",
+      "sourceUrl": "https://france3-regions.franceinfo.fr/grand-est/meurthe-et-moselle/nancy/blocus-des-lycees-la-mobilisation-s-etend-en-lorraine-de-nouvelles-actions-des-jeudi-3425847.html"
+    },
+    {
+      "school": "lycee-des-metiers-et-des-technologies-innovantes-charles-jully-saint-avold",
+      "date": "2026-09-30",
+      "sourceName": "France 3 Grand Est",
+      "sourceUrl": "https://france3-regions.franceinfo.fr/grand-est/meurthe-et-moselle/nancy/blocus-des-lycees-la-mobilisation-s-etend-en-lorraine-de-nouvelles-actions-des-jeudi-3425847.html"
+    },
+    {
+      "school": "lycee-du-bois-d-amour-poitiers",
+      "date": "2026-10-01",
+      "sourceName": "ici Poitou",
+      "sourceUrl": "https://www.ici.fr/nouvelle-aquitaine/vienne-86/poitiers/blocages-des-lycees-de-nouvelles-actions-a-poitiers-4846766"
+    },
+    {
+      "school": "lycee-du-hainaut-valenciennes",
+      "date": "2026-09-30",
+      "sourceName": "L'Observateur",
+      "sourceUrl": "https://www.lobservateur.fr/mouvement-lyceen-incidents-valenciennes/"
+    },
+    {
+      "school": "lycee-du-parc-imperial-nice",
+      "date": "2026-09-30",
+      "sourceName": "La Clé publique",
+      "sourceUrl": "https://laclepublique.fr/alpes-maritimes/articles/2026/2026-09-30-blocages-lycees-18-etablissements/"
+    },
+    {
+      "school": "lycee-du-pays-de-retz-pornic",
+      "date": "2026-10-01",
+      "sourceName": "ici Loire Océan",
+      "sourceUrl": "https://www.ici.fr/pays-de-la-loire/loire-atlantique-44/nantes/mobilisation-des-lyceens-plusieurs-blocages-a-nantes-l-etablissement-nelson-mandela-en-proie-aux-flammes-3890996"
+    },
+    {
+      "school": "lycee-dumont-d-urville-toulon",
+      "date": "2026-10-01",
+      "sourceName": "ici Provence",
+      "sourceUrl": "https://www.ici.fr/provence-alpes-cote-d-azur/bouches-du-rhone-13/de-nombreux-lycees-bloques-en-provence-1655475"
+    },
+    {
+      "school": "lycee-ecole-superieure-d-arts-appliques-la-martiniere-diderot-lyon",
+      "date": "2026-09-30",
+      "sourceName": "LyonMag",
+      "sourceUrl": "https://www.lyonmag.com/article/154207/une-dizaine-de-lycees-touches-par-des-rassemblements-violents-a-lyon-les-forces-de-l-ordre-deployees-en-nombre"
+    },
+    {
+      "school": "lycee-edmond-perrier-tulle",
+      "date": "2026-10-01",
+      "sourceName": "ici Limousin",
+      "sourceUrl": "https://www.ici.fr/nouvelle-aquitaine/haute-vienne-87/limoges/etablissements-bloques-manifestation-le-mouvement-des-lyceens-gagne-le-limousin-6790861"
+    },
+    {
+      "school": "lycee-edouard-herriot-lyon",
+      "date": "2026-10-01",
+      "sourceName": "Lyon Capitale",
+      "sourceUrl": "https://www.lyoncapitale.fr/actualite/blocages-des-lycees-dans-le-rhone-en-direct-un-blesse-et-27-etablissements-concernes-ce-jeudi"
+    },
+    {
+      "school": "lycee-elie-faure-lormont",
+      "date": "2026-10-01",
+      "sourceName": "France 3 Nouvelle-Aquitaine",
+      "sourceUrl": "https://france3-regions.franceinfo.fr/nouvelle-aquitaine/gironde/bordeaux/etablissements-brules-colonne-de-fumees-tramways-perturbes-le-blocus-des-lycees-continue-a-bordeaux-3426093.html"
+    },
+    {
+      "school": "lycee-etienne-mimard-saint-etienne",
+      "date": "2026-10-01",
+      "sourceName": "TL7",
+      "sourceUrl": "https://www.tl7.fr/actualites-loire/actualite/actualite_1/loire-plusieurs-lycees-bloques-des-degradations-constatees-a-saint-etienne_15000.html"
+    },
+    {
+      "school": "lycee-fabert-metz",
+      "date": "2026-10-01",
+      "sourceName": "France 3 Grand Est",
+      "sourceUrl": "https://france3-regions.franceinfo.fr/grand-est/meurthe-et-moselle/nancy/lycees-bloques-en-lorraine-la-mobilisation-monte-d-un-cran-on-reclame-des-moyens-mais-tout-ce-qu-on-nous-donne-ce-sont-des-coups-3426201.html"
+    },
+    {
+      "school": "lycee-faidherbe-lille",
+      "date": "2026-10-01",
+      "sourceName": "ici Nord",
+      "sourceUrl": "https://www.ici.fr/infos/economie-social/blocage-des-lycees-des-heurts-avec-la-police-au-lycee-faidherbe-de-lille-la-fac-de-droit-fermee-ce-jeudi-7963995"
+    },
+    {
+      "school": "lycee-fenelon-paris",
+      "date": "2026-10-01",
+      "sourceName": "France 3 Paris Île-de-France",
+      "sourceUrl": "https://france3-regions.franceinfo.fr/paris-ile-de-france/paris/acte-deux-de-la-mobilisation-des-lyceens-le-point-sur-les-blocages-et-les-rassemblements-en-ile-de-france-3426024.html"
+    },
+    {
+      "school": "lycee-fesch-ajaccio",
+      "date": "2026-10-02",
+      "sourceName": "France 3 Corse ViaStella",
+      "sourceUrl": "https://france3-regions.franceinfo.fr/corse/colere-des-lyceens-une-mobilisation-moins-importante-devant-les-lycees-corses-3426663.html"
+    },
+    {
+      "school": "lycee-francois-1er-le-havre",
+      "date": "2026-10-01",
+      "sourceName": "Tendance Ouest",
+      "sourceUrl": "https://www.tendanceouest.com/actualite-443002-photos-videos-mobilisation-lyceenne-quels-etablissements-sont-bloques-au-havre-fecamp-montivilliers-et-rouen"
+    },
+    {
+      "school": "lycee-francois-de-malherbe-caen",
+      "date": "2026-10-02",
+      "sourceName": "ici Normandie",
+      "sourceUrl": "https://www.ici.fr/normandie/calvados-14/caen/blocage-des-lycees-le-mouvement-continue-a-caen-6622748"
+    },
+    {
+      "school": "lycee-francois-mauriac-forez-andrezieux-boutheon",
+      "date": "2026-10-01",
+      "sourceName": "ici Saint-Étienne Loire",
+      "sourceUrl": "https://www.ici.fr/auvergne-rhone-alpes/loire-42/saint-etienne/mouvements-lyceens-des-lycees-bloques-dans-la-loire-et-la-haute-loire-4939441?at_locale=93"
+    },
+    {
+      "school": "lycee-frederic-chopin-nancy",
+      "date": "2026-10-01",
+      "sourceName": "France 3 Grand Est",
+      "sourceUrl": "https://france3-regions.franceinfo.fr/grand-est/meurthe-et-moselle/nancy/lycees-bloques-en-lorraine-la-mobilisation-monte-d-un-cran-on-reclame-des-moyens-mais-tout-ce-qu-on-nous-donne-ce-sont-des-coups-3426201.html"
+    },
+    {
+      "school": "lycee-frederic-mistral-avignon",
+      "date": "2026-10-01",
+      "sourceName": "ici Vaucluse",
+      "sourceUrl": "https://www.ici.fr/provence-alpes-cote-d-azur/vaucluse-84/mobilisation-des-lyceens-de-nombreux-rassemblements-un-blesse-leger-plusieurs-interpellations-ce-jeudi-en-vaucluse-1011211"
+    },
+    {
+      "school": "lycee-frederic-mistral-nimes",
+      "date": "2026-10-01",
+      "sourceName": "Lamarsweb (via Headtopics)",
+      "sourceUrl": "https://fr.headtopics.com/news/a-n-mes-et-montpellier-la-quasi-totalite-des-lycees-sont-88341161"
+    },
+    {
+      "school": "lycee-fustel-de-coulanges-strasbourg",
+      "date": "2026-10-01",
+      "sourceName": "Rue89 Strasbourg",
+      "sourceUrl": "https://www.rue89strasbourg.com/mobilisation-lyceenne-jeudi-397884"
+    },
+    {
+      "school": "lycee-gabriel-faure-paris",
+      "date": "2026-10-01",
+      "sourceName": "Yahoo Actualités",
+      "sourceUrl": "https://fr.news.yahoo.com/paris-pantin-lille-plusieurs-lyc%C3%A9es-062125171.html"
+    },
+    {
+      "school": "lycee-gabriel-guist-hau-nantes",
+      "date": "2026-10-01",
+      "sourceName": "ici Loire Océan",
+      "sourceUrl": "https://www.ici.fr/pays-de-la-loire/loire-atlantique-44/nantes/mobilisation-des-lyceens-plusieurs-blocages-a-nantes-l-etablissement-nelson-mandela-en-proie-aux-flammes-3890996"
+    },
+    {
+      "school": "lycee-gambetta-carnot-arras",
+      "date": "2026-10-01",
+      "sourceName": "France 3 Hauts-de-France",
+      "sourceUrl": "https://france3-regions.franceinfo.fr/hauts-de-france/nord-0/lille/blocage-des-lycees-de-nombreux-etablissements-toujours-concernes-quelques-degradations-observees-3426069.html"
+    },
+    {
+      "school": "lycee-gay-lussac-limoges",
+      "date": "2026-10-01",
+      "sourceName": "France 3 Limousin",
+      "sourceUrl": "https://france3-regions.franceinfo.fr/nouvelle-aquitaine/haute-vienne/limoges/la-colere-des-lyceens-et-des-etudiants-s-etend-blocages-en-cours-devant-des-etablissements-de-limoges-felletin-et-tulle-3426132.html"
+    },
+    {
+      "school": "lycee-general-albert-triboulet-romans-sur-isere",
+      "date": "2026-10-02",
+      "sourceName": "ici Drôme Ardèche",
+      "sourceUrl": "https://www.ici.fr/auvergne-rhone-alpes/drome-26/romans-sur-isere/des-lyceens-a-nouveau-mobilises-en-drome-et-en-ardeche-3073229?at_locale=24"
+    },
+    {
+      "school": "lycee-general-berthollet-annecy",
+      "date": "2026-10-01",
+      "sourceName": "ici Pays de Savoie",
+      "sourceUrl": "https://www.ici.fr/auvergne-rhone-alpes/haute-savoie-74/thonon-les-bains/blocages-des-lycees-de-nouvelles-manifestations-en-savoie-et-haute-savoie-ce-jeudi-1224830"
+    },
+    {
+      "school": "lycee-general-blaise-pascal-clermont-ferrand",
+      "date": "2026-10-01",
+      "sourceName": "ici Puy-de-Dôme",
+      "sourceUrl": "https://www.ici.fr/auvergne-rhone-alpes/puy-de-dome-63/auvergne-le-mouvement-lyceen-gagne-du-terrain-plusieurs-manifestations-en-cours-ce-jeudi-matin-7519330"
+    },
+    {
+      "school": "lycee-general-champollion-grenoble",
+      "date": "2026-10-02",
+      "sourceName": "Place Gre'net",
+      "sourceUrl": "https://www.placegrenet.fr/2026/10/02/lycees-incendies-bus-caillasse-tirs-de-mortiers-la-mobilisation-lyceenne-a-grenoble-debordee-par-les-violences/690652"
+    },
+    {
+      "school": "lycee-general-du-diois-die",
+      "date": "2026-10-01",
+      "sourceName": "ici Drôme Ardèche",
+      "sourceUrl": "https://www.ici.fr/auvergne-rhone-alpes/drome-26/blocus-des-lycees-de-nouveaux-etablissements-mobilises-en-drome-et-en-ardeche-ce-jeudi-matin-6531601"
+    },
+    {
+      "school": "lycee-general-emile-loubet-valence",
+      "date": "2026-10-01",
+      "sourceName": "ici Drôme Ardèche",
+      "sourceUrl": "https://www.ici.fr/auvergne-rhone-alpes/drome-26/blocage-des-lycees-plusieurs-interpellations-en-drome-et-en-ardeche-5031251"
+    },
+    {
+      "school": "lycee-general-et-technologique-alain-borne-montelimar",
+      "date": "2026-10-01",
+      "sourceName": "ici Drôme Ardèche",
+      "sourceUrl": "https://www.ici.fr/auvergne-rhone-alpes/drome-26/blocus-des-lycees-de-nouveaux-etablissements-mobilises-en-drome-et-en-ardeche-ce-jeudi-matin-6531601"
+    },
+    {
+      "school": "lycee-general-et-technologique-alexis-monteil-rodez",
+      "date": "2026-10-02",
+      "sourceName": "France 3 Occitanie",
+      "sourceUrl": "https://france3-regions.franceinfo.fr/occitanie/haute-garonne/toulouse/blocage-des-lycees-a-toulouse-17-etablissements-fermes-ce-vendredi-2-octobre-apres-les-violences-degradations-et-affrontements-3426681.html"
+    },
+    {
+      "school": "lycee-general-et-technologique-ambroise-brugiere-clermont-ferrand",
+      "date": "2026-10-01",
+      "sourceName": "Radio Scoop",
+      "sourceUrl": "https://www.radioscoop.com/infos/clermont-ferrand-trois-lycees-bloques-ce-jeudi-matin_364712"
+    },
+    {
+      "school": "lycee-general-et-technologique-aristide-briand-evreux",
+      "date": "2026-10-02",
+      "sourceName": "actu.fr (repris par titrespresse)",
+      "sourceUrl": "https://www.titrespresse.com/23602472603/aristide-briand-evreux"
+    },
+    {
+      "school": "lycee-general-et-technologique-baudelaire-annecy",
+      "date": "2026-10-01",
+      "sourceName": "ici Pays de Savoie",
+      "sourceUrl": "https://www.ici.fr/auvergne-rhone-alpes/haute-savoie-74/thonon-les-bains/blocages-des-lycees-de-nouvelles-manifestations-en-savoie-et-haute-savoie-ce-jeudi-1224830"
+    },
+    {
+      "school": "lycee-general-et-technologique-de-l-albanais-rumilly",
+      "date": "2026-10-01",
+      "sourceName": "ici Pays de Savoie",
+      "sourceUrl": "https://www.ici.fr/auvergne-rhone-alpes/haute-savoie-74/thonon-les-bains/blocages-des-lycees-de-nouvelles-manifestations-en-savoie-et-haute-savoie-ce-jeudi-1224830"
+    },
+    {
+      "school": "lycee-general-et-technologique-de-la-versoie-thonon-les-bains",
+      "date": "2026-10-02",
+      "sourceName": "ici Pays de Savoie",
+      "sourceUrl": "https://www.ici.fr/auvergne-rhone-alpes/savoie-73/mobilisation-lyceenne-de-nouvelles-interpellations-en-savoie-et-haute-savoie-6744697"
+    },
+    {
+      "school": "lycee-general-et-technologique-des-arenes-toulouse",
+      "date": "2026-10-01",
+      "sourceName": "France 3 Occitanie",
+      "sourceUrl": "https://france3-regions.franceinfo.fr/occitanie/haute-garonne/toulouse/plusieurs-lycees-bloques-et-des-tensions-a-toulouse-lors-d-une-nouvelle-journee-de-mobilisation-ce-jeudi-1er-octobre-3426039.html"
+    },
+    {
+      "school": "lycee-general-et-technologique-frantz-fanon-la-trinite",
+      "date": "2026-10-02",
+      "sourceName": "Martinique La 1ère",
+      "sourceUrl": "https://la1ere.franceinfo.fr/martinique/trinite/trinite-des-lyceens-de-frantz-fanon-bloquent-une-entree-de-la-cite-scolaire-1744173.html"
+    },
+    {
+      "school": "lycee-general-et-technologique-gabriel-faure-annecy",
+      "date": "2026-10-01",
+      "sourceName": "ici Pays de Savoie",
+      "sourceUrl": "https://www.ici.fr/auvergne-rhone-alpes/haute-savoie-74/thonon-les-bains/blocages-des-lycees-de-nouvelles-manifestations-en-savoie-et-haute-savoie-ce-jeudi-1224830"
+    },
+    {
+      "school": "lycee-general-et-technologique-gustave-courbet-belfort",
+      "date": "2026-10-01",
+      "sourceName": "France 3 Franche-Comté",
+      "sourceUrl": "https://france3-regions.franceinfo.fr/bourgogne-franche-comte/doubs/besancon/blocage-des-lycees-en-franche-comte-de-nombreux-etablissements-impactes-tensions-avec-les-forces-de-l-ordre-suivez-la-situation-en-direct-3426147.html"
+    },
+    {
+      "school": "lycee-general-et-technologique-henri-de-toulouse-lautrec-toulouse",
+      "date": "2026-10-01",
+      "sourceName": "France 3 Occitanie",
+      "sourceUrl": "https://france3-regions.franceinfo.fr/occitanie/haute-garonne/toulouse/plusieurs-lycees-bloques-et-des-tensions-a-toulouse-lors-d-une-nouvelle-journee-de-mobilisation-ce-jeudi-1er-octobre-3426039.html"
+    },
+    {
+      "school": "lycee-general-et-technologique-jean-dupuy-tarbes",
+      "date": "2026-10-01",
+      "sourceName": "ici Béarn Bigorre",
+      "sourceUrl": "https://www.ici.fr/nouvelle-aquitaine/pyrenees-atlantiques-64/blocage-des-lycees-plusieurs-etablissements-bloques-ce-jeudi-matin-en-bearn-et-en-bigorre-1067501"
+    },
+    {
+      "school": "lycee-general-et-technologique-jules-siegfried-le-havre",
+      "date": "2026-10-01",
+      "sourceName": "Tendance Ouest",
+      "sourceUrl": "https://www.tendanceouest.com/actualite-443002-photos-videos-mobilisation-lyceenne-quels-etablissements-sont-bloques-au-havre-fecamp-montivilliers-et-rouen"
+    },
+    {
+      "school": "lycee-general-et-technologique-les-trois-sources-bourg-les-valence",
+      "date": "2026-10-02",
+      "sourceName": "ici Drôme Ardèche",
+      "sourceUrl": "https://www.ici.fr/auvergne-rhone-alpes/drome-26/romans-sur-isere/des-lyceens-a-nouveau-mobilises-en-drome-et-en-ardeche-3073229?at_locale=24"
+    },
+    {
+      "school": "lycee-general-et-technologique-louis-pergaud-besancon",
+      "date": "2026-10-01",
+      "sourceName": "France 3 Franche-Comté",
+      "sourceUrl": "https://france3-regions.franceinfo.fr/bourgogne-franche-comte/doubs/besancon/blocage-des-lycees-en-franche-comte-de-nombreux-etablissements-impactes-tensions-avec-les-forces-de-l-ordre-suivez-la-situation-en-direct-3426147.html"
+    },
+    {
+      "school": "lycee-general-et-technologique-madame-de-stael-saint-julien-en-genevois",
+      "date": "2026-10-01",
+      "sourceName": "ici Pays de Savoie",
+      "sourceUrl": "https://www.ici.fr/auvergne-rhone-alpes/haute-savoie-74/thonon-les-bains/blocages-des-lycees-de-nouvelles-manifestations-en-savoie-et-haute-savoie-ce-jeudi-1224830"
+    },
+    {
+      "school": "lycee-general-et-technologique-marcelin-berthelot-toulouse",
+      "date": "2026-10-01",
+      "sourceName": "France 3 Occitanie",
+      "sourceUrl": "https://france3-regions.franceinfo.fr/occitanie/haute-garonne/toulouse/plusieurs-lycees-bloques-et-des-tensions-a-toulouse-lors-d-une-nouvelle-journee-de-mobilisation-ce-jeudi-1er-octobre-3426039.html"
+    },
+    {
+      "school": "lycee-general-et-technologique-mariette-boulogne-sur-mer",
+      "date": "2026-10-01",
+      "sourceName": "France 3 Hauts-de-France",
+      "sourceUrl": "https://france3-regions.franceinfo.fr/hauts-de-france/nord-0/lille/blocage-des-lycees-de-nombreux-etablissements-toujours-concernes-quelques-degradations-observees-3426069.html"
+    },
+    {
+      "school": "lycee-general-et-technologique-murat-issoire",
+      "date": "2026-10-01",
+      "sourceName": "ici Puy-de-Dôme",
+      "sourceUrl": "https://www.ici.fr/auvergne-rhone-alpes/puy-de-dome-63/auvergne-le-mouvement-lyceen-gagne-du-terrain-plusieurs-manifestations-en-cours-ce-jeudi-matin-7519330"
+    },
+    {
+      "school": "lycee-general-et-technologique-rene-descartes-cournon-d-auvergne",
+      "date": "2026-10-01",
+      "sourceName": "Radio Scoop",
+      "sourceUrl": "https://www.radioscoop.com/infos/clermont-ferrand-trois-lycees-bloques-ce-jeudi-matin_364712"
+    },
+    {
+      "school": "lycee-general-et-technologique-sidoine-apollinaire-clermont-ferrand",
+      "date": "2026-10-01",
+      "sourceName": "ici Puy-de-Dôme",
+      "sourceUrl": "https://www.ici.fr/auvergne-rhone-alpes/puy-de-dome-63/auvergne-le-mouvement-lyceen-gagne-du-terrain-plusieurs-manifestations-en-cours-ce-jeudi-matin-7519330"
+    },
+    {
+      "school": "lycee-general-et-technologique-vaugelas-chambery",
+      "date": "2026-10-02",
+      "sourceName": "ici Pays de Savoie",
+      "sourceUrl": "https://www.ici.fr/auvergne-rhone-alpes/savoie-73/mobilisation-lyceenne-de-nouvelles-interpellations-en-savoie-et-haute-savoie-6744697"
+    },
+    {
+      "school": "lycee-general-et-technologique-victor-hugo-besancon",
+      "date": "2026-10-01",
+      "sourceName": "France 3 Franche-Comté",
+      "sourceUrl": "https://france3-regions.franceinfo.fr/bourgogne-franche-comte/doubs/besancon/blocage-des-lycees-en-franche-comte-de-nombreux-etablissements-impactes-tensions-avec-les-forces-de-l-ordre-suivez-la-situation-en-direct-3426147.html"
+    },
+    {
+      "school": "lycee-general-jeanne-d-arc-clermont-ferrand",
+      "date": "2026-10-02",
+      "sourceName": "ici Puy-de-Dôme",
+      "sourceUrl": "https://www.ici.fr/auvergne-rhone-alpes/puy-de-dome-63/blocage-des-lycees-une-nouvelle-journee-de-mobilisation-en-auvergne-de-premieres-actions-en-cours-a-clermont-ferrand-6289898"
+    },
+    {
+      "school": "lycee-general-michelet-lannemezan",
+      "date": "2026-10-01",
+      "sourceName": "ici Béarn Bigorre",
+      "sourceUrl": "https://www.ici.fr/nouvelle-aquitaine/pyrenees-atlantiques-64/blocage-des-lycees-plusieurs-etablissements-bloques-ce-jeudi-matin-en-bearn-et-en-bigorre-1067501"
+    },
+    {
+      "school": "lycee-georges-clemenceau-montpellier",
+      "date": "2026-10-01",
+      "sourceName": "InfOccitanie",
+      "sourceUrl": "https://infoccitanie.fr/montpellier-les-images-des-blocages-des-lycees-a-la-mi-journee/"
+    },
+    {
+      "school": "lycee-georges-de-la-tour-metz",
+      "date": "2026-10-01",
+      "sourceName": "Le Républicain lorrain (repris par titrespresse)",
+      "sourceUrl": "https://www.titrespresse.com/23526132603/metz-photos-blocus"
+    },
+    {
+      "school": "lycee-grandmont-tours",
+      "date": "2026-10-01",
+      "sourceName": "ici Touraine",
+      "sourceUrl": "https://www.ici.fr/centre-val-de-loire/indre-et-loire-37/tours/reconduction-des-blocages-a-tours-au-lendemain-de-la-blessure-au-visage-d-un-lyceen-3701154"
+    },
+    {
+      "school": "lycee-guy-de-maupassant-fecamp",
+      "date": "2026-10-01",
+      "sourceName": "Tendance Ouest",
+      "sourceUrl": "https://www.tendanceouest.com/actualite-443002-photos-videos-mobilisation-lyceenne-quels-etablissements-sont-bloques-au-havre-fecamp-montivilliers-et-rouen"
+    },
+    {
+      "school": "lycee-helene-boucher-paris",
+      "date": "2026-10-01",
+      "sourceName": "Yahoo Actualités",
+      "sourceUrl": "https://fr.news.yahoo.com/paris-pantin-lille-plusieurs-lyc%C3%A9es-062125171.html"
+    },
+    {
+      "school": "lycee-henri-iv-paris",
+      "date": "2026-10-01",
+      "sourceName": "France 3 Paris Île-de-France",
+      "sourceUrl": "https://france3-regions.franceinfo.fr/paris-ile-de-france/paris/acte-deux-de-la-mobilisation-des-lyceens-le-point-sur-les-blocages-et-les-rassemblements-en-ile-de-france-3426024.html"
+    },
+    {
+      "school": "lycee-henri-loritz-nancy",
+      "date": "2026-09-30",
+      "sourceName": "France 3 Grand Est",
+      "sourceUrl": "https://france3-regions.franceinfo.fr/grand-est/meurthe-et-moselle/nancy/blocus-des-lycees-la-mobilisation-s-etend-en-lorraine-de-nouvelles-actions-des-jeudi-3425847.html"
+    },
+    {
+      "school": "lycee-henri-poincare-nancy",
+      "date": "2026-10-01",
+      "sourceName": "France 3 Grand Est",
+      "sourceUrl": "https://france3-regions.franceinfo.fr/grand-est/meurthe-et-moselle/nancy/lycees-bloques-en-lorraine-la-mobilisation-monte-d-un-cran-on-reclame-des-moyens-mais-tout-ce-qu-on-nous-donne-ce-sont-des-coups-3426201.html"
+    },
+    {
+      "school": "lycee-honore-d-urfe-saint-etienne",
+      "date": "2026-10-01",
+      "sourceName": "Minformer",
+      "sourceUrl": "https://www.minformer.com/2026/10/01/blocage-des-lycees-la-mobilisation-des-lyceens-se-poursuit-dans-la-loire/"
+    },
+    {
+      "school": "lycee-horticole-terre-d-horizon-pole-d-enseignement-du-vegetal-du-paysage-et-de-l-environn",
+      "date": "2026-10-01",
+      "sourceName": "ici Drôme Ardèche",
+      "sourceUrl": "https://www.ici.fr/auvergne-rhone-alpes/drome-26/nouvelles-actions-devant-des-lycees-de-drome-et-d-ardeche-ce-jeudi-6212680"
+    },
+    {
+      "school": "lycee-international-de-paris-honore-de-balzac-paris",
+      "date": "2026-10-01",
+      "sourceName": "Yahoo Actualités",
+      "sourceUrl": "https://fr.news.yahoo.com/paris-pantin-lille-plusieurs-lyc%C3%A9es-062125171.html"
+    },
+    {
+      "school": "lycee-international-georges-duby-aix-en-provence",
+      "date": "2026-10-01",
+      "sourceName": "ici Provence",
+      "sourceUrl": "https://www.ici.fr/provence-alpes-cote-d-azur/bouches-du-rhone-13/de-nombreux-lycees-bloques-en-provence-1655475"
+    },
+    {
+      "school": "lycee-international-les-pontonniers-strasbourg",
+      "date": "2026-10-01",
+      "sourceName": "Rue89 Strasbourg",
+      "sourceUrl": "https://www.rue89strasbourg.com/mobilisation-lyceenne-jeudi-397884"
+    },
+    {
+      "school": "lycee-jacques-de-vaucanson-tours",
+      "date": "2026-10-01",
+      "sourceName": "ici Touraine",
+      "sourceUrl": "https://www.ici.fr/centre-val-de-loire/indre-et-loire-37/tours/reconduction-des-blocages-a-tours-au-lendemain-de-la-blessure-au-visage-d-un-lyceen-3701154"
+    },
+    {
+      "school": "lycee-jacques-decour-paris",
+      "date": "2026-10-01",
+      "sourceName": "Yahoo Actualités",
+      "sourceUrl": "https://fr.news.yahoo.com/paris-pantin-lille-plusieurs-lyc%C3%A9es-062125171.html"
+    },
+    {
+      "school": "lycee-jacques-monod-saint-jean-de-braye",
+      "date": "2026-10-01",
+      "sourceName": "ici Orléans",
+      "sourceUrl": "https://www.ici.fr/centre-val-de-loire/loiret-45/orleans/mobilisation-des-lyceens-plusieurs-etablissements-perturbes-a-orleans-quelques-tensions-sur-place-5855712"
+    },
+    {
+      "school": "lycee-jean-baptiste-corot-douai",
+      "date": "2026-10-01",
+      "sourceName": "France 3 Hauts-de-France",
+      "sourceUrl": "https://france3-regions.franceinfo.fr/hauts-de-france/nord-0/lille/blocage-des-lycees-de-nombreux-etablissements-toujours-concernes-quelques-degradations-observees-3426069.html"
+    },
+    {
+      "school": "lycee-jean-bodin-les-ponts-de-ce",
+      "date": "2026-10-01",
+      "sourceName": "My Angers",
+      "sourceUrl": "https://my-angers.info/10/01/blocus-des-lycees-a-angers-les-syndicats-appellent-au-dialogue-le-rn-denonce-des-violences-et-une-instrumentalisation/197484"
+    },
+    {
+      "school": "lycee-jean-dautet-la-rochelle",
+      "date": "2026-10-01",
+      "sourceName": "ici La Rochelle",
+      "sourceUrl": "https://www.ici.fr/nouvelle-aquitaine/charente-maritime-17/la-rochelle/blocus-des-lycees-suivez-la-situation-devant-les-etablissements-de-la-charente-maritime-et-de-la-charente-6241728"
+    },
+    {
+      "school": "lycee-jean-jaures-reims",
+      "date": "2026-09-30",
+      "sourceName": "ici Champagne-Ardenne",
+      "sourceUrl": "https://www.ici.fr/grand-est/marne-51/en-images-sept-lycees-de-la-marne-et-des-ardennes-perturbes-par-des-manifestations-d-eleves-ce-mercredi-1052304"
+    },
+    {
+      "school": "lycee-jean-marie-le-bris-douarnenez",
+      "date": "2026-10-01",
+      "sourceName": "ici Breizh Izel",
+      "sourceUrl": "https://www.ici.fr/bretagne/finistere-29/de-quimper-a-carhaix-la-mobilisation-dans-les-lycees-s-etend-dans-le-finistere-9063025"
+    },
+    {
+      "school": "lycee-jean-monnet-montpellier",
+      "date": "2026-10-01",
+      "sourceName": "Tout Montpellier",
+      "sourceUrl": "https://toutmontpellier.fr/news/lycees-et-universite-bloques-a-montpellier-la-mobilisation-continue-l"
+    },
+    {
+      "school": "lycee-jean-monnet-strasbourg",
+      "date": "2026-10-01",
+      "sourceName": "Rue89 Strasbourg",
+      "sourceUrl": "https://www.rue89strasbourg.com/mobilisation-lyceenne-jeudi-397884"
+    },
+    {
+      "school": "lycee-jean-perrin-reze",
+      "date": "2026-10-01",
+      "sourceName": "ici Loire Océan",
+      "sourceUrl": "https://www.ici.fr/pays-de-la-loire/loire-atlantique-44/nantes/mobilisation-des-lyceens-plusieurs-blocages-a-nantes-l-etablissement-nelson-mandela-en-proie-aux-flammes-3890996"
+    },
+    {
+      "school": "lycee-jean-prevost-montivilliers",
+      "date": "2026-10-01",
+      "sourceName": "Tendance Ouest",
+      "sourceUrl": "https://www.tendanceouest.com/actualite-443002-photos-videos-mobilisation-lyceenne-quels-etablissements-sont-bloques-au-havre-fecamp-montivilliers-et-rouen"
+    },
+    {
+      "school": "lycee-jean-rostand-caen",
+      "date": "2026-10-02",
+      "sourceName": "ici Normandie",
+      "sourceUrl": "https://www.ici.fr/normandie/calvados-14/caen/blocage-des-lycees-le-mouvement-continue-a-caen-6622748"
+    },
+    {
+      "school": "lycee-jeanne-d-arc-bastia",
+      "date": "2026-10-02",
+      "sourceName": "France 3 Corse ViaStella",
+      "sourceUrl": "https://france3-regions.franceinfo.fr/corse/colere-des-lyceens-une-mobilisation-moins-importante-devant-les-lycees-corses-3426663.html"
+    },
+    {
+      "school": "lycee-joffre-montpellier",
+      "date": "2026-10-01",
+      "sourceName": "Midi Libre (via Headtopics)",
+      "sourceUrl": "https://fr.headtopics.com/news/loge-du-gardien-en-feu-pillages-et-explosion-de-poubelles-88355375"
+    },
+    {
+      "school": "lycee-joliot-curie-rennes",
+      "date": "2026-10-01",
+      "sourceName": "France 3 Bretagne",
+      "sourceUrl": "https://france3-regions.franceinfo.fr/bretagne/ille-et-vilaine/rennes/blocus-des-lycees-une-nouvelle-journee-de-mobilisation-ce-jeudi-face-a-face-tendu-dans-un-prestigieux-etablissement-de-rennes-3426036.html"
+    },
+    {
+      "school": "lycee-jules-ferry-paris",
+      "date": "2026-10-01",
+      "sourceName": "Yahoo Actualités",
+      "sourceUrl": "https://fr.news.yahoo.com/paris-pantin-lille-plusieurs-lyc%C3%A9es-062125171.html"
+    },
+    {
+      "school": "lycee-juliette-recamier-lyon",
+      "date": "2026-10-01",
+      "sourceName": "Lyon Capitale",
+      "sourceUrl": "https://www.lyoncapitale.fr/actualite/blocages-des-lycees-dans-le-rhone-en-direct-un-blesse-et-27-etablissements-concernes-ce-jeudi"
+    },
+    {
+      "school": "lycee-kleber-strasbourg",
+      "date": "2026-10-01",
+      "sourceName": "Pokaa",
+      "sourceUrl": "https://pokaa.fr/2026/10/01/en-direct-a-strasbourg-les-blocages-des-lycees-sintensifient-entre-interpellations-et-revendications/"
+    },
+    {
+      "school": "lycee-la-perouse-kerichen-brest",
+      "date": "2026-10-01",
+      "sourceName": "France 3 Bretagne",
+      "sourceUrl": "https://france3-regions.franceinfo.fr/bretagne/ille-et-vilaine/rennes/blocus-des-lycees-une-nouvelle-journee-de-mobilisation-ce-jeudi-face-a-face-tendu-dans-un-prestigieux-etablissement-de-rennes-3426036.html"
+    },
+    {
+      "school": "lycee-laplace-dumont-d-urville-caen",
+      "date": "2026-10-01",
+      "sourceName": "France 3 Normandie",
+      "sourceUrl": "https://france3-regions.franceinfo.fr/normandie/seine-maritime/rouen/blocages-violences-incendies-la-rectrice-d-academie-reagit-a-la-mobilisation-lyceenne-en-normandie-certains-etablissements-ne-pourront-pas-rouvrir-demain-3426540.html"
+    },
+    {
+      "school": "lycee-le-corbusier-aubervilliers",
+      "date": "2026-10-01",
+      "sourceName": "franceinfo",
+      "sourceUrl": "https://www.franceinfo.fr/societe/education/scolarite/guide-parents/lycee/direct-blocage-des-lycees-les-eleves-et-les-etudiants-appeles-a-un-acte-deux-de-la-mobilisation-malgre-les-violences_8217775.html"
+    },
+    {
+      "school": "lycee-leonard-limosin-limoges",
+      "date": "2026-10-01",
+      "sourceName": "France 3 Limousin",
+      "sourceUrl": "https://france3-regions.franceinfo.fr/nouvelle-aquitaine/haute-vienne/limoges/la-colere-des-lyceens-et-des-etudiants-s-etend-blocages-en-cours-devant-des-etablissements-de-limoges-felletin-et-tulle-3426132.html"
+    },
+    {
+      "school": "lycee-libergier-reims",
+      "date": "2026-09-30",
+      "sourceName": "France 3 Grand Est",
+      "sourceUrl": "https://france3-regions.franceinfo.fr/grand-est/marne/reims/blocage-des-lycees-des-gaz-lacrymogenes-tires-pour-disperser-les-eleves-mobilises-a-reims-et-epernay-3425516.html"
+    },
+    {
+      "school": "lycee-louis-armand-mulhouse",
+      "date": "2026-10-01",
+      "sourceName": "France 3 Grand Est",
+      "sourceUrl": "https://france3-regions.franceinfo.fr/grand-est/bas-rhin/strasbourg-0/des-heurts-a-strasbourg-entre-lyceens-et-policiers-une-delegation-d-etudiants-vient-grossir-les-rangs-en-centre-ville-3421958.html"
+    },
+    {
+      "school": "lycee-louis-pasquet-arles",
+      "date": "2026-10-01",
+      "sourceName": "Objectif Gard / ObjectifSud",
+      "sourceUrl": "https://www.objectifsud.fr/actualites/fait-du-soir-retour-sur-les-mobilisations-lyceennes-de-ce-jeudi-1-octobre-170101.php"
+    },
+    {
+      "school": "lycee-louis-pasteur-lille",
+      "date": "2026-10-01",
+      "sourceName": "ici Nord",
+      "sourceUrl": "https://www.ici.fr/infos/economie-social/blocage-des-lycees-des-heurts-avec-la-police-au-lycee-faidherbe-de-lille-la-fac-de-droit-fermee-ce-jeudi-7963995"
+    },
+    {
+      "school": "lycee-louis-pasteur-strasbourg",
+      "date": "2026-10-01",
+      "sourceName": "Rue89 Strasbourg",
+      "sourceUrl": "https://www.rue89strasbourg.com/mobilisation-lyceenne-jeudi-397884"
+    },
+    {
+      "school": "lycee-louis-thuillier-amiens",
+      "date": "2026-10-01",
+      "sourceName": "ici Picardie",
+      "sourceUrl": "https://www.ici.fr/hauts-de-france/somme-80/amiens/a-amiens-une-deuxieme-journee-de-mobilisation-lyceenne-3291859"
+    },
+    {
+      "school": "lycee-louis-vincent-metz",
+      "date": "2026-09-30",
+      "sourceName": "France 3 Grand Est",
+      "sourceUrl": "https://france3-regions.franceinfo.fr/grand-est/meurthe-et-moselle/nancy/blocus-des-lycees-la-mobilisation-s-etend-en-lorraine-de-nouvelles-actions-des-jeudi-3425847.html"
+    },
+    {
+      "school": "lycee-madeleine-michelis-amiens",
+      "date": "2026-10-02",
+      "sourceName": "ici Picardie",
+      "sourceUrl": "https://www.ici.fr/hauts-de-france/somme-80/mobilisation-lyceenne-la-liste-des-etablissements-fermes-en-picardie-300-personnes-devant-le-lycee-michelis-d-amiens-7860511?at_locale=44"
+    },
+    {
+      "school": "lycee-marcelin-berthelot-pantin",
+      "date": "2026-10-01",
+      "sourceName": "Yahoo Actualités",
+      "sourceUrl": "https://fr.news.yahoo.com/paris-pantin-lille-plusieurs-lyc%C3%A9es-062125171.html"
+    },
+    {
+      "school": "lycee-marguerite-de-valois-angouleme",
+      "date": "2026-10-01",
+      "sourceName": "ici La Rochelle",
+      "sourceUrl": "https://www.ici.fr/nouvelle-aquitaine/charente-maritime-17/la-rochelle/blocus-des-lycees-suivez-la-situation-devant-les-etablissements-de-la-charente-maritime-et-de-la-charente-6241728"
+    },
+    {
+      "school": "lycee-marie-curie-strasbourg",
+      "date": "2026-10-01",
+      "sourceName": "Rue89 Strasbourg",
+      "sourceUrl": "https://www.rue89strasbourg.com/mobilisation-lyceenne-jeudi-397884"
+    },
+    {
+      "school": "lycee-marseilleveyre-marseille",
+      "date": "2026-10-01",
+      "sourceName": "France 3 Provence-Alpes",
+      "sourceUrl": "https://france3-regions.franceinfo.fr/provence-alpes-cote-d-azur/bouches-du-rhone/marseille/en-images-blocages-poubelles-incendiees-bus-touches-universite-les-lyceens-entament-le-quatrieme-jour-de-revendications-la-mobilisation-se-durcit-3426207.html"
+    },
+    {
+      "school": "lycee-maurice-ravel-paris",
+      "date": "2026-10-01",
+      "sourceName": "Yahoo Actualités",
+      "sourceUrl": "https://fr.news.yahoo.com/paris-pantin-lille-plusieurs-lyc%C3%A9es-062125171.html"
+    },
+    {
+      "school": "lycee-michel-montaigne-bordeaux",
+      "date": "2026-10-01",
+      "sourceName": "ici Gironde",
+      "sourceUrl": "https://www.ici.fr/nouvelle-aquitaine/gironde-33/blocage-des-lycees-nouvelle-journee-de-mobilisation-a-bordeaux-3719378"
+    },
+    {
+      "school": "lycee-nelson-mandela-nantes",
+      "date": "2026-10-01",
+      "sourceName": "ici Loire Océan",
+      "sourceUrl": "https://www.ici.fr/pays-de-la-loire/loire-atlantique-44/nantes/mobilisation-des-lyceens-plusieurs-blocages-a-nantes-l-etablissement-nelson-mandela-en-proie-aux-flammes-3890996"
+    },
+    {
+      "school": "lycee-nicolas-bremontier-bordeaux",
+      "date": "2026-10-01",
+      "sourceName": "ici Gironde",
+      "sourceUrl": "https://www.ici.fr/nouvelle-aquitaine/gironde-33/blocage-des-lycees-nouvelle-journee-de-mobilisation-a-bordeaux-3719378"
+    },
+    {
+      "school": "lycee-pape-clement-pessac",
+      "date": "2026-10-01",
+      "sourceName": "France 3 Nouvelle-Aquitaine",
+      "sourceUrl": "https://france3-regions.franceinfo.fr/nouvelle-aquitaine/gironde/bordeaux/etablissements-brules-colonne-de-fumees-tramways-perturbes-le-blocus-des-lycees-continue-a-bordeaux-3426093.html"
+    },
+    {
+      "school": "lycee-parc-chabrieres-oullins",
+      "date": "2026-09-30",
+      "sourceName": "LyonMag",
+      "sourceUrl": "https://www.lyonmag.com/article/154207/une-dizaine-de-lycees-touches-par-des-rassemblements-violents-a-lyon-les-forces-de-l-ordre-deployees-en-nombre"
+    },
+    {
+      "school": "lycee-paul-cezanne-aix-en-provence",
+      "date": "2026-10-01",
+      "sourceName": "France 3 Provence-Alpes",
+      "sourceUrl": "https://france3-regions.franceinfo.fr/provence-alpes-cote-d-azur/bouches-du-rhone/marseille/en-images-blocages-poubelles-incendiees-bus-touches-universite-les-lyceens-entament-le-quatrieme-jour-de-revendications-la-mobilisation-se-durcit-3426207.html"
+    },
+    {
+      "school": "lycee-paul-eluard-saint-denis",
+      "date": "2026-09-30",
+      "sourceName": "France 24",
+      "sourceUrl": "https://www.france24.com/fr/france/20260930-lyc%C3%A9es-bloqu%C3%A9es-le-mouvement-se-poursuit-des-appels-%C3%A0-la-convergence-des-luttes"
+    },
+    {
+      "school": "lycee-paul-louis-courier-tours",
+      "date": "2026-09-30",
+      "sourceName": "ici Touraine",
+      "sourceUrl": "https://www.ici.fr/centre-val-de-loire/indre-et-loire-37/tours/blocus-lyceens-a-tours-un-jeune-blesse-au-visage-devant-le-lycee-balzac-tensions-en-cours-avec-les-forces-de-l-ordre-1187910"
+    },
+    {
+      "school": "lycee-philippe-lamour-nimes",
+      "date": "2026-10-01",
+      "sourceName": "Lamarsweb (via Headtopics)",
+      "sourceUrl": "https://fr.headtopics.com/news/a-n-mes-et-montpellier-la-quasi-totalite-des-lycees-sont-88341161"
+    },
+    {
+      "school": "lycee-pierre-bayen-chalons-en-champagne",
+      "date": "2026-10-01",
+      "sourceName": "ici Champagne-Ardenne",
+      "sourceUrl": "https://www.ici.fr/grand-est/marne-51/blocages-des-lycees-une-vingtaine-d-etablissements-de-l-academie-de-reims-perturbes-par-des-rassemblements-ce-jeudi-7813180"
+    },
+    {
+      "school": "lycee-pierre-corneille-rouen",
+      "date": "2026-10-01",
+      "sourceName": "Tendance Ouest",
+      "sourceUrl": "https://www.tendanceouest.com/actualite-443002-photos-videos-mobilisation-lyceenne-quels-etablissements-sont-bloques-au-havre-fecamp-montivilliers-et-rouen"
+    },
+    {
+      "school": "lycee-polyvalent-alfred-mezieres-longwy",
+      "date": "2026-09-30",
+      "sourceName": "France 3 Grand Est",
+      "sourceUrl": "https://france3-regions.franceinfo.fr/grand-est/meurthe-et-moselle/nancy/blocus-des-lycees-la-mobilisation-s-etend-en-lorraine-de-nouvelles-actions-des-jeudi-3425847.html"
+    },
+    {
+      "school": "lycee-polyvalent-algoud-laffemas-valence",
+      "date": "2026-10-01",
+      "sourceName": "ici Drôme Ardèche",
+      "sourceUrl": "https://www.ici.fr/auvergne-rhone-alpes/drome-26/blocage-des-lycees-plusieurs-interpellations-en-drome-et-en-ardeche-5031251"
+    },
+    {
+      "school": "lycee-polyvalent-alphonse-benoit-l-isle-sur-la-sorgue",
+      "date": "2026-10-01",
+      "sourceName": "ici Vaucluse",
+      "sourceUrl": "https://www.ici.fr/provence-alpes-cote-d-azur/vaucluse-84/mobilisation-lyceenne-avignon-cavaillon-orange-carpentras-isle-sur-la-sorgue-le-mouvement-fait-tache-d-huile-6856962"
+    },
+    {
+      "school": "lycee-polyvalent-anna-de-noailles-evian-les-bains",
+      "date": "2026-10-01",
+      "sourceName": "ici Pays de Savoie",
+      "sourceUrl": "https://www.ici.fr/auvergne-rhone-alpes/haute-savoie-74/thonon-les-bains/blocages-des-lycees-de-nouvelles-manifestations-en-savoie-et-haute-savoie-ce-jeudi-1224830"
+    },
+    {
+      "school": "lycee-polyvalent-aragon-picasso-givors",
+      "date": "2026-10-01",
+      "sourceName": "Lyon Capitale",
+      "sourceUrl": "https://www.lyoncapitale.fr/actualite/blocages-des-lycees-dans-le-rhone-en-direct-un-blesse-et-27-etablissements-concernes-ce-jeudi"
+    },
+    {
+      "school": "lycee-polyvalent-aristide-maillol-perpignan",
+      "date": "2026-10-01",
+      "sourceName": "ici Roussillon",
+      "sourceUrl": "https://www.ici.fr/occitanie/pyrenees-orientales-66/perpignan/mobilisation-des-lyceens-a-perpignan-14-interpellations-le-prefet-en-appelle-aux-parents-1372339"
+    },
+    {
+      "school": "lycee-polyvalent-arnaud-beltrame-meyzieu",
+      "date": "2026-10-01",
+      "sourceName": "Lyon Capitale",
+      "sourceUrl": "https://www.lyoncapitale.fr/actualite/blocages-des-lycees-dans-le-rhone-en-direct-un-blesse-et-27-etablissements-concernes-ce-jeudi"
+    },
+    {
+      "school": "lycee-polyvalent-astier-aubenas",
+      "date": "2026-10-02",
+      "sourceName": "ici Drôme Ardèche",
+      "sourceUrl": "https://www.ici.fr/auvergne-rhone-alpes/drome-26/romans-sur-isere/des-lyceens-a-nouveau-mobilises-en-drome-et-en-ardeche-3073229?at_locale=24"
+    },
+    {
+      "school": "lycee-polyvalent-atlantique-lucon",
+      "date": "2026-10-01",
+      "sourceName": "ici Loire Océan",
+      "sourceUrl": "https://www.ici.fr/pays-de-la-loire/loire-atlantique-44/nantes/mobilisation-des-lyceens-plusieurs-blocages-a-nantes-l-etablissement-nelson-mandela-en-proie-aux-flammes-3890996"
+    },
+    {
+      "school": "lycee-polyvalent-benjamin-franklin-orleans",
+      "date": "2026-10-01",
+      "sourceName": "ici Orléans",
+      "sourceUrl": "https://www.ici.fr/centre-val-de-loire/loiret-45/orleans/mobilisation-des-lyceens-plusieurs-etablissements-perturbes-a-orleans-quelques-tensions-sur-place-5855712"
+    },
+    {
+      "school": "lycee-polyvalent-boissy-d-anglas-annonay",
+      "date": "2026-10-02",
+      "sourceName": "ici Drôme Ardèche",
+      "sourceUrl": "https://www.ici.fr/auvergne-rhone-alpes/drome-26/romans-sur-isere/des-lyceens-a-nouveau-mobilises-en-drome-et-en-ardeche-3073229?at_locale=24"
+    },
+    {
+      "school": "lycee-polyvalent-charles-poncet-cluses",
+      "date": "2026-10-01",
+      "sourceName": "ici Pays de Savoie",
+      "sourceUrl": "https://www.ici.fr/auvergne-rhone-alpes/haute-savoie-74/thonon-les-bains/blocages-des-lycees-de-nouvelles-manifestations-en-savoie-et-haute-savoie-ce-jeudi-1224830"
+    },
+    {
+      "school": "lycee-polyvalent-chevrollier-angers",
+      "date": "2026-10-01",
+      "sourceName": "My Angers",
+      "sourceUrl": "https://my-angers.info/10/01/blocus-des-lycees-a-angers-les-syndicats-appellent-au-dialogue-le-rn-denonce-des-violences-et-une-instrumentalisation/197484"
+    },
+    {
+      "school": "lycee-polyvalent-christian-bourquin-argeles-sur-mer",
+      "date": "2026-10-01",
+      "sourceName": "ici Roussillon",
+      "sourceUrl": "https://www.ici.fr/occitanie/pyrenees-orientales-66/perpignan/plusieurs-lycees-des-pyrenees-orientales-bloques-ce-jeudi-dans-les-pyrenees-orientales-3884826"
+    },
+    {
+      "school": "lycee-polyvalent-de-bois-d-olive-saint-pierre",
+      "date": "2026-10-02",
+      "sourceName": "Réunion La 1ère",
+      "sourceUrl": "https://la1ere.franceinfo.fr/reunion/blocage-des-lycees-des-centaines-d-eleves-rassembles-devant-plusieurs-etablissements-de-l-ile-ce-vendredi-matin-1744119.html"
+    },
+    {
+      "school": "lycee-polyvalent-deodat-de-severac-toulouse",
+      "date": "2026-10-02",
+      "sourceName": "France 3 Occitanie",
+      "sourceUrl": "https://france3-regions.franceinfo.fr/occitanie/haute-garonne/toulouse/blocage-des-lycees-a-toulouse-17-etablissements-fermes-ce-vendredi-2-octobre-apres-les-violences-degradations-et-affrontements-3426681.html"
+    },
+    {
+      "school": "lycee-polyvalent-du-cheylard-le-cheylard",
+      "date": "2026-10-01",
+      "sourceName": "ici Drôme Ardèche",
+      "sourceUrl": "https://www.ici.fr/auvergne-rhone-alpes/drome-26/blocus-des-lycees-de-nouveaux-etablissements-mobilises-en-drome-et-en-ardeche-ce-jeudi-matin-6531601"
+    },
+    {
+      "school": "lycee-polyvalent-du-dauphine-romans-sur-isere",
+      "date": "2026-10-02",
+      "sourceName": "ici Drôme Ardèche",
+      "sourceUrl": "https://www.ici.fr/auvergne-rhone-alpes/drome-26/romans-sur-isere/des-lyceens-a-nouveau-mobilises-en-drome-et-en-ardeche-3073229?at_locale=24"
+    },
+    {
+      "school": "lycee-polyvalent-du-fium-orbu-prunelli-di-fiumorbo",
+      "date": "2026-10-02",
+      "sourceName": "France 3 Corse ViaStella",
+      "sourceUrl": "https://france3-regions.franceinfo.fr/corse/colere-des-lyceens-une-mobilisation-moins-importante-devant-les-lycees-corses-3426663.html"
+    },
+    {
+      "school": "lycee-polyvalent-du-pays-de-conde-conde-sur-l-escaut",
+      "date": "2026-09-30",
+      "sourceName": "L'Observateur",
+      "sourceUrl": "https://www.lobservateur.fr/blocage-lycees-interpellations-valenciennois/"
+    },
+    {
+      "school": "lycee-polyvalent-edgar-quinet-paris",
+      "date": "2026-10-01",
+      "sourceName": "Yahoo Actualités",
+      "sourceUrl": "https://fr.news.yahoo.com/paris-pantin-lille-plusieurs-lyc%C3%A9es-062125171.html"
+    },
+    {
+      "school": "lycee-polyvalent-edouard-branly-lyon",
+      "date": "2026-09-30",
+      "sourceName": "LyonMag",
+      "sourceUrl": "https://www.lyonmag.com/article/154207/une-dizaine-de-lycees-touches-par-des-rassemblements-violents-a-lyon-les-forces-de-l-ordre-deployees-en-nombre"
+    },
+    {
+      "school": "lycee-polyvalent-emiland-gauthey-chalon-sur-saone",
+      "date": "2026-10-01",
+      "sourceName": "Le JSL (via Titres Presse)",
+      "sourceUrl": "https://www.titrespresse.com/23526672603/chalon-saone-colere"
+    },
+    {
+      "school": "lycee-polyvalent-emmanuel-mounier-grenoble",
+      "date": "2026-10-01",
+      "sourceName": "ici Isère",
+      "sourceUrl": "https://www.ici.fr/auvergne-rhone-alpes/isere-38/villefontaine/blocus-des-lycees-en-isere-abribus-casses-et-tirs-de-mortiers-d-artifice-a-villefontaine-tensions-aussi-a-grenoble-5955040"
+    },
+    {
+      "school": "lycee-polyvalent-ernest-couteaux-saint-amand-les-eaux",
+      "date": "2026-09-30",
+      "sourceName": "L'Observateur",
+      "sourceUrl": "https://www.lobservateur.fr/blocage-lycees-interpellations-valenciennois/"
+    },
+    {
+      "school": "lycee-polyvalent-ernest-hemingway-nimes",
+      "date": "2026-10-01",
+      "sourceName": "Lamarsweb (via Headtopics)",
+      "sourceUrl": "https://fr.headtopics.com/news/a-n-mes-et-montpellier-la-quasi-totalite-des-lycees-sont-88341161"
+    },
+    {
+      "school": "lycee-polyvalent-francois-arago-reims",
+      "date": "2026-09-30",
+      "sourceName": "France 3 Grand Est",
+      "sourceUrl": "https://france3-regions.franceinfo.fr/grand-est/marne/reims/blocage-des-lycees-des-gaz-lacrymogenes-tires-pour-disperser-les-eleves-mobilises-a-reims-et-epernay-3425516.html"
+    },
+    {
+      "school": "lycee-polyvalent-francois-bazin-charleville-mezieres",
+      "date": "2026-09-30",
+      "sourceName": "France 3 Grand Est",
+      "sourceUrl": "https://france3-regions.franceinfo.fr/grand-est/marne/reims/blocage-des-lycees-des-gaz-lacrymogenes-tires-pour-disperser-les-eleves-mobilises-a-reims-et-epernay-3425516.html"
+    },
+    {
+      "school": "lycee-polyvalent-francois-jean-armorin-crest",
+      "date": "2026-10-01",
+      "sourceName": "ici Drôme Ardèche",
+      "sourceUrl": "https://www.ici.fr/auvergne-rhone-alpes/drome-26/blocus-des-lycees-de-nouveaux-etablissements-mobilises-en-drome-et-en-ardeche-ce-jeudi-matin-6531601"
+    },
+    {
+      "school": "lycee-polyvalent-frederic-fays-villeurbanne",
+      "date": "2026-10-01",
+      "sourceName": "Lyon Capitale",
+      "sourceUrl": "https://www.lyoncapitale.fr/actualite/blocages-des-lycees-dans-le-rhone-en-direct-un-blesse-et-27-etablissements-concernes-ce-jeudi"
+    },
+    {
+      "school": "lycee-polyvalent-gaspard-monge-la-chauviniere-nantes",
+      "date": "2026-10-01",
+      "sourceName": "ici Loire Océan",
+      "sourceUrl": "https://www.ici.fr/pays-de-la-loire/loire-atlantique-44/nantes/mobilisation-des-lyceens-plusieurs-blocages-a-nantes-l-etablissement-nelson-mandela-en-proie-aux-flammes-3890996"
+    },
+    {
+      "school": "lycee-polyvalent-georges-briere-reims",
+      "date": "2026-10-01",
+      "sourceName": "ici Champagne-Ardenne",
+      "sourceUrl": "https://www.ici.fr/grand-est/marne-51/blocages-des-lycees-une-vingtaine-d-etablissements-de-l-academie-de-reims-perturbes-par-des-rassemblements-ce-jeudi-7813180"
+    },
+    {
+      "school": "lycee-polyvalent-germaine-tillion-montbeliard",
+      "date": "2026-10-01",
+      "sourceName": "France 3 Franche-Comté",
+      "sourceUrl": "https://france3-regions.franceinfo.fr/bourgogne-franche-comte/doubs/besancon/blocage-des-lycees-en-franche-comte-de-nombreux-etablissements-impactes-tensions-avec-les-forces-de-l-ordre-suivez-la-situation-en-direct-3426147.html"
+    },
+    {
+      "school": "lycee-polyvalent-gustave-eiffel-bordeaux",
+      "date": "2026-10-01",
+      "sourceName": "ici Gironde",
+      "sourceUrl": "https://www.ici.fr/nouvelle-aquitaine/gironde-33/blocage-des-lycees-nouvelle-journee-de-mobilisation-a-bordeaux-3719378"
+    },
+    {
+      "school": "lycee-polyvalent-gustave-jaume-pierrelatte",
+      "date": "2026-10-01",
+      "sourceName": "ici Drôme Ardèche",
+      "sourceUrl": "https://www.ici.fr/auvergne-rhone-alpes/drome-26/nouvelles-actions-devant-des-lycees-de-drome-et-d-ardeche-ce-jeudi-6212680"
+    },
+    {
+      "school": "lycee-polyvalent-hippolyte-fontaine-dijon",
+      "date": "2026-10-01",
+      "sourceName": "Dijon Actualités",
+      "sourceUrl": "https://dijon-actualites.fr/2026/10/01/a-dijon-la-mobilisation-lyceenne-se-poursuit-dans-la-tension-nouveaux-blocages-interventions-policieres-et-colere-sur-les-conditions-detudes/"
+    },
+    {
+      "school": "lycee-polyvalent-jacques-duhamel-dole",
+      "date": "2026-10-01",
+      "sourceName": "France 3 Franche-Comté",
+      "sourceUrl": "https://france3-regions.franceinfo.fr/bourgogne-franche-comte/doubs/besancon/blocage-des-lycees-en-franche-comte-de-nombreux-etablissements-impactes-tensions-avec-les-forces-de-l-ordre-suivez-la-situation-en-direct-3426147.html"
+    },
+    {
+      "school": "lycee-polyvalent-jean-baptiste-dumas-ales",
+      "date": "2026-10-01",
+      "sourceName": "Objectif Gard / ObjectifSud",
+      "sourceUrl": "https://www.objectifsud.fr/actualites/fait-du-soir-retour-sur-les-mobilisations-lyceennes-de-ce-jeudi-1-octobre-170101.php"
+    },
+    {
+      "school": "lycee-polyvalent-jean-henri-fabre-carpentras",
+      "date": "2026-10-01",
+      "sourceName": "ici Vaucluse",
+      "sourceUrl": "https://www.ici.fr/provence-alpes-cote-d-azur/vaucluse-84/mobilisation-des-lyceens-de-nombreux-rassemblements-un-blesse-leger-plusieurs-interpellations-ce-jeudi-en-vaucluse-1011211"
+    },
+    {
+      "school": "lycee-polyvalent-jean-lurcat-perpignan",
+      "date": "2026-10-01",
+      "sourceName": "ici Roussillon",
+      "sourceUrl": "https://www.ici.fr/occitanie/pyrenees-orientales-66/perpignan/plusieurs-lycees-des-pyrenees-orientales-bloques-ce-jeudi-dans-les-pyrenees-orientales-3884826"
+    },
+    {
+      "school": "lycee-polyvalent-jean-mermoz-montpellier",
+      "date": "2026-10-01",
+      "sourceName": "InfOccitanie",
+      "sourceUrl": "https://infoccitanie.fr/montpellier-les-images-des-blocages-des-lycees-a-la-mi-journee/"
+    },
+    {
+      "school": "lycee-polyvalent-jean-monnet-les-herbiers",
+      "date": "2026-10-01",
+      "sourceName": "ici Loire Océan",
+      "sourceUrl": "https://www.ici.fr/pays-de-la-loire/loire-atlantique-44/nantes/mobilisation-des-lyceens-plusieurs-blocages-a-nantes-l-etablissement-nelson-mandela-en-proie-aux-flammes-3890996"
+    },
+    {
+      "school": "lycee-polyvalent-jean-moulin-albertville",
+      "date": "2026-10-01",
+      "sourceName": "ici Pays de Savoie",
+      "sourceUrl": "https://www.ici.fr/auvergne-rhone-alpes/haute-savoie-74/thonon-les-bains/blocages-des-lycees-de-nouvelles-manifestations-en-savoie-et-haute-savoie-ce-jeudi-1224830"
+    },
+    {
+      "school": "lycee-polyvalent-jean-racine-montdidier",
+      "date": "2026-10-01",
+      "sourceName": "ici Picardie",
+      "sourceUrl": "https://www.ici.fr/hauts-de-france/somme-80/amiens/a-amiens-une-deuxieme-journee-de-mobilisation-lyceenne-3291859"
+    },
+    {
+      "school": "lycee-polyvalent-jean-rostand-strasbourg",
+      "date": "2026-10-01",
+      "sourceName": "Rue89 Strasbourg",
+      "sourceUrl": "https://www.rue89strasbourg.com/mobilisation-lyceenne-jeudi-397884"
+    },
+    {
+      "school": "lycee-polyvalent-jean-talon-chalons-en-champagne",
+      "date": "2026-09-30",
+      "sourceName": "France 3 Grand Est",
+      "sourceUrl": "https://france3-regions.franceinfo.fr/grand-est/marne/reims/blocage-des-lycees-des-gaz-lacrymogenes-tires-pour-disperser-les-eleves-mobilises-a-reims-et-epernay-3425516.html"
+    },
+    {
+      "school": "lycee-polyvalent-johannes-gutenberg-creteil",
+      "date": "2026-10-01",
+      "sourceName": "Politis",
+      "sourceUrl": "https://www.politis.fr/articles/2026/10/reportage-mobilisation-lyceenne-jeunesse-debout-pouvoir-sourd-violences-policieres-comme-reponse/"
+    },
+    {
+      "school": "lycee-polyvalent-jules-haag-besancon",
+      "date": "2026-10-01",
+      "sourceName": "France 3 Franche-Comté",
+      "sourceUrl": "https://france3-regions.franceinfo.fr/bourgogne-franche-comte/doubs/besancon/blocage-des-lycees-en-franche-comte-de-nombreux-etablissements-impactes-tensions-avec-les-forces-de-l-ordre-suivez-la-situation-en-direct-3426147.html"
+    },
+    {
+      "school": "lycee-polyvalent-la-borde-basse-castres",
+      "date": "2026-10-02",
+      "sourceName": "La Dépêche du Midi (via Headtopics)",
+      "sourceUrl": "https://fr.headtopics.com/news/blocage-des-lycees-neuf-interpellations-dans-le-tarn-dans-88378473"
+    },
+    {
+      "school": "lycee-polyvalent-la-hotoie-amiens",
+      "date": "2026-10-01",
+      "sourceName": "ici Picardie",
+      "sourceUrl": "https://www.ici.fr/hauts-de-france/somme-80/amiens/a-amiens-une-deuxieme-journee-de-mobilisation-lyceenne-3291859"
+    },
+    {
+      "school": "lycee-polyvalent-le-castel-dijon",
+      "date": "2026-10-01",
+      "sourceName": "Dijon Actualités",
+      "sourceUrl": "https://dijon-actualites.fr/2026/10/01/a-dijon-la-mobilisation-lyceenne-se-poursuit-dans-la-tension-nouveaux-blocages-interventions-policieres-et-colere-sur-les-conditions-detudes/"
+    },
+    {
+      "school": "lycee-polyvalent-leonard-de-vinci-villefontaine",
+      "date": "2026-10-01",
+      "sourceName": "ici Isère",
+      "sourceUrl": "https://www.ici.fr/auvergne-rhone-alpes/isere-38/villefontaine/blocus-des-lycees-en-isere-abribus-casses-et-tirs-de-mortiers-d-artifice-a-villefontaine-tensions-aussi-a-grenoble-5955040"
+    },
+    {
+      "school": "lycee-polyvalent-les-catalins-montelimar",
+      "date": "2026-10-02",
+      "sourceName": "ici Drôme Ardèche",
+      "sourceUrl": "https://www.ici.fr/auvergne-rhone-alpes/drome-26/romans-sur-isere/des-lyceens-a-nouveau-mobilises-en-drome-et-en-ardeche-3073229?at_locale=24"
+    },
+    {
+      "school": "lycee-polyvalent-louis-armand-chambery",
+      "date": "2026-10-01",
+      "sourceName": "ici Pays de Savoie",
+      "sourceUrl": "https://www.ici.fr/auvergne-rhone-alpes/haute-savoie-74/thonon-les-bains/blocages-des-lycees-de-nouvelles-manifestations-en-savoie-et-haute-savoie-ce-jeudi-1224830"
+    },
+    {
+      "school": "lycee-polyvalent-louis-armand-paris",
+      "date": "2026-10-01",
+      "sourceName": "Yahoo Actualités",
+      "sourceUrl": "https://fr.news.yahoo.com/paris-pantin-lille-plusieurs-lyc%C3%A9es-062125171.html"
+    },
+    {
+      "school": "lycee-polyvalent-louis-couffignal-strasbourg",
+      "date": "2026-10-01",
+      "sourceName": "Rue89 Strasbourg",
+      "sourceUrl": "https://www.rue89strasbourg.com/mobilisation-lyceenne-jeudi-397884"
+    },
+    {
+      "school": "lycee-polyvalent-louis-lachenal-annecy",
+      "date": "2026-10-01",
+      "sourceName": "ici Pays de Savoie",
+      "sourceUrl": "https://www.ici.fr/auvergne-rhone-alpes/haute-savoie-74/thonon-les-bains/blocages-des-lycees-de-nouvelles-manifestations-en-savoie-et-haute-savoie-ce-jeudi-1224830"
+    },
+    {
+      "school": "lycee-polyvalent-louise-michel-grenoble",
+      "date": "2026-10-01",
+      "sourceName": "Place Gre'net",
+      "sourceUrl": "https://www.placegrenet.fr/2026/10/02/lycees-incendies-bus-caillasse-tirs-de-mortiers-la-mobilisation-lyceenne-a-grenoble-debordee-par-les-violences/690652"
+    },
+    {
+      "school": "lycee-polyvalent-louise-michel-narbonne",
+      "date": "2026-10-02",
+      "sourceName": "France 3 Occitanie",
+      "sourceUrl": "https://france3-regions.franceinfo.fr/occitanie/herault/montpellier/gaz-lacrymogenes-malaise-cours-a-distance-plus-de-50-interpellations-les-blocages-de-lycees-degenerent-malgre-les-interdictions-de-manifester-3426705.html"
+    },
+    {
+      "school": "lycee-polyvalent-marcel-gimond-aubenas",
+      "date": "2026-10-01",
+      "sourceName": "ici Drôme Ardèche",
+      "sourceUrl": "https://www.ici.fr/auvergne-rhone-alpes/drome-26/blocus-des-lycees-de-nouveaux-etablissements-mobilises-en-drome-et-en-ardeche-ce-jeudi-matin-6531601"
+    },
+    {
+      "school": "lycee-polyvalent-marcel-rudloff-strasbourg",
+      "date": "2026-10-01",
+      "sourceName": "Rue89 Strasbourg",
+      "sourceUrl": "https://www.rue89strasbourg.com/mobilisation-lyceenne-jeudi-397884"
+    },
+    {
+      "school": "lycee-polyvalent-marlioz-aix-les-bains",
+      "date": "2026-10-01",
+      "sourceName": "ici Pays de Savoie",
+      "sourceUrl": "https://www.ici.fr/auvergne-rhone-alpes/haute-savoie-74/thonon-les-bains/blocages-des-lycees-de-nouvelles-manifestations-en-savoie-et-haute-savoie-ce-jeudi-1224830"
+    },
+    {
+      "school": "lycee-polyvalent-maurice-genevoix-ingre",
+      "date": "2026-10-01",
+      "sourceName": "ici Orléans",
+      "sourceUrl": "https://www.ici.fr/centre-val-de-loire/loiret-45/orleans/mobilisation-des-lyceens-plusieurs-etablissements-perturbes-a-orleans-quelques-tensions-sur-place-5855712"
+    },
+    {
+      "school": "lycee-polyvalent-montmajour-arles",
+      "date": "2026-10-01",
+      "sourceName": "Objectif Gard / ObjectifSud",
+      "sourceUrl": "https://www.objectifsud.fr/actualites/fait-du-soir-retour-sur-les-mobilisations-lyceennes-de-ce-jeudi-1-octobre-170101.php"
+    },
+    {
+      "school": "lycee-polyvalent-nelson-mandela-poitiers",
+      "date": "2026-10-01",
+      "sourceName": "ici Poitou",
+      "sourceUrl": "https://www.ici.fr/nouvelle-aquitaine/vienne-86/poitiers/blocages-des-lycees-de-nouvelles-actions-a-poitiers-4846766"
+    },
+    {
+      "school": "lycee-polyvalent-pablo-picasso-perpignan",
+      "date": "2026-10-01",
+      "sourceName": "ici Roussillon",
+      "sourceUrl": "https://www.ici.fr/occitanie/pyrenees-orientales-66/perpignan/plusieurs-lycees-des-pyrenees-orientales-bloques-ce-jeudi-dans-les-pyrenees-orientales-3884826"
+    },
+    {
+      "school": "lycee-polyvalent-paul-constans-montlucon",
+      "date": "2026-10-01",
+      "sourceName": "ici Puy-de-Dôme",
+      "sourceUrl": "https://www.ici.fr/auvergne-rhone-alpes/puy-de-dome-63/auvergne-le-mouvement-lyceen-gagne-du-terrain-plusieurs-manifestations-en-cours-ce-jeudi-matin-7519330"
+    },
+    {
+      "school": "lycee-polyvalent-paul-heroult-saint-jean-de-maurienne",
+      "date": "2026-10-01",
+      "sourceName": "ici Pays de Savoie",
+      "sourceUrl": "https://www.ici.fr/auvergne-rhone-alpes/haute-savoie-74/thonon-les-bains/blocages-des-lycees-de-nouvelles-manifestations-en-savoie-et-haute-savoie-ce-jeudi-1224830"
+    },
+    {
+      "school": "lycee-polyvalent-paul-langevin-martigues",
+      "date": "2026-10-01",
+      "sourceName": "France 3 Provence-Alpes",
+      "sourceUrl": "https://france3-regions.franceinfo.fr/provence-alpes-cote-d-azur/bouches-du-rhone/marseille/en-images-blocages-poubelles-incendiees-bus-touches-universite-les-lyceens-entament-le-quatrieme-jour-de-revendications-la-mobilisation-se-durcit-3426207.html"
+    },
+    {
+      "school": "lycee-polyvalent-philippe-de-girard-avignon",
+      "date": "2026-10-01",
+      "sourceName": "ici Vaucluse",
+      "sourceUrl": "https://www.ici.fr/provence-alpes-cote-d-azur/vaucluse-84/mobilisation-lyceenne-avignon-cavaillon-orange-carpentras-isle-sur-la-sorgue-le-mouvement-fait-tache-d-huile-6856962"
+    },
+    {
+      "school": "lycee-polyvalent-pierre-mendes-france-rennes",
+      "date": "2026-09-30",
+      "sourceName": "franceinfo",
+      "sourceUrl": "https://www.franceinfo.fr/societe/education/parcoursup/parcoursup/manifestations-des-lyceens/blocages-des-lycees-le-point-sur-la-mobilisation-mercredi-en-fin-de-matinee_8216045.html"
+    },
+    {
+      "school": "lycee-polyvalent-prive-bernat-etxepare-bayonne",
+      "date": "2026-10-02",
+      "sourceName": "France 3 Nouvelle-Aquitaine",
+      "sourceUrl": "https://france3-regions.franceinfo.fr/nouvelle-aquitaine/gironde/bordeaux/blocus-des-lycees-apres-les-violences-58-representants-lyceens-vont-etre-recus-par-les-autorites-a-bordeaux-3426702.html"
+    },
+    {
+      "school": "lycee-polyvalent-prive-jeanne-d-arc-albertville",
+      "date": "2026-10-01",
+      "sourceName": "ici Pays de Savoie",
+      "sourceUrl": "https://www.ici.fr/auvergne-rhone-alpes/haute-savoie-74/thonon-les-bains/blocages-des-lycees-de-nouvelles-manifestations-en-savoie-et-haute-savoie-ce-jeudi-1224830"
+    },
+    {
+      "school": "lycee-polyvalent-rene-cassin-strasbourg",
+      "date": "2026-10-01",
+      "sourceName": "Rue89 Strasbourg",
+      "sourceUrl": "https://www.rue89strasbourg.com/mobilisation-lyceenne-jeudi-397884"
+    },
+    {
+      "school": "lycee-polyvalent-rene-char-avignon",
+      "date": "2026-10-01",
+      "sourceName": "ici Vaucluse",
+      "sourceUrl": "https://www.ici.fr/provence-alpes-cote-d-azur/vaucluse-84/mobilisation-des-lyceens-de-nombreux-rassemblements-un-blesse-leger-plusieurs-interpellations-ce-jeudi-en-vaucluse-1011211"
+    },
+    {
+      "school": "lycee-polyvalent-rosa-luxemburg-canet-en-roussillon",
+      "date": "2026-10-01",
+      "sourceName": "ici Roussillon",
+      "sourceUrl": "https://www.ici.fr/occitanie/pyrenees-orientales-66/perpignan/plusieurs-lycees-des-pyrenees-orientales-bloques-ce-jeudi-dans-les-pyrenees-orientales-3884826"
+    },
+    {
+      "school": "lycee-polyvalent-sainte-marie-aix-en-provence",
+      "date": "2026-10-01",
+      "sourceName": "ici Provence",
+      "sourceUrl": "https://www.ici.fr/provence-alpes-cote-d-azur/bouches-du-rhone-13/de-nombreux-lycees-bloques-en-provence-1655475"
+    },
+    {
+      "school": "lycee-polyvalent-simone-veil-brive-la-gaillarde",
+      "date": "2026-10-01",
+      "sourceName": "ici Limousin",
+      "sourceUrl": "https://www.ici.fr/nouvelle-aquitaine/haute-vienne-87/limoges/etablissements-bloques-manifestation-le-mouvement-des-lyceens-gagne-le-limousin-6790861"
+    },
+    {
+      "school": "lycee-polyvalent-suzanne-valadon-limoges",
+      "date": "2026-10-01",
+      "sourceName": "Flash FM",
+      "sourceUrl": "https://www.flashfm.fr/mouvement-lyceen-pres-de-2-000-jeunes-mobilises-a-limoges"
+    },
+    {
+      "school": "lycee-polyvalent-toulouse-lautrec-albi",
+      "date": "2026-10-02",
+      "sourceName": "La Dépêche du Midi (via Headtopics)",
+      "sourceUrl": "https://fr.headtopics.com/news/blocage-des-lycees-neuf-interpellations-dans-le-tarn-dans-88378473"
+    },
+    {
+      "school": "lycee-polyvalent-urbain-vitry-toulouse",
+      "date": "2026-10-01",
+      "sourceName": "France 3 Occitanie",
+      "sourceUrl": "https://france3-regions.franceinfo.fr/occitanie/haute-garonne/toulouse/plusieurs-lycees-bloques-et-des-tensions-a-toulouse-lors-d-une-nouvelle-journee-de-mobilisation-ce-jeudi-1er-octobre-3426039.html"
+    },
+    {
+      "school": "lycee-polyvalent-val-de-lys-estaires",
+      "date": "2026-10-01",
+      "sourceName": "France 3 Hauts-de-France",
+      "sourceUrl": "https://france3-regions.franceinfo.fr/hauts-de-france/nord-0/lille/blocage-des-lycees-de-nombreux-etablissements-toujours-concernes-quelques-degradations-observees-3426069.html"
+    },
+    {
+      "school": "lycee-polyvalent-vauvenargues-aix-en-provence",
+      "date": "2026-10-01",
+      "sourceName": "ici Provence",
+      "sourceUrl": "https://www.ici.fr/provence-alpes-cote-d-azur/bouches-du-rhone-13/de-nombreux-lycees-bloques-en-provence-1655475"
+    },
+    {
+      "school": "lycee-polyvalent-victor-duruy-bagneres-de-bigorre",
+      "date": "2026-10-01",
+      "sourceName": "ici Béarn Bigorre",
+      "sourceUrl": "https://www.ici.fr/nouvelle-aquitaine/pyrenees-atlantiques-64/blocage-des-lycees-plusieurs-etablissements-bloques-ce-jeudi-matin-en-bearn-et-en-bigorre-1067501"
+    },
+    {
+      "school": "lycee-polyvalent-victor-hugo-carpentras",
+      "date": "2026-10-01",
+      "sourceName": "ici Vaucluse",
+      "sourceUrl": "https://www.ici.fr/provence-alpes-cote-d-azur/vaucluse-84/mobilisation-lyceenne-avignon-cavaillon-orange-carpentras-isle-sur-la-sorgue-le-mouvement-fait-tache-d-huile-6856962"
+    },
+    {
+      "school": "lycee-polyvalent-victor-louis-talence",
+      "date": "2026-10-01",
+      "sourceName": "ici Gironde",
+      "sourceUrl": "https://www.ici.fr/nouvelle-aquitaine/gironde-33/blocage-des-lycees-nouvelle-journee-de-mobilisation-a-bordeaux-3719378"
+    },
+    {
+      "school": "lycee-polyvalent-vincent-d-indy-privas",
+      "date": "2026-10-01",
+      "sourceName": "ici Drôme Ardèche",
+      "sourceUrl": "https://www.ici.fr/auvergne-rhone-alpes/drome-26/blocus-des-lycees-de-nouveaux-etablissements-mobilises-en-drome-et-en-ardeche-ce-jeudi-matin-6531601"
+    },
+    {
+      "school": "lycee-porte-oceane-le-havre",
+      "date": "2026-10-01",
+      "sourceName": "Tendance Ouest",
+      "sourceUrl": "https://www.tendanceouest.com/actualite-443002-photos-videos-mobilisation-lyceenne-quels-etablissements-sont-bloques-au-havre-fecamp-montivilliers-et-rouen"
+    },
+    {
+      "school": "lycee-prive-le-mirail-le-lycee-du-matin-bordeaux",
+      "date": "2026-10-02",
+      "sourceName": "France 3 Nouvelle-Aquitaine",
+      "sourceUrl": "https://france3-regions.franceinfo.fr/nouvelle-aquitaine/gironde/bordeaux/blocus-des-lycees-apres-les-violences-58-representants-lyceens-vont-etre-recus-par-les-autorites-a-bordeaux-3426702.html"
+    },
+    {
+      "school": "lycee-prive-notre-dame-du-bon-secours-perpignan",
+      "date": "2026-10-01",
+      "sourceName": "Made in Perpignan",
+      "sourceUrl": "https://madeinperpignan.com/dernier-recours-gen-z-perpignan-bloque-lycees-avenir/"
+    },
+    {
+      "school": "lycee-prive-polyvalent-saint-vincent-de-paul-nimes",
+      "date": "2026-10-01",
+      "sourceName": "Lamarsweb (via Headtopics)",
+      "sourceUrl": "https://fr.headtopics.com/news/a-n-mes-et-montpellier-la-quasi-totalite-des-lycees-sont-88341161"
+    },
+    {
+      "school": "lycee-prive-polyvalent-sainte-louise-de-marillac-perpignan",
+      "date": "2026-10-01",
+      "sourceName": "ici Roussillon",
+      "sourceUrl": "https://www.ici.fr/occitanie/pyrenees-orientales-66/perpignan/mobilisation-des-lyceens-a-perpignan-14-interpellations-le-prefet-en-appelle-aux-parents-1372339"
+    },
+    {
+      "school": "lycee-prive-sainte-marie-bastide-bordeaux",
+      "date": "2026-10-01",
+      "sourceName": "ici Gironde",
+      "sourceUrl": "https://www.ici.fr/nouvelle-aquitaine/gironde-33/blocage-des-lycees-nouvelle-journee-de-mobilisation-a-bordeaux-3719378"
+    },
+    {
+      "school": "lycee-professionnel-agricole-angelo-lauret-saint-joseph",
+      "date": "2026-10-02",
+      "sourceName": "Réunion La 1ère",
+      "sourceUrl": "https://la1ere.franceinfo.fr/reunion/blocage-des-lycees-des-centaines-d-eleves-rassembles-devant-plusieurs-etablissements-de-l-ile-ce-vendredi-matin-1744119.html"
+    },
+    {
+      "school": "lycee-professionnel-agricole-des-calanques-marseille",
+      "date": "2026-10-01",
+      "sourceName": "France 3 Provence-Alpes",
+      "sourceUrl": "https://france3-regions.franceinfo.fr/provence-alpes-cote-d-azur/bouches-du-rhone/marseille/en-images-blocages-poubelles-incendiees-bus-touches-universite-les-lyceens-entament-le-quatrieme-jour-de-revendications-la-mobilisation-se-durcit-3426207.html"
+    },
+    {
+      "school": "lycee-professionnel-alexandre-dumas-cavaillon",
+      "date": "2026-10-01",
+      "sourceName": "ici Vaucluse",
+      "sourceUrl": "https://www.ici.fr/provence-alpes-cote-d-azur/vaucluse-84/mobilisation-lyceenne-avignon-cavaillon-orange-carpentras-isle-sur-la-sorgue-le-mouvement-fait-tache-d-huile-6856962"
+    },
+    {
+      "school": "lycee-professionnel-amblard-valence",
+      "date": "2026-10-01",
+      "sourceName": "ici Drôme Ardèche",
+      "sourceUrl": "https://www.ici.fr/auvergne-rhone-alpes/drome-26/blocage-des-lycees-plusieurs-interpellations-en-drome-et-en-ardeche-5031251"
+    },
+    {
+      "school": "lycee-professionnel-amedee-gasquet-clermont-ferrand",
+      "date": "2026-10-01",
+      "sourceName": "ici Puy-de-Dôme",
+      "sourceUrl": "https://www.ici.fr/auvergne-rhone-alpes/puy-de-dome-63/auvergne-le-mouvement-lyceen-gagne-du-terrain-plusieurs-manifestations-en-cours-ce-jeudi-matin-7519330"
+    },
+    {
+      "school": "lycee-professionnel-aristide-briand-le-blanc-mesnil",
+      "date": "2026-10-01",
+      "sourceName": "France 3 Paris Île-de-France",
+      "sourceUrl": "https://france3-regions.franceinfo.fr/paris-ile-de-france/paris/acte-deux-de-la-mobilisation-des-lyceens-le-point-sur-les-blocages-et-les-rassemblements-en-ile-de-france-3426024.html"
+    },
+    {
+      "school": "lycee-professionnel-auguste-bouvet-romans-sur-isere",
+      "date": "2026-10-02",
+      "sourceName": "ici Drôme Ardèche",
+      "sourceUrl": "https://www.ici.fr/auvergne-rhone-alpes/drome-26/romans-sur-isere/des-lyceens-a-nouveau-mobilises-en-drome-et-en-ardeche-3073229?at_locale=24"
+    },
+    {
+      "school": "lycee-professionnel-charles-privat-arles",
+      "date": "2026-10-01",
+      "sourceName": "Objectif Gard / ObjectifSud",
+      "sourceUrl": "https://www.objectifsud.fr/actualites/fait-du-soir-retour-sur-les-mobilisations-lyceennes-de-ce-jeudi-1-octobre-170101.php"
+    },
+    {
+      "school": "lycee-professionnel-claret-toulon",
+      "date": "2026-10-01",
+      "sourceName": "ici Provence",
+      "sourceUrl": "https://www.ici.fr/provence-alpes-cote-d-azur/bouches-du-rhone-13/de-nombreux-lycees-bloques-en-provence-1655475"
+    },
+    {
+      "school": "lycee-professionnel-conde-besancon",
+      "date": "2026-10-01",
+      "sourceName": "macommune.info",
+      "sourceUrl": "https://www.macommune.info/blocage-des-lycees-departs-de-feu-camions-de-pompiers-caillasses-et-policier-blesse-a-besancon/"
+    },
+    {
+      "school": "lycee-professionnel-des-menuts-bordeaux",
+      "date": "2026-10-01",
+      "sourceName": "ici Gironde",
+      "sourceUrl": "https://www.ici.fr/nouvelle-aquitaine/gironde-33/blocage-des-lycees-nouvelle-journee-de-mobilisation-a-bordeaux-3719378"
+    },
+    {
+      "school": "lycee-professionnel-du-batiment-augustin-hebert-evreux",
+      "date": "2026-10-01",
+      "sourceName": "France 3 Normandie",
+      "sourceUrl": "https://france3-regions.franceinfo.fr/normandie/orne/alencon/en-images-blocus-lyceens-la-mobilisation-continue-et-se-renforce-en-normandie-3426141.html"
+    },
+    {
+      "school": "lycee-professionnel-du-chablais-thonon-les-bains",
+      "date": "2026-10-01",
+      "sourceName": "ici Pays de Savoie",
+      "sourceUrl": "https://www.ici.fr/auvergne-rhone-alpes/haute-savoie-74/thonon-les-bains/blocages-des-lycees-de-nouvelles-manifestations-en-savoie-et-haute-savoie-ce-jeudi-1224830"
+    },
+    {
+      "school": "lycee-professionnel-du-parc-saint-jean-toulon",
+      "date": "2026-10-01",
+      "sourceName": "ici Provence",
+      "sourceUrl": "https://www.ici.fr/provence-alpes-cote-d-azur/bouches-du-rhone-13/de-nombreux-lycees-bloques-en-provence-1655475"
+    },
+    {
+      "school": "lycee-professionnel-et-sgt-coetlogon-rennes",
+      "date": "2026-09-30",
+      "sourceName": "franceinfo",
+      "sourceUrl": "https://www.franceinfo.fr/societe/education/parcoursup/parcoursup/manifestations-des-lyceens/blocages-des-lycees-le-point-sur-la-mobilisation-mercredi-en-fin-de-matinee_8216045.html"
+    },
+    {
+      "school": "lycee-professionnel-et-technologique-regional-l-estaque-marseille",
+      "date": "2026-10-01",
+      "sourceName": "France 3 Provence-Alpes",
+      "sourceUrl": "https://france3-regions.franceinfo.fr/provence-alpes-cote-d-azur/bouches-du-rhone/marseille/direct-camions-de-pompiers-incendies-bus-touches-le-mouvement-des-lyceens-a-marseille-paralyse-la-ville-3426303.html"
+    },
+    {
+      "school": "lycee-professionnel-fernand-degrugillier-auchel",
+      "date": "2026-10-01",
+      "sourceName": "France 3 Hauts-de-France",
+      "sourceUrl": "https://france3-regions.franceinfo.fr/hauts-de-france/pas-calais/bethune/blocage-des-lycees-un-proviseur-vise-par-un-jet-de-petard-une-enquete-est-ouverte-3426360.html"
+    },
+    {
+      "school": "lycee-professionnel-francois-cevert-ecully",
+      "date": "2026-09-30",
+      "sourceName": "LyonMag",
+      "sourceUrl": "https://www.lyonmag.com/article/154207/une-dizaine-de-lycees-touches-par-des-rassemblements-violents-a-lyon-les-forces-de-l-ordre-deployees-en-nombre"
+    },
+    {
+      "school": "lycee-professionnel-frederic-bartholdi-saint-denis",
+      "date": "2026-10-01",
+      "sourceName": "France 3 Paris Île-de-France",
+      "sourceUrl": "https://france3-regions.franceinfo.fr/paris-ile-de-france/paris/acte-deux-de-la-mobilisation-des-lyceens-le-point-sur-les-blocages-et-les-rassemblements-en-ile-de-france-3426024.html"
+    },
+    {
+      "school": "lycee-professionnel-gabriel-voisin-troyes",
+      "date": "2026-09-30",
+      "sourceName": "France 3 Grand Est",
+      "sourceUrl": "https://france3-regions.franceinfo.fr/grand-est/marne/reims/blocage-des-lycees-des-gaz-lacrymogenes-tires-pour-disperser-les-eleves-mobilises-a-reims-et-epernay-3425516.html"
+    },
+    {
+      "school": "lycee-professionnel-gaston-darboux-nimes",
+      "date": "2026-10-01",
+      "sourceName": "Lamarsweb (via Headtopics)",
+      "sourceUrl": "https://fr.headtopics.com/news/a-n-mes-et-montpellier-la-quasi-totalite-des-lycees-sont-88341161"
+    },
+    {
+      "school": "lycee-professionnel-georges-cisson-toulon",
+      "date": "2026-10-01",
+      "sourceName": "ici Provence",
+      "sourceUrl": "https://www.ici.fr/provence-alpes-cote-d-azur/bouches-du-rhone-13/de-nombreux-lycees-bloques-en-provence-1655475"
+    },
+    {
+      "school": "lycee-professionnel-germain-sommeiller-annecy",
+      "date": "2026-10-01",
+      "sourceName": "ici Pays de Savoie",
+      "sourceUrl": "https://www.ici.fr/auvergne-rhone-alpes/haute-savoie-74/thonon-les-bains/blocages-des-lycees-de-nouvelles-manifestations-en-savoie-et-haute-savoie-ce-jeudi-1224830"
+    },
+    {
+      "school": "lycee-professionnel-gustave-eiffel-brignais",
+      "date": "2026-10-01",
+      "sourceName": "Lyon Capitale",
+      "sourceUrl": "https://www.lyoncapitale.fr/actualite/blocages-des-lycees-dans-le-rhone-en-direct-un-blesse-et-27-etablissements-concernes-ce-jeudi"
+    },
+    {
+      "school": "lycee-professionnel-henri-becquerel-tours",
+      "date": "2026-10-01",
+      "sourceName": "ici Touraine",
+      "sourceUrl": "https://www.ici.fr/centre-val-de-loire/indre-et-loire-37/tours/reconduction-des-blocages-a-tours-au-lendemain-de-la-blessure-au-visage-d-un-lyceen-3701154"
+    },
+    {
+      "school": "lycee-professionnel-honore-baradat-pau",
+      "date": "2026-10-01",
+      "sourceName": "ici Béarn Bigorre",
+      "sourceUrl": "https://www.ici.fr/nouvelle-aquitaine/pyrenees-atlantiques-64/blocage-des-lycees-plusieurs-etablissements-bloques-ce-jeudi-matin-en-bearn-et-en-bigorre-1067501"
+    },
+    {
+      "school": "lycee-professionnel-jacques-brel-lormont",
+      "date": "2026-10-01",
+      "sourceName": "France 3 Nouvelle-Aquitaine",
+      "sourceUrl": "https://france3-regions.franceinfo.fr/nouvelle-aquitaine/gironde/bordeaux/etablissements-brules-colonne-de-fumees-tramways-perturbes-le-blocus-des-lycees-continue-a-bordeaux-3426093.html"
+    },
+    {
+      "school": "lycee-professionnel-jacques-dolle-antibes",
+      "date": "2026-10-01",
+      "sourceName": "France 3 Côte d'Azur",
+      "sourceUrl": "https://france3-regions.franceinfo.fr/provence-alpes-cote-d-azur/alpes-maritimes/nice/plusieurs-lycees-fermes-ce-vendredi-2-octobre-59-gardes-a-vue-le-blocus-des-lycees-se-poursuit-dans-les-alpes-maritimes-3426537.html"
+    },
+    {
+      "school": "lycee-professionnel-jean-jaures-rennes",
+      "date": "2026-09-30",
+      "sourceName": "franceinfo",
+      "sourceUrl": "https://www.franceinfo.fr/societe/education/parcoursup/parcoursup/manifestations-des-lyceens/blocages-des-lycees-le-point-sur-la-mobilisation-mercredi-en-fin-de-matinee_8216045.html"
+    },
+    {
+      "school": "lycee-professionnel-jean-nicoli-bastia",
+      "date": "2026-10-01",
+      "sourceName": "ici RCFM",
+      "sourceUrl": "https://www.ici.fr/corse/le-blocage-des-lycees-gagne-la-corse-2307678?at_locale=56"
+    },
+    {
+      "school": "lycee-professionnel-jean-pierre-timbaud-aubervilliers",
+      "date": "2026-10-02",
+      "sourceName": "Europe 1",
+      "sourceUrl": "https://www.europe1.fr/societe/en-direct-blocus-des-lycees-564-etablissements-perturbes-depuis-ce-matin-annonce-le-ministere-de-leducation-1117658"
+    },
+    {
+      "school": "lycee-professionnel-joliot-curie-reims",
+      "date": "2026-09-30",
+      "sourceName": "ici Champagne-Ardenne",
+      "sourceUrl": "https://www.ici.fr/grand-est/marne-51/en-images-sept-lycees-de-la-marne-et-des-ardennes-perturbes-par-des-manifestations-d-eleves-ce-mercredi-1052304"
+    },
+    {
+      "school": "lycee-professionnel-jules-raimu-nimes",
+      "date": "2026-10-01",
+      "sourceName": "Lamarsweb (via Headtopics)",
+      "sourceUrl": "https://fr.headtopics.com/news/a-n-mes-et-montpellier-la-quasi-totalite-des-lycees-sont-88341161"
+    },
+    {
+      "school": "lycee-professionnel-la-floride-marseille",
+      "date": "2026-10-01",
+      "sourceName": "ici Provence",
+      "sourceUrl": "https://www.ici.fr/provence-alpes-cote-d-azur/bouches-du-rhone-13/de-nombreux-lycees-bloques-en-provence-1655475"
+    },
+    {
+      "school": "lycee-professionnel-le-dolmen-poitiers",
+      "date": "2026-10-01",
+      "sourceName": "ici Poitou",
+      "sourceUrl": "https://www.ici.fr/nouvelle-aquitaine/vienne-86/poitiers/blocages-des-lycees-de-nouvelles-actions-a-poitiers-4846766"
+    },
+    {
+      "school": "lycee-professionnel-le-grand-arc-albertville",
+      "date": "2026-10-01",
+      "sourceName": "ici Pays de Savoie",
+      "sourceUrl": "https://www.ici.fr/auvergne-rhone-alpes/haute-savoie-74/thonon-les-bains/blocages-des-lycees-de-nouvelles-manifestations-en-savoie-et-haute-savoie-ce-jeudi-1224830"
+    },
+    {
+      "school": "lycee-professionnel-leonard-de-vinci-montpellier",
+      "date": "2026-10-01",
+      "sourceName": "InfOccitanie",
+      "sourceUrl": "https://infoccitanie.fr/montpellier-les-images-des-blocages-des-lycees-a-la-mi-journee/"
+    },
+    {
+      "school": "lycee-professionnel-les-chartrons-bordeaux",
+      "date": "2026-10-01",
+      "sourceName": "ici Gironde",
+      "sourceUrl": "https://www.ici.fr/nouvelle-aquitaine/gironde-33/blocage-des-lycees-nouvelle-journee-de-mobilisation-a-bordeaux-3719378"
+    },
+    {
+      "school": "lycee-professionnel-les-hauts-de-flandre-seclin",
+      "date": "2026-10-01",
+      "sourceName": "France 3 Hauts-de-France",
+      "sourceUrl": "https://france3-regions.franceinfo.fr/hauts-de-france/nord-0/lille/blocage-des-lycees-de-nombreux-etablissements-toujours-concernes-quelques-degradations-observees-3426069.html"
+    },
+    {
+      "school": "lycee-professionnel-louis-guilloux-rennes",
+      "date": "2026-09-30",
+      "sourceName": "franceinfo",
+      "sourceUrl": "https://www.franceinfo.fr/societe/education/parcoursup/parcoursup/manifestations-des-lyceens/blocages-des-lycees-le-point-sur-la-mobilisation-mercredi-en-fin-de-matinee_8216045.html"
+    },
+    {
+      "school": "lycee-professionnel-magnan-nice",
+      "date": "2026-09-30",
+      "sourceName": "Nice Premium",
+      "sourceUrl": "https://www.nicepremium.fr/actualites/blocages-des-lycees-72-interpellations-lenseignement-va-reprendre-en-distanciel-dans-les-alpes-maritimes/"
+    },
+    {
+      "school": "lycee-professionnel-marcel-pagnol-limoges",
+      "date": "2026-10-02",
+      "sourceName": "ici Limousin",
+      "sourceUrl": "https://www.ici.fr/nouvelle-aquitaine/haute-vienne-87/limoges/blocage-des-lycees-a-limoges-un-blesse-leger-des-degradations-et-une-plainte-de-la-mairie-6657760"
+    },
+    {
+      "school": "lycee-professionnel-maria-casares-avignon",
+      "date": "2026-10-01",
+      "sourceName": "ici Vaucluse",
+      "sourceUrl": "https://www.ici.fr/provence-alpes-cote-d-azur/vaucluse-84/mobilisation-des-lyceens-de-nombreux-rassemblements-un-blesse-leger-plusieurs-interpellations-ce-jeudi-en-vaucluse-1011211"
+    },
+    {
+      "school": "lycee-professionnel-montesquieu-valence",
+      "date": "2026-10-01",
+      "sourceName": "ici Drôme Ardèche",
+      "sourceUrl": "https://www.ici.fr/auvergne-rhone-alpes/drome-26/blocage-des-lycees-plusieurs-interpellations-en-drome-et-en-ardeche-5031251"
+    },
+    {
+      "school": "lycee-professionnel-montplaisir-valence",
+      "date": "2026-10-01",
+      "sourceName": "ici Drôme Ardèche",
+      "sourceUrl": "https://www.ici.fr/auvergne-rhone-alpes/drome-26/blocus-des-lycees-de-nouveaux-etablissements-mobilises-en-drome-et-en-ardeche-ce-jeudi-matin-6531601"
+    },
+    {
+      "school": "lycee-professionnel-paul-emile-victor-avrille",
+      "date": "2026-10-01",
+      "sourceName": "My Angers",
+      "sourceUrl": "https://my-angers.info/10/01/blocus-des-lycees-a-angers-les-syndicats-appellent-au-dialogue-le-rn-denonce-des-violences-et-une-instrumentalisation/197484"
+    },
+    {
+      "school": "lycee-professionnel-pierre-mendes-france-montpellier",
+      "date": "2026-10-01",
+      "sourceName": "InfOccitanie",
+      "sourceUrl": "https://infoccitanie.fr/montpellier-les-images-des-blocages-des-lycees-a-la-mi-journee/"
+    },
+    {
+      "school": "lycee-professionnel-prive-saint-vincent-de-paul-bordeaux",
+      "date": "2026-10-01",
+      "sourceName": "ici Gironde",
+      "sourceUrl": "https://www.ici.fr/nouvelle-aquitaine/gironde-33/blocage-des-lycees-nouvelle-journee-de-mobilisation-a-bordeaux-3719378"
+    },
+    {
+      "school": "lycee-professionnel-prive-sainte-famille-besancon",
+      "date": "2026-10-01",
+      "sourceName": "macommune.info",
+      "sourceUrl": "https://www.macommune.info/blocage-des-lycees-departs-de-feu-camions-de-pompiers-caillasses-et-policier-blesse-a-besancon/"
+    },
+    {
+      "school": "lycee-professionnel-voltaire-nimes",
+      "date": "2026-10-01",
+      "sourceName": "Lamarsweb (via Headtopics)",
+      "sourceUrl": "https://fr.headtopics.com/news/a-n-mes-et-montpellier-la-quasi-totalite-des-lycees-sont-88341161"
+    },
+    {
+      "school": "lycee-raoul-dautry-limoges",
+      "date": "2026-10-01",
+      "sourceName": "Flash FM",
+      "sourceUrl": "https://www.flashfm.fr/mouvement-lyceen-pres-de-2-000-jeunes-mobilises-a-limoges"
+    },
+    {
+      "school": "lycee-raynouard-brignoles",
+      "date": "2026-10-01",
+      "sourceName": "ici Provence",
+      "sourceUrl": "https://www.ici.fr/provence-alpes-cote-d-azur/bouches-du-rhone-13/de-nombreux-lycees-bloques-en-provence-1655475"
+    },
+    {
+      "school": "lycee-rene-josue-valin-la-rochelle",
+      "date": "2026-10-01",
+      "sourceName": "ici La Rochelle",
+      "sourceUrl": "https://www.ici.fr/nouvelle-aquitaine/charente-maritime-17/la-rochelle/blocus-des-lycees-suivez-la-situation-devant-les-etablissements-de-la-charente-maritime-et-de-la-charente-6241728"
+    },
+    {
+      "school": "lycee-rene-laennec-pont-l-abbe",
+      "date": "2026-10-01",
+      "sourceName": "ici Breizh Izel",
+      "sourceUrl": "https://www.ici.fr/bretagne/finistere-29/de-quimper-a-carhaix-la-mobilisation-dans-les-lycees-s-etend-dans-le-finistere-9063025"
+    },
+    {
+      "school": "lycee-robert-de-luzarches-amiens",
+      "date": "2026-09-30",
+      "sourceName": "franceinfo",
+      "sourceUrl": "https://www.franceinfo.fr/societe/education/parcoursup/parcoursup/manifestations-des-lyceens/blocages-des-lycees-le-point-sur-la-mobilisation-mercredi-en-fin-de-matinee_8216045.html"
+    },
+    {
+      "school": "lycee-robert-doisneau-vaulx-en-velin",
+      "date": "2026-09-30",
+      "sourceName": "LyonMag",
+      "sourceUrl": "https://www.lyonmag.com/article/154207/une-dizaine-de-lycees-touches-par-des-rassemblements-violents-a-lyon-les-forces-de-l-ordre-deployees-en-nombre"
+    },
+    {
+      "school": "lycee-robespierre-arras",
+      "date": "2026-10-01",
+      "sourceName": "France 3 Hauts-de-France",
+      "sourceUrl": "https://france3-regions.franceinfo.fr/hauts-de-france/nord-0/lille/blocage-des-lycees-de-nombreux-etablissements-toujours-concernes-quelques-degradations-observees-3426069.html"
+    },
+    {
+      "school": "lycee-rouviere-suzanne-lefort-rouquette-toulon",
+      "date": "2026-10-01",
+      "sourceName": "ici Provence",
+      "sourceUrl": "https://www.ici.fr/provence-alpes-cote-d-azur/bouches-du-rhone-13/de-nombreux-lycees-bloques-en-provence-1655475"
+    },
+    {
+      "school": "lycee-saint-exupery-marseille",
+      "date": "2026-10-01",
+      "sourceName": "France 3 Provence-Alpes",
+      "sourceUrl": "https://france3-regions.franceinfo.fr/provence-alpes-cote-d-azur/bouches-du-rhone/marseille/en-images-blocages-poubelles-incendiees-bus-touches-universite-les-lyceens-entament-le-quatrieme-jour-de-revendications-la-mobilisation-se-durcit-3426207.html"
+    },
+    {
+      "school": "lycee-saint-john-perse-pau",
+      "date": "2026-10-01",
+      "sourceName": "ici Béarn Bigorre",
+      "sourceUrl": "https://www.ici.fr/nouvelle-aquitaine/pyrenees-atlantiques-64/blocage-des-lycees-plusieurs-etablissements-bloques-ce-jeudi-matin-en-bearn-et-en-bigorre-1067501"
+    },
+    {
+      "school": "lycee-schuman-perret-le-havre",
+      "date": "2026-10-01",
+      "sourceName": "France 3 Normandie",
+      "sourceUrl": "https://france3-regions.franceinfo.fr/normandie/orne/alencon/en-images-blocus-lyceens-la-mobilisation-continue-et-se-renforce-en-normandie-3426141.html"
+    },
+    {
+      "school": "lycee-theodore-aubanel-avignon",
+      "date": "2026-10-01",
+      "sourceName": "ici Vaucluse",
+      "sourceUrl": "https://www.ici.fr/provence-alpes-cote-d-azur/vaucluse-84/mobilisation-des-lyceens-de-nombreux-rassemblements-un-blesse-leger-plusieurs-interpellations-ce-jeudi-en-vaucluse-1011211"
+    },
+    {
+      "school": "lycee-thiers-marseille",
+      "date": "2026-10-01",
+      "sourceName": "France 3 Provence-Alpes",
+      "sourceUrl": "https://france3-regions.franceinfo.fr/provence-alpes-cote-d-azur/bouches-du-rhone/marseille/en-images-blocages-poubelles-incendiees-bus-touches-universite-les-lyceens-entament-le-quatrieme-jour-de-revendications-la-mobilisation-se-durcit-3426207.html"
+    },
+    {
+      "school": "lycee-turgot-paris",
+      "date": "2026-10-01",
+      "sourceName": "Yahoo Actualités",
+      "sourceUrl": "https://fr.news.yahoo.com/paris-pantin-lille-plusieurs-lyc%C3%A9es-062125171.html"
+    },
+    {
+      "school": "lycee-victor-duruy-paris",
+      "date": "2026-10-01",
+      "sourceName": "France 3 Paris Île-de-France",
+      "sourceUrl": "https://france3-regions.franceinfo.fr/paris-ile-de-france/paris/acte-deux-de-la-mobilisation-des-lyceens-le-point-sur-les-blocages-et-les-rassemblements-en-ile-de-france-3426024.html"
+    },
+    {
+      "school": "lycee-victor-hugo-marseille",
+      "date": "2026-10-01",
+      "sourceName": "France 3 Provence-Alpes",
+      "sourceUrl": "https://france3-regions.franceinfo.fr/provence-alpes-cote-d-azur/bouches-du-rhone/marseille/direct-camions-de-pompiers-incendies-bus-touches-le-mouvement-des-lyceens-a-marseille-paralyse-la-ville-3426303.html"
+    },
+    {
+      "school": "lycee-victor-hugo-paris",
+      "date": "2026-10-01",
+      "sourceName": "France 3 Paris Île-de-France",
+      "sourceUrl": "https://france3-regions.franceinfo.fr/paris-ile-de-france/paris/acte-deux-de-la-mobilisation-des-lyceens-le-point-sur-les-blocages-et-les-rassemblements-en-ile-de-france-3426024.html"
+    },
+    {
+      "school": "lycee-voillaume-aulnay-sous-bois",
+      "date": "2026-09-30",
+      "sourceName": "Aulnaylibre",
+      "sourceUrl": "https://www.aulnaylibre.com/2026/09/le-lycee-voillaume-a-aulnay-sous-bois-touche-par-le-blocus-ce-30-septembre-2026.html"
+    },
+    {
+      "school": "lycee-voltaire-orleans",
+      "date": "2026-10-01",
+      "sourceName": "ici Orléans",
+      "sourceUrl": "https://www.ici.fr/centre-val-de-loire/loiret-45/orleans/mobilisation-des-lyceens-plusieurs-etablissements-perturbes-a-orleans-quelques-tensions-sur-place-5855712"
+    },
+    {
+      "school": "lycee-watteau-valenciennes",
+      "date": "2026-09-30",
+      "sourceName": "L'Observateur",
+      "sourceUrl": "https://www.lobservateur.fr/mouvement-lyceen-incidents-valenciennes/"
+    },
+    {
+      "school": "lycee-yves-thepot-quimper",
+      "date": "2026-09-30",
+      "sourceName": "ici Breizh Izel",
+      "sourceUrl": "https://www.ici.fr/bretagne/finistere-29/de-quimper-a-carhaix-la-mobilisation-dans-les-lycees-s-etend-dans-le-finistere-9063025"
+    }
+  ]
+}
