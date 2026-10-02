@@ -9,6 +9,7 @@ import { findDuplicates } from "@/server/duplicates";
 import { embed } from "@/server/embeddings";
 import { PARTICIPANT_ERRORS, requireParticipant } from "@/server/identity";
 import { castVote, createIssue, voteResolved } from "@/server/issues";
+import { notify } from "@/server/notify";
 import { rateLimit } from "@/server/rate-limit";
 import { clientIp, ipFingerprint } from "@/server/request";
 import { verifyTurnstile } from "@/server/turnstile";
@@ -169,6 +170,7 @@ export async function reportContentAction(input: unknown): Promise<{ ok: true } 
           { moderationStatus: "MANUAL_REVIEW", reviewPriority: "ELEVATED", flaggedForReview: true }
         : { flaggedForReview: true, ...(urgent ? { reviewPriority: "ELEVATED" as const } : {}) },
   });
+  notify({ type: "contentReport", issueId: issue.id, hidden: open >= REPORTS_TO_HIDE });
   return { ok: true };
 }
 

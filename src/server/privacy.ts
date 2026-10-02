@@ -1,4 +1,5 @@
 import "server-only";
+import { notify } from "./notify";
 import { prisma } from "@/lib/db";
 import { sha256 } from "./crypto";
 
@@ -50,7 +51,7 @@ export async function createPrivacyRequest(input: PrivacyRequestInput) {
   const unresolved = input.issueId?.trim() && !issueId && !input.issueId.includes("/suivi/") ? input.issueId.trim() : null;
   const message = unresolved ? `${input.message}\n\n[Référence fournie, non reconnue : ${unresolved}]` : input.message;
 
-  return prisma.privacyRequest.create({
+  const created = await prisma.privacyRequest.create({
     data: {
       kind: input.kind,
       issueId,
@@ -59,4 +60,6 @@ export async function createPrivacyRequest(input: PrivacyRequestInput) {
     },
     select: { id: true, issueId: true },
   });
+  notify({ type: "privacy", kind: input.kind, linked: issueId !== null });
+  return created;
 }

@@ -228,6 +228,13 @@ export default function ConfidentialitePage() {
             <dt>Plausible Analytics</dt>
             <dd>Statistiques de visite, sans cookie et sans donnée personnelle ni texte de signalement.</dd>
           </div>
+          <div>
+            <dt>Telegram</dt>
+            <dd>
+              Alertes internes envoyées à l’éditeur quand un signalement est à vérifier. Elles contiennent seulement le nom du lycée, la
+              catégorie et un lien vers l’espace de modération : jamais le texte d’un signalement ni aucune donnée sur son auteur.
+            </dd>
+          </div>
         </dl>
         <p>
           Certains de ces prestataires sont situés hors de l’Union européenne. Garanties encadrant ces transferts :{" "}

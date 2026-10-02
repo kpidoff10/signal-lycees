@@ -6,6 +6,7 @@ import { randomToken, sha256 } from "./crypto";
 import { embed, toVectorLiteral } from "./embeddings";
 import { moderate } from "./moderation/pipeline";
 import { crossedMilestone, needsDownvoteReview, nextStatus, STATUS_RULES } from "./status";
+import { notify } from "./notify";
 
 export interface CreatedIssue {
   issueId: string;
@@ -85,6 +86,13 @@ export async function createIssue(draft: IssueDraft, authorId: string): Promise<
     await prisma.$executeRawUnsafe(`UPDATE "Issue" SET embedding = $1::vector WHERE id = $2`, toVectorLiteral(vector), issue.id);
   }
   await recordDailyStat(issue.id);
+  notify({
+    type: "issue",
+    issueId: issue.id,
+    status: moderationStatus === "PUBLISHED" ? "PUBLISHED" : moderationStatus === "REJECTED" ? "REJECTED" : "MANUAL_REVIEW",
+    priority: outcome.priority,
+    showHelp: outcome.showHelp,
+  });
 
   return {
     issueId: issue.id,
@@ -122,7 +130,7 @@ export async function castVote(issueId: string, identityId: string, choice: Vote
   const result = await prisma.$transaction(async (tx) => {
     const issue = await tx.issue.findFirst({
       where: { id: issueId, ...PUBLIC_ISSUE_WHERE },
-      select: { id: true, upCount: true, downCount: true, downCountAtReview: true, status: true },
+      select: { id: true, upCount: true, downCount: true, downCountAtReview: true, status: true, flaggedForReview: true },
     });
     if (!issue) return null;
     const existing = await tx.issueVote.findUnique({ where: { issueId_identityId: { issueId, identityId } } });
@@ -155,15 +163,18 @@ export async function castVote(issueId: string, identityId: string, choice: Vote
     });
 
     // Seuls les 👎 arrivés depuis la dernière revue humaine comptent.
+    let newlyFlagged = false;
     if (needsDownvoteReview(updated.upCount, updated.downCount - issue.downCountAtReview)) {
       await tx.issue.update({ where: { id: issueId }, data: { flaggedForReview: true } });
+      newlyFlagged = !issue.flaggedForReview;
     }
     const milestone = crossedMilestone(issue.upCount, updated.upCount);
     if (milestone) await tx.issueEvent.create({ data: { issueId, type: "CONFIRMATION_MILESTONE", data: { count: milestone } } });
 
-    return { up: updated.upCount, down: updated.downCount, before: issue.upCount, choice };
+    return { up: updated.upCount, down: updated.downCount, before: issue.upCount, choice, newlyFlagged };
   });
   if (!result) return null;
+  if (result.newlyFlagged) notify({ type: "downvotes", issueId });
   await recordDailyStat(issueId);
   await refreshStatus(issueId);
   return { upCount: result.up, myVote: result.choice };

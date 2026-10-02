@@ -34,6 +34,13 @@ const serverSchema = z.object({
   MODERATION_FREEZE: bool,
   PHOTOS_ENABLED: bool,
   CRON_SECRET: optional,
+  TELEGRAM_BOT_TOKEN: optional,
+  TELEGRAM_CHAT_ID: optional,
+  /** Notifier aussi les signalements publiés automatiquement (pas seulement ceux à vérifier). */
+  TELEGRAM_NOTIFY_PUBLISHED: z
+    .string()
+    .optional()
+    .transform((v) => v !== "false" && v !== "0"),
   DUPLICATE_THRESHOLD: z.coerce.number().min(0).max(1).default(0.82),
   DUPLICATE_TRGM_THRESHOLD: z.coerce.number().min(0).max(1).default(0.35),
 });
