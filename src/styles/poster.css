@@ -1,0 +1,220 @@
+/* Affiches et flyers imprimables (page /affiches/[slug]).
+   Couleurs fixes : c'est du papier, le thème sombre ne s'applique pas.
+   Tailles en cqw (1 % de la largeur de la feuille ou du flyer). */
+
+.poster-sheet {
+  --p-ink: #18201d;
+  --p-muted: #575f5b;
+  --p-signal: #c2410c;
+  --p-soft: #fbe4d6;
+  width: 100%;
+  max-width: 210mm;
+  aspect-ratio: 210 / 297;
+  margin-inline: auto;
+  background: #fff;
+  color: var(--p-ink);
+  box-shadow: 0 1px 2px rgb(0 0 0 / 0.08), 0 12px 32px rgb(0 0 0 / 0.12);
+  border-radius: 4px;
+  overflow: hidden;
+  print-color-adjust: exact;
+  -webkit-print-color-adjust: exact;
+}
+.poster-sheet.is-a4 {
+  container-type: inline-size;
+  display: flex;
+}
+.poster-sheet.is-flyers {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+}
+.poster-cell {
+  container-type: inline-size;
+  display: flex;
+  min-width: 0;
+  min-height: 0;
+  outline: 1px dashed #c9cfcb;
+  outline-offset: -0.5px;
+}
+
+.poster {
+  position: relative;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 4cqw;
+  padding: 7cqw;
+  overflow: hidden;
+  font-family: var(--font-sans);
+}
+.poster p {
+  margin: 0;
+}
+.poster-dots span {
+  position: absolute;
+  aspect-ratio: 1;
+  border-radius: 999px;
+  background: var(--p-signal);
+  box-shadow: 0 0 0 1.4cqw var(--p-soft);
+}
+
+.poster-brand {
+  display: flex;
+  align-items: center;
+  gap: 2cqw;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 4.2cqw;
+  line-height: 1;
+}
+.poster-logo {
+  width: 3.4cqw;
+  height: 3.4cqw;
+  border-radius: 999px;
+  background: var(--p-signal);
+  box-shadow: 0 0 0 1cqw var(--p-soft);
+}
+
+.poster-main {
+  display: grid;
+  gap: 2.4cqw;
+}
+.poster-city {
+  color: var(--p-signal);
+  font-weight: 700;
+  font-size: 3cqw;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+.poster-school {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 8cqw;
+  line-height: 1.02;
+  letter-spacing: -0.02em;
+  overflow-wrap: anywhere;
+}
+.poster-school.is-long {
+  font-size: 6.2cqw;
+}
+.poster-title {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 5.4cqw;
+  line-height: 1.12;
+  margin-top: 1.5cqw !important;
+}
+.poster-title span {
+  color: var(--p-signal);
+}
+.poster-lead {
+  font-size: 3cqw;
+  line-height: 1.4;
+  color: var(--p-muted);
+  max-width: 78cqw;
+}
+
+.poster-scan {
+  display: flex;
+  align-items: center;
+  gap: 5cqw;
+  padding: 4cqw;
+  border: 0.6cqw solid var(--p-signal);
+  border-radius: 4cqw;
+}
+.poster-qr {
+  flex: none;
+  width: 40cqw;
+  aspect-ratio: 1;
+}
+.poster-qr svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+.poster-scan-text {
+  display: grid;
+  gap: 1.6cqw;
+  font-size: 3cqw;
+  line-height: 1.35;
+}
+.poster-scan-title {
+  white-space: nowrap;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 5.4cqw;
+  line-height: 1;
+  color: var(--p-signal);
+}
+
+.poster-foot {
+  display: grid;
+  gap: 2.4cqw;
+}
+.poster-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.6cqw;
+}
+.poster-chips span {
+  padding: 1cqw 2.6cqw;
+  border-radius: 999px;
+  background: var(--p-soft);
+  color: #9a330a;
+  font-weight: 700;
+  font-size: 2.8cqw;
+}
+.poster-small {
+  font-size: 2.1cqw;
+  line-height: 1.4;
+  color: var(--p-muted);
+}
+
+/* Flyer A6 : moins de texte, tout un peu plus grand. */
+.poster.is-compact {
+  gap: 3cqw;
+  padding: 7cqw;
+}
+.poster.is-compact .poster-brand { font-size: 5.4cqw; }
+.poster.is-compact .poster-logo { width: 4.4cqw; height: 4.4cqw; }
+.poster.is-compact .poster-city { font-size: 4cqw; }
+.poster.is-compact .poster-school { font-size: 9cqw; }
+.poster.is-compact .poster-school.is-long { font-size: 7cqw; }
+.poster.is-compact .poster-title { font-size: 6.4cqw; }
+.poster.is-compact .poster-scan { gap: 3.6cqw; padding: 3.6cqw 4.4cqw 3.6cqw 3.6cqw; border-width: 0.8cqw; }
+.poster.is-compact .poster-qr { width: 38cqw; }
+.poster.is-compact .poster-scan-text { font-size: 4.2cqw; }
+.poster.is-compact .poster-scan-title { font-size: 5.8cqw; }
+.poster.is-compact .poster-chips span { font-size: 4cqw; padding: 1.2cqw 3cqw; }
+.poster.is-compact .poster-small { font-size: 3.4cqw; }
+
+@media print {
+  @page {
+    size: A4 portrait;
+    margin: 0;
+  }
+  html,
+  body {
+    background: #fff !important;
+    height: 297mm;
+    margin: 0;
+    overflow: hidden;
+  }
+  body * {
+    visibility: hidden;
+  }
+  .poster-sheet,
+  .poster-sheet * {
+    visibility: visible;
+  }
+  .poster-sheet {
+    position: fixed;
+    inset: 0;
+    width: 210mm;
+    max-width: none;
+    height: 297mm;
+    box-shadow: none;
+    border-radius: 0;
+  }
+}

@@ -2,12 +2,12 @@ import "server-only";
 import { headers } from "next/headers";
 import { prisma } from "@/lib/db";
 import { publicEnv } from "@/lib/env";
-import { countablePath, isBot, parisDay, sourceFromReferrer } from "@/lib/traffic";
+import { countablePath, isBot, parisDay, sourceFromCampaign, sourceFromReferrer } from "@/lib/traffic";
 import { hmac } from "./crypto";
 import { clientIp } from "./request";
 
 /** Enregistre une page vue : compteurs agrégés seulement, aucune donnée personnelle conservée. */
-export async function recordPageView(input: { path: unknown; referrer: unknown }) {
+export async function recordPageView(input: { path: unknown; referrer: unknown; campaign?: unknown }) {
   const h = await headers();
   const ua = h.get("user-agent");
   if (isBot(ua)) return;
@@ -16,7 +16,7 @@ export async function recordPageView(input: { path: unknown; referrer: unknown }
   const dayKey = parisDay();
   const day = new Date(`${dayKey}T00:00:00Z`);
   const ownHost = new URL(publicEnv.siteUrl).hostname;
-  const source = sourceFromReferrer(input.referrer, ownHost);
+  const source = sourceFromCampaign(input.campaign) ?? sourceFromReferrer(input.referrer, ownHost);
   // Empreinte du jour : HMAC(IP + navigateur) avec un sel qui change chaque jour, effacée le lendemain.
   const hash = hmac(`${await clientIp()}|${ua}`, `visitor:${dayKey}`);
 

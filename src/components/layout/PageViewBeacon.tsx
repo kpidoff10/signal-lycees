@@ -13,8 +13,15 @@ export function PageViewBeacon() {
   useEffect(() => {
     const nav = navigator as Navigator & { globalPrivacyControl?: boolean };
     if (nav.doNotTrack === "1" || nav.globalPrivacyControl) return;
-    // Le référent n'a de sens qu'à l'arrivée sur le site.
-    const body = JSON.stringify({ p: pathname, r: first.current ? document.referrer : "" });
+    // Le référent et le marqueur ?src= (QR code des affiches) n'ont de sens qu'à l'arrivée sur le site.
+    const url = new URL(window.location.href);
+    const src = first.current ? url.searchParams.get("src") : null;
+    if (src) {
+      // Retiré de la barre d'adresse : un lien recopié ne doit pas compter comme un scan.
+      url.searchParams.delete("src");
+      window.history.replaceState(window.history.state, "", url.pathname + url.search + url.hash);
+    }
+    const body = JSON.stringify({ p: pathname, r: first.current ? document.referrer : "", s: src ?? undefined });
     first.current = false;
     try {
       if (!navigator.sendBeacon?.("/api/v", new Blob([body], { type: "application/json" }))) {

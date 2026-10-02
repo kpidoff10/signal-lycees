@@ -7,6 +7,7 @@ const LINKS = [
   { href: "/confidentialite", label: "Confidentialité" },
   { href: "/cgu", label: "Conditions d’utilisation" },
   { href: "/mentions-legales", label: "Mentions légales" },
+  { href: "/affiches", label: "Affiches à imprimer" },
   { href: "/presse", label: "Presse" },
   { href: "/contact", label: "Contact et suppression" },
 ];

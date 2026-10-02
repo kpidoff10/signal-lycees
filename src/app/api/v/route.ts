@@ -8,8 +8,8 @@ export async function POST(req: NextRequest) {
   try {
     const limit = await rateLimit("map", await ipFingerprint());
     if (limit.ok) {
-      const body = (await req.json().catch(() => ({}))) as { p?: unknown; r?: unknown };
-      await recordPageView({ path: body.p, referrer: body.r });
+      const body = (await req.json().catch(() => ({}))) as { p?: unknown; r?: unknown; s?: unknown };
+      await recordPageView({ path: body.p, referrer: body.r, campaign: body.s });
     }
   } catch (e) {
     console.error("traffic", e instanceof Error ? e.message : e);

@@ -2,6 +2,7 @@
 @import "../styles/fonts.css";
 @import "../styles/tokens.css";
 @import "../styles/components.css";
+@import "../styles/poster.css";
 
 /* Les tokens du design system deviennent des utilitaires Tailwind (bg-paper, text-ink-muted…). */
 @theme inline {

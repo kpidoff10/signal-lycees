@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { countablePath, isBot, parisDay, sourceFromReferrer } from "../traffic";
+import { countablePath, isBot, parisDay, sourceFromCampaign, sourceFromReferrer } from "../traffic";
 
 describe("fréquentation", () => {
   it("ignore les robots", () => {
@@ -23,6 +23,12 @@ describe("fréquentation", () => {
     expect(sourceFromReferrer("https://signal-lycees.fr/lycee/x", "signal-lycees.fr")).toBe("Direct");
     expect(sourceFromReferrer("", "signal-lycees.fr")).toBe("Direct");
     expect(sourceFromReferrer("https://www.letudiant.fr/article", "signal-lycees.fr")).toBe("letudiant.fr");
+  });
+  it("reconnaît le QR code des affiches, et seulement nos marqueurs", () => {
+    expect(sourceFromCampaign("affiche")).toBe("Affiche (QR code)");
+    expect(sourceFromCampaign("n'importe quoi")).toBeNull();
+    expect(sourceFromCampaign(undefined)).toBeNull();
+    expect(sourceFromCampaign({})).toBeNull();
   });
   it("jour à l'heure de Paris", () => {
     expect(parisDay(new Date("2026-10-01T22:30:00Z"))).toBe("2026-10-02");

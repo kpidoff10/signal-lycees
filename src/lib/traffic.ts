@@ -46,6 +46,14 @@ export function sourceFromReferrer(referrer: unknown, ownHost: string): string {
   return host.slice(0, 60);
 }
 
+// Marqueurs posés dans nos propres liens (QR code des affiches…), prioritaires sur le référent.
+const CAMPAIGNS: Record<string, string> = { affiche: "Affiche (QR code)" };
+
+/** Provenance indiquée par le marqueur ?src= de l'URL d'arrivée, ou null. */
+export function sourceFromCampaign(src: unknown): string | null {
+  return typeof src === "string" ? (CAMPAIGNS[src] ?? null) : null;
+}
+
 /** Jour (AAAA-MM-JJ) à l'heure de Paris : les statistiques suivent la journée française. */
 export function parisDay(d = new Date()): string {
   return new Intl.DateTimeFormat("fr-CA", { timeZone: "Europe/Paris", year: "numeric", month: "2-digit", day: "2-digit" }).format(d);

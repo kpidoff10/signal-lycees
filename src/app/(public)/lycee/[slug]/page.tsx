@@ -192,6 +192,16 @@ export default async function SchoolPage({ params }: Props) {
             <TrustLine className="mt-4" link={false} />
           </section>
 
+          <section className="rounded-[20px] border border-border bg-surface p-6">
+            <h2 className="font-display text-xl font-bold">Fais-le connaître dans ton lycée</h2>
+            <p className="mt-3 text-[15px]">
+              Une affiche et des flyers avec le QR code de cette page, prêts à imprimer.
+            </p>
+            <ButtonLink href={`/affiches/${school.slug}`} variant="secondary" icon="print" block className="mt-5">
+              Imprimer une affiche
+            </ButtonLink>
+          </section>
+
           <p className="text-[13px] text-ink-muted">
             Les signalements sont publiés anonymement par des lycéens et vérifiés avant publication. Un contenu te semble abusif ? Utilise « Signaler un contenu » sur la
             page du problème, ou <Link href="/contact" className="link">contacte la modération</Link>.

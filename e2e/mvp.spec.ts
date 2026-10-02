@@ -104,11 +104,23 @@ test("carte : filtres et zoom sur une région", async ({ page }) => {
 });
 
 test("pages publiques sans débordement horizontal", async ({ page }) => {
-  for (const url of ["/", "/signaler", "/signaler?lycee=section-d-enseignement-professionnel-du-lycee-des-metiers-du-transport-de-la-logistique-et", "/comment-ca-marche", "/regles", "/aide", "/confidentialite", "/contact", "/lycee/lycee-general-et-technologique-carnot-dijon", "/lycee/lycee-jean-jaures-argenteuil", "/lycee/lycee-giocante-de-casabianca-bastia"]) {
+  for (const url of ["/", "/signaler", "/signaler?lycee=section-d-enseignement-professionnel-du-lycee-des-metiers-du-transport-de-la-logistique-et", "/comment-ca-marche", "/regles", "/aide", "/confidentialite", "/contact", "/presse", "/affiches", "/affiches/section-d-enseignement-professionnel-du-lycee-des-metiers-du-transport-de-la-logistique-et", "/lycee/lycee-general-et-technologique-carnot-dijon", "/lycee/lycee-jean-jaures-argenteuil", "/lycee/lycee-giocante-de-casabianca-bastia"]) {
     await page.goto(url);
     const overflow = await page.evaluate(() => document.documentElement.scrollWidth - window.innerWidth);
     expect(overflow, url).toBeLessThanOrEqual(1);
   }
+});
+
+test("affiches : choisir son lycée donne une affiche et des flyers avec QR code", async ({ page }) => {
+  await page.goto("/affiches");
+  await page.getByRole("combobox", { name: "Ton lycée" }).fill("carnot dijon");
+  await page.getByRole("option").first().click();
+  await expect(page).toHaveURL(/\/affiches\/lycee-/);
+  await expect(page.getByRole("heading", { level: 1 })).toContainText("Carnot");
+  await expect(page.locator(".poster-sheet.is-a4 .poster-qr svg")).toBeVisible();
+  await page.getByRole("radio", { name: "4 flyers A6" }).click();
+  await expect(page.locator(".poster-sheet.is-flyers .poster-qr svg")).toHaveCount(4);
+  await expect(page.getByRole("button", { name: /Imprimer/ })).toBeVisible();
 });
 
 test("admin inaccessible sans session", async ({ page }) => {
