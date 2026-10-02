@@ -1,8 +1,9 @@
+import { shortSchoolName } from "@/lib/school-name";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ButtonLink } from "@/components/ui/Button";
-import { CopyLinkButton } from "@/components/ui/CopyLinkButton";
+import { ShareButton } from "@/components/ui/ShareButton";
 import { StatCounters } from "@/components/ui/Stats";
 import { TrustLine } from "@/components/ui/TrustNote";
 import { IssueList } from "@/components/issue/IssueList";
@@ -103,7 +104,10 @@ export default async function SchoolPage({ params }: Props) {
           )}
         </div>
         <div className="flex gap-3">
-          <CopyLinkButton />
+          <ShareButton
+            title={`${shortSchoolName(school.name)} · Signal Lycées`}
+            text="Ce qui se passe dans ton lycée mérite d’être entendu. Signale-le anonymement :"
+          />
           <ButtonLink href={`/signaler?lycee=${school.slug}`} className="max-md:hidden">
             Signaler un problème
           </ButtonLink>

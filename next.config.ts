@@ -33,6 +33,8 @@ const nextConfig: NextConfig = {
   allowedDevOrigins: ["127.0.0.1", "localhost", ...(process.env.DEV_ALLOWED_ORIGINS?.split(",").filter(Boolean) ?? [])],
   // forbidden() pour un vrai 403 dans l'admin.
   experimental: { authInterrupts: true },
+  // Polices des images de partage, lues depuis le disque au rendu.
+  outputFileTracingIncludes: { "/**/opengraph-image*": ["./assets/og/*.ttf"] },
   async headers() {
     return [{ source: "/(.*)", headers: securityHeaders }];
   },
