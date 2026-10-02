@@ -4,6 +4,7 @@ import { useState, useTransition } from "react";
 import { voteAction } from "@/app/actions/issues";
 import { Icon } from "@/components/ui/Icon";
 import { useTurnstile } from "@/components/report/useTurnstile";
+import { withCaptcha } from "@/components/report/captcha";
 import { track } from "@/lib/analytics";
 
 /**
@@ -34,8 +35,7 @@ export function ConfirmButton({
   function toggle() {
     start(async () => {
       setMessage(null);
-      const token = await getToken();
-      const r = await voteAction({ issueId, choice: confirmed ? "NONE" : "UP", turnstileToken: token });
+      const r = await withCaptcha((token) => voteAction({ issueId, choice: confirmed ? "NONE" : "UP", turnstileToken: token }), getToken);
       if (!r.ok) {
         setMessage({ text: r.error, error: true });
         return;

@@ -13,6 +13,7 @@ import { CATEGORIES, category, type CategoryId } from "@/lib/categories";
 import { formatNumber, plural, timeAgo } from "@/lib/format";
 import { DESCRIPTION_MAX, DESCRIPTION_MIN, issueDraftSchema, TITLE_MAX, TITLE_MIN } from "@/lib/schemas";
 import { useTurnstile } from "./useTurnstile";
+import { withCaptcha } from "./captcha";
 
 export interface WizardSchool {
   id: string;
@@ -160,8 +161,7 @@ export function ReportWizard({ initialSchool }: { initialSchool: WizardSchool | 
 
   function confirmDuplicate(d: DuplicateView) {
     start(async () => {
-      const token = await getToken();
-      const r = await voteAction({ issueId: d.id, choice: "UP", turnstileToken: token });
+      const r = await withCaptcha((token) => voteAction({ issueId: d.id, choice: "UP", turnstileToken: token }), getToken);
       if (!r.ok) {
         setErrors({ form: r.error });
         return;

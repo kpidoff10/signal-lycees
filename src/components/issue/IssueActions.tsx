@@ -3,6 +3,7 @@
 import { useEffect, useState, useTransition } from "react";
 import { myVotesAction, reportContentAction, resolvedAction, voteAction } from "@/app/actions/issues";
 import { useTurnstile } from "@/components/report/useTurnstile";
+import { withCaptcha } from "@/components/report/captcha";
 import { Button } from "@/components/ui/Button";
 import { track } from "@/lib/analytics";
 import { formatNumber, plural } from "@/lib/format";
@@ -31,10 +32,14 @@ export function IssueActions({ issueId, category, upCount, resolved }: { issueId
     myVotesAction([issueId]).then((v) => setMyVote(v[issueId] ?? null), () => setMyVote(null));
   }, [issueId]);
 
-  function run(fn: (token: string | null) => Promise<{ ok: boolean; error?: string } & Record<string, unknown>>, success: string) {
+  function run(
+    fn: (token: string | null) => Promise<{ ok: boolean; error?: string; code?: string } & Record<string, unknown>>,
+    success: string,
+    alwaysCaptcha = false,
+  ) {
     start(async () => {
       setNotice(null);
-      const r = await fn(await getToken());
+      const r = alwaysCaptcha ? await fn(await getToken()) : await withCaptcha(fn, getToken);
       setNotice(r.ok ? { text: success } : { text: r.error ?? "Erreur", error: true });
     });
   }
@@ -108,7 +113,7 @@ export function IssueActions({ issueId, category, upCount, resolved }: { issueId
                 const r = await reportContentAction({ issueId, reason, comment: comment || undefined, turnstileToken: t });
                 if (r.ok) setReportOpen(false);
                 return r;
-              }, "Merci. La modération va examiner ce contenu.");
+              }, "Merci. La modération va examiner ce contenu.", true);
             }}
           >
             <fieldset className="grid gap-2">

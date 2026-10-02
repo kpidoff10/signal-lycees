@@ -2,6 +2,14 @@ import { expect, test, type Page } from "@playwright/test";
 
 // Parcours de la définition du MVP (brief §34).
 
+/** Si le site propose un doublon, on indique que le problème est différent. */
+async function passDuplicates(page: Page) {
+  const different = page.getByRole("button", { name: "Mon problème est différent" });
+  const result = page.getByRole("heading", { name: /publié|vérifié avant publication|ne peut pas être publié|Merci de nous avoir écrit/ });
+  await expect(different.or(result)).toBeVisible({ timeout: 20_000 });
+  if (await different.isVisible()) await different.click();
+}
+
 async function openSchool(page: Page, query: string) {
   await page.goto("/");
   const search = page.getByRole("combobox", { name: "Trouve ton lycée" });
@@ -48,8 +56,7 @@ test("dépôt : signaler → lycée → catégorie → description → vérifica
   await page.getByLabel("Ce qui se passe").fill("Depuis la rentrée, la moitié des lumières du gymnase ne fonctionnent plus, on y voit mal en hiver.");
   await page.getByRole("button", { name: "Continuer" }).click();
 
-  const different = page.getByRole("button", { name: "Mon problème est différent" });
-  if (await different.isVisible({ timeout: 4000 }).catch(() => false)) await different.click();
+  await passDuplicates(page);
 
   await expect(page.getByRole("heading", { name: /publié|vérifié avant publication|ne peut pas être publié/ })).toBeVisible({ timeout: 20_000 });
   await expect(page.getByText("Garde ce lien pour suivre ton signalement")).toBeVisible();
@@ -61,8 +68,7 @@ test("dépôt : un contenu nominatif n'est jamais publié directement", async ({
   await page.getByLabel("Titre court").fill(`M. Dupont ne fait jamais cours ${Date.now().toString(36)}`);
   await page.getByLabel("Ce qui se passe").fill("M. Dupont est absent tout le temps et ne prévient jamais personne.");
   await page.getByRole("button", { name: "Continuer" }).click();
-  const different = page.getByRole("button", { name: "Mon problème est différent" });
-  if (await different.isVisible({ timeout: 4000 }).catch(() => false)) await different.click();
+  await passDuplicates(page);
   await expect(page.getByRole("heading", { name: /vérifié avant publication|ne peut pas être publié/ })).toBeVisible({ timeout: 20_000 });
 });
 

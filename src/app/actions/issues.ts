@@ -13,7 +13,8 @@ import { rateLimit } from "@/server/rate-limit";
 import { clientIp, ipFingerprint } from "@/server/request";
 import { verifyTurnstile } from "@/server/turnstile";
 
-type Fail = { ok: false; error: string };
+/** `code: "captcha"` : le client doit obtenir un jeton Turnstile et réessayer. */
+type Fail = { ok: false; error: string; code?: string };
 
 const RATE_LIMITED = "Trop d’actions en peu de temps. Réessaie un peu plus tard.";
 const GENERIC = "Une erreur est survenue. Réessaie dans un instant.";
@@ -29,7 +30,7 @@ export async function voteAction(input: z.input<typeof voteInput>): Promise<{ ok
   const parsed = voteInput.safeParse(input);
   if (!parsed.success) return { ok: false, error: GENERIC };
   const participant = await requireParticipant(parsed.data.turnstileToken);
-  if (!participant.ok) return { ok: false, error: PARTICIPANT_ERRORS[participant.error] };
+  if (!participant.ok) return { ok: false, error: PARTICIPANT_ERRORS[participant.error], code: participant.error };
   const [byIdentity, byIp] = await Promise.all([rateLimit("vote", participant.identityId), rateLimit("voteIp", participant.ipKey)]);
   if (!byIdentity.ok || !byIp.ok) return { ok: false, error: RATE_LIMITED };
   try {
@@ -49,7 +50,7 @@ export async function resolvedAction(input: z.input<typeof resolvedInput>): Prom
   const parsed = resolvedInput.safeParse(input);
   if (!parsed.success) return { ok: false, error: GENERIC };
   const participant = await requireParticipant(parsed.data.turnstileToken);
-  if (!participant.ok) return { ok: false, error: PARTICIPANT_ERRORS[participant.error] };
+  if (!participant.ok) return { ok: false, error: PARTICIPANT_ERRORS[participant.error], code: participant.error };
   const [byIdentity, byIp] = await Promise.all([rateLimit("vote", participant.identityId), rateLimit("voteIp", participant.ipKey)]);
   if (!byIdentity.ok || !byIp.ok) return { ok: false, error: RATE_LIMITED };
   try {
@@ -106,7 +107,7 @@ export async function submitIssueAction(input: unknown): Promise<SubmitResult> {
     return { ok: false, error: PARTICIPANT_ERRORS.captcha };
   }
   const participant = await requireParticipant(turnstileToken, { captchaVerified: true });
-  if (!participant.ok) return { ok: false, error: PARTICIPANT_ERRORS[participant.error] };
+  if (!participant.ok) return { ok: false, error: PARTICIPANT_ERRORS[participant.error], code: participant.error };
   const limits = await Promise.all([
     rateLimit("submit", participant.identityId),
     rateLimit("submitIp", participant.ipKey),
