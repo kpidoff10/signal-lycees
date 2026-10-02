@@ -29,7 +29,9 @@ describe("fréquentation", () => {
     expect(sourceFromCampaign("n'importe quoi")).toBeNull();
     expect(sourceFromCampaign(undefined)).toBeNull();
     expect(sourceFromCampaign({})).toBeNull();
-    expect(sourceFromCampaign("insta-bio")).toBe("Lien · Instagram (bio)");
+    expect(sourceFromCampaign("eqaqj")).toBe("Lien · Instagram (bio)");
+    expect(sourceFromCampaign("rh38a")).toBe("Affiche (QR code)");
+    expect(sourceFromCampaign("insta-bio")).toBeNull();
     expect(sourceFromCampaign("constructor")).toBeNull();
     expect(sourceFromCampaign("__proto__")).toBeNull();
   });

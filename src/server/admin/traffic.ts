@@ -1,7 +1,7 @@
 // Fréquentation pour le tableau de bord : compteurs agrégés (voir src/server/traffic.ts).
 import "server-only";
 import { prisma } from "@/lib/db";
-import { SHARE_LINKS } from "@/lib/share-links";
+import { POSTER_LABEL, SHARE_LINKS } from "@/lib/share-links";
 import { parisDay } from "@/lib/traffic";
 
 const STATIC_LABELS: Record<string, string> = {
@@ -33,7 +33,7 @@ export async function trafficOverview() {
     prisma.trafficSource.groupBy({ by: ["source"], where: { day: { gte: since7 } }, _sum: { views: true }, orderBy: { _sum: { views: "desc" } }, take: 8 }),
     prisma.trafficSource.groupBy({
       by: ["source"],
-      where: { day: { gte: since30 }, source: { in: SHARE_LINKS.map((l) => l.label) } },
+      where: { day: { gte: since30 }, source: { in: [...SHARE_LINKS.map((l) => l.label), POSTER_LABEL] } },
       _sum: { views: true },
     }),
   ]);
@@ -77,5 +77,6 @@ export async function trafficOverview() {
     sources: sources.map((s) => ({ source: s.source, views: s._sum.views ?? 0 })),
     // Arrivées par lien de partage sur 30 jours (une par visiteur et par jour).
     links: SHARE_LINKS.map((l) => ({ ...l, visits: linkVisits.get(l.label) ?? 0 })),
+    posterVisits: linkVisits.get(POSTER_LABEL) ?? 0,
   };
 }

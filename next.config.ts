@@ -36,13 +36,9 @@ const nextConfig: NextConfig = {
   experimental: { authInterrupts: true },
   // Polices des images de partage, lues depuis le disque au rendu.
   outputFileTracingIncludes: { "/**/opengraph-image*": ["./assets/og/*.ttf"] },
-  // Liens de partage courts (signal-lycees.fr/insta…) : redirection temporaire vers la page avec son marqueur.
+  // Liens de partage courts (signal-lycees.fr/eqaqj…) : redirection temporaire vers la page avec son marqueur.
   async redirects() {
-    return SHARE_LINKS.filter((l) => l.path).map((l) => ({
-      source: l.path!,
-      destination: `${l.to ?? "/"}?src=${l.key}`,
-      permanent: false,
-    }));
+    return SHARE_LINKS.map((l) => ({ source: `/${l.code}`, destination: `${l.to ?? "/"}?src=${l.code}`, permanent: false }));
   },
   async headers() {
     return [{ source: "/(.*)", headers: securityHeaders }];

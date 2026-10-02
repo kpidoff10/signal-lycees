@@ -45,7 +45,7 @@ export default async function AdminHome() {
 
       <TrafficPanel t={traffic} />
 
-      <ShareLinksPanel links={traffic.links} siteUrl={publicEnv.siteUrl} />
+      <ShareLinksPanel links={traffic.links} posterVisits={traffic.posterVisits} siteUrl={publicEnv.siteUrl} />
 
       <section className={`adm-card${c.frozen ? " adm-urgent" : ""}`} aria-labelledby="freeze-h">
         <h2 id="freeze-h" className="adm-h2">

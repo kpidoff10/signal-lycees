@@ -4,6 +4,7 @@ import { notFound } from "next/navigation";
 import { Poster } from "@/components/poster/Poster";
 import { PosterStudio } from "@/components/poster/PosterStudio";
 import { publicEnv } from "@/lib/env";
+import { POSTER_CODE } from "@/lib/share-links";
 import { shortSchoolName } from "@/lib/school-name";
 import { qrSvg } from "@/server/qr";
 import { getSchoolBySlug } from "@/server/school-page";
@@ -30,7 +31,7 @@ export default async function AfficheSchoolPage({ params }: Props) {
   if (!school || !school.isOpen) notFound();
 
   const base = publicEnv.siteUrl.replace(/\/$/, "");
-  const qr = await qrSvg(`${base}/lycee/${school.slug}?src=affiche`);
+  const qr = await qrSvg(`${base}/lycee/${school.slug}?src=${POSTER_CODE}`);
 
   return (
     <div className="container-page grid gap-6 py-6 md:py-10">

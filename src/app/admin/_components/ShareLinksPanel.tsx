@@ -4,19 +4,16 @@ import { useState } from "react";
 import { Button } from "@/components/ui/Button";
 
 interface Link {
-  key: string;
+  code: string;
   label: string;
   hint: string;
-  path?: string;
   visits: number;
 }
 
 /** Liens de partage suivis, à copier selon le canal, avec les arrivées des 30 derniers jours. */
-export function ShareLinksPanel({ links, siteUrl }: { links: Link[]; siteUrl: string }) {
+export function ShareLinksPanel({ links, posterVisits, siteUrl }: { links: Link[]; posterVisits: number; siteUrl: string }) {
   const [copied, setCopied] = useState<string | null>(null);
   const base = siteUrl.replace(/\/$/, "");
-  const shareable = links.filter((l) => l.path);
-  const poster = links.find((l) => l.key === "affiche");
 
   return (
     <section className="adm-card" aria-labelledby="links-h">
@@ -24,14 +21,14 @@ export function ShareLinksPanel({ links, siteUrl }: { links: Link[]; siteUrl: st
         Liens de partage
       </h2>
       <p className="m-0 mb-4 adm-small adm-muted">
-        Utilise le lien court qui correspond à l’endroit où tu le publies : les visiteurs arrivés par ce lien apparaissent sous ce
+        Chaque canal a un code court tiré au hasard, qui ne dit pas d’où vient le lien. Utilise celui qui correspond à l’endroit où tu le publies : les visiteurs arrivés par ce lien apparaissent sous ce
         nom dans la provenance. Arrivées comptées sur 30 jours, une par visiteur et par jour, sans cookie.
       </p>
       <ul className="adm-list">
-        {shareable.map((l) => {
-          const url = `${base}${l.path}`;
+        {links.map((l) => {
+          const url = `${base}/${l.code}`;
           return (
-            <li key={l.key} className="adm-row grid-cols-[minmax(0,1fr)_auto] items-center gap-x-3">
+            <li key={l.code} className="adm-row grid-cols-[minmax(0,1fr)_auto] items-center gap-x-3">
               <span className="min-w-0">
                 <span className="adm-row-title block">{l.label.replace(/^Lien · /, "")}</span>
                 <span className="adm-small adm-muted block">{l.hint}</span>
@@ -44,31 +41,29 @@ export function ShareLinksPanel({ links, siteUrl }: { links: Link[]; siteUrl: st
                 <Button
                   variant="secondary"
                   size="sm"
-                  icon={copied === l.key ? "check" : "link"}
+                  icon={copied === l.code ? "check" : "link"}
                   aria-label={`Copier le lien ${l.label}`}
                   onClick={async () => {
                     try {
                       await navigator.clipboard.writeText(url);
-                      setCopied(l.key);
-                      setTimeout(() => setCopied((c) => (c === l.key ? null : c)), 2000);
+                      setCopied(l.code);
+                      setTimeout(() => setCopied((c) => (c === l.code ? null : c)), 2000);
                     } catch {
                       /* presse-papiers indisponible */
                     }
                   }}
                 >
-                  {copied === l.key ? "Copié" : "Copier"}
+                  {copied === l.code ? "Copié" : "Copier"}
                 </Button>
               </span>
             </li>
           );
         })}
       </ul>
-      {poster && (
-        <p className="m-0 mt-4 adm-small adm-muted">
-          Affiches : {poster.visits.toLocaleString("fr-FR")} arrivée{poster.visits > 1 ? "s" : ""} par QR code sur 30 jours (lien
-          ajouté automatiquement).
-        </p>
-      )}
+      <p className="m-0 mt-4 adm-small adm-muted">
+        Affiches : {posterVisits.toLocaleString("fr-FR")} arrivée{posterVisits > 1 ? "s" : ""} par QR code sur 30 jours (marqueur
+        ajouté automatiquement).
+      </p>
     </section>
   );
 }

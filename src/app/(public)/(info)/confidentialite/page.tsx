@@ -189,7 +189,7 @@ export default function ConfidentialitePage() {
             anonyme du jour, calculée à partir de l’adresse IP et du navigateur avec une clé qui change chaque jour, sert seulement à ne pas
             compter deux fois la même visite ; elle est effacée le lendemain. Seuls des totaux par jour sont conservés. Les navigateurs qui
             demandent à ne pas être suivis (« Do Not Track », « Global Privacy Control ») ne sont pas comptés.
-            {" "}Les liens que nous partageons (par exemple signal-lycees.fr/insta, ou le QR code des affiches) indiquent seulement
+            {" "}Les liens courts que nous partageons (par exemple signal-lycees.fr/eqaqj, ou le QR code des affiches) indiquent seulement
             par quel canal tu es arrivé : ils ne contiennent rien sur toi et ne sont pas reliés à ton identité anonyme.
           </li>
         </ul>
