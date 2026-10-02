@@ -12,6 +12,11 @@ import { category, type CategoryId } from "@/lib/categories";
 import { plural } from "@/lib/format";
 import { getSchoolBySlug, getSchoolIssues } from "@/server/school-page";
 import { activeMobilizations } from "@/server/mobilizations";
+import { directory } from "@/server/places";
+import { nearbySchools, withActivity } from "@/server/schools";
+import { Breadcrumb } from "@/components/places/Breadcrumb";
+import { PlaceLinkGrid } from "@/components/places/PlaceLists";
+import { cityLabel, inCity } from "@/lib/places";
 import { MobilizationBanner } from "@/components/school/MobilizationBanner";
 import { ReportMobilization } from "@/components/school/ReportMobilization";
 
@@ -28,9 +33,18 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
   const school = await getSchoolBySlug(slug);
   if (!school) return { title: "Lycée introuvable" };
+  const city = cityLabel(school.city);
+  // Quand le lycée est mobilisé, le titre reprend les mots de l'actualité (« blocus », « mobilisation »).
+  const mob = (await activeMobilizations([school.id])).get(school.id);
   return {
-    title: { absolute: `Signalements au ${school.name} à ${school.city} | Signal Lycées` },
-    description: `Consultez les problèmes actuellement signalés au ${school.name} (${school.city}) et les informations remontées par sa communauté.`,
+    title: {
+      absolute: mob
+        ? `Mobilisation au ${school.name} (${city}) : blocus et problèmes signalés | Signal Lycées`
+        : `Signalements au ${school.name} ${inCity(city)} | Signal Lycées`,
+    },
+    description: mob
+      ? `Mobilisation en cours au ${school.name} (${city}) : blocus, rassemblement, et les problèmes signalés anonymement par les élèves.`
+      : `Consultez les problèmes actuellement signalés au ${school.name} (${city}) et les informations remontées par sa communauté.`,
     alternates: { canonical: `/lycee/${school.slug}` },
     openGraph: { title: `${school.name} — ${school.city}`, url: `/lycee/${school.slug}` },
   };
@@ -47,7 +61,13 @@ export default async function SchoolPage({ params }: Props) {
   const { slug } = await params;
   const school = await getSchoolBySlug(slug);
   if (!school) notFound();
-  const [issues, mobs] = await Promise.all([getSchoolIssues(school.id), activeMobilizations([school.id])]);
+  const [issues, mobs, dir, near] = await Promise.all([
+    getSchoolIssues(school.id),
+    activeMobilizations([school.id]),
+    directory(),
+    nearbySchools(school.latitude, school.longitude, 7).then((hits) => withActivity(hits.filter((h) => h.id !== school.id).slice(0, 6))),
+  ]);
+  const place = dir.cityBySlug.get(dir.citySlugBySchool.get(school.id) ?? "");
   const mobilization = mobs.get(school.id) ?? null;
 
   const active = issues.filter((i) => i.status !== "RESOLVED");
@@ -72,23 +92,15 @@ export default async function SchoolPage({ params }: Props) {
       <TrackView event="school_view" props={{ school: school.id }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd).replace(/</g, "\\u003c") }} />
 
-      <nav aria-label="Fil d’Ariane" className="text-sm">
-        <ol className="flex flex-wrap items-center gap-2 text-ink-muted">
-          <li>
-            <Link href="/#carte" className="link">
-              Carte
-            </Link>
-          </li>
-          <li aria-hidden="true">›</li>
-          <li>{school.region}</li>
-          <li aria-hidden="true">›</li>
-          <li>{school.city}</li>
-          <li aria-hidden="true">›</li>
-          <li aria-current="page" className="text-ink">
-            {school.name}
-          </li>
-        </ol>
-      </nav>
+      <Breadcrumb
+        items={[
+          { label: "Tous les lycées", href: "/lycees" },
+          // Paris : le département et la commune portent le même nom, un seul niveau suffit.
+          ...(place && place.department !== place.name ? [{ label: place.department, href: `/departement/${place.departmentSlug}` }] : []),
+          ...(place ? [{ label: place.name, href: `/ville/${place.slug}` }] : []),
+          { label: school.name },
+        ]}
+      />
 
       <header className="mt-6 flex flex-col gap-5 md:flex-row md:items-end md:justify-between">
         <div className="min-w-0">
@@ -208,6 +220,31 @@ export default async function SchoolPage({ params }: Props) {
           </p>
         </aside>
       </div>
+
+      {near.length > 0 && (
+        <section className="mt-12 grid gap-3" aria-labelledby="near-h">
+          <div className="flex flex-wrap items-baseline justify-between gap-2">
+            <h2 id="near-h" className="font-display text-2xl font-bold">
+              Lycées à proximité
+            </h2>
+            {place && (
+              <Link href={`/ville/${place.slug}`} className="link text-[15px]">
+                Tous les lycées {inCity(place.name)}
+              </Link>
+            )}
+          </div>
+          <PlaceLinkGrid
+            items={near.map((n) => ({
+              href: `/lycee/${n.slug}`,
+              label: shortSchoolName(n.name),
+              sub: `${cityLabel(n.city)} · ${n.distanceKm < 1 ? "moins d’1 km" : `${Math.round(n.distanceKm)} km`}`,
+              issues: n.issues,
+              mobs: n.mob ? 1 : 0,
+              mobLabel: "Mobilisation",
+            }))}
+          />
+        </section>
+      )}
 
       <div className="sticky-cta fixed inset-x-0 bottom-0 z-40 border-t border-border bg-paper/95 p-3 backdrop-blur md:hidden">
         <ButtonLink href={`/signaler?lycee=${school.slug}`} block>

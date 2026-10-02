@@ -2,6 +2,7 @@ import Link from "next/link";
 import { TrustLine } from "@/components/ui/TrustNote";
 
 const LINKS = [
+  { href: "/lycees", label: "Tous les lycées" },
   { href: "/comment-ca-marche", label: "Comment ça marche" },
   { href: "/regles", label: "Règles de publication" },
   { href: "/confidentialite", label: "Confidentialité" },

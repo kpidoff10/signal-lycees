@@ -16,6 +16,7 @@ const STATIC_LABELS: Record<string, string> = {
   "/contact": "Contact",
   "/presse": "Espace presse",
   "/affiches": "Affiches à imprimer",
+  "/lycees": "Tous les lycées",
 };
 
 function dayDate(offset: number): Date {
