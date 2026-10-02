@@ -301,3 +301,33 @@ body {
     justify-content: center;
   }
 }
+
+/* Chargement : petit cercle tournant et blocs fantômes. */
+.sl-spinner {
+  width: 16px;
+  height: 16px;
+  flex: none;
+  border-radius: 50%;
+  border: 2px solid var(--signal-soft);
+  border-top-color: var(--signal);
+  animation: sl-spin 0.8s linear infinite;
+}
+@keyframes sl-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+.sl-skeleton {
+  display: block;
+  background: linear-gradient(90deg, var(--surface-sunken) 25%, color-mix(in srgb, var(--surface-sunken) 50%, var(--surface)) 50%, var(--surface-sunken) 75%);
+  background-size: 200% 100%;
+  animation: sl-shimmer 1.2s ease-in-out infinite;
+}
+@keyframes sl-shimmer {
+  from {
+    background-position: 200% 0;
+  }
+  to {
+    background-position: -200% 0;
+  }
+}

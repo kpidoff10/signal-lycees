@@ -132,8 +132,14 @@ export function SchoolSearch({
     setLocateError(null);
     if (!navigator.geolocation) {
       setLocateError("Ton navigateur ne permet pas la localisation.");
+      setOpen(true);
       return;
     }
+    // La liste s'ouvre tout de suite avec un chargement pendant que le téléphone cherche la position.
+    setNearby(null);
+    setQ("");
+    setActive(-1);
+    setOpen(true);
     setLocating(true);
     navigator.geolocation.getCurrentPosition(
       async (pos) => {
@@ -145,9 +151,6 @@ export function SchoolSearch({
           if (!res.ok) throw new Error();
           const data = (await res.json()) as { schools: SchoolOption[] };
           setNearby(data.schools);
-          setQ("");
-          setOpen(true);
-          setActive(-1);
           if (!data.schools.length) setLocateError("Aucun lycée trouvé près de toi.");
         } catch {
           setLocateError("La recherche autour de toi a échoué. Réessaie.");
@@ -170,7 +173,8 @@ export function SchoolSearch({
   const listId = `${id}-list`;
   // Moins de 2 caractères : pas de suggestions (dérivé, sans état supplémentaire).
   const shown = q.trim().length >= 2 ? options : (nearby ?? []);
-  const listOpen = open && (q.trim().length >= 2 || (nearby !== null && nearby.length > 0));
+  const locatingView = !q && (locating || locateError !== null || nearby !== null);
+  const listOpen = open && (q.trim().length >= 2 || locatingView);
   return (
     <div className={`sl-search ${className ?? ""}`} ref={boxRef}>
       <label htmlFor={`${id}-input`} className="sl-visually-hidden">
@@ -227,13 +231,32 @@ export function SchoolSearch({
           </button>
         )}
       </div>
-      {locateError && (
-        <p role="status" className="mt-2 text-[13px] text-signal-ink">
-          {locateError}
-        </p>
-      )}
       <ul id={listId} role="listbox" className="sl-search-list" hidden={!listOpen}>
-        {nearby && !q && nearby.length > 0 && <li className="sl-search-empty !pb-1 !pt-2 text-[12px] font-bold uppercase tracking-[0.06em]">Lycées autour de toi</li>}
+        {locatingView && (locating || (nearby && nearby.length > 0)) && (
+          <li className="sl-search-empty !pb-1 !pt-2 text-[12px] font-bold uppercase tracking-[0.06em]">Lycées autour de toi</li>
+        )}
+        {locatingView && locating && (
+          <li className="grid gap-1" aria-busy="true">
+            <span role="status" className="flex items-center gap-2 px-2.5 py-2 text-sm text-ink-muted">
+              <span className="sl-spinner" aria-hidden="true" />
+              Recherche de ta position…
+            </span>
+            {[0, 1, 2].map((i) => (
+              <span key={i} className="flex items-center gap-3 px-2.5 py-2" aria-hidden="true">
+                <span className="sl-skeleton h-8 w-8 rounded-full" />
+                <span className="grid flex-1 gap-1.5">
+                  <span className="sl-skeleton h-3.5 w-3/4 rounded" />
+                  <span className="sl-skeleton h-3 w-1/3 rounded" />
+                </span>
+              </span>
+            ))}
+          </li>
+        )}
+        {locatingView && !locating && locateError && (
+          <li role="status" className="sl-search-empty !text-signal-ink">
+            {locateError}
+          </li>
+        )}
         {shown.length === 0 && !loading && q.trim().length >= 2 && <li className="sl-search-empty">Aucun lycée trouvé pour « {q.trim()} ».</li>}
         {loading && shown.length === 0 && <li className="sl-search-empty">Recherche…</li>}
         {shown.map((o, i) => (
