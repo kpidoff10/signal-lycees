@@ -63,7 +63,7 @@ export default async function SchoolPage({ params }: Props) {
   };
 
   return (
-    <div className="container-page pb-24 pt-6 md:pt-8">
+    <div className="container-page pt-6 md:pt-8">
       <TrackView event="school_view" props={{ school: school.id }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd).replace(/</g, "\\u003c") }} />
 
@@ -180,7 +180,7 @@ export default async function SchoolPage({ params }: Props) {
         </aside>
       </div>
 
-      <div className="fixed inset-x-0 bottom-0 z-40 border-t border-border bg-paper/95 p-3 backdrop-blur md:hidden">
+      <div className="sticky-cta fixed inset-x-0 bottom-0 z-40 border-t border-border bg-paper/95 p-3 backdrop-blur md:hidden">
         <ButtonLink href={`/signaler?lycee=${school.slug}`} block>
           Signaler un problème
         </ButtonLink>

@@ -342,3 +342,10 @@ body {
   font-weight: 600;
   background: color-mix(in srgb, var(--ink) 55%, transparent);
 }
+
+/* Bouton « Signaler » fixé en bas (mobile) : le pied de page ne doit pas passer dessous. */
+@media (max-width: 767px) {
+  body:has(.sticky-cta) .site-footer {
+    padding-bottom: 76px;
+  }
+}
