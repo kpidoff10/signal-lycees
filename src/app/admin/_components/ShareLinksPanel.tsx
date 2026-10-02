@@ -7,6 +7,7 @@ interface Link {
   key: string;
   label: string;
   hint: string;
+  path?: string;
   visits: number;
 }
 
@@ -14,7 +15,7 @@ interface Link {
 export function ShareLinksPanel({ links, siteUrl }: { links: Link[]; siteUrl: string }) {
   const [copied, setCopied] = useState<string | null>(null);
   const base = siteUrl.replace(/\/$/, "");
-  const shareable = links.filter((l) => l.key !== "affiche");
+  const shareable = links.filter((l) => l.path);
   const poster = links.find((l) => l.key === "affiche");
 
   return (
@@ -23,13 +24,12 @@ export function ShareLinksPanel({ links, siteUrl }: { links: Link[]; siteUrl: st
         Liens de partage
       </h2>
       <p className="m-0 mb-4 adm-small adm-muted">
-        Utilise le lien qui correspond à l’endroit où tu le publies : les visiteurs arrivés par ce lien apparaissent sous ce nom
-        dans la provenance. Le marqueur est retiré de l’adresse dès l’arrivée. Arrivées comptées sur 30 jours, une par visiteur et
-        par jour.
+        Utilise le lien court qui correspond à l’endroit où tu le publies : les visiteurs arrivés par ce lien apparaissent sous ce
+        nom dans la provenance. Arrivées comptées sur 30 jours, une par visiteur et par jour, sans cookie.
       </p>
       <ul className="adm-list">
         {shareable.map((l) => {
-          const url = `${base}/?src=${l.key}`;
+          const url = `${base}${l.path}`;
           return (
             <li key={l.key} className="adm-row grid-cols-[minmax(0,1fr)_auto] items-center gap-x-3">
               <span className="min-w-0">
