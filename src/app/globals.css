@@ -466,7 +466,10 @@ html {
 }
 @media (max-width: 767px) {
   .hero-screen {
-    padding-bottom: 64px;
+    padding-bottom: 52px;
+  }
+  .hero-screen .hero-scroll {
+    bottom: 8px;
   }
   .hero-screen .display-l {
     font-size: 32px;

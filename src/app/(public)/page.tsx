@@ -42,7 +42,7 @@ export default async function HomePage() {
             <TrustLine className="mt-1 md:mt-2" />
           </div>
           {/* Mobile et tablette : les derniers signalements dans la première partie. */}
-          <div className="hero-latest mt-6 lg:hidden">
+          <div className="hero-latest mt-5 lg:hidden">
             <LatestIssues items={latest} variant="scroll" />
           </div>
         </div>
