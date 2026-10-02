@@ -123,9 +123,11 @@ export function SchoolSheet({
 }) {
   return (
     <>
-      <div className={`sl-scrim${expanded ? " is-on" : ""}`} onClick={() => onExpand(false)} aria-hidden="true" />
+      <div className="sl-scrim is-fixed is-on" onClick={onClose} aria-hidden="true" />
       <section
-        className={`sl-sheet${expanded ? " is-expanded" : ""}`}
+        role="dialog"
+        aria-modal="true"
+        className={`sl-sheet is-fixed${expanded ? " is-expanded" : ""}`}
         aria-label={`Lycée ${d.name}`}
         onTouchStart={(e) => ((e.currentTarget as HTMLElement).dataset.y = String(e.touches[0]!.clientY))}
         onTouchEnd={(e) => {

@@ -567,10 +567,11 @@ export default function NationalMap() {
             <SchoolCard d={detail.data} onClose={() => setSelected(null)} />
           </div>
         )}
-        {selected && detail.data && compact && (
-          <SchoolSheet d={detail.data} expanded={sheetExpanded} onExpand={setSheetExpanded} onClose={() => setSelected(null)} />
-        )}
       </div>
+      {/* Mobile : panneau fixé en bas de l'écran, quel que soit l'endroit de la page. */}
+      {selected && detail.data && compact && (
+        <SchoolSheet d={detail.data} expanded={sheetExpanded} onExpand={setSheetExpanded} onClose={() => setSelected(null)} />
+      )}
 
       <div className="mt-3 flex flex-wrap items-center gap-2 text-[13px] text-ink-muted">
         <span className="font-semibold text-ink">Outre-mer :</span>
@@ -608,7 +609,11 @@ export default function NationalMap() {
             <ul className="sl-nearby">
               {nearby.slice(0, nearbyLimit).map((s) => (
                 <li key={s.id}>
-                  <button type="button" className="sl-item" onClick={() => selectRef.current(s.id, [s.lng, s.lat])}>
+                  <button
+                    type="button"
+                    className="sl-item"
+                    onClick={() => selectRef.current(s.id, [s.lng, s.lat])}
+                  >
                     <span className={`sl-marker-${markerLevel(s.count)} grid w-8 place-items-center`}>
                       <span className="sl-marker-dot" />
                     </span>
