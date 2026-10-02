@@ -1,0 +1,17 @@
+node_modules/
+.next/
+out/
+build/
+coverage/
+playwright-report/
+test-results/
+src/generated/
+*.tsbuildinfo
+next-env.d.ts
+.env
+.env.local
+.env*.local
+.DS_Store
+data/raw/
+public/maplibre/
+docker-compose.override.yml

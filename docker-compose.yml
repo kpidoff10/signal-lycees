@@ -1,0 +1,32 @@
+# Environnement de développement local : Node n'est pas installé sur l'hôte.
+# Usage : ./dev.sh <commande npm/npx>   ou   docker compose up
+services:
+  db:
+    image: pgvector/pgvector:pg17
+    environment:
+      POSTGRES_USER: signal
+      POSTGRES_PASSWORD: signal
+      POSTGRES_DB: signal
+    volumes:
+      - db-data:/var/lib/postgresql/data
+    ports:
+      - "127.0.0.1:55432:5432"
+  app:
+    image: node:22-bookworm
+    working_dir: /app
+    user: "${UID:-1001}:${GID:-1001}"
+    environment:
+      HOME: /tmp
+      NEXT_TELEMETRY_DISABLED: "1"
+      NPM_CONFIG_UPDATE_NOTIFIER: "false"
+      PRISMA_HIDE_UPDATE_MESSAGE: "1"
+      RATE_LIMIT_MULTIPLIER: "${RATE_LIMIT_MULTIPLIER:-20}"
+    volumes:
+      - .:/app
+    ports:
+      - "127.0.0.1:3100:3000"
+    depends_on:
+      - db
+    command: npm run dev
+volumes:
+  db-data:

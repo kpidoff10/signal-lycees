@@ -1,0 +1,102 @@
+import { expect, test, type Page } from "@playwright/test";
+
+// Parcours de la définition du MVP (brief §34).
+
+async function openSchool(page: Page, query: string) {
+  await page.goto("/");
+  const search = page.getByRole("combobox", { name: "Trouve ton lycée" });
+  await search.fill(query);
+  await page.getByRole("option").first().click();
+  await expect(page).toHaveURL(/\/lycee\//);
+}
+
+test("consultation : homepage → recherche → fiche lycée → confirmer un problème", async ({ page }) => {
+  await page.goto("/");
+  await expect(page.getByRole("heading", { level: 1 })).toContainText("mérite d’être entendu");
+  await expect(page.locator(".maplibregl-canvas")).toBeVisible({ timeout: 20_000 });
+
+  await openSchool(page, "carnot dijon");
+  await expect(page.getByRole("heading", { level: 1 })).toContainText("Carnot");
+  await expect(page.getByText("Ils ne notent pas l’établissement")).toBeVisible();
+
+  const first = page.locator("li").filter({ has: page.getByRole("button", { name: /Je confirme|Confirmé/ }) }).first();
+  if (await first.count()) {
+    const button = first.getByRole("button", { name: /Je confirme|Confirmé/ });
+    const wasConfirmed = (await button.getAttribute("aria-pressed")) === "true";
+    await button.click();
+    await expect(button).toHaveAttribute("aria-pressed", wasConfirmed ? "false" : "true");
+    if (!wasConfirmed) await expect(first.getByText("Ta confirmation a été prise en compte.")).toBeVisible();
+    // Une seule confirmation par personne : le second clic retire la confirmation.
+    await button.click();
+    await expect(button).toHaveAttribute("aria-pressed", wasConfirmed ? "true" : "false");
+  }
+});
+
+test("dépôt : signaler → lycée → catégorie → description → vérification", async ({ page }) => {
+  await page.goto("/signaler");
+  await expect(page.getByRole("heading", { name: "Dans quel lycée ?" })).toBeVisible();
+  await page.getByRole("combobox", { name: "Recherche ton lycée" }).fill("lycée carnot dijon");
+  await page.getByRole("option").first().click();
+
+  await expect(page.getByRole("heading", { name: "Quel est le problème ?" })).toBeVisible();
+  await page.getByRole("radio", { name: /Locaux/ }).click();
+
+  await expect(page.getByRole("heading", { name: "Explique-nous ce qui se passe." })).toBeVisible();
+  await expect(page.getByText("Ne mentionne pas le nom d’un élève")).toBeVisible();
+  const stamp = Date.now().toString(36);
+  await page.getByLabel("Titre court").fill(`Lumières du gymnase en panne ${stamp}`);
+  await page.getByLabel("Ce qui se passe").fill("Depuis la rentrée, la moitié des lumières du gymnase ne fonctionnent plus, on y voit mal en hiver.");
+  await page.getByRole("button", { name: "Continuer" }).click();
+
+  const different = page.getByRole("button", { name: "Mon problème est différent" });
+  if (await different.isVisible({ timeout: 4000 }).catch(() => false)) await different.click();
+
+  await expect(page.getByRole("heading", { name: /publié|vérifié avant publication|ne peut pas être publié/ })).toBeVisible({ timeout: 20_000 });
+  await expect(page.getByText("Garde ce lien pour suivre ton signalement")).toBeVisible();
+});
+
+test("dépôt : un contenu nominatif n'est jamais publié directement", async ({ page }) => {
+  await page.goto("/signaler?lycee=lycee-general-et-technologique-carnot-dijon");
+  await page.getByRole("radio", { name: /Cours/ }).click();
+  await page.getByLabel("Titre court").fill(`M. Dupont ne fait jamais cours ${Date.now().toString(36)}`);
+  await page.getByLabel("Ce qui se passe").fill("M. Dupont est absent tout le temps et ne prévient jamais personne.");
+  await page.getByRole("button", { name: "Continuer" }).click();
+  const different = page.getByRole("button", { name: "Mon problème est différent" });
+  if (await different.isVisible({ timeout: 4000 }).catch(() => false)) await different.click();
+  await expect(page.getByRole("heading", { name: /vérifié avant publication|ne peut pas être publié/ })).toBeVisible({ timeout: 20_000 });
+});
+
+test("dépôt : validation des champs", async ({ page }) => {
+  await page.goto("/signaler?lycee=lycee-general-et-technologique-carnot-dijon");
+  await page.getByRole("radio", { name: /Locaux/ }).click();
+  await page.getByLabel("Titre court").fill("froid");
+  await page.getByLabel("Ce qui se passe").fill("trop court");
+  await page.getByRole("button", { name: "Continuer" }).click();
+  await expect(page.getByText("Titre : 8 caractères minimum.")).toBeVisible();
+  await expect(page.getByText("Description : 20 caractères minimum.")).toBeVisible();
+});
+
+test("carte : filtres et zoom sur une région", async ({ page }) => {
+  await page.goto("/#carte");
+  await expect(page.locator(".maplibregl-canvas")).toBeVisible({ timeout: 20_000 });
+  const bubble = page.getByRole("button", { name: /^Île-de-France : \d+/ });
+  await expect(bubble).toBeVisible();
+  await page.getByRole("button", { name: /Sécurité/ }).first().click();
+  await expect(page.getByRole("button", { name: /Sécurité/ }).first()).toHaveAttribute("aria-pressed", "true");
+  await page.getByRole("radio", { name: "30 jours" }).click();
+  await page.getByRole("button", { name: /^Île-de-France : \d+/ }).click({ force: true });
+  await expect(page.getByRole("button", { name: "France entière" })).toBeVisible();
+});
+
+test("pages publiques sans débordement horizontal", async ({ page }) => {
+  for (const url of ["/", "/signaler", "/comment-ca-marche", "/regles", "/aide", "/confidentialite", "/contact", "/lycee/lycee-general-et-technologique-carnot-dijon"]) {
+    await page.goto(url);
+    const overflow = await page.evaluate(() => document.documentElement.scrollWidth - window.innerWidth);
+    expect(overflow, url).toBeLessThanOrEqual(1);
+  }
+});
+
+test("admin inaccessible sans session", async ({ page }) => {
+  await page.goto("/admin/moderation");
+  await expect(page).toHaveURL(/\/admin\/connexion/);
+});

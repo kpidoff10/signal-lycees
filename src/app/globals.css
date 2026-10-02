@@ -1,0 +1,270 @@
+@import "tailwindcss";
+@import "../styles/fonts.css";
+@import "../styles/tokens.css";
+@import "../styles/components.css";
+
+/* Les tokens du design system deviennent des utilitaires Tailwind (bg-paper, text-ink-muted…). */
+@theme inline {
+  --color-paper: var(--paper);
+  --color-surface: var(--surface);
+  --color-surface-sunken: var(--surface-sunken);
+  --color-land: var(--land);
+  --color-border: var(--border);
+  --color-border-strong: var(--border-strong);
+  --color-ink: var(--ink);
+  --color-ink-muted: var(--ink-muted);
+  --color-signal: var(--signal);
+  --color-on-signal: var(--on-signal);
+  --color-signal-soft: var(--signal-soft);
+  --color-signal-ink: var(--signal-ink);
+  --color-resolved: var(--resolved);
+  --color-resolved-soft: var(--resolved-soft);
+  --color-focus: var(--focus);
+  --font-display: var(--font-display);
+  --font-sans: var(--font-sans);
+  --radius-sm: var(--radius-sm);
+  --radius-md: var(--radius-md);
+  --radius-lg: var(--radius-lg);
+  --radius-xl: var(--radius-xl);
+  --shadow-float: var(--shadow-float);
+  --shadow-marker: var(--shadow-marker);
+  --shadow-sheet: var(--shadow-sheet);
+}
+
+html {
+  background: var(--paper);
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+:focus-visible {
+  outline: 2px solid var(--focus);
+  outline-offset: 2px;
+}
+
+.font-display {
+  font-family: var(--font-display);
+}
+
+.num {
+  font-variant-numeric: tabular-nums;
+}
+
+/* Page : gouttière mobile 16 px, desktop 48 px. */
+.container-page {
+  width: 100%;
+  max-width: 1264px;
+  margin-inline: auto;
+  padding-inline: var(--space-4);
+}
+@media (min-width: 768px) {
+  .container-page {
+    padding-inline: var(--space-7);
+  }
+}
+
+.eyebrow {
+  font-size: 13px;
+  line-height: 18px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--signal-ink);
+}
+
+.display-l {
+  font-family: var(--font-display);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  font-size: 34px;
+  line-height: 38px;
+  text-wrap: balance;
+}
+@media (min-width: 768px) {
+  .display-l {
+    font-size: 64px;
+    line-height: 66px;
+    letter-spacing: -0.03em;
+  }
+}
+
+.display-m {
+  font-family: var(--font-display);
+  font-weight: 700;
+  letter-spacing: -0.015em;
+  font-size: 32px;
+  line-height: 36px;
+  text-wrap: balance;
+}
+@media (min-width: 768px) {
+  .display-m {
+    font-size: 48px;
+    line-height: 52px;
+    letter-spacing: -0.02em;
+  }
+}
+
+.link {
+  color: var(--signal-ink);
+  font-weight: 600;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+.link:hover {
+  color: var(--signal);
+}
+
+/* Pastille de catégorie (emoji + libellé). */
+.cat-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 2px 8px;
+  border-radius: var(--radius-pill);
+  background: var(--surface-sunken);
+  font-size: 13px;
+  line-height: 18px;
+  font-weight: 600;
+  white-space: nowrap;
+}
+.resolved-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 2px 8px;
+  border-radius: var(--radius-pill);
+  background: var(--resolved-soft);
+  color: var(--resolved);
+  font-size: 13px;
+  line-height: 18px;
+  font-weight: 700;
+}
+
+/* Bouton « Je confirme » dans son état confirmé. */
+.sl-btn-confirmed {
+  background: var(--signal-soft);
+  color: var(--signal-ink);
+  border-color: var(--signal);
+}
+.sl-btn-confirmed:hover {
+  background: var(--signal-soft);
+}
+
+/* Champ de formulaire. */
+.field {
+  width: 100%;
+  border-radius: var(--radius-md);
+  background: var(--surface);
+  border: 1.5px solid var(--border-strong);
+  padding: 12px var(--space-4);
+  font-size: 16px;
+  line-height: 24px;
+  color: var(--ink);
+}
+.field:focus {
+  border-color: var(--ink);
+  outline: 2px solid var(--focus);
+  outline-offset: 2px;
+}
+.field::placeholder {
+  color: var(--ink-muted);
+}
+.field[aria-invalid="true"] {
+  border-color: var(--signal);
+}
+
+/* Carte MapLibre : les marqueurs HTML sont positionnés par MapLibre. */
+.sl-map .maplibregl-canvas:focus-visible {
+  outline: 2px solid var(--focus);
+  outline-offset: -2px;
+}
+.sl-map .maplibregl-ctrl-attrib {
+  font-size: 11px;
+  background: color-mix(in srgb, var(--surface) 85%, transparent);
+  color: var(--ink-muted);
+}
+.sl-map .maplibregl-ctrl-attrib a {
+  color: var(--ink-muted);
+}
+.sl-cluster-label {
+  position: absolute;
+  top: calc(100% - 4px);
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 12px;
+  line-height: 16px;
+  font-weight: 600;
+  color: var(--ink-muted);
+  white-space: nowrap;
+  pointer-events: none;
+  text-shadow:
+    0 0 2px var(--land),
+    0 0 4px var(--land),
+    0 0 6px var(--land);
+}
+.sl-map-wheel-hint {
+  position: absolute;
+  inset: 0;
+  z-index: 8;
+  display: grid;
+  place-items: center;
+  background: color-mix(in srgb, var(--ink) 45%, transparent);
+  color: #fff;
+  font-weight: 600;
+  font-size: 16px;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.2s;
+}
+.sl-map-wheel-hint.is-on {
+  opacity: 1;
+}
+
+/* Rendu riche du texte utilisateur : retours à la ligne conservés, jamais de HTML. */
+.user-text {
+  white-space: pre-line;
+  overflow-wrap: anywhere;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation: none !important;
+    transition: none !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Champ de recherche : une seule croix (la nôtre) et un seul indicateur de focus (le cadre). */
+.sl-search input[type="search"]::-webkit-search-cancel-button,
+.sl-search input[type="search"]::-webkit-search-decoration {
+  -webkit-appearance: none;
+  appearance: none;
+}
+.sl-search input:focus,
+.sl-search input:focus-visible {
+  outline: none;
+}
+.sl-search .sl-search-box:focus-within {
+  border-color: var(--ink);
+  outline: none;
+  box-shadow: 0 0 0 3px var(--signal-soft);
+}
+.field:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px var(--signal-soft);
+}
+
+/* Titres qui reçoivent le focus par programme (lecteurs d'écran) : pas de contour, ils ne sont pas cliquables. */
+[tabindex="-1"]:focus,
+[tabindex="-1"]:focus-visible {
+  outline: none;
+}

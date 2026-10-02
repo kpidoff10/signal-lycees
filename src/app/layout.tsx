@@ -1,0 +1,48 @@
+import type { Metadata, Viewport } from "next";
+import Script from "next/script";
+import type { ReactNode } from "react";
+import { Providers } from "@/components/layout/Providers";
+import { publicEnv } from "@/lib/env";
+import "./globals.css";
+
+export const metadata: Metadata = {
+  metadataBase: new URL(publicEnv.siteUrl),
+  title: { default: "Signal Lycées — Ce qui se passe dans ton lycée mérite d’être entendu", template: "%s | Signal Lycées" },
+  description:
+    "Signale un problème dans ton lycée, découvre si d’autres élèves le rencontrent et fais remonter les situations qui comptent. Gratuit, anonyme, sans classement.",
+  applicationName: "Signal Lycées",
+  openGraph: { type: "website", locale: "fr_FR", siteName: "Signal Lycées" },
+  formatDetection: { telephone: false },
+  icons: {
+    icon: [
+      { url: "/icon.svg", type: "image/svg+xml" },
+      { url: "/icons/favicon-48.png", sizes: "48x48", type: "image/png" },
+    ],
+    apple: [{ url: "/apple-icon.png", sizes: "180x180", type: "image/png" }],
+  },
+};
+
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  themeColor: [
+    { media: "(prefers-color-scheme: light)", color: "#f5f3ec" },
+    { media: "(prefers-color-scheme: dark)", color: "#121413" },
+  ],
+};
+
+export default function RootLayout({ children }: { children: ReactNode }) {
+  return (
+    <html lang="fr">
+      <body className="sl flex min-h-dvh flex-col">
+        <a href="#contenu" className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[100] focus:rounded-md focus:bg-surface focus:p-3">
+          Aller au contenu
+        </a>
+        <Providers>{children}</Providers>
+        {publicEnv.plausibleDomain && (
+          <Script defer data-domain={publicEnv.plausibleDomain} src="https://plausible.io/js/script.js" strategy="afterInteractive" />
+        )}
+      </body>
+    </html>
+  );
+}

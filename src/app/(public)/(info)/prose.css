@@ -1,0 +1,377 @@
+/* Pages d'information : colonne de lecture confortable. Tout trait utilise var(--border). */
+.sl-info {
+  width: 100%;
+  max-width: 720px;
+  margin-inline: auto;
+  padding-block: var(--space-6) var(--space-7);
+}
+@media (min-width: 768px) {
+  .sl-info {
+    padding-block: var(--space-7) var(--space-8);
+  }
+}
+
+.sl-info-head {
+  display: grid;
+  gap: var(--space-3);
+  margin-bottom: var(--space-6);
+  padding-bottom: var(--space-5);
+  border-bottom: 1px solid var(--border);
+}
+.sl-info-title {
+  margin: 0;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 34px;
+  line-height: 38px;
+  letter-spacing: -0.02em;
+  text-wrap: balance;
+}
+@media (min-width: 768px) {
+  .sl-info-title {
+    font-size: 48px;
+    line-height: 52px;
+  }
+}
+.sl-info-lead {
+  margin: 0;
+  font-size: 19px;
+  line-height: 29px;
+  color: var(--ink-muted);
+}
+.sl-info-updated {
+  margin: 0;
+  font-size: 14px;
+  line-height: 20px;
+  color: var(--ink-muted);
+}
+
+.sl-prose {
+  font-size: 17px;
+  line-height: 28px;
+  overflow-wrap: break-word;
+}
+.sl-prose > * + * {
+  margin-top: var(--space-4);
+}
+.sl-prose h2 {
+  margin-top: var(--space-7);
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 26px;
+  line-height: 31px;
+  letter-spacing: -0.01em;
+  text-wrap: balance;
+  scroll-margin-top: 96px;
+}
+.sl-prose h3 {
+  margin-top: var(--space-6);
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 26px;
+}
+.sl-prose h2 + *,
+.sl-prose h3 + * {
+  margin-top: var(--space-3);
+}
+.sl-prose ul,
+.sl-prose ol {
+  padding-left: 1.4em;
+}
+.sl-prose ul {
+  list-style: disc;
+}
+.sl-prose ol {
+  list-style: decimal;
+}
+.sl-prose li + li {
+  margin-top: var(--space-2);
+}
+.sl-prose li::marker {
+  color: var(--signal-ink);
+}
+.sl-prose a:not(.sl-btn):not(.sl-help-call) {
+  color: var(--signal-ink);
+  font-weight: 600;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+.sl-prose a:not(.sl-btn):not(.sl-help-call):hover {
+  color: var(--signal);
+}
+.sl-prose strong {
+  font-weight: 700;
+}
+.sl-prose hr {
+  border: 0;
+  border-top: 1px solid var(--border);
+  margin-block: var(--space-6);
+}
+.sl-prose dl {
+  display: grid;
+  gap: var(--space-3);
+}
+.sl-prose dt {
+  font-weight: 700;
+}
+.sl-prose dd {
+  margin: 2px 0 0;
+  color: var(--ink);
+}
+
+/* Encadré (résumé, avertissement). */
+.sl-callout {
+  padding: var(--space-4) var(--space-5);
+  border-radius: var(--radius-lg);
+  background: var(--surface);
+  border: 1px solid var(--border);
+}
+.sl-callout > * + * {
+  margin-top: var(--space-3);
+}
+.sl-callout-title {
+  font-family: var(--font-display);
+  font-size: 20px;
+  line-height: 26px;
+  font-weight: 700;
+}
+.sl-callout.is-signal {
+  background: var(--signal-soft);
+  border-color: var(--signal-soft);
+}
+.sl-callout.is-resolved {
+  background: var(--resolved-soft);
+  border-color: var(--resolved-soft);
+}
+
+/* Paires d'exemples autorisé / refusé. */
+.sl-examples {
+  display: grid;
+  gap: var(--space-3);
+}
+.sl-example {
+  padding: var(--space-4);
+  border-radius: var(--radius-md);
+  background: var(--surface);
+  border: 1px solid var(--border);
+}
+.sl-example-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-bottom: var(--space-2);
+  padding: 2px 10px;
+  border-radius: var(--radius-pill);
+  font-size: 13px;
+  line-height: 18px;
+  font-weight: 700;
+}
+.sl-example.is-ok .sl-example-tag {
+  background: var(--resolved-soft);
+  color: var(--resolved);
+}
+.sl-example.is-ko .sl-example-tag {
+  background: var(--signal-soft);
+  color: var(--signal-ink);
+}
+.sl-example-text {
+  margin: 0;
+  font-size: 17px;
+  line-height: 26px;
+  font-weight: 600;
+}
+.sl-example-note {
+  margin: var(--space-2) 0 0;
+  font-size: 15px;
+  line-height: 22px;
+  color: var(--ink-muted);
+}
+
+/* Étapes numérotées. */
+.sl-steps {
+  list-style: none !important;
+  padding: 0 !important;
+  display: grid;
+  gap: var(--space-3);
+  counter-reset: sl-step;
+}
+.sl-steps > li {
+  position: relative;
+  margin: 0 !important;
+  padding: var(--space-4) var(--space-4) var(--space-4) 64px;
+  border-radius: var(--radius-md);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  counter-increment: sl-step;
+}
+.sl-steps > li::before {
+  content: counter(sl-step);
+  position: absolute;
+  left: var(--space-4);
+  top: var(--space-4);
+  width: 32px;
+  height: 32px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: var(--signal-soft);
+  color: var(--signal-ink);
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 16px;
+}
+.sl-steps h3 {
+  margin: 0;
+  font-size: 18px;
+  line-height: 24px;
+}
+.sl-steps p {
+  margin: var(--space-1) 0 0;
+}
+
+/* Tableaux : défilement horizontal confiné sur mobile. */
+.sl-table-wrap {
+  overflow-x: auto;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  background: var(--surface);
+}
+.sl-table {
+  width: 100%;
+  min-width: 640px;
+  border-collapse: collapse;
+  font-size: 15px;
+  line-height: 22px;
+}
+.sl-table caption {
+  padding: var(--space-3) var(--space-4);
+  text-align: left;
+  font-weight: 700;
+}
+.sl-table th,
+.sl-table td {
+  padding: var(--space-3) var(--space-4);
+  text-align: left;
+  vertical-align: top;
+  border-top: 1px solid var(--border);
+}
+.sl-table thead th {
+  background: var(--surface-sunken);
+  font-size: 13px;
+  line-height: 18px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--ink-muted);
+}
+.sl-table tbody th {
+  font-weight: 700;
+}
+
+/* Marqueur des informations restant à compléter : volontairement très visible. */
+.sl-todo {
+  display: inline;
+  padding: 1px 6px;
+  border-radius: var(--radius-sm);
+  background: #fff3a3;
+  color: #3d3200;
+  font-weight: 700;
+  outline: 2px dashed #b38f00;
+  outline-offset: 1px;
+}
+
+/* Numéros d'aide. */
+.sl-help {
+  list-style: none !important;
+  padding: 0 !important;
+  margin: 0;
+  display: grid;
+  gap: var(--space-3);
+}
+.sl-help > li {
+  margin: 0 !important;
+}
+.sl-help-card {
+  display: grid;
+  gap: var(--space-2);
+  padding: var(--space-4);
+  border-radius: var(--radius-lg);
+  background: var(--surface);
+  border: 1px solid var(--border);
+}
+.sl-help-card.is-urgent {
+  background: var(--signal-soft);
+  border-color: var(--signal-soft);
+}
+.sl-help-call {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-3);
+  min-height: 56px;
+  padding: var(--space-2) var(--space-4);
+  border-radius: var(--radius-md);
+  background: var(--signal);
+  color: var(--on-signal);
+  text-decoration: none;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 28px;
+  line-height: 32px;
+  font-variant-numeric: tabular-nums;
+  justify-self: start;
+}
+.sl-help-call:hover {
+  background: var(--signal-ink);
+}
+.sl-help-call svg {
+  width: 24px;
+  height: 24px;
+  flex: none;
+}
+.sl-help-calls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+}
+.sl-help-name {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: 20px;
+  line-height: 26px;
+  font-weight: 700;
+}
+.sl-help-desc {
+  margin: 0;
+  font-size: 16px;
+  line-height: 24px;
+}
+.sl-help-when {
+  margin: 0;
+  font-size: 15px;
+  line-height: 22px;
+  font-weight: 600;
+  color: var(--ink-muted);
+}
+.sl-help-card.is-urgent .sl-help-when {
+  color: var(--signal-ink);
+}
+.sl-help-extra {
+  margin: 0;
+  font-size: 15px;
+  line-height: 22px;
+}
+.sl-help-extra a {
+  color: var(--signal-ink);
+  font-weight: 600;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+.sl-help.is-compact .sl-help-call {
+  font-size: 22px;
+  line-height: 26px;
+  min-height: 48px;
+}
+.sl-help.is-compact .sl-help-name {
+  font-size: 17px;
+  line-height: 22px;
+}

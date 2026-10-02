@@ -1,0 +1,323 @@
+// Signal Lycées — modèle de données.
+// Règle de fond : aucune donnée nominative sur les participants. Une identité
+// anonyme n'est qu'un identifiant aléatoire porté par un cookie signé.
+
+generator client {
+  provider = "prisma-client"
+  output   = "../src/generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+enum IssueCategory {
+  BUILDING // Locaux (inclut l'équipement)
+  CATERING // Restauration
+  CLASSES // Cours
+  ORGANIZATION // Organisation
+  SECURITY // Sécurité
+  ACCESSIBILITY // Accessibilité
+  OTHER // Autres
+}
+
+enum IssueStatus {
+  ACTIVE
+  POSSIBLY_RESOLVED
+  RESOLVED
+}
+
+enum ModerationStatus {
+  PENDING
+  AUTO_APPROVED
+  MANUAL_REVIEW
+  REJECTED
+  PUBLISHED
+}
+
+enum Severity {
+  LOW
+  MEDIUM
+  HIGH
+}
+
+// Priorité dans la file de modération : URGENT = détresse, menace, contenu sexuel.
+enum ReviewPriority {
+  NORMAL
+  ELEVATED
+  URGENT
+}
+
+enum VoteValue {
+  UP // « Je rencontre aussi ce problème »
+  DOWN // « Ce signalement n'est pas sérieux » (jamais affiché publiquement)
+}
+
+enum ContentReportReason {
+  PERSON_TARGETED
+  PERSONAL_DATA
+  INSULT_HARASSMENT
+  FALSE_OR_DEFAMATORY
+  OTHER
+}
+
+enum ContentReportStatus {
+  OPEN
+  RESOLVED
+  DISMISSED
+}
+
+enum IssueEventType {
+  CREATED
+  PUBLISHED
+  STATUS_CHANGED
+  CONFIRMATION_MILESTONE
+  STILL_PRESENT
+}
+
+enum AdminRole {
+  ADMIN
+  MODERATOR
+}
+
+model School {
+  id         String   @id @default(cuid())
+  uai        String   @unique // identifiant officiel de l'établissement
+  slug       String   @unique
+  name       String
+  type       String // « Lycée général et technologique », « Lycée professionnel »…
+  sector     String? // Public / Privé
+  address    String?
+  postalCode String
+  city       String
+  academy    String?
+  department String?
+  region     String
+  latitude   Float
+  longitude  Float
+  isOpen     Boolean  @default(true)
+  // Colonne de recherche normalisée (sans accents, minuscules) indexée en trigram.
+  searchText String   @default("")
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+
+  issues Issue[]
+
+  @@index([region])
+  @@index([postalCode])
+  @@index([searchText(ops: raw("gin_trgm_ops"))], type: Gin, map: "School_searchText_trgm_idx")
+}
+
+model AnonymousIdentity {
+  id        String   @id @default(cuid())
+  banned    Boolean  @default(false)
+  createdAt DateTime @default(now())
+  lastSeen  DateTime @default(now())
+
+  issues        Issue[]
+  votes         IssueVote[]
+  statusVotes   IssueStatusVote[]
+}
+
+model Issue {
+  id                  String           @id @default(cuid())
+  schoolId            String
+  school              School           @relation(fields: [schoolId], references: [id], onDelete: Cascade)
+  authorId            String?
+  author              AnonymousIdentity? @relation(fields: [authorId], references: [id], onDelete: SetNull)
+  category            IssueCategory
+  // Titre et description affichés publiquement (modifiables par un modérateur).
+  title               String
+  description         String
+  // Texte saisi par l'élève, conservé pour la modération puis purgé.
+  originalTitle       String?
+  originalDescription String?
+  status              IssueStatus      @default(ACTIVE)
+  moderationStatus    ModerationStatus @default(PENDING)
+  reviewPriority      ReviewPriority   @default(NORMAL)
+  severity            Severity?
+  upCount             Int              @default(0)
+  downCount           Int              @default(0)
+  resolvedVoteCount   Int              @default(0)
+  statusChangedAt     DateTime         @default(now())
+  // Problème publié à revoir (👎 nombreux, signalements de contenu) sans être dépublié.
+  flaggedForReview    Boolean          @default(false)
+  // Nombre de 👎 au moment de la dernière revue humaine : seuls les 👎 suivants comptent.
+  downCountAtReview   Int              @default(0)
+  // Hash SHA-256 du jeton de suivi remis à l'auteur.
+  trackingTokenHash   String           @unique
+  publishedAt         DateTime?
+  resolvedAt          DateTime?
+  lastActivityAt      DateTime         @default(now())
+  originalPurgedAt    DateTime?
+  createdAt           DateTime         @default(now())
+  updatedAt           DateTime         @updatedAt
+  // Vecteur d'embedding (pgvector), lu et écrit en SQL brut.
+  embedding           Unsupported("vector(1024)")?
+
+  votes           IssueVote[]
+  statusVotes     IssueStatusVote[]
+  events          IssueEvent[]
+  dailyStats      IssueDailyStat[]
+  analyses        AIAnalysis[]
+  decisions       ModerationDecision[]
+  contentReports  ContentReport[]
+
+  @@index([schoolId, moderationStatus, status])
+  @@index([moderationStatus, reviewPriority, createdAt])
+  @@index([flaggedForReview])
+  @@index([category])
+  @@index([lastActivityAt])
+  @@index([title(ops: raw("gin_trgm_ops"))], type: Gin, map: "Issue_title_trgm_idx")
+}
+
+model IssueVote {
+  id         String            @id @default(cuid())
+  issueId    String
+  issue      Issue             @relation(fields: [issueId], references: [id], onDelete: Cascade)
+  identityId String
+  identity   AnonymousIdentity @relation(fields: [identityId], references: [id], onDelete: Cascade)
+  value      VoteValue
+  createdAt  DateTime          @default(now())
+  updatedAt  DateTime          @updatedAt
+
+  @@unique([issueId, identityId])
+  @@index([issueId, value, updatedAt])
+}
+
+model IssueStatusVote {
+  id         String            @id @default(cuid())
+  issueId    String
+  issue      Issue             @relation(fields: [issueId], references: [id], onDelete: Cascade)
+  identityId String
+  identity   AnonymousIdentity @relation(fields: [identityId], references: [id], onDelete: Cascade)
+  createdAt  DateTime          @default(now())
+
+  @@unique([issueId, identityId])
+  @@index([issueId, createdAt])
+}
+
+model IssueEvent {
+  id        String         @id @default(cuid())
+  issueId   String
+  issue     Issue          @relation(fields: [issueId], references: [id], onDelete: Cascade)
+  type      IssueEventType
+  // Données publiques de l'événement (ex. { "count": 100 } ou { "from": "ACTIVE", "to": "RESOLVED" }).
+  data      Json?
+  createdAt DateTime       @default(now())
+
+  @@index([issueId, createdAt])
+}
+
+// Agrégats quotidiens pour la timeline (cumul en fin de journée).
+model IssueDailyStat {
+  issueId       String
+  issue         Issue    @relation(fields: [issueId], references: [id], onDelete: Cascade)
+  day           DateTime @db.Date
+  upTotal       Int      @default(0)
+  resolvedTotal Int      @default(0)
+
+  @@id([issueId, day])
+}
+
+model AIAnalysis {
+  id            String   @id @default(cuid())
+  issueId       String
+  issue         Issue    @relation(fields: [issueId], references: [id], onDelete: Cascade)
+  provider      String // "jev", "rules", "none"
+  model         String?
+  ok            Boolean
+  error         String?
+  // Probabilités par risque, catégorie suggérée, gravité, règles déclenchées.
+  result        Json?
+  decision      ModerationStatus
+  reason        String
+  latencyMs     Int?
+  createdAt     DateTime @default(now())
+
+  @@index([issueId])
+}
+
+model AdminUser {
+  id           String   @id @default(cuid())
+  username     String   @unique
+  passwordHash String
+  totpSecret   String?
+  // Dernier pas TOTP accepté : un même code ne peut pas être rejoué.
+  totpLastStep Int?
+  role         AdminRole @default(MODERATOR)
+  active       Boolean  @default(true)
+  lastLoginAt  DateTime?
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+
+  decisions ModerationDecision[]
+  logs      AdminLog[]
+}
+
+model ModerationDecision {
+  id             String           @id @default(cuid())
+  issueId        String
+  issue          Issue            @relation(fields: [issueId], references: [id], onDelete: Cascade)
+  adminId        String?
+  admin          AdminUser?       @relation(fields: [adminId], references: [id], onDelete: SetNull)
+  fromStatus     ModerationStatus
+  toStatus       ModerationStatus
+  // Motif communiqué à l'auteur (exigence DSA) et note interne.
+  publicReason   String?
+  internalReason String?
+  editedTitle    String?
+  editedDescription String?
+  createdAt      DateTime         @default(now())
+
+  @@index([issueId, createdAt])
+}
+
+model ContentReport {
+  id          String              @id @default(cuid())
+  issueId     String
+  issue       Issue               @relation(fields: [issueId], references: [id], onDelete: Cascade)
+  reason      ContentReportReason
+  comment     String?
+  status      ContentReportStatus @default(OPEN)
+  // Empreinte anonyme du signaleur (pour dédoublonner), jamais l'IP.
+  reporterKey String
+  createdAt   DateTime            @default(now())
+  handledAt   DateTime?
+
+  @@unique([issueId, reporterKey])
+  @@index([status, createdAt])
+}
+
+model AdminLog {
+  id         String    @id @default(cuid())
+  adminId    String?
+  admin      AdminUser? @relation(fields: [adminId], references: [id], onDelete: SetNull)
+  action     String
+  targetType String
+  targetId   String?
+  before     Json?
+  after      Json?
+  createdAt  DateTime  @default(now())
+
+  @@index([createdAt])
+  @@index([targetType, targetId])
+}
+
+// Demandes de suppression et contacts (RGPD / DSA), sans compte.
+model PrivacyRequest {
+  id        String   @id @default(cuid())
+  kind      String // "DELETION", "CONTACT"
+  issueId   String?
+  message   String
+  contact   String? // facultatif, fourni volontairement
+  handled   Boolean  @default(false)
+  createdAt DateTime @default(now())
+}
+
+// Réglages modifiables depuis l'admin (ex. interrupteur d'urgence).
+model AppSetting {
+  key       String   @id
+  value     Json
+  updatedAt DateTime @updatedAt
+}

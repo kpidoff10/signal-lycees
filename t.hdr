@@ -1,0 +1,17 @@
+HTTP/1.1 200 OK
+x-content-type-options: nosniff
+x-frame-options: DENY
+referrer-policy: strict-origin-when-cross-origin
+permissions-policy: camera=(), microphone=(), geolocation=(self)
+strict-transport-security: max-age=63072000; includeSubDomains; preload
+Vary: rsc, next-router-state-tree, next-router-prefetch, next-router-segment-prefetch, Accept-Encoding
+Cache-Control: no-cache, must-revalidate
+Set-Cookie: sl_admin=eyJzdWIiOiJjbXVxcHY3Z2kwMDAwMHVxdTRqc2IzMWI0IiwiZXhwIjoxNzkwOTU5NDUwLCJwd3YiOiI0YjJjY2U3NmYzNDExMDE1In0.GWp6iaHjQ5fOWfTRlacQj8_YUs8JWL1fSNLtIC_ti7k; Path=/admin; Expires=Fri, 02 Oct 2026 16:44:10 GMT; Max-Age=28800; HttpOnly; SameSite=strict
+x-action-revalidated: 1
+x-action-redirect: /admin;push
+content-type: text/x-component
+date: Fri, 02 Oct 2026 08:44:10 GMT
+Connection: keep-alive
+Keep-Alive: timeout=5
+Transfer-Encoding: chunked
+
