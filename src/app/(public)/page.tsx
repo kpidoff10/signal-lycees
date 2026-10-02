@@ -1,22 +1,21 @@
-import Link from "next/link";
-import { CategoryBadge, ResolvedBadge } from "@/components/ui/CategoryBadge";
 import { ButtonLink } from "@/components/ui/Button";
 import { StatCounters } from "@/components/ui/Stats";
 import { TrustLine, TrustNote } from "@/components/ui/TrustNote";
 import { HomeSearch } from "@/components/school/HomeSearch";
 import { LiveActivity } from "@/components/map/LiveActivity";
 import { MapSection } from "@/components/map/MapSection";
-import { countLabel, formatNumber, plural, timeAgo } from "@/lib/format";
-import { heroHighlights, nationalStats, todayActivity } from "@/server/stats";
+import { plural } from "@/lib/format";
+import { latestIssues, nationalStats, todayActivity } from "@/server/stats";
+import { LatestIssues } from "@/components/issue/LatestIssues";
 
 export const revalidate = 120;
 
 export default async function HomePage() {
-  const [stats, activity, highlights] = await Promise.all([nationalStats(), todayActivity(), heroHighlights()]);
+  const [stats, activity, latest] = await Promise.all([nationalStats(), todayActivity(), latestIssues(4)]);
 
   return (
     <>
-      <section className="container-page grid items-center gap-10 pb-16 pt-10 md:pt-20 lg:grid-cols-[1.25fr_1fr]">
+      <section className="container-page grid grid-cols-[minmax(0,1fr)] items-center gap-10 pb-16 pt-10 md:pt-20 lg:grid-cols-[1.25fr_1fr]">
         <div>
           <p className="eyebrow">Par et pour les lycéens</p>
           <h1 className="display-l mt-4">Ce qui se passe dans ton lycée mérite d’être entendu.</h1>
@@ -37,48 +36,8 @@ export default async function HomePage() {
           </div>
         </div>
 
-        <div className="relative hidden min-h-[360px] lg:block" aria-hidden={!highlights.top && !highlights.resolved}>
-          {highlights.top ? (
-            <Link
-              href={`/lycee/${highlights.top.school.slug}`}
-              className="absolute left-0 top-0 w-[380px] rounded-[20px] border border-border bg-surface p-6 shadow-float transition-transform hover:-translate-y-0.5"
-            >
-              <span className="flex justify-between text-[13px] text-ink-muted">
-                <span className="font-semibold text-ink">
-                  {highlights.top.school.name} · {highlights.top.school.city}
-                </span>
-                <span>{timeAgo(highlights.top.createdAt)}</span>
-              </span>
-              <span className="mt-3 block">
-                <CategoryBadge id={highlights.top.category} />
-              </span>
-              <span className="mt-3 block font-display text-[22px] font-bold leading-[28px]">{highlights.top.title}</span>
-              <span className="mt-4 block text-sm text-ink-muted">
-                <b className="num text-[17px] text-signal-ink">{formatNumber(highlights.top.upCount)}</b>{" "}
-                {plural(highlights.top.upCount, "confirmation")}
-              </span>
-            </Link>
-          ) : (
-            <div className="absolute left-0 top-0 w-[380px] rounded-[20px] border border-border bg-surface p-6 shadow-float">
-              <span className="cat-badge">
-                <span aria-hidden="true">🏫</span>Locaux
-              </span>
-              <p className="mt-3 font-display text-[22px] font-bold leading-[28px]">Plusieurs salles sans chauffage</p>
-              <p className="mt-2 text-sm text-ink-muted">Exemple de signalement : une situation, jamais une personne.</p>
-            </div>
-          )}
-          {highlights.resolved && (
-            <Link
-              href={`/lycee/${highlights.resolved.school.slug}`}
-              className="absolute bottom-0 right-0 w-[320px] rounded-[20px] border border-border bg-surface p-5 shadow-float transition-transform hover:-translate-y-0.5"
-            >
-              <ResolvedBadge />
-              <span className="mt-2 block font-semibold">{highlights.resolved.title}</span>
-              <span className="mt-1 block text-[13px] text-ink-muted">
-                {highlights.resolved.school.name} · {highlights.resolved.school.city} · {countLabel(highlights.resolved.upCount, "confirmation")}
-              </span>
-            </Link>
-          )}
+        <div className="min-w-0">
+          <LatestIssues items={latest} />
         </div>
       </section>
 

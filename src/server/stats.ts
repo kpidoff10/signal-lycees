@@ -74,3 +74,32 @@ export async function heroHighlights(): Promise<{ top: HighlightIssue | null; re
   ]);
   return { top, resolved };
 }
+
+export interface LatestIssue {
+  id: string;
+  title: string;
+  category: CategoryId;
+  city: string;
+  publishedAt: Date;
+  upCount: number;
+  press: boolean;
+}
+
+/** Derniers signalements publiés, pour l'accueil : la ville seulement, jamais le lycée. */
+export async function latestIssues(limit = 4): Promise<LatestIssue[]> {
+  const rows = await prisma.issue.findMany({
+    where: { ...PUBLIC_ISSUE_WHERE, flaggedForReview: false, status: { not: "RESOLVED" } },
+    orderBy: [{ publishedAt: "desc" }, { createdAt: "desc" }],
+    take: limit,
+    select: { id: true, title: true, category: true, publishedAt: true, createdAt: true, upCount: true, origin: true, school: { select: { city: true } } },
+  });
+  return rows.map((r) => ({
+    id: r.id,
+    title: r.title,
+    category: r.category,
+    city: r.school.city,
+    publishedAt: r.publishedAt ?? r.createdAt,
+    upCount: r.upCount,
+    press: r.origin === "PRESS",
+  }));
+}
