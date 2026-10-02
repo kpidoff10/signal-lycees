@@ -21,7 +21,10 @@ async function openSchool(page: Page, query: string) {
 test("consultation : homepage → recherche → fiche lycée → confirmer un problème", async ({ page }) => {
   await page.goto("/");
   await expect(page.getByRole("heading", { level: 1 })).toContainText("mérite d’être entendu");
+  // La carte se charge à l'approche du défilement.
+  await page.locator("#carte").scrollIntoViewIfNeeded();
   await expect(page.locator(".maplibregl-canvas")).toBeVisible({ timeout: 20_000 });
+  await page.evaluate(() => scrollTo(0, 0));
 
   await openSchool(page, "carnot dijon");
   await expect(page.getByRole("heading", { level: 1 })).toContainText("Carnot");

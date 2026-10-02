@@ -51,7 +51,7 @@ export function LatestCarousel({ items }: { items: LatestIssue[] }) {
               aria-selected={k === active}
               aria-label={`Signalement ${k + 1} sur ${items.length}`}
               onClick={() => go(k)}
-              className="grid h-6 place-items-center px-0.5"
+              className="grid h-8 min-w-8 place-items-center px-1"
             >
               <span
                 className={`block h-2 rounded-full transition-all duration-200 ${k === active ? "w-6 bg-signal" : "w-2 bg-border-strong"}`}
