@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import { ButtonLink } from "@/components/ui/Button";
 import { StatCounters } from "@/components/ui/Stats";
 import { TrustLine, TrustNote } from "@/components/ui/TrustNote";
@@ -7,14 +8,43 @@ import { MapSection } from "@/components/map/MapSection";
 import { plural } from "@/lib/format";
 import { latestIssues, nationalStats, todayActivity } from "@/server/stats";
 import { LatestIssues } from "@/components/issue/LatestIssues";
+import { publicEnv } from "@/lib/env";
 
 export const revalidate = 120;
+
+export const metadata: Metadata = { alternates: { canonical: "/" } };
+
+// Données structurées : nom du site (affiché par Google au-dessus du résultat) et organisation.
+const siteUrl = publicEnv.siteUrl.replace(/\/$/, "");
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebSite",
+      "@id": `${siteUrl}/#site`,
+      name: "Signal Lycées",
+      alternateName: ["Signal Lycees", "signal-lycees.fr"],
+      url: `${siteUrl}/`,
+      inLanguage: "fr-FR",
+      publisher: { "@id": `${siteUrl}/#org` },
+    },
+    {
+      "@type": "Organization",
+      "@id": `${siteUrl}/#org`,
+      name: "Signal Lycées",
+      url: `${siteUrl}/`,
+      logo: `${siteUrl}/icons/icon-512.png`,
+      description: "Site gratuit et anonyme où les lycéens signalent les problèmes de leur établissement.",
+    },
+  ],
+};
 
 export default async function HomePage() {
   const [stats, activity, latest] = await Promise.all([nationalStats(), todayActivity(), latestIssues(4)]);
 
   return (
     <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
       <section className="hero-screen relative">
         <div className="container-page grid grid-cols-[minmax(0,1fr)] items-center gap-10 py-10 lg:grid-cols-[1.25fr_1fr]">
         <div>
