@@ -2,8 +2,9 @@ import Link from "next/link";
 import { CategoryBadge } from "@/components/ui/CategoryBadge";
 import { formatNumber, plural, timeAgo } from "@/lib/format";
 import type { LatestIssue } from "@/server/stats";
+import { LatestCarousel } from "./LatestCarousel";
 
-function Card({ i, className = "" }: { i: LatestIssue; className?: string }) {
+export function LatestCard({ i, className = "" }: { i: LatestIssue; className?: string }) {
   return (
     <Link
       href={`/probleme/${i.id}`}
@@ -49,21 +50,13 @@ export function LatestIssues({ items, variant }: { items: LatestIssue[]; variant
       <ul className="grid gap-3">
         {items.map((i, k) => (
           <li key={i.id} className={`${k % 2 ? "pl-10" : "pr-10"}${k === 3 ? " latest-4th" : ""}`}>
-            <Card i={i} />
+            <LatestCard i={i} />
           </li>
         ))}
       </ul>
       )}
-      {/* Mobile : défilement horizontal. */}
-      {variant === "scroll" && (
-      <ul className="-mx-4 flex snap-x snap-mandatory gap-3 overflow-x-auto px-4 pb-2 [scrollbar-width:none] md:-mx-12 md:px-12">
-        {items.map((i) => (
-          <li key={i.id} className="w-[78%] max-w-[360px] shrink-0 snap-start">
-            <Card i={i} className="h-full !shadow-none" />
-          </li>
-        ))}
-      </ul>
-      )}
+      {/* Mobile : carrousel avec pastilles. */}
+      {variant === "scroll" && <LatestCarousel items={items} />}
     </section>
   );
 }
