@@ -29,7 +29,7 @@ export function Header() {
         <Logo />
         <nav aria-label="Navigation principale" className="hidden gap-7 whitespace-nowrap text-[15px] font-semibold lg:flex">
           {NAV.map((n) => (
-            <Link key={n.href} href={n.href} className="py-3 hover:text-signal-ink">
+            <Link key={n.href} href={n.href} className="inline-flex items-center py-3 hover:text-signal-ink">
               {n.label}
             </Link>
           ))}
