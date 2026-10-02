@@ -4,6 +4,7 @@ import { env } from "@/lib/env";
 import { isModerationFrozen, setModerationFrozen } from "../settings";
 import { adminLog } from "./log";
 import { queueCounts } from "./moderation";
+import { limiterKind } from "../rate-limit";
 
 export async function dashboardCounts() {
   const [queue, flagged, openReports, pendingRequests, frozen] = await Promise.all([
@@ -13,7 +14,7 @@ export async function dashboardCounts() {
     prisma.privacyRequest.count({ where: { handled: false } }),
     isModerationFrozen(),
   ]);
-  return { queue: queue.total, urgent: queue.urgent, flagged, openReports, pendingRequests, frozen, frozenByEnv: env().MODERATION_FREEZE };
+  return { limiter: limiterKind(), queue: queue.total, urgent: queue.urgent, flagged, openReports, pendingRequests, frozen, frozenByEnv: env().MODERATION_FREEZE };
 }
 
 export async function setFreeze(adminId: string, frozen: boolean) {

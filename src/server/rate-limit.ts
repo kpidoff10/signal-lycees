@@ -93,9 +93,20 @@ class UpstashLimiter implements Limiter {
 
 let instance: Limiter | undefined;
 
+function redisConfig() {
+  const e = env();
+  return { url: e.UPSTASH_REDIS_REST_URL ?? e.KV_REST_API_URL, token: e.UPSTASH_REDIS_REST_TOKEN ?? e.KV_REST_API_TOKEN };
+}
+
+/** Pour l'admin : la limitation est-elle partagée entre serveurs (Upstash) ? */
+export function limiterKind(): "upstash" | "memory" {
+  const { url, token } = redisConfig();
+  return url && token ? "upstash" : "memory";
+}
+
 function limiter(): Limiter {
   if (!instance) {
-    const { UPSTASH_REDIS_REST_URL: url, UPSTASH_REDIS_REST_TOKEN: token } = env();
+    const { url, token } = redisConfig();
     instance = url && token ? new UpstashLimiter(new Redis({ url, token })) : new MemoryLimiter();
   }
   return instance;

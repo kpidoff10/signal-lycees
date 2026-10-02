@@ -31,6 +31,9 @@ const serverSchema = z.object({
   TURNSTILE_SECRET_KEY: optional,
   UPSTASH_REDIS_REST_URL: optional,
   UPSTASH_REDIS_REST_TOKEN: optional,
+  // Noms utilisés par l'intégration Upstash de Vercel.
+  KV_REST_API_URL: optional,
+  KV_REST_API_TOKEN: optional,
   MODERATION_FREEZE: bool,
   PHOTOS_ENABLED: bool,
   CRON_SECRET: optional,

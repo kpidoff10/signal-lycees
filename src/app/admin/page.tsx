@@ -34,6 +34,13 @@ export default async function AdminHome() {
         ))}
       </div>
 
+      {c.limiter === "memory" && process.env.NODE_ENV === "production" && (
+        <p className="adm-msg adm-msg-error">
+          Limitation anti-abus non partagée (Upstash non configuré) : les limites de dépôts, votes et connexions sont faciles à
+          contourner.
+        </p>
+      )}
+
       <TrafficPanel t={traffic} />
 
       <section className={`adm-card${c.frozen ? " adm-urgent" : ""}`} aria-labelledby="freeze-h">
@@ -71,6 +78,10 @@ export default async function AdminHome() {
           </ActionForm>
         )}
       </section>
+
+      <p className="m-0 adm-small adm-muted">
+        Limitation anti-abus : {c.limiter === "upstash" ? "partagée (Upstash) ✓" : "en mémoire (développement)"}
+      </p>
 
       <section className="adm-card" aria-labelledby="links-h">
         <h2 id="links-h" className="adm-h2">
