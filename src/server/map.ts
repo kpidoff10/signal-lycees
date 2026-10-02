@@ -42,7 +42,8 @@ export async function mapSchools(f: MapFilters): Promise<MapSchool[]> {
       JOIN "School" s ON s.id = i."schoolId"
      WHERE ${Prisma.join(conditions, " AND ")}
      GROUP BY s.id`;
-  const mobs = await activeMobilizations();
+  // Mobilisations masquées : aucun badge et aucun lycée ajouté pour elles.
+  const mobs = f.mobs === "hide" ? new Map() : await activeMobilizations();
   const schools: MapSchool[] = rows.map((r) => ({
     ...r,
     count: Number(r.count),
@@ -65,7 +66,7 @@ export async function mapSchools(f: MapFilters): Promise<MapSchool[]> {
       });
     }
   }
-  return f.mobOnly ? schools.filter((s) => s.mob) : schools;
+  return f.mobs === "only" ? schools.filter((s) => s.mob) : schools;
 }
 
 export interface MapSchoolDetail {

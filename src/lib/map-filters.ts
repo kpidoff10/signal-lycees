@@ -9,12 +9,14 @@ export const PERIODS = [
 ] as const;
 export type Period = (typeof PERIODS)[number]["value"];
 
+export type MobMode = "show" | "hide" | "only";
+
 export interface MapFilters {
   cats: CategoryId[];
   activeOnly: boolean;
   period: Period;
-  /** N'afficher que les lycées avec une mobilisation en cours. */
-  mobOnly?: boolean;
+  /** Mobilisations : affichées (défaut), masquées, ou seules affichées. */
+  mobs?: MobMode;
 }
 
 export const DEFAULT_FILTERS: MapFilters = { cats: [], activeOnly: true, period: "all" };
@@ -34,7 +36,7 @@ export const mapQuerySchema = z.object({
     ),
   active: z.enum(["0", "1"]).default("1").transform((v) => v === "1"),
   period: z.enum(["today", "7d", "30d", "all"]).default("all"),
-  mob: z.enum(["0", "1"]).default("0").transform((v) => v === "1"),
+  mob: z.enum(["show", "hide", "only"]).default("show"),
 });
 
 export function filtersToQuery(f: MapFilters): string {
@@ -42,7 +44,7 @@ export function filtersToQuery(f: MapFilters): string {
   if (f.cats.length) p.set("cats", f.cats.map((id) => CATEGORIES.find((c) => c.id === id)!.slug).join(","));
   p.set("active", f.activeOnly ? "1" : "0");
   p.set("period", f.period);
-  if (f.mobOnly) p.set("mob", "1");
+  if (f.mobs && f.mobs !== "show") p.set("mob", f.mobs);
   return p.toString();
 }
 

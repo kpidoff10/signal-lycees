@@ -10,7 +10,7 @@ export async function GET(req: NextRequest) {
   const limit = await rateLimit("map", await ipFingerprint());
   if (!limit.ok) return NextResponse.json({ error: "Trop de requêtes" }, { status: 429 });
   const { cats, active, period, mob } = parsed.data;
-  const schools = await mapSchools({ cats, activeOnly: active, period, mobOnly: mob });
+  const schools = await mapSchools({ cats, activeOnly: active, period, mobs: mob });
   return NextResponse.json(
     { schools },
     { headers: { "cache-control": "public, max-age=30, s-maxage=60, stale-while-revalidate=300" } },

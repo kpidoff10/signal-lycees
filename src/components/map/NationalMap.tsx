@@ -5,7 +5,7 @@ import { Map as MLMap, Marker, setWorkerUrl, type GeoJSONSource, type MapLayerMo
 import Supercluster from "supercluster";
 import { useQuery } from "@tanstack/react-query";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
-import { CategoryChips, Chip } from "@/components/ui/Chips";
+import { CategoryChips } from "@/components/ui/Chips";
 import { Button } from "@/components/ui/Button";
 import { Icon } from "@/components/ui/Icon";
 import { Segmented } from "@/components/ui/Segmented";
@@ -13,7 +13,7 @@ import { Switch } from "@/components/ui/Switch";
 import { SchoolSearch, type SearchOption } from "@/components/school/SchoolSearch";
 import { track } from "@/lib/analytics";
 import { formatNumber, plural } from "@/lib/format";
-import { DEFAULT_FILTERS, filtersToQuery, markerLevel, PERIODS, type MapFilters, type Period } from "@/lib/map-filters";
+import { DEFAULT_FILTERS, filtersToQuery, markerLevel, PERIODS, type MapFilters, type MobMode, type Period } from "@/lib/map-filters";
 import {
   cssVar,
   distanceKm,
@@ -292,9 +292,22 @@ export default function NationalMap() {
       setSheetExpanded(false);
       track("map_marker_click", { school: id });
       const map = mapRef.current;
+      const stage = stageRef.current?.parentElement;
+      if (stage) {
+        // Amène la carte à l'écran (sous l'en-tête) si elle n'y est pas entièrement.
+        const r = stage.getBoundingClientRect();
+        const headerH = 72;
+        if (r.top < headerH || r.bottom > window.innerHeight) {
+          window.scrollBy({ top: r.top - headerH, behavior: "smooth" });
+        }
+      }
       if (map && at) {
-        const offset: [number, number] = compact ? [0, -90] : [-170, 0];
-        map.easeTo({ center: at, zoom: Math.max(map.getZoom(), 11), offset, duration: 500 });
+        // Centre le lycée dans la partie visible : au-dessus du panneau (mobile) ou à gauche de la card.
+        const sheetH = Math.min(340, window.innerHeight * 0.7);
+        const stageH = stage?.getBoundingClientRect().height ?? 540;
+        const visibleH = Math.max(160, Math.min(stageH, window.innerHeight - 72 - sheetH));
+        const offset: [number, number] = compact ? [0, -(stageH - visibleH) / 2] : [-180, 0];
+        map.easeTo({ center: at, zoom: Math.max(map.getZoom(), 12), offset, duration: 600 });
       }
     };
   }, [compact]);
@@ -495,12 +508,21 @@ export default function NationalMap() {
         </div>
         <CategoryChips value={filters.cats} onChange={(cats) => setFilters((f) => ({ ...f, cats }))} scroll={compact} />
         <div className="sl-nm-row">
-          <Chip
-            label="Mobilisations en cours"
-            emoji="📣"
-            selected={!!filters.mobOnly}
-            onClick={() => setFilters((f) => ({ ...f, mobOnly: !f.mobOnly }))}
-          />
+          <span className="inline-flex items-center gap-2">
+            <span className="text-sm font-semibold" aria-hidden="true">
+              📣 {compact ? "" : "Mobilisations"}
+            </span>
+            <Segmented<MobMode>
+              label="Mobilisations lycéennes"
+              value={filters.mobs ?? "show"}
+              onChange={(mobs) => setFilters((f) => ({ ...f, mobs }))}
+              options={[
+                { value: "show", label: "Afficher" },
+                { value: "hide", label: "Masquer" },
+                { value: "only", label: "Uniquement" },
+              ]}
+            />
+          </span>
           <Switch
             label={compact ? "Actifs uniquement" : "Problèmes actifs uniquement"}
             checked={filters.activeOnly}
@@ -555,7 +577,7 @@ export default function NationalMap() {
           <div className="sl-nm-empty" role="status">
             {isError
               ? "La carte n’a pas pu se charger. Réessaie dans un instant."
-              : filters.mobOnly
+              : filters.mobs === "only"
                 ? "Aucune mobilisation signalée en ce moment."
                 : filters.cats.length || filters.period !== "all"
                 ? "Aucun signalement ne correspond à ces filtres."

@@ -90,8 +90,11 @@ test("carte : filtres et zoom sur une région", async ({ page }) => {
   await page.getByRole("button", { name: /Sécurité/ }).first().click();
   await expect(page.getByRole("button", { name: /Sécurité/ }).first()).toHaveAttribute("aria-pressed", "true");
   await page.getByRole("radio", { name: "30 jours" }).click();
-  await page.getByRole("button", { name: /Mobilisations en cours/ }).click();
-  await expect(page.getByRole("button", { name: /Mobilisations en cours/ })).toHaveAttribute("aria-pressed", "true");
+  const mobs = page.getByRole("radiogroup", { name: "Mobilisations lycéennes" });
+  await mobs.getByRole("radio", { name: "Masquer" }).click();
+  await expect(page.locator(".sl-mob-badge, .sl-marker-mob")).toHaveCount(0);
+  await mobs.getByRole("radio", { name: "Afficher" }).click();
+  await expect(mobs.getByRole("radio", { name: "Afficher" })).toHaveAttribute("aria-checked", "true");
   // Trois crans de zoom : depuis la vue France (plus éloignée sur mobile), on passe au niveau région.
   for (let i = 0; i < 3; i++) {
     await page.getByRole("button", { name: "Zoomer", exact: true }).click();
