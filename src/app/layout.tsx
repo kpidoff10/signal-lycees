@@ -38,7 +38,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html lang="fr" className={`${fontSans.variable} ${fontDisplay.variable}`}>
       <body className="sl flex min-h-dvh flex-col">
-        <a href="#contenu" className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[100] focus:rounded-md focus:bg-surface focus:p-3">
+        <a href="#contenu" className="py-2 sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[100] focus:rounded-md focus:bg-surface focus:p-3">
           Aller au contenu
         </a>
         <Providers>{children}</Providers>

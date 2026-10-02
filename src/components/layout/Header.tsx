@@ -7,7 +7,7 @@ import { Icon } from "@/components/ui/Icon";
 
 export function Logo() {
   return (
-    <Link href="/" className="inline-flex shrink-0 items-center gap-2.5 whitespace-nowrap font-display text-[21px] font-bold leading-none tracking-[-0.01em]">
+    <Link href="/" className="inline-flex shrink-0 items-center gap-2.5 whitespace-nowrap py-3 font-display text-[21px] font-bold leading-none tracking-[-0.01em]">
       <span aria-hidden="true" className="inline-block h-3.5 w-3.5 rounded-full bg-signal shadow-[0_0_0_4px_var(--signal-soft)]" />
       Signal Lycées
     </Link>
@@ -29,7 +29,7 @@ export function Header() {
         <Logo />
         <nav aria-label="Navigation principale" className="hidden gap-7 whitespace-nowrap text-[15px] font-semibold lg:flex">
           {NAV.map((n) => (
-            <Link key={n.href} href={n.href} className="hover:text-signal-ink">
+            <Link key={n.href} href={n.href} className="py-3 hover:text-signal-ink">
               {n.label}
             </Link>
           ))}
