@@ -2,7 +2,7 @@ import { NextResponse, type NextRequest } from "next/server";
 import { z } from "zod";
 import { rateLimit } from "@/server/rate-limit";
 import { ipFingerprint } from "@/server/request";
-import { nearbySchools } from "@/server/schools";
+import { nearbySchools, withActivity } from "@/server/schools";
 
 const query = z.object({
   lat: z.coerce.number().min(-90).max(90),
@@ -15,6 +15,6 @@ export async function GET(req: NextRequest) {
   if (!parsed.success) return NextResponse.json({ error: "Position invalide" }, { status: 400 });
   const limit = await rateLimit("search", await ipFingerprint());
   if (!limit.ok) return NextResponse.json({ error: "Trop de recherches, patiente un peu." }, { status: 429 });
-  const schools = await nearbySchools(parsed.data.lat, parsed.data.lng);
+  const schools = await withActivity(await nearbySchools(parsed.data.lat, parsed.data.lng));
   return NextResponse.json({ schools }, { headers: { "cache-control": "private, no-store" } });
 }

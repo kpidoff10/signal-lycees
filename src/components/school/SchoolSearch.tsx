@@ -3,10 +3,13 @@
 import { useEffect, useId, useRef, useState } from "react";
 import { Icon } from "@/components/ui/Icon";
 import { track } from "@/lib/analytics";
+import { shortSchoolName } from "@/lib/school-name";
 
 export interface SchoolOption {
   type: "school";
   distanceKm?: number;
+  issues?: number;
+  mob?: boolean;
   id: string;
   slug: string;
   name: string;
@@ -17,6 +20,8 @@ export interface SchoolOption {
 }
 export interface CityOption {
   type: "city";
+  issues?: number;
+  mobs?: number;
   city: string;
   postalCode: string;
   count: number;
@@ -272,17 +277,46 @@ export function SchoolSearch({
             <span className="sl-search-opt-ico">
               <Icon name={o.type === "school" ? "school" : "pin"} />
             </span>
-            <span className="min-w-0">
-              <span className="sl-search-opt-main block truncate">{o.type === "school" ? o.name : o.city}</span>
+            <span className="min-w-0 flex-1">
+              <span className="sl-search-opt-main block truncate" title={o.type === "school" ? o.name : undefined}>
+                {o.type === "school" ? shortSchoolName(o.name) : o.city}
+              </span>
               <span className="sl-search-opt-sub block">
                 {o.type === "school"
                   ? `${o.city} — ${o.postalCode}${o.distanceKm !== undefined ? ` · ${o.distanceKm < 1 ? "moins de 1" : Math.round(o.distanceKm)} km` : ""}`
                   : `Ville · ${o.count} ${o.count > 1 ? "lycées" : "lycée"}`}
               </span>
             </span>
+            <ActivityBadges issues={o.issues ?? 0} mobs={o.type === "school" ? (o.mob ? 1 : 0) : (o.mobs ?? 0)} city={o.type === "city"} />
           </li>
         ))}
       </ul>
     </div>
+  );
+}
+
+/** Pastilles d'activité d'un résultat : problèmes actifs (orange) et mobilisations (📣). */
+function ActivityBadges({ issues, mobs, city }: { issues: number; mobs: number; city: boolean }) {
+  if (!issues && !mobs) return null;
+  const label = [
+    issues ? `${issues} ${issues > 1 ? "problèmes actifs" : "problème actif"}` : null,
+    mobs ? (city ? `${mobs} ${mobs > 1 ? "lycées mobilisés" : "lycée mobilisé"}` : "mobilisation en cours") : null,
+  ]
+    .filter(Boolean)
+    .join(", ");
+  return (
+    <span className="ml-auto flex shrink-0 items-center gap-1.5" aria-label={label} title={label}>
+      {issues > 0 && (
+        <span className="inline-flex items-center gap-1 rounded-full bg-signal-soft px-2 py-0.5 text-[12px] font-bold text-signal-ink" aria-hidden="true">
+          <span className="h-2 w-2 rounded-full bg-signal" />
+          {issues}
+        </span>
+      )}
+      {mobs > 0 && (
+        <span className="inline-flex items-center gap-0.5 rounded-full border border-border px-1.5 py-0.5 text-[12px] font-bold" aria-hidden="true">
+          📣{city && mobs > 1 ? <span className="ml-0.5">{mobs}</span> : null}
+        </span>
+      )}
+    </span>
   );
 }
