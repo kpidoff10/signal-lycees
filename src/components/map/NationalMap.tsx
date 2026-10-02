@@ -123,7 +123,6 @@ export default function NationalMap() {
   // Création de la carte (une fois).
   useEffect(() => {
     if (!stageRef.current || mapRef.current) return;
-    const finePointer = window.matchMedia("(pointer: fine)").matches;
     const map = new MLMap({
       container: stageRef.current,
       style: {
@@ -166,7 +165,9 @@ export default function NationalMap() {
       pitchWithRotate: false,
       touchPitch: false,
       renderWorldCopies: false,
-      cooperativeGestures: finePointer,
+      // Ordinateur : Ctrl + molette pour zoomer. Mobile : deux doigts pour déplacer,
+      // un doigt laisse défiler la page.
+      cooperativeGestures: true,
       // Sources citées sous la carte (contours IGN, Annuaire de l’éducation).
       attributionControl: false,
       locale: {
@@ -549,7 +550,7 @@ export default function NationalMap() {
       </div>
 
       <p className="sl-nm-hint">
-        {compact ? "Pince pour zoomer" : "Ctrl + molette ou pincer pour zoomer"} · Les chiffres montrent des signalements, pas une note des
+        {compact ? "Deux doigts pour déplacer ou zoomer sur la carte" : "Ctrl + molette ou pincer pour zoomer"} · Les chiffres montrent des signalements, pas une note des
         établissements. Sources : Annuaire de l’éducation, contours © IGN.
       </p>
 

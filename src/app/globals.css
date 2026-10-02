@@ -331,3 +331,14 @@ body {
     background-position: -200% 0;
   }
 }
+
+/* La carte ne doit pas bloquer le défilement de la page au doigt (déplacement à deux doigts). */
+.sl-nm-stage.sl-map,
+.sl-nm-stage.sl-map .maplibregl-canvas-container {
+  touch-action: pan-x pan-y;
+}
+.sl-map .maplibregl-cooperative-gesture-screen {
+  font-family: var(--font-sans);
+  font-weight: 600;
+  background: color-mix(in srgb, var(--ink) 55%, transparent);
+}
