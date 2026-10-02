@@ -67,22 +67,31 @@ export default async function PressePage() {
             <h2>Les chiffres</h2>
             <p className="text-[15px] leading-[22px] text-ink-muted">Mis à jour toutes les heures.</p>
             <dl>
+              {f.student > 0 && (
               <div>
                 <dt>{formatNumber(f.student)} problèmes signalés par des élèves</dt>
                 <dd>Publiés après modération.</dd>
               </div>
+              )}
+              {f.press > 0 && (
               <div>
                 <dt>{formatNumber(f.press)} problèmes repris de la presse</dt>
                 <dd>Tirés d’articles publiés, avec la source citée sur chaque fiche et le badge « Repris de la presse ».</dd>
               </div>
+              )}
+              {f.schools > 0 && (
               <div>
                 <dt>{formatNumber(f.schools)} lycées concernés</dt>
                 <dd>Lycées ayant au moins un problème publié.</dd>
               </div>
+              )}
+              {f.confirmations > 0 && (
               <div>
                 <dt>{formatNumber(f.confirmations)} confirmations</dt>
                 <dd>Élèves ayant indiqué « Je rencontre aussi ce problème ».</dd>
               </div>
+              )}
+              {f.mobs > 0 && (
               <div>
                 <dt>{formatNumber(f.mobs)} lycées mobilisés en ce moment</dt>
                 <dd>
@@ -90,6 +99,7 @@ export default async function PressePage() {
                   disparaît de la carte après 72 heures.
                 </dd>
               </div>
+              )}
             </dl>
           </>
         )}
