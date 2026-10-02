@@ -1,0 +1,875 @@
+{
+  "batch": "presse-2026-10b",
+  "note": "Deuxième lot de problèmes rapportés par la presse (25/09–02/10/2026), mouvement lycéen. Textes reformulés, sans viser personne. Retrait : npm run import:remove -- presse-2026-10b",
+  "issues": [
+    {
+      "school": "lycee-polyvalent-auguste-blanqui-saint-ouen",
+      "category": "CLASSES",
+      "title": "Classes de 34 élèves, chaises et tables qui manquent",
+      "description": "Selon un élève, les classes compteraient 34 élèves et il manquerait parfois des chaises et des tables libres.",
+      "source": {
+        "name": "France 3 Paris Île-de-France",
+        "date": "2026-09-25",
+        "url": "https://france3-regions.franceinfo.fr/paris-ile-de-france/seine-saint-denis/blocus-dans-les-lycees-de-banlieues-parisiennes-le-mouvement-prend-de-l-ampleur-3423182.html"
+      }
+    },
+    {
+      "school": "lycee-polyvalent-auguste-blanqui-saint-ouen",
+      "category": "ORGANIZATION",
+      "title": "Journées de 8 h à 18 h le lundi et le mardi",
+      "description": "Selon un élève, l'emploi du temps irait de 8 h à 18 h le lundi et le mardi.",
+      "source": {
+        "name": "France 3 Paris Île-de-France",
+        "date": "2026-09-25",
+        "url": "https://france3-regions.franceinfo.fr/paris-ile-de-france/seine-saint-denis/blocus-dans-les-lycees-de-banlieues-parisiennes-le-mouvement-prend-de-l-ampleur-3423182.html"
+      }
+    },
+    {
+      "school": "lycee-polyvalent-antoine-de-saint-exupery-creteil",
+      "category": "CLASSES",
+      "title": "Pas d’enseignant de français en année de bac",
+      "description": "Des élèves qui passent les épreuves du bac cette année n'auraient toujours pas d'enseignant de français.",
+      "source": {
+        "name": "franceinfo",
+        "date": "2026-10-01",
+        "url": "https://www.franceinfo.fr/societe/education/blocage-des-lycees/la-mobilisation-a-pris-une-ampleur-inattendue-comment-le-mouvement-de-blocage-des-lycees-s-est-propage-en-france_8216054.html"
+      }
+    },
+    {
+      "school": "lycee-polyvalent-antoine-de-saint-exupery-creteil",
+      "category": "BUILDING",
+      "title": "Tables qui manquent dans certaines salles",
+      "description": "Certaines salles manqueraient de tables, selon les élèves mobilisés.",
+      "source": {
+        "name": "franceinfo",
+        "date": "2026-10-01",
+        "url": "https://www.franceinfo.fr/societe/education/blocage-des-lycees/la-mobilisation-a-pris-une-ampleur-inattendue-comment-le-mouvement-de-blocage-des-lycees-s-est-propage-en-france_8216054.html"
+      }
+    },
+    {
+      "school": "lycee-polyvalent-antoine-de-saint-exupery-creteil",
+      "category": "ORGANIZATION",
+      "title": "Stages obligatoires impossibles à valider",
+      "description": "L'absence d'un responsable des formations empêcherait de valider les stages obligatoires, ce qui compromettrait l'obtention du diplôme.",
+      "source": {
+        "name": "franceinfo",
+        "date": "2026-10-01",
+        "url": "https://www.franceinfo.fr/societe/education/blocage-des-lycees/la-mobilisation-a-pris-une-ampleur-inattendue-comment-le-mouvement-de-blocage-des-lycees-s-est-propage-en-france_8216054.html"
+      }
+    },
+    {
+      "school": "lycee-polyvalent-antoine-de-saint-exupery-creteil",
+      "category": "CLASSES",
+      "title": "Absences d’enseignants à répétition",
+      "description": "L'établissement connaîtrait des absences d'enseignants à répétition.",
+      "source": {
+        "name": "94 Citoyens",
+        "date": "2026-10-02",
+        "url": "https://citoyens.com/2026/a-creteil-dou-le-mouvement-lyceen-est-parti-les-eleves-ont-obtenu-un-proviseur-adjoint-et-une-infirmiere,02-10-2026.html"
+      }
+    },
+    {
+      "school": "lycee-polyvalent-louise-michel-champigny-sur-marne",
+      "category": "CLASSES",
+      "title": "Classes de 35 élèves après une fermeture de classe",
+      "description": "Après la fermeture d'une classe de terminale, quatre classes compteraient 35 élèves et il faudrait se presser pour avoir une place assise.",
+      "source": {
+        "name": "Politis (carte blanche d'une lycéenne)",
+        "date": "2026-09-29",
+        "url": "https://www.politis.fr/articles/2026/09/carte-blanche-lyceens-nous-continuerons-jusqua-ce-nos-revendications-soient-entendues/"
+      }
+    },
+    {
+      "school": "lycee-polyvalent-louise-michel-champigny-sur-marne",
+      "category": "CLASSES",
+      "title": "Absences d’enseignants non remplacées",
+      "description": "De nombreuses absences d'enseignants ne seraient pas remplacées, y compris dans des matières comptant pour le contrôle continu du bac.",
+      "source": {
+        "name": "Politis (carte blanche d'une lycéenne)",
+        "date": "2026-09-29",
+        "url": "https://www.politis.fr/articles/2026/09/carte-blanche-lyceens-nous-continuerons-jusqua-ce-nos-revendications-soient-entendues/"
+      }
+    },
+    {
+      "school": "lycee-polyvalent-louise-michel-champigny-sur-marne",
+      "category": "ORGANIZATION",
+      "title": "Gratifications de stage versées en retard",
+      "description": "Les gratifications de stage d'élèves de la voie professionnelle seraient versées rarement et avec retard.",
+      "source": {
+        "name": "Politis (carte blanche d'une lycéenne)",
+        "date": "2026-09-29",
+        "url": "https://www.politis.fr/articles/2026/09/carte-blanche-lyceens-nous-continuerons-jusqua-ce-nos-revendications-soient-entendues/"
+      }
+    },
+    {
+      "school": "lycee-polyvalent-louise-michel-champigny-sur-marne",
+      "category": "OTHER",
+      "title": "Pas d’accompagnement psychologique pour les élèves",
+      "description": "Aucun accompagnement psychologique ne serait proposé aux élèves.",
+      "source": {
+        "name": "Politis (carte blanche d'une lycéenne)",
+        "date": "2026-09-29",
+        "url": "https://www.politis.fr/articles/2026/09/carte-blanche-lyceens-nous-continuerons-jusqua-ce-nos-revendications-soient-entendues/"
+      }
+    },
+    {
+      "school": "lycee-maryse-conde-sarcelles",
+      "category": "BUILDING",
+      "title": "Pas de chauffage l’hiver ni de climatisation",
+      "description": "Selon des élèves, il n'y aurait plus de chauffage l'hiver ni de climatisation.",
+      "source": {
+        "name": "Basta!",
+        "date": "2026-09-29",
+        "url": "https://basta.media/Plus-de-300-lycees-bloques-On-nous-ramene-des-policiers-mais-jamais-des-solutions"
+      }
+    },
+    {
+      "school": "lycee-maryse-conde-sarcelles",
+      "category": "BUILDING",
+      "title": "Rideaux qui ferment mal et tables instables",
+      "description": "Selon des élèves, les rideaux des salles fermeraient mal et les tables seraient toutes instables.",
+      "source": {
+        "name": "Basta!",
+        "date": "2026-09-29",
+        "url": "https://basta.media/Plus-de-300-lycees-bloques-On-nous-ramene-des-policiers-mais-jamais-des-solutions"
+      }
+    },
+    {
+      "school": "lycee-maryse-conde-sarcelles",
+      "category": "CATERING",
+      "title": "Une vingtaine de minutes pour déjeuner",
+      "description": "Les élèves ne disposeraient que d'une vingtaine de minutes pour déjeuner.",
+      "source": {
+        "name": "Basta!",
+        "date": "2026-09-29",
+        "url": "https://basta.media/Plus-de-300-lycees-bloques-On-nous-ramene-des-policiers-mais-jamais-des-solutions"
+      }
+    },
+    {
+      "school": "lycee-maryse-conde-sarcelles",
+      "category": "OTHER",
+      "title": "Pas de foyer pour les élèves",
+      "description": "Le lycée n'aurait pas de foyer pour les élèves.",
+      "source": {
+        "name": "Basta!",
+        "date": "2026-09-29",
+        "url": "https://basta.media/Plus-de-300-lycees-bloques-On-nous-ramene-des-policiers-mais-jamais-des-solutions"
+      }
+    },
+    {
+      "school": "lycee-jean-jaures-argenteuil",
+      "category": "SECURITY",
+      "title": "Des morceaux de plafond qui tombent",
+      "description": "Selon un élève, des plafonds tomberaient parfois.",
+      "source": {
+        "name": "franceinfo",
+        "date": "2026-09-29",
+        "url": "https://www.franceinfo.fr/societe/education/reportage-la-c-est-parti-un-peu-trop-loin-a-argenteuil-des-lyceens-deplorent-les-debordements-lors-des-manifestations_8214554.html"
+      }
+    },
+    {
+      "school": "lycee-jean-jaures-argenteuil",
+      "category": "BUILDING",
+      "title": "Des rats aperçus dans l’établissement",
+      "description": "Selon un élève, on pourrait parfois apercevoir des rats dans l'établissement.",
+      "source": {
+        "name": "franceinfo",
+        "date": "2026-09-29",
+        "url": "https://www.franceinfo.fr/societe/education/reportage-la-c-est-parti-un-peu-trop-loin-a-argenteuil-des-lyceens-deplorent-les-debordements-lors-des-manifestations_8214554.html"
+      }
+    },
+    {
+      "school": "lycee-jean-jaures-argenteuil",
+      "category": "BUILDING",
+      "title": "Chauffage insuffisant en hiver",
+      "description": "Les élèves se plaindraient d'un chauffage insuffisant en hiver.",
+      "source": {
+        "name": "franceinfo",
+        "date": "2026-09-29",
+        "url": "https://www.franceinfo.fr/societe/education/reportage-la-c-est-parti-un-peu-trop-loin-a-argenteuil-des-lyceens-deplorent-les-debordements-lors-des-manifestations_8214554.html"
+      }
+    },
+    {
+      "school": "lycee-jean-jaures-argenteuil",
+      "category": "CLASSES",
+      "title": "Enseignants absents toute une année",
+      "description": "Certains enseignants auraient été absents durant toute une année scolaire.",
+      "source": {
+        "name": "franceinfo",
+        "date": "2026-09-29",
+        "url": "https://www.franceinfo.fr/societe/education/reportage-la-c-est-parti-un-peu-trop-loin-a-argenteuil-des-lyceens-deplorent-les-debordements-lors-des-manifestations_8214554.html"
+      }
+    },
+    {
+      "school": "lycee-jean-jaures-argenteuil",
+      "category": "BUILDING",
+      "title": "Pas de savon dans les toilettes",
+      "description": "Selon les élèves mobilisés, les toilettes seraient dépourvues de savon.",
+      "source": {
+        "name": "Blast",
+        "date": "2026-10-01",
+        "url": "https://www.blast-info.fr/articles/2026/blocus-au-lycee-jean-jaures-d-argenteuil-nous-aussi-banlieusards-on-a-le-droit-a-l-egalite-des-chances-Fl-KlQlcT-aloHmXhdavGw"
+      }
+    },
+    {
+      "school": "lycee-jean-jaures-argenteuil",
+      "category": "CLASSES",
+      "title": "Classes surchargées",
+      "description": "Les classes seraient surchargées, selon les élèves mobilisés.",
+      "source": {
+        "name": "Blast",
+        "date": "2026-10-01",
+        "url": "https://www.blast-info.fr/articles/2026/blocus-au-lycee-jean-jaures-d-argenteuil-nous-aussi-banlieusards-on-a-le-droit-a-l-egalite-des-chances-Fl-KlQlcT-aloHmXhdavGw"
+      }
+    },
+    {
+      "school": "lycee-polyvalent-paul-serusier-carhaix-plouguer",
+      "category": "CLASSES",
+      "title": "Enseignants absents non remplacés en terminale",
+      "description": "Selon les élèves mobilisés, des enseignants absents n'auraient pas été remplacés depuis la rentrée, en particulier en classe de terminale.",
+      "source": {
+        "name": "ici Breizh Izel (France Bleu)",
+        "date": "2026-10-01",
+        "url": "https://www.ici.fr/bretagne/finistere-29/de-quimper-a-carhaix-la-mobilisation-dans-les-lycees-s-etend-dans-le-finistere-9063025"
+      }
+    },
+    {
+      "school": "lycee-polyvalent-paul-serusier-carhaix-plouguer",
+      "category": "BUILDING",
+      "title": "Internat : moisissures, sanitaires hors d’usage et froid",
+      "description": "D'après des élèves, l'internat présenterait des murs moisis, des sanitaires inutilisables et un froid important la nuit.",
+      "source": {
+        "name": "ici Breizh Izel (France Bleu)",
+        "date": "2026-10-01",
+        "url": "https://www.ici.fr/bretagne/finistere-29/de-quimper-a-carhaix-la-mobilisation-dans-les-lycees-s-etend-dans-le-finistere-9063025"
+      }
+    },
+    {
+      "school": "lycee-polyvalent-paul-serusier-carhaix-plouguer",
+      "category": "OTHER",
+      "title": "Psychologue scolaire trop peu présent",
+      "description": "Les élèves regretteraient une présence trop réduite du psychologue scolaire dans l'établissement.",
+      "source": {
+        "name": "ici Breizh Izel (France Bleu)",
+        "date": "2026-10-01",
+        "url": "https://www.ici.fr/bretagne/finistere-29/de-quimper-a-carhaix-la-mobilisation-dans-les-lycees-s-etend-dans-le-finistere-9063025"
+      }
+    },
+    {
+      "school": "lycee-victor-grignard-cherbourg-en-cotentin",
+      "category": "CATERING",
+      "title": "Cantine installée dans le gymnase",
+      "description": "La restauration aurait été déplacée dans le gymnase, la cantine devant être désamiantée faute de budget selon les élèves, ce qui gênerait les cours d'EPS.",
+      "source": {
+        "name": "Tendance Ouest",
+        "date": "2026-10-01",
+        "url": "https://www.tendanceouest.com/actualite-443004-video-250-eleves-bloquent-le-lycee-victor-grignard-a-cherbourg"
+      }
+    },
+    {
+      "school": "lycee-victor-grignard-cherbourg-en-cotentin",
+      "category": "CLASSES",
+      "title": "Pas d’enseignant d’anglais depuis la rentrée",
+      "description": "Selon des élèves, une classe n'aurait pas eu d'enseignant d'anglais depuis le début de l'année scolaire.",
+      "source": {
+        "name": "Tendance Ouest",
+        "date": "2026-10-01",
+        "url": "https://www.tendanceouest.com/actualite-443004-video-250-eleves-bloquent-le-lycee-victor-grignard-a-cherbourg"
+      }
+    },
+    {
+      "school": "lycee-victor-grignard-cherbourg-en-cotentin",
+      "category": "ORGANIZATION",
+      "title": "Journées de 8 h à 18 h",
+      "description": "Les élèves décrivent des journées de cours allant de 8 h à 18 h, soit une dizaine d'heures sur place.",
+      "source": {
+        "name": "Tendance Ouest",
+        "date": "2026-10-01",
+        "url": "https://www.tendanceouest.com/actualite-443004-video-250-eleves-bloquent-le-lycee-victor-grignard-a-cherbourg"
+      }
+    },
+    {
+      "school": "lycee-polyvalent-des-metiers-stephane-hessel-epernay",
+      "category": "CLASSES",
+      "title": "Classes de 35 élèves",
+      "description": "Un élève de l'établissement indique des classes de 35 élèves.",
+      "source": {
+        "name": "France 3 Grand Est",
+        "date": "2026-09-30",
+        "url": "https://france3-regions.franceinfo.fr/grand-est/marne/reims/blocage-des-lycees-des-gaz-lacrymogenes-tires-pour-disperser-les-eleves-mobilises-a-reims-et-epernay-3425516.html"
+      }
+    },
+    {
+      "school": "lycee-polyvalent-des-metiers-stephane-hessel-epernay",
+      "category": "BUILDING",
+      "title": "Chaleur qui empêche de travailler en classe",
+      "description": "Selon un élève, la chaleur dans une salle aurait empêché de travailler normalement fin septembre.",
+      "source": {
+        "name": "France 3 Grand Est",
+        "date": "2026-09-30",
+        "url": "https://france3-regions.franceinfo.fr/grand-est/marne/reims/blocage-des-lycees-des-gaz-lacrymogenes-tires-pour-disperser-les-eleves-mobilises-a-reims-et-epernay-3425516.html"
+      }
+    },
+    {
+      "school": "lycee-leopold-sedar-senghor-evreux",
+      "category": "ORGANIZATION",
+      "title": "Pas de pause le midi pour certains élèves",
+      "description": "Selon une élève de terminale, certains élèves n'auraient pas de pause le midi et ne pourraient pas déjeuner.",
+      "source": {
+        "name": "France 3 Normandie",
+        "date": "2026-10-01",
+        "url": "https://france3-regions.franceinfo.fr/normandie/orne/alencon/en-images-blocus-lyceens-la-mobilisation-continue-et-se-renforce-en-normandie-3426141.html"
+      }
+    },
+    {
+      "school": "lycee-leopold-sedar-senghor-evreux",
+      "category": "BUILDING",
+      "title": "Malaises à cause de la chaleur au 2e étage",
+      "description": "D'après une élève, des malaises surviendraient au deuxième étage, faute de climatisation.",
+      "source": {
+        "name": "France 3 Normandie",
+        "date": "2026-10-01",
+        "url": "https://france3-regions.franceinfo.fr/normandie/orne/alencon/en-images-blocus-lyceens-la-mobilisation-continue-et-se-renforce-en-normandie-3426141.html"
+      }
+    },
+    {
+      "school": "lycee-leopold-sedar-senghor-evreux",
+      "category": "CLASSES",
+      "title": "Cours manquants en année de bac",
+      "description": "Selon une élève, des cours manqueraient et des enseignants seraient absents pour des élèves passant le bac en fin d'année.",
+      "source": {
+        "name": "France 3 Normandie",
+        "date": "2026-10-01",
+        "url": "https://france3-regions.franceinfo.fr/normandie/orne/alencon/en-images-blocus-lyceens-la-mobilisation-continue-et-se-renforce-en-normandie-3426141.html"
+      }
+    },
+    {
+      "school": "lycee-polyvalent-jean-zay-orleans",
+      "category": "ORGANIZATION",
+      "title": "Journées de 8 h à 18 h avec une heure de pause",
+      "description": "Un élève évoque des journées de 8 h à 18 h avec une seule heure de pause.",
+      "source": {
+        "name": "ici Orléans (France Bleu)",
+        "date": "2026-09-29",
+        "url": "https://www.ici.fr/centre-val-de-loire/loiret-45/orleans/benjamin-franklin-jean-zay-pothier-maurice-genevoix-plusieurs-lycees-d-orleans-bloques-par-des-eleves-ce-mardi-8445982"
+      }
+    },
+    {
+      "school": "lycee-polyvalent-jean-zay-orleans",
+      "category": "CLASSES",
+      "title": "Classes en sureffectif",
+      "description": "Un élève signale des classes en sureffectif.",
+      "source": {
+        "name": "ici Orléans (France Bleu)",
+        "date": "2026-09-29",
+        "url": "https://www.ici.fr/centre-val-de-loire/loiret-45/orleans/benjamin-franklin-jean-zay-pothier-maurice-genevoix-plusieurs-lycees-d-orleans-bloques-par-des-eleves-ce-mardi-8445982"
+      }
+    },
+    {
+      "school": "lycee-polyvalent-jean-zay-orleans",
+      "category": "OTHER",
+      "title": "Deux infirmières pour 1 500 élèves",
+      "description": "Il n'y aurait que deux infirmières pour environ 1 500 élèves, d'après un élève.",
+      "source": {
+        "name": "ici Orléans (France Bleu)",
+        "date": "2026-09-29",
+        "url": "https://www.ici.fr/centre-val-de-loire/loiret-45/orleans/benjamin-franklin-jean-zay-pothier-maurice-genevoix-plusieurs-lycees-d-orleans-bloques-par-des-eleves-ce-mardi-8445982"
+      }
+    },
+    {
+      "school": "lycee-cesar-baggio-lille",
+      "category": "BUILDING",
+      "title": "Machines d’imprimerie non remplacées",
+      "description": "Selon une élève de la filière imprimerie, des machines coûteuses ne pourraient pas être remplacées faute de budget.",
+      "source": {
+        "name": "France 3 Hauts-de-France",
+        "date": "2026-09-28",
+        "url": "https://france3-regions.franceinfo.fr/hauts-de-france/nord-0/lille/blocus-au-lycee-pour-plus-de-moyens-la-mobilisation-francilienne-s-etend-7-personnes-placees-en-garde-a-vue-pour-des-violences-dans-le-nord-3424385.html"
+      }
+    },
+    {
+      "school": "lycee-gustave-flaubert-rouen",
+      "category": "CLASSES",
+      "title": "Classes de 35 élèves en année de bac",
+      "description": "Une élève de terminale fait état de classes à 35 élèves l'année du bac.",
+      "source": {
+        "name": "Tendance Ouest",
+        "date": "2026-10-01",
+        "url": "https://www.tendanceouest.com/actualite-443042-rouen-mobilisation-lyceenne-c-est-pas-normal-de-se-retrouver-a-35-dans-les-classes"
+      }
+    },
+    {
+      "school": "lycee-gustave-flaubert-rouen",
+      "category": "BUILDING",
+      "title": "Jusqu’à 35 °C dans les salles",
+      "description": "Une élève affirme que la température atteindrait parfois 35 °C dans les salles.",
+      "source": {
+        "name": "Tendance Ouest",
+        "date": "2026-10-01",
+        "url": "https://www.tendanceouest.com/actualite-443042-rouen-mobilisation-lyceenne-c-est-pas-normal-de-se-retrouver-a-35-dans-les-classes"
+      }
+    },
+    {
+      "school": "lycee-pierre-et-marie-curie-menton",
+      "category": "BUILDING",
+      "title": "Toilettes des garçons presque toutes hors d’usage",
+      "description": "Selon des élèves, les toilettes des garçons seraient hors d'usage : il ne resterait que deux toilettes pour environ 600 garçons, accessibles seulement aux récréations.",
+      "source": {
+        "name": "France 3 Régions",
+        "date": "2026-09-28",
+        "url": "https://france3-regions.franceinfo.fr/provence-alpes-cote-d-azur/alpes-maritimes/nice/profs-absents-emplois-du-temps-surcharges-manque-de-toilettes-une-dizaine-de-lycees-bloques-par-des-eleves-dans-les-departements-du-var-et-des-alpes-maritimes-3424328.html"
+      }
+    },
+    {
+      "school": "lycee-pierre-et-marie-curie-menton",
+      "category": "BUILDING",
+      "title": "Bâtiment très mal isolé",
+      "description": "Des élèves décrivent un bâtiment très mal isolé thermiquement.",
+      "source": {
+        "name": "France 3 Régions",
+        "date": "2026-09-28",
+        "url": "https://france3-regions.franceinfo.fr/provence-alpes-cote-d-azur/alpes-maritimes/nice/profs-absents-emplois-du-temps-surcharges-manque-de-toilettes-une-dizaine-de-lycees-bloques-par-des-eleves-dans-les-departements-du-var-et-des-alpes-maritimes-3424328.html"
+      }
+    },
+    {
+      "school": "lycee-pierre-et-marie-curie-menton",
+      "category": "CLASSES",
+      "title": "Fin des cours de langues en demi-groupes",
+      "description": "Les élèves dénoncent la suppression des cours de langues en demi-groupes.",
+      "source": {
+        "name": "France 3 Régions",
+        "date": "2026-10-01",
+        "url": "https://france3-regions.franceinfo.fr/provence-alpes-cote-d-azur/alpes-maritimes/nice/direct-suivez-le-blocus-des-lycees-dans-les-alpes-maritimes-pour-la-quatrieme-journee-de-mobilisation-3426048.html"
+      }
+    },
+    {
+      "school": "lycee-professionnel-magnan-nice",
+      "category": "ORGANIZATION",
+      "title": "Pause de 50 minutes trop courte pour déjeuner",
+      "description": "Selon des élèves, la pause méridienne de 50 minutes serait trop courte pour déjeuner.",
+      "source": {
+        "name": "France 3 Régions",
+        "date": "2026-09-28",
+        "url": "https://france3-regions.franceinfo.fr/provence-alpes-cote-d-azur/alpes-maritimes/nice/profs-absents-emplois-du-temps-surcharges-manque-de-toilettes-une-dizaine-de-lycees-bloques-par-des-eleves-dans-les-departements-du-var-et-des-alpes-maritimes-3424328.html"
+      }
+    },
+    {
+      "school": "lycee-professionnel-magnan-nice",
+      "category": "BUILDING",
+      "title": "Pas de chauffage l’hiver ni de climatisation l’été",
+      "description": "Les élèves signalent un manque de chauffage en hiver et de climatisation en période chaude.",
+      "source": {
+        "name": "France 3 Régions",
+        "date": "2026-09-28",
+        "url": "https://france3-regions.franceinfo.fr/provence-alpes-cote-d-azur/alpes-maritimes/nice/profs-absents-emplois-du-temps-surcharges-manque-de-toilettes-une-dizaine-de-lycees-bloques-par-des-eleves-dans-les-departements-du-var-et-des-alpes-maritimes-3424328.html"
+      }
+    },
+    {
+      "school": "lycee-general-et-technologique-le-verger-sainte-marie",
+      "category": "CATERING",
+      "title": "Cantine pas adaptée à 200 élèves de plus",
+      "description": "La cantine accueillerait environ 200 élèves de plus cette année sans être adaptée, malgré un agrandissement prévu.",
+      "source": {
+        "name": "Outre-mer La 1ère",
+        "date": "2026-10-02",
+        "url": "https://la1ere.franceinfo.fr/reunion/blocage-des-lycees-des-centaines-d-eleves-rassembles-devant-plusieurs-etablissements-de-l-ile-ce-vendredi-matin-1744119.html"
+      }
+    },
+    {
+      "school": "lycee-general-et-technologique-le-verger-sainte-marie",
+      "category": "ORGANIZATION",
+      "title": "Cours du lundi au samedi",
+      "description": "Selon des élèves, les cours auraient lieu du lundi au samedi, avec le dimanche pour seul jour de repos.",
+      "source": {
+        "name": "Outre-mer La 1ère",
+        "date": "2026-10-02",
+        "url": "https://la1ere.franceinfo.fr/reunion/blocage-des-lycees-des-centaines-d-eleves-rassembles-devant-plusieurs-etablissements-de-l-ile-ce-vendredi-matin-1744119.html"
+      }
+    },
+    {
+      "school": "lycee-polyvalent-georges-brassens-saint-denis",
+      "category": "BUILDING",
+      "title": "Sanitaires défaillants depuis deux ans",
+      "description": "Les sanitaires fonctionneraient mal depuis environ deux ans.",
+      "source": {
+        "name": "Outre-mer La 1ère",
+        "date": "2026-10-02",
+        "url": "https://la1ere.franceinfo.fr/reunion/blocage-des-lycees-des-centaines-d-eleves-rassembles-devant-plusieurs-etablissements-de-l-ile-ce-vendredi-matin-1744119.html"
+      }
+    },
+    {
+      "school": "lycee-polyvalent-georges-brassens-saint-denis",
+      "category": "BUILDING",
+      "title": "La plupart des salles sans climatisation",
+      "description": "La plupart des salles de classe seraient dépourvues de climatisation.",
+      "source": {
+        "name": "Outre-mer La 1ère",
+        "date": "2026-10-02",
+        "url": "https://la1ere.franceinfo.fr/reunion/blocage-des-lycees-des-centaines-d-eleves-rassembles-devant-plusieurs-etablissements-de-l-ile-ce-vendredi-matin-1744119.html"
+      }
+    },
+    {
+      "school": "lycee-professionnel-francois-de-mahy-saint-pierre",
+      "category": "CATERING",
+      "title": "Cantine partagée trop petite",
+      "description": "La cantine, partagée entre le lycée et un collège, serait trop petite et les élèves manqueraient de nourriture et de temps pour manger.",
+      "source": {
+        "name": "Outre-mer La 1ère",
+        "date": "2026-10-02",
+        "url": "https://la1ere.franceinfo.fr/reunion/blocage-des-lycees-des-centaines-d-eleves-rassembles-devant-plusieurs-etablissements-de-l-ile-ce-vendredi-matin-1744119.html"
+      }
+    },
+    {
+      "school": "lycee-professionnel-francois-de-mahy-saint-pierre",
+      "category": "CLASSES",
+      "title": "Absences répétées d’enseignants",
+      "description": "Des élèves dénoncent des absences répétées d'enseignants.",
+      "source": {
+        "name": "Outre-mer La 1ère",
+        "date": "2026-10-02",
+        "url": "https://la1ere.franceinfo.fr/reunion/blocage-des-lycees-des-centaines-d-eleves-rassembles-devant-plusieurs-etablissements-de-l-ile-ce-vendredi-matin-1744119.html"
+      }
+    },
+    {
+      "school": "lycee-francois-mauriac-bordeaux",
+      "category": "ORGANIZATION",
+      "title": "Journées de 8 h à 18 h trois jours par semaine",
+      "description": "Selon un élève, les journées iraient de 8 h à 18 h trois jours par semaine depuis la rentrée.",
+      "source": {
+        "name": "France 3 Régions",
+        "date": "2026-10-01",
+        "url": "https://france3-regions.franceinfo.fr/nouvelle-aquitaine/gironde/bordeaux/etablissements-brules-colonne-de-fumees-tramways-perturbes-le-blocus-des-lycees-continue-a-bordeaux-3426093.html"
+      }
+    },
+    {
+      "school": "lycee-general-et-technologique-de-bellevue-fort-de-france",
+      "category": "BUILDING",
+      "title": "Chaleur dans certaines salles, ventilation insuffisante",
+      "description": "Les élèves se plaignent de la chaleur dans certaines salles et réclament une meilleure ventilation ou climatisation.",
+      "source": {
+        "name": "Outre-mer La 1ère",
+        "date": "2026-10-01",
+        "url": "https://la1ere.franceinfo.fr/martinique/fort-de-france-les-lyceens-de-bellevue-se-mobilisent-contre-leurs-conditions-d-etude-1743861.html"
+      }
+    },
+    {
+      "school": "lycee-general-et-technologique-de-bellevue-fort-de-france",
+      "category": "CLASSES",
+      "title": "Enseignants absents",
+      "description": "Des élèves dénoncent des enseignants absents.",
+      "source": {
+        "name": "Outre-mer La 1ère",
+        "date": "2026-10-01",
+        "url": "https://la1ere.franceinfo.fr/martinique/fort-de-france-les-lyceens-de-bellevue-se-mobilisent-contre-leurs-conditions-d-etude-1743861.html"
+      }
+    },
+    {
+      "school": "lycee-polyvalent-de-bandrele-bandrele",
+      "category": "CLASSES",
+      "title": "Pas de professeur de français à l’approche du bac",
+      "description": "Selon les élèves, une classe n'aurait toujours pas de professeur de français à l'approche du bac.",
+      "source": {
+        "name": "Outre-mer La 1ère",
+        "date": "2026-10-02",
+        "url": "https://la1ere.franceinfo.fr/mayotte/le-bac-approche-toujours-pas-de-prof-de-francais-des-eleves-bloquent-le-lycee-de-bandrele-ce-vendredi-matin-1744155.html"
+      }
+    },
+    {
+      "school": "lycee-polyvalent-de-bandrele-bandrele",
+      "category": "ORGANIZATION",
+      "title": "Cours sur six jours, départs à l’aube",
+      "description": "Les cours seraient répartis sur six jours ; certains élèves partiraient de chez eux vers 4-5h et rentreraient vers 18h.",
+      "source": {
+        "name": "Outre-mer La 1ère",
+        "date": "2026-10-02",
+        "url": "https://la1ere.franceinfo.fr/mayotte/le-bac-approche-toujours-pas-de-prof-de-francais-des-eleves-bloquent-le-lycee-de-bandrele-ce-vendredi-matin-1744155.html"
+      }
+    },
+    {
+      "school": "lycee-polyvalent-valery-giscard-d-estaing-chamalieres",
+      "category": "ORGANIZATION",
+      "title": "Journées de 8 h à 18 h et cours le mercredi après-midi",
+      "description": "Les élèves dénoncent des journées de 8h à 18h et l'ajout de cours le mercredi après-midi.",
+      "source": {
+        "name": "France 3 Régions",
+        "date": "2026-09-30",
+        "url": "https://france3-regions.franceinfo.fr/auvergne-rhone-alpes/puy-de-dome/clermont-ferrand/mobilisation-des-lyceens-on-a-deja-essaye-de-faire-passer-des-lettres-faire-signer-des-petitions-des-eleves-exasperes-face-au-manque-d-ecoute-des-etablissements-3425503.html"
+      }
+    },
+    {
+      "school": "lycee-polyvalent-de-saint-laurent-iv-saint-laurent-du-maroni",
+      "category": "CATERING",
+      "title": "Pas le temps de déjeuner pour les externes",
+      "description": "Des élèves externes n'auraient pas le temps de rentrer déjeuner et resteraient devant le lycée sans manger.",
+      "source": {
+        "name": "Outre-mer La 1ère",
+        "date": "2026-10-01",
+        "url": "https://la1ere.franceinfo.fr/guyane/ouest-guyanais/lycee-sonia-francius-des-eleves-en-greve-a-saint-laurent-denoncent-des-repas-manques-des-journees-trop-longues-et-un-gymnase-toujours-attendu-1743696.html"
+      }
+    },
+    {
+      "school": "lycee-polyvalent-de-saint-laurent-iv-saint-laurent-du-maroni",
+      "category": "BUILDING",
+      "title": "Gymnase pas terminé, sport dans la cour",
+      "description": "Le gymnase promis ne serait pas achevé ; le sport se ferait dans la cour.",
+      "source": {
+        "name": "Outre-mer La 1ère",
+        "date": "2026-10-01",
+        "url": "https://la1ere.franceinfo.fr/guyane/ouest-guyanais/lycee-sonia-francius-des-eleves-en-greve-a-saint-laurent-denoncent-des-repas-manques-des-journees-trop-longues-et-un-gymnase-toujours-attendu-1743696.html"
+      }
+    },
+    {
+      "school": "lycee-polyvalent-de-saint-laurent-iv-saint-laurent-du-maroni",
+      "category": "BUILDING",
+      "title": "Tableaux qui tombent et locaux inachevés",
+      "description": "Les élèves signalent du matériel défectueux (tableaux qui tombent) et des locaux inachevés.",
+      "source": {
+        "name": "Outre-mer La 1ère",
+        "date": "2026-10-01",
+        "url": "https://la1ere.franceinfo.fr/guyane/ouest-guyanais/lycee-sonia-francius-des-eleves-en-greve-a-saint-laurent-denoncent-des-repas-manques-des-journees-trop-longues-et-un-gymnase-toujours-attendu-1743696.html"
+      }
+    },
+    {
+      "school": "lycee-giocante-de-casabianca-bastia",
+      "category": "BUILDING",
+      "title": "Locaux vétustes, 33 °C en classe à la rentrée",
+      "description": "Locaux décrits comme vétustes et mal isolés ; 33 °C relevés en classe à la rentrée, sans clim ni ventilateurs.",
+      "source": {
+        "name": "Alta Frequenza",
+        "date": "2026-10-01",
+        "url": "https://www.alta-frequenza.corsica/bastia-le-lycee-giocante-de-casabianca-bloque-pour-protester-contre-la-chaleur-et-la-vetuste-des-locaux"
+      }
+    },
+    {
+      "school": "lycee-giocante-de-casabianca-bastia",
+      "category": "BUILDING",
+      "title": "Bureaux qui manquent dans les salles",
+      "description": "Il manquerait parfois des bureaux dans les salles ; les élèves iraient en chercher ailleurs.",
+      "source": {
+        "name": "Corse Net Infos",
+        "date": "2026-10-01",
+        "url": "https://www.corsenetinfos.corsica/Contestation-lyceenne-eleves-et-enseignants-mobilises-a-Bastia_a92917.html"
+      }
+    },
+    {
+      "school": "lycee-giocante-de-casabianca-bastia",
+      "category": "BUILDING",
+      "title": "Toilettes délabrées",
+      "description": "Des élèves dénoncent des toilettes délabrées.",
+      "source": {
+        "name": "Corse Net Infos",
+        "date": "2026-10-01",
+        "url": "https://www.corsenetinfos.corsica/Contestation-lyceenne-eleves-et-enseignants-mobilises-a-Bastia_a92917.html"
+      }
+    },
+    {
+      "school": "lycee-giocante-de-casabianca-bastia",
+      "category": "OTHER",
+      "title": "Manque d’infirmières scolaires",
+      "description": "Les élèves signalent un manque d'infirmières scolaires.",
+      "source": {
+        "name": "Corse Net Infos",
+        "date": "2026-10-01",
+        "url": "https://www.corsenetinfos.corsica/Contestation-lyceenne-eleves-et-enseignants-mobilises-a-Bastia_a92917.html"
+      }
+    },
+    {
+      "school": "lycee-giocante-de-casabianca-bastia",
+      "category": "ORGANIZATION",
+      "title": "Journées de 9 h à 18 h",
+      "description": "Des élèves auraient cours de 9h à 18h, journées jugées trop longues.",
+      "source": {
+        "name": "Corse Net Infos",
+        "date": "2026-10-01",
+        "url": "https://www.corsenetinfos.corsica/Contestation-lyceenne-eleves-et-enseignants-mobilises-a-Bastia_a92917.html"
+      }
+    },
+    {
+      "school": "lycee-polyvalent-emmanuel-mounier-grenoble",
+      "category": "CLASSES",
+      "title": "Classes de 35 élèves",
+      "description": "Les élèves dénoncent des classes de 35 élèves.",
+      "source": {
+        "name": "Grenoble Mag",
+        "date": "2026-09-28",
+        "url": "https://www.grenoblemag.com/article/3386/grenoble-blocus-au-lycee-emmanuel-mounier-les-eleves-denoncent-leurs-conditions-de-travail"
+      }
+    },
+    {
+      "school": "lycee-polyvalent-emmanuel-mounier-grenoble",
+      "category": "BUILDING",
+      "title": "Salles trop chaudes, sans climatisation",
+      "description": "Salles jugées trop chaudes, sans climatisation.",
+      "source": {
+        "name": "Grenoble Mag",
+        "date": "2026-09-28",
+        "url": "https://www.grenoblemag.com/article/3386/grenoble-blocus-au-lycee-emmanuel-mounier-les-eleves-denoncent-leurs-conditions-de-travail"
+      }
+    },
+    {
+      "school": "lycee-polyvalent-emmanuel-mounier-grenoble",
+      "category": "BUILDING",
+      "title": "Manque de matériel, notamment d’ordinateurs",
+      "description": "Les élèves signalent un manque de matériel, notamment d'ordinateurs.",
+      "source": {
+        "name": "Grenoble Mag",
+        "date": "2026-09-28",
+        "url": "https://www.grenoblemag.com/article/3386/grenoble-blocus-au-lycee-emmanuel-mounier-les-eleves-denoncent-leurs-conditions-de-travail"
+      }
+    },
+    {
+      "school": "lycee-francois-arago-perpignan",
+      "category": "BUILDING",
+      "title": "Chaleur étouffante dans les salles au soleil",
+      "description": "Selon des élèves, la chaleur serait étouffante dans certaines salles exposées au soleil, empêchant de se concentrer.",
+      "source": {
+        "name": "Made in Perpignan",
+        "date": "2026-10-01",
+        "url": "https://madeinperpignan.com/dernier-recours-gen-z-perpignan-bloque-lycees-avenir/"
+      }
+    },
+    {
+      "school": "lycee-d-arsonval-brive-la-gaillarde",
+      "category": "CLASSES",
+      "title": "Classes de 35 élèves",
+      "description": "Les élèves dénoncent des classes de 35 élèves.",
+      "source": {
+        "name": "France 3 Régions",
+        "date": "2026-09-29",
+        "url": "https://france3-regions.franceinfo.fr/nouvelle-aquitaine/correze/brive/blocage-des-lycees-le-mouvement-de-contestation-a-limoges-et-brive-3424988.html"
+      }
+    },
+    {
+      "school": "lycee-general-et-technologique-des-arenes-toulouse",
+      "category": "BUILDING",
+      "title": "Plafonds qui s’effondrent et moisissures au 2e étage",
+      "description": "Selon des élèves, des plafonds s'effondreraient au 2e étage et certaines salles auraient des moisissures.",
+      "source": {
+        "name": "France 3 Régions",
+        "date": "2026-09-29",
+        "url": "https://france3-regions.franceinfo.fr/occitanie/haute-garonne/toulouse/greve-dans-la-fonction-publique-ecoles-fermees-blocus-des-lycees-rassemblements-le-mouvement-s-annonce-suivi-dans-la-region-de-toulouse-3424811.html"
+      }
+    },
+    {
+      "school": "lycee-general-et-technologique-des-arenes-toulouse",
+      "category": "BUILDING",
+      "title": "36 °C en classe avec 36 élèves",
+      "description": "Des élèves rapportent 36 °C en classe avec 36 élèves.",
+      "source": {
+        "name": "France 3 Régions",
+        "date": "2026-09-29",
+        "url": "https://france3-regions.franceinfo.fr/occitanie/haute-garonne/toulouse/greve-dans-la-fonction-publique-ecoles-fermees-blocus-des-lycees-rassemblements-le-mouvement-s-annonce-suivi-dans-la-region-de-toulouse-3424811.html"
+      }
+    },
+    {
+      "school": "lycee-general-et-technologique-des-arenes-toulouse",
+      "category": "CLASSES",
+      "title": "Cours de philosophie et d’histoire-géo non assurés",
+      "description": "Des cours de philosophie et d'histoire-géographie ne seraient pas assurés faute de remplacement.",
+      "source": {
+        "name": "France 3 Régions",
+        "date": "2026-09-29",
+        "url": "https://france3-regions.franceinfo.fr/occitanie/haute-garonne/toulouse/greve-dans-la-fonction-publique-ecoles-fermees-blocus-des-lycees-rassemblements-le-mouvement-s-annonce-suivi-dans-la-region-de-toulouse-3424811.html"
+      }
+    },
+    {
+      "school": "lycee-professionnel-rural-prive-l-oustal-montastruc-la-conseillere",
+      "category": "BUILDING",
+      "title": "Portes des toilettes qui ne ferment plus",
+      "description": "Selon des élèves, les portes des toilettes ne fermeraient plus depuis des années.",
+      "source": {
+        "name": "Le Journal Toulousain",
+        "date": "2026-10-01",
+        "url": "https://www.lejournaltoulousain.fr/occitanie/haute-garonne/actualites-haute-garonne/lycees-bloques-colere-retombe-pas-plusieurs-concernes-haute-garonne-399842/"
+      }
+    },
+    {
+      "school": "lycee-professionnel-rural-prive-l-oustal-montastruc-la-conseillere",
+      "category": "CATERING",
+      "title": "Dysfonctionnements à la cantine",
+      "description": "Les élèves signalent des dysfonctionnements à la cantine.",
+      "source": {
+        "name": "Le Journal Toulousain",
+        "date": "2026-10-01",
+        "url": "https://www.lejournaltoulousain.fr/occitanie/haute-garonne/actualites-haute-garonne/lycees-bloques-colere-retombe-pas-plusieurs-concernes-haute-garonne-399842/"
+      }
+    },
+    {
+      "school": "lycee-professionnel-rural-prive-l-oustal-montastruc-la-conseillere",
+      "category": "CLASSES",
+      "title": "Manque d’enseignants et d’AESH",
+      "description": "Les élèves signalent un manque d'enseignants et d'AESH.",
+      "source": {
+        "name": "Le Journal Toulousain",
+        "date": "2026-10-01",
+        "url": "https://www.lejournaltoulousain.fr/occitanie/haute-garonne/actualites-haute-garonne/lycees-bloques-colere-retombe-pas-plusieurs-concernes-haute-garonne-399842/"
+      }
+    },
+    {
+      "school": "lycee-general-et-technologique-pierre-larousse-toucy",
+      "category": "ORGANIZATION",
+      "title": "Journées de 8 h à 17 h plus 3 h de devoirs",
+      "description": "Journées de 8h à 17h chaque jour, plus environ 3 heures de devoirs, selon des élèves.",
+      "source": {
+        "name": "ici (ex-France Bleu)",
+        "date": "2026-10-01",
+        "url": "https://www.ici.fr/bourgogne-franche-comte/yonne-89/toucy/blocages-des-lycees-plusieurs-centaines-d-eleves-devant-les-grilles-a-joigny-toucy-et-tonnerre-dans-l-yonne-8567293"
+      }
+    },
+    {
+      "school": "lycee-simone-weil-saint-priest-en-jarez",
+      "category": "CLASSES",
+      "title": "Classes de 35 élèves",
+      "description": "Les élèves dénoncent des classes à 35 élèves.",
+      "source": {
+        "name": "ici (ex-France Bleu)",
+        "date": "2026-10-01",
+        "url": "https://www.ici.fr/auvergne-rhone-alpes/loire-42/saint-etienne/mouvements-lyceens-des-lycees-bloques-dans-la-loire-et-la-haute-loire-4939441"
+      }
+    },
+    {
+      "school": "lycee-simone-weil-saint-priest-en-jarez",
+      "category": "ORGANIZATION",
+      "title": "Emplois du temps à trous, de 8 h à 18 h",
+      "description": "Emplois du temps « gruyère » : journées de 8h à 18h avec plusieurs trous.",
+      "source": {
+        "name": "ici (ex-France Bleu)",
+        "date": "2026-10-01",
+        "url": "https://www.ici.fr/auvergne-rhone-alpes/loire-42/saint-etienne/mouvements-lyceens-des-lycees-bloques-dans-la-loire-et-la-haute-loire-4939441"
+      }
+    },
+    {
+      "school": "lycee-general-camille-vernet-valence",
+      "category": "BUILDING",
+      "title": "35 °C dans les classes",
+      "description": "Selon une pancarte d'élèves, il ferait 35 °C dans les classes.",
+      "source": {
+        "name": "ici (ex-France Bleu)",
+        "date": "2026-10-01",
+        "url": "https://www.ici.fr/auvergne-rhone-alpes/drome-26/nouvelles-actions-devant-des-lycees-de-drome-et-d-ardeche-ce-jeudi-6212680"
+      }
+    },
+    {
+      "school": "lycee-polyvalent-jean-jaures-saint-clement-de-riviere",
+      "category": "SECURITY",
+      "title": "Faux plafond de la cantine tombé pendant le repas",
+      "description": "Le 30 septembre, une partie du faux plafond de la cantine serait tombée pendant le repas, après de fortes pluies ; un élève aurait failli être touché.",
+      "source": {
+        "name": "France 3 Régions",
+        "date": "2026-10-01",
+        "url": "https://france3-regions.franceinfo.fr/occitanie/herault/montpellier/en-images-il-y-a-un-eleve-qui-etait-en-dessous-il-a-failli-se-prendre-le-toit-le-plafond-s-effondre-en-plein-repas-dans-la-cantine-d-un-lycee-de-l-herault-3426570.html"
+      }
+    },
+    {
+      "school": "lycee-polyvalent-jean-jaures-saint-clement-de-riviere",
+      "category": "BUILDING",
+      "title": "Infiltrations d’eau jusqu’à l’internat",
+      "description": "La toiture n'aurait pas résisté aux pluies : infiltrations jusqu'à l'internat, environ cent internes évacués vers un gymnase puis relogés.",
+      "source": {
+        "name": "France 3 Régions",
+        "date": "2026-10-01",
+        "url": "https://france3-regions.franceinfo.fr/occitanie/herault/montpellier/en-images-il-y-a-un-eleve-qui-etait-en-dessous-il-a-failli-se-prendre-le-toit-le-plafond-s-effondre-en-plein-repas-dans-la-cantine-d-un-lycee-de-l-herault-3426570.html"
+      }
+    }
+  ]
+}
