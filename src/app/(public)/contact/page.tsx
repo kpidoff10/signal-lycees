@@ -6,6 +6,7 @@ import "../(info)/prose.css";
 import { ContactForm } from "./ContactForm";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "/contact" },
   title: "Contact et suppression",
   description:
     "Demande la suppression d’un signalement, exerce tes droits sur tes données ou contacte l’éditeur de Signal Lycées (point de contact DSA). Sans compte.",

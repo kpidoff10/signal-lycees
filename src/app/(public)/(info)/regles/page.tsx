@@ -4,6 +4,7 @@ import { Icon } from "@/components/ui/Icon";
 import { InfoHeader } from "../_components/InfoHeader";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "/regles" },
   title: "Règles de publication",
   description:
     "Décris une situation, jamais une personne : les règles pour publier un signalement sur Signal Lycées, avec des exemples de ce qui est accepté ou refusé.",

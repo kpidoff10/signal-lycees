@@ -5,6 +5,7 @@ import "../(info)/prose.css";
 import { AffichePicker } from "./AffichePicker";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "/affiches" },
   title: "Affiches à imprimer",
   description:
     "Choisis ton lycée : une affiche et des flyers avec le QR code de sa fiche se créent tout seuls, prêts à imprimer. Gratuit, sans compte.",

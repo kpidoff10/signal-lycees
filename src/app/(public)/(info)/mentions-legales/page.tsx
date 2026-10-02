@@ -4,6 +4,7 @@ import { CONTACT_EMAIL, PRESS_EMAIL } from "@/lib/contact";
 import { InfoHeader } from "../_components/InfoHeader";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "/mentions-legales" },
   title: "Mentions légales",
   description: "Éditeur, hébergement, point de contact, sources de données et crédits de Signal Lycées.",
 };

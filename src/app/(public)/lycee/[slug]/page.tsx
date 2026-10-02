@@ -34,14 +34,12 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const school = await getSchoolBySlug(slug);
   if (!school) return { title: "Lycée introuvable" };
   const city = cityLabel(school.city);
+  const name = shortSchoolName(school.name);
   // Quand le lycée est mobilisé, le titre reprend les mots de l'actualité (« blocus », « mobilisation »).
   const mob = (await activeMobilizations([school.id])).get(school.id);
   return {
-    title: {
-      absolute: mob
-        ? `Mobilisation au ${school.name} (${city}) : blocus et problèmes signalés | Signal Lycées`
-        : `Signalements au ${school.name} ${inCity(city)} | Signal Lycées`,
-    },
+    // Le gabarit ajoute « | Signal Lycées ». Nom court : Google coupe les titres vers 60 caractères.
+    title: mob ? `Mobilisation au ${name} (${city}) : blocus et signalements` : `${name} (${city}) : problèmes signalés par les élèves`,
     description: mob
       ? `Mobilisation en cours au ${school.name} (${city}) : blocus, rassemblement, et les problèmes signalés anonymement par les élèves.`
       : `Consultez les problèmes actuellement signalés au ${school.name} (${city}) et les informations remontées par sa communauté.`,

@@ -3,6 +3,7 @@ import Link from "next/link";
 import { InfoHeader } from "../_components/InfoHeader";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "/cgu" },
   title: "Conditions d’utilisation",
   description:
     "Les conditions d’utilisation de Signal Lycées : service gratuit, règles de contenu, modération motivée, signalement des contenus, licence libre AGPL-3.0.",

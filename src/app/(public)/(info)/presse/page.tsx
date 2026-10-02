@@ -10,6 +10,7 @@ import { InfoHeader } from "../_components/InfoHeader";
 export const revalidate = 3600;
 
 export const metadata: Metadata = {
+  alternates: { canonical: "/presse" },
   title: "Espace presse",
   description:
     "Signal Lycées en bref : ce que c’est, les chiffres à jour, comment les lire et le contact presse (presse@signal-lycees.fr).",

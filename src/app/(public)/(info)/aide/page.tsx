@@ -4,6 +4,7 @@ import { InfoHeader } from "../_components/InfoHeader";
 import { HelpResources } from "./HelpResources";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "/aide" },
   title: "Besoin d’aide ?",
   description:
     "Tu ne vas pas bien, tu es harcelé·e ou en danger ? Des numéros gratuits et des adultes peuvent t’aider : 3114, 119, 3018, Fil Santé Jeunes, 112.",

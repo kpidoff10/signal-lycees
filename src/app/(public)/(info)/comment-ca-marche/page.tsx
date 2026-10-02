@@ -5,6 +5,7 @@ import { STATUS_RULES } from "@/server/status";
 import { InfoHeader } from "../_components/InfoHeader";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "/comment-ca-marche" },
   title: "Comment ça marche",
   description:
     "Signaler un problème dans ton lycée, confirmer ceux des autres, dire qu’un problème semble résolu : tout ce qu’il faut savoir sur Signal Lycées, anonyme et sans classement.",

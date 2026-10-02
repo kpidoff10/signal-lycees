@@ -4,6 +4,7 @@ import { PRIVACY_EMAIL } from "@/lib/contact";
 import { InfoHeader, Todo } from "../_components/InfoHeader";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "/confidentialite" },
   title: "Confidentialité",
   description:
     "Quelles données Signal Lycées traite, pourquoi, combien de temps et avec qui : pas de compte, pas d’e-mail, pas de nom, pas de publicité ni de pistage.",
