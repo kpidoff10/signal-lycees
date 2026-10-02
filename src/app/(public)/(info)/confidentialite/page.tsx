@@ -177,6 +177,10 @@ export default function ConfidentialitePage() {
           </li>
           <li>
             Aucun cookie publicitaire ou de mesure d’audience : Plausible fonctionne sans cookie.
+            {" "}La fréquentation (nombre de visiteurs et de pages vues) est mesurée sans cookie, directement par le site : une empreinte
+            anonyme du jour, calculée à partir de l’adresse IP et du navigateur avec une clé qui change chaque jour, sert seulement à ne pas
+            compter deux fois la même visite ; elle est effacée le lendemain. Seuls des totaux par jour sont conservés. Les navigateurs qui
+            demandent à ne pas être suivis (« Do Not Track », « Global Privacy Control ») ne sont pas comptés.
           </li>
         </ul>
         <p>Tu peux supprimer le cookie sl_id à tout moment dans ton navigateur : tu repartiras avec une nouvelle identité anonyme.</p>

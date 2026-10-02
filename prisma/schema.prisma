@@ -368,6 +368,40 @@ model PrivacyRequest {
   createdAt DateTime @default(now())
 }
 
+// Fréquentation, sans cookie : seuls des compteurs agrégés par jour sont conservés.
+model TrafficDay {
+  day      DateTime @id @db.Date
+  views    Int      @default(0)
+  visitors Int      @default(0)
+}
+
+// Pages vues par jour (chemins publics uniquement).
+model TrafficPage {
+  day   DateTime @db.Date
+  path  String
+  views Int      @default(0)
+
+  @@id([day, path])
+}
+
+// Provenance des visites (domaine du site d'origine, ou « direct »).
+model TrafficSource {
+  day    DateTime @db.Date
+  source String
+  views  Int      @default(0)
+
+  @@id([day, source])
+}
+
+// Empreintes du jour pour compter les visiteurs uniques (HMAC de l'IP et du navigateur,
+// sel quotidien). Supprimées dès le lendemain par la purge.
+model TrafficVisitor {
+  day  DateTime @db.Date
+  hash String
+
+  @@id([day, hash])
+}
+
 // Réglages modifiables depuis l'admin (ex. interrupteur d'urgence).
 model AppSetting {
   key       String   @id

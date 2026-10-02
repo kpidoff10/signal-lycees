@@ -1,6 +1,8 @@
 import Link from "next/link";
 import { requireAdmin } from "@/server/admin/auth";
 import { dashboardCounts } from "@/server/admin/dashboard";
+import { trafficOverview } from "@/server/admin/traffic";
+import { TrafficPanel } from "./_components/TrafficPanel";
 import { ActionForm } from "./_components/ActionForm";
 import { PageHeader, Submit } from "./_components/ui";
 import { freezeAction } from "./actions";
@@ -9,7 +11,7 @@ export const dynamic = "force-dynamic";
 
 export default async function AdminHome() {
   await requireAdmin();
-  const c = await dashboardCounts();
+  const [c, traffic] = await Promise.all([dashboardCounts(), trafficOverview()]);
 
   const stats = [
     { label: "dans la file de modération", value: c.queue, href: "/admin/moderation", hot: c.queue > 0 },
@@ -31,6 +33,8 @@ export default async function AdminHome() {
           </Link>
         ))}
       </div>
+
+      <TrafficPanel t={traffic} />
 
       <section className={`adm-card${c.frozen ? " adm-urgent" : ""}`} aria-labelledby="freeze-h">
         <h2 id="freeze-h" className="adm-h2">

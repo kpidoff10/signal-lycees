@@ -91,3 +91,25 @@ a.adm-row:hover { border-color: var(--border-strong); }
 .adm-dl { display: grid; grid-template-columns: max-content minmax(0, 1fr); gap: 6px var(--space-4); margin: 0; font-size: 14px; line-height: 20px; }
 .adm-dl dt { color: var(--ink-muted); }
 .adm-dl dd { margin: 0; overflow-wrap: anywhere; }
+
+/* Fréquentation */
+.adm-h3 { margin: 0 0 var(--space-2); font-size: 14px; line-height: 20px; font-weight: 700; }
+@media (min-width: 768px) { .adm-stats.adm-stats-4 { grid-template-columns: repeat(4, minmax(0, 1fr)); } }
+.adm-chart { position: relative; padding-top: 18px; }
+.adm-chart-max { position: absolute; top: 0; left: 0; }
+.adm-chart-bars { display: flex; align-items: flex-end; gap: 2px; height: 160px; border-bottom: 1px solid var(--border); }
+.adm-bar-hit { position: relative; flex: 1; height: 100%; display: flex; align-items: flex-end; cursor: default; outline: none; }
+.adm-bar { display: block; width: 100%; background: var(--signal); border-radius: 4px 4px 0 0; transition: opacity .15s; }
+.adm-bar-hit:hover .adm-bar, .adm-bar-hit:focus-visible .adm-bar { opacity: .75; }
+.adm-bar-tip { position: absolute; bottom: calc(100% + 6px); left: 50%; transform: translateX(-50%); display: none; z-index: 5; white-space: nowrap; padding: 6px 10px; border-radius: var(--radius-sm); background: var(--surface); border: 1px solid var(--border); box-shadow: var(--shadow-float); font-size: 12px; line-height: 16px; color: var(--ink); flex-direction: column; gap: 2px; pointer-events: none; }
+.adm-bar-hit:hover .adm-bar-tip, .adm-bar-hit:focus-visible .adm-bar-tip { display: flex; }
+.adm-bar-hit:first-child .adm-bar-tip, .adm-bar-hit:nth-child(2) .adm-bar-tip { left: 0; transform: none; }
+.adm-bar-hit:last-child .adm-bar-tip, .adm-bar-hit:nth-last-child(2) .adm-bar-tip { left: auto; right: 0; transform: none; }
+.adm-bar-hit:focus-visible { box-shadow: 0 0 0 2px var(--focus); border-radius: 4px; }
+.adm-chart-axis { display: flex; justify-content: space-between; margin-top: 4px; }
+.adm-hbars { list-style: none; margin: 0; padding: 0; display: grid; gap: 8px; }
+.adm-hbars li { display: grid; grid-template-columns: minmax(0, 1.4fr) minmax(60px, 1fr) auto; align-items: center; gap: 10px; font-size: 14px; line-height: 20px; }
+.adm-hbar-label { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.adm-hbar-track { height: 8px; border-radius: 999px; background: var(--surface-sunken); overflow: hidden; }
+.adm-hbar { display: block; height: 100%; background: var(--signal); border-radius: 999px; }
+.adm-hbar-value { font-weight: 700; font-variant-numeric: tabular-nums; }

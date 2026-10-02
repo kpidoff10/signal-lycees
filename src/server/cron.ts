@@ -3,6 +3,7 @@ import { prisma } from "@/lib/db";
 import { env } from "@/lib/env";
 import { safeEqual } from "./crypto";
 import { refreshStatus } from "./issues";
+import { purgeVisitorHashes } from "./traffic";
 
 /** Les tâches planifiées Vercel Cron envoient « Authorization: Bearer <CRON_SECRET> ». */
 export function isCronAuthorized(req: Request): boolean {
@@ -57,6 +58,7 @@ export async function runPurgeJob(now = new Date()) {
   const identities = await prisma.anonymousIdentity.deleteMany({ where: { lastSeen: { lt: days(RETENTION.identityDays, now) }, banned: false } });
   const analyses = await prisma.aIAnalysis.deleteMany({ where: { createdAt: { lt: days(RETENTION.analysisDays, now) } } });
   const reports = await prisma.contentReport.deleteMany({ where: { status: { not: "OPEN" }, handledAt: { lt: days(RETENTION.handledReportsDays, now) } } });
+  const visitorHashes = await purgeVisitorHashes();
   const requests = await prisma.privacyRequest.deleteMany({ where: { handled: true, createdAt: { lt: days(RETENTION.handledReportsDays, now) } } });
   return {
     purgedText: purgedText.count,
@@ -65,5 +67,6 @@ export async function runPurgeJob(now = new Date()) {
     analyses: analyses.count,
     reports: reports.count,
     requests: requests.count,
+    visitorHashes,
   };
 }
