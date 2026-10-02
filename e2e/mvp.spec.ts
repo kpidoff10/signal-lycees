@@ -106,3 +106,15 @@ test("admin inaccessible sans session", async ({ page }) => {
   await page.goto("/admin/moderation");
   await expect(page).toHaveURL(/\/admin\/connexion/);
 });
+
+test.describe("recherche autour de moi", () => {
+  test.use({ geolocation: { latitude: 47.3215, longitude: 5.0412 }, permissions: ["geolocation"] });
+  test("le bouton de localisation propose les lycées les plus proches", async ({ page }) => {
+    await page.goto("/");
+    await page.getByRole("button", { name: "Trouver les lycées autour de moi" }).first().click();
+    await expect(page.getByText("Lycées autour de toi").first()).toBeVisible();
+    await expect(page.getByRole("option").first()).toContainText("Dijon");
+    await page.getByRole("option").first().click();
+    await expect(page).toHaveURL(/\/lycee\//);
+  });
+});

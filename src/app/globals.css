@@ -268,3 +268,36 @@ body {
 [tabindex="-1"]:focus-visible {
   outline: none;
 }
+
+/* Bouton « Autour de moi » dans le champ de recherche de lycée. */
+.sl-search-locate {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  flex: none;
+  height: 34px;
+  padding: 0 10px;
+  border: 0;
+  border-radius: var(--radius-pill);
+  background: var(--signal-soft);
+  color: var(--signal-ink);
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+  white-space: nowrap;
+}
+.sl-search-locate:hover {
+  background: color-mix(in srgb, var(--signal-soft) 70%, var(--signal) 30%);
+}
+.sl-search-locate:disabled {
+  opacity: 0.7;
+  cursor: progress;
+}
+@media (max-width: 639px) {
+  .sl-search-locate {
+    width: 36px;
+    height: 36px;
+    padding: 0;
+    justify-content: center;
+  }
+}

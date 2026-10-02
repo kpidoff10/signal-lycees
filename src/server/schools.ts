@@ -64,3 +64,27 @@ export async function searchCities(raw: string, limit = 3): Promise<CityHit[]> {
      LIMIT ${limit}`;
   return rows.map((r) => ({ ...r, count: Number(r.count), latitude: Number(r.latitude), longitude: Number(r.longitude) }));
 }
+
+export interface NearbyHit extends SchoolHit {
+  distanceKm: number;
+}
+
+/**
+ * Lycées les plus proches d'un point. La position reçue est déjà arrondie (~1 km)
+ * par le navigateur ; elle n'est ni stockée ni journalisée.
+ */
+export async function nearbySchools(lat: number, lng: number, limit = 8): Promise<NearbyHit[]> {
+  const rows = await prisma.$queryRaw<(Omit<NearbyHit, "distanceKm"> & { distanceKm: number })[]>`
+    SELECT 'school' AS type, id, slug, name, city, "postalCode", latitude, longitude,
+           6371 * 2 * asin(sqrt(
+             power(sin(radians(latitude - ${lat}) / 2), 2) +
+             cos(radians(${lat})) * cos(radians(latitude)) * power(sin(radians(longitude - ${lng}) / 2), 2)
+           )) AS "distanceKm"
+      FROM "School"
+     WHERE "isOpen"
+       AND latitude BETWEEN ${lat - 1.5} AND ${lat + 1.5}
+       AND longitude BETWEEN ${lng - 2.5} AND ${lng + 2.5}
+     ORDER BY "distanceKm"
+     LIMIT ${limit}`;
+  return rows.map((r) => ({ ...r, distanceKm: Number(r.distanceKm) }));
+}
