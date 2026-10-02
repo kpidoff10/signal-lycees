@@ -7,7 +7,7 @@ import { Icon } from "@/components/ui/Icon";
 
 export function Logo() {
   return (
-    <Link href="/" className="inline-flex items-center gap-2.5 font-display text-[21px] font-bold leading-none tracking-[-0.01em]">
+    <Link href="/" className="inline-flex shrink-0 items-center gap-2.5 whitespace-nowrap font-display text-[21px] font-bold leading-none tracking-[-0.01em]">
       <span aria-hidden="true" className="inline-block h-3.5 w-3.5 rounded-full bg-signal shadow-[0_0_0_4px_var(--signal-soft)]" />
       Signal Lycées
     </Link>
@@ -17,22 +17,23 @@ export function Logo() {
 const NAV = [
   { href: "/#carte", label: "La carte" },
   { href: "/comment-ca-marche", label: "Comment ça marche" },
+  { href: "/affiches", label: "Affiches" },
 ];
 
 export function Header() {
   const [open, setOpen] = useState(false);
   return (
     <header className="sticky top-0 z-50 border-b border-border bg-paper/95 backdrop-blur supports-[backdrop-filter]:bg-paper/85">
-      <div className="container-page flex h-16 items-center gap-8">
+      <div className="container-page flex h-16 items-center gap-6 lg:gap-8">
         <Logo />
-        <nav aria-label="Navigation principale" className="hidden gap-7 text-[15px] font-semibold md:flex">
+        <nav aria-label="Navigation principale" className="hidden gap-5 whitespace-nowrap text-[14px] font-semibold md:flex lg:gap-7 lg:text-[15px]">
           {NAV.map((n) => (
             <Link key={n.href} href={n.href} className="hover:text-signal-ink">
               {n.label}
             </Link>
           ))}
         </nav>
-        <div className="ml-auto hidden md:block">
+        <div className="ml-auto hidden shrink-0 md:block">
           <ButtonLink href="/signaler">Signaler un problème</ButtonLink>
         </div>
         <button
