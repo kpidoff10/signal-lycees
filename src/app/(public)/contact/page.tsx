@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { CONTACT_EMAIL, PRESS_EMAIL, PRIVACY_EMAIL } from "@/lib/contact";
 import { InfoHeader } from "../(info)/_components/InfoHeader";
 import "../(info)/prose.css";
 import { ContactForm } from "./ContactForm";
@@ -38,6 +39,16 @@ export default async function ContactPage({ searchParams }: { searchParams: Prom
           </p>
 
           <ContactForm defaultKind={type === "suppression" ? "DELETION" : type === "contact" ? "CONTACT" : undefined} defaultRef={ref} />
+
+          <h2>Par e-mail</h2>
+          <p>
+            Tu peux aussi écrire à <a href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a>. Pour tes données personnelles :{" "}
+            <a href={`mailto:${PRIVACY_EMAIL}`}>{PRIVACY_EMAIL}</a>. Journalistes et associations :{" "}
+            <a href={`mailto:${PRESS_EMAIL}`}>{PRESS_EMAIL}</a>.
+          </p>
+          <p>
+            Un e-mail nous montre ton adresse. Pour rester anonyme, utilise plutôt le formulaire ci-dessus.
+          </p>
 
           <p className="text-[15px] leading-[22px] text-ink-muted">
             Ta demande est lue par l’éditeur du site. Elle est utilisée uniquement pour y répondre : voir la{" "}

@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { PRIVACY_EMAIL } from "@/lib/contact";
 import { InfoHeader, Todo } from "../_components/InfoHeader";
 
 export const metadata: Metadata = {
@@ -64,6 +65,12 @@ const DATA_ROWS: { what: string; why: string; duration: string; who: string }[] 
     who: "L’éditeur ; hébergeurs",
   },
   {
+    what: "E-mail que tu choisis de nous envoyer : ton adresse e-mail et ton message",
+    why: "Répondre à ton message",
+    duration: "12 mois après le dernier échange",
+    who: "L’éditeur ; Hostinger (messagerie)",
+  },
+  {
     what: "Statistiques de visite agrégées (pages vues, sans cookie)",
     why: "Savoir quelles pages sont utiles",
     duration: "Données agrégées, sans donnée personnelle",
@@ -116,7 +123,8 @@ export default function ConfidentialitePage() {
         <p>
           Le responsable de traitement est <strong>Kevin Pidoff</strong>, une personne physique qui édite Signal Lycées à titre non
           professionnel (voir les <Link href="/mentions-legales">mentions légales</Link>). Pour toute question ou pour exercer tes
-          droits, utilise la <Link href="/contact">page de contact</Link> : c’est le moyen de joindre directement le responsable de
+          droits, utilise la <Link href="/contact">page de contact</Link> ou écris à{" "}
+          <a href={`mailto:${PRIVACY_EMAIL}`}>{PRIVACY_EMAIL}</a> : c’est le moyen de joindre directement le responsable de
           traitement.
         </p>
 
@@ -233,6 +241,10 @@ export default function ConfidentialitePage() {
             <dd>Statistiques de visite, sans cookie et sans donnée personnelle ni texte de signalement.</dd>
           </div>
           <div>
+            <dt>Hostinger</dt>
+            <dd>Messagerie de l’éditeur (adresses en @signal-lycees.fr) : reçoit seulement les e-mails que tu choisis de nous envoyer.</dd>
+          </div>
+          <div>
             <dt>Telegram</dt>
             <dd>
               Alertes internes envoyées à l’éditeur quand un signalement est à vérifier. Elles contiennent seulement le nom du lycée, la
@@ -273,6 +285,10 @@ export default function ConfidentialitePage() {
           ton signalement) ou l’<strong>adresse de la page du signalement</strong>. Comme on ne sait pas qui tu es, ce lien est le
           seul moyen de relier une demande à un signalement : garde-le précieusement et ne le partage pas. Ton lien de suivi permet
           aussi de demander directement la suppression.
+        </p>
+        <p>
+          Tu peux aussi écrire à <a href={`mailto:${PRIVACY_EMAIL}`}>{PRIVACY_EMAIL}</a>, mais un e-mail nous montre ton adresse :
+          le formulaire reste le moyen le plus anonyme.
         </p>
         <p>
           Tu peux aussi supprimer ton identité anonyme toi-même en effaçant le cookie sl_id de ton navigateur. Tu n’as pas besoin

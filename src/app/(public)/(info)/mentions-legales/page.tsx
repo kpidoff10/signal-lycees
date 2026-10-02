@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { CONTACT_EMAIL, PRESS_EMAIL } from "@/lib/contact";
 import { InfoHeader } from "../_components/InfoHeader";
 
 export const metadata: Metadata = {
@@ -24,7 +25,8 @@ export default function MentionsLegalesPage() {
           à l’hébergeur, dont les coordonnées figurent ci-dessous.
         </p>
         <p>
-          Pour contacter l’éditeur : <Link href="/contact">page de contact</Link>. Chaque message est lu et reçoit une réponse si tu
+          Pour contacter l’éditeur : <Link href="/contact">page de contact</Link> ou{" "}
+          <a href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a> (presse : <a href={`mailto:${PRESS_EMAIL}`}>{PRESS_EMAIL}</a>). Chaque message est lu et reçoit une réponse si tu
           laisses un moyen de te recontacter.
         </p>
 
@@ -43,7 +45,7 @@ export default function MentionsLegalesPage() {
         <p>
           Conformément au règlement européen sur les services numériques (DSA), le point de contact unique pour les autorités des
           États membres, la Commission européenne et les utilisateurs est la <Link href="/contact">page de contact</Link> (choisis
-          « Autre demande ou contact DSA »). Langue acceptée : français.
+          « Autre demande ou contact DSA ») ou l’adresse <a href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a>. Langue acceptée : français.
         </p>
         <p>
           Pour signaler un contenu illicite précis, utilise de préférence le bouton « Signaler un contenu » présent sur chaque
