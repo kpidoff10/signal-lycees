@@ -3,6 +3,7 @@ import Script from "next/script";
 import type { ReactNode } from "react";
 import { Providers } from "@/components/layout/Providers";
 import { publicEnv } from "@/lib/env";
+import { fontDisplay, fontSans } from "./fonts";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -35,7 +36,7 @@ export const viewport: Viewport = {
 
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
-    <html lang="fr">
+    <html lang="fr" className={`${fontSans.variable} ${fontDisplay.variable}`}>
       <body className="sl flex min-h-dvh flex-col">
         <a href="#contenu" className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[100] focus:rounded-md focus:bg-surface focus:p-3">
           Aller au contenu
