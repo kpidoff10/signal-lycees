@@ -11,6 +11,8 @@ export const metadata: Metadata = {
   description:
     "Signale un problème dans ton lycée, découvre si d’autres élèves le rencontrent et fais remonter les situations qui comptent. Gratuit, anonyme, sans classement.",
   applicationName: "Signal Lycées",
+  // Search Console (propriété « préfixe d’URL »), validée par balise : ne dépend pas du DNS.
+  verification: { google: "fDwTU-f_J_hVIdaNDNkkP4aCduXl3vCVVvTrMqkftZ4" },
   openGraph: { type: "website", locale: "fr_FR", siteName: "Signal Lycées" },
   formatDetection: { telephone: false },
   icons: {
