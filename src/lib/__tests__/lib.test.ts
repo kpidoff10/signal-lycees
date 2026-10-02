@@ -41,3 +41,11 @@ describe("issueDraftSchema", () => {
   });
   it("7 catégories", () => expect(CATEGORIES).toHaveLength(7));
 });
+
+import { formatDay } from "../format";
+describe("formatDay", () => {
+  it("écrit « 1er » pour le premier du mois", () => {
+    expect(formatDay(new Date("2026-10-01T12:00:00Z"), new Date("2026-10-02T12:00:00Z"))).toBe("1er octobre");
+    expect(formatDay(new Date("2026-10-02T12:00:00Z"), new Date("2026-10-02T12:00:00Z"))).toBe("2 octobre");
+  });
+});

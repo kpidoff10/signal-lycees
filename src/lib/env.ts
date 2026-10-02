@@ -34,6 +34,8 @@ const serverSchema = z.object({
   MODERATION_FREEZE: bool,
   PHOTOS_ENABLED: bool,
   CRON_SECRET: optional,
+  /** Durée d'affichage d'une mobilisation après sa date (heures). */
+  MOBILIZATION_TTL_HOURS: z.coerce.number().int().positive().default(72),
   TELEGRAM_BOT_TOKEN: optional,
   TELEGRAM_CHAT_ID: optional,
   /** Notifier aussi les signalements publiés automatiquement (pas seulement ceux à vérifier). */

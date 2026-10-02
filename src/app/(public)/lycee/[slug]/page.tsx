@@ -10,6 +10,9 @@ import { TrackView } from "@/components/ui/TrackView";
 import { category, type CategoryId } from "@/lib/categories";
 import { plural } from "@/lib/format";
 import { getSchoolBySlug, getSchoolIssues } from "@/server/school-page";
+import { activeMobilizations } from "@/server/mobilizations";
+import { MobilizationBanner } from "@/components/school/MobilizationBanner";
+import { ReportMobilization } from "@/components/school/ReportMobilization";
 
 export const revalidate = 60;
 
@@ -43,7 +46,8 @@ export default async function SchoolPage({ params }: Props) {
   const { slug } = await params;
   const school = await getSchoolBySlug(slug);
   if (!school) notFound();
-  const issues = await getSchoolIssues(school.id);
+  const [issues, mobs] = await Promise.all([getSchoolIssues(school.id), activeMobilizations([school.id])]);
+  const mobilization = mobs.get(school.id) ?? null;
 
   const active = issues.filter((i) => i.status !== "RESOLVED");
   const resolved = issues.filter((i) => i.status === "RESOLVED");
@@ -106,6 +110,12 @@ export default async function SchoolPage({ params }: Props) {
         </div>
       </header>
 
+      {mobilization && (
+        <div className="mt-6">
+          <MobilizationBanner m={mobilization} />
+        </div>
+      )}
+
       <div className="mt-8">
         <StatCounters
           items={[
@@ -116,6 +126,11 @@ export default async function SchoolPage({ params }: Props) {
           ]}
         />
         <p className="mt-3 text-[13px] text-ink-muted">Ces chiffres comptent des signalements de lycéens. Ils ne notent pas l’établissement.</p>
+        {!mobilization && (
+          <div className="mt-4">
+            <ReportMobilization schoolId={school.id} />
+          </div>
+        )}
       </div>
 
       <div className="mt-12 grid grid-cols-[minmax(0,1fr)] gap-10 lg:grid-cols-[minmax(0,1fr)_380px]">

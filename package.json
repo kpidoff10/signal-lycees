@@ -22,7 +22,9 @@
     "build:regions": "python3 scripts/build-regions.py",
     "admin:create": "tsx scripts/create-admin.ts",
     "import:press": "tsx scripts/import-press.ts",
-    "import:remove": "tsx scripts/remove-import.ts"
+    "import:remove": "tsx scripts/remove-import.ts",
+    "import:mobilizations": "tsx scripts/import-mobilizations.ts",
+    "import:remove-mobilizations": "tsx scripts/remove-mobilizations.ts"
   },
   "dependencies": {
     "@hookform/resolvers": "^5.9.1",

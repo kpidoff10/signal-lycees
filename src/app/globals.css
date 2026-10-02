@@ -349,3 +349,35 @@ body {
     padding-bottom: 76px;
   }
 }
+
+/* Mobilisations : petit mégaphone accroché au marqueur, ou marqueur dédié sans signalement. */
+.sl-marker-dot,
+.sl-cluster-disc,
+.sl-region-count {
+  position: relative;
+}
+.sl-mob-badge {
+  position: absolute;
+  top: -14px;
+  right: -17px;
+  display: grid;
+  place-items: center;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: var(--surface);
+  box-shadow: var(--shadow-marker);
+  font-size: 11px;
+  line-height: 1;
+  pointer-events: none;
+}
+.sl-marker-mob .sl-marker-dot {
+  display: grid;
+  place-items: center;
+  width: 28px;
+  height: 28px;
+  background: var(--surface);
+  border-color: var(--signal);
+  font-size: 14px;
+  line-height: 1;
+}

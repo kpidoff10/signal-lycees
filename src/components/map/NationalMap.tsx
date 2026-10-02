@@ -5,7 +5,7 @@ import { Map as MLMap, Marker, setWorkerUrl, type GeoJSONSource, type MapLayerMo
 import Supercluster from "supercluster";
 import { useQuery } from "@tanstack/react-query";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
-import { CategoryChips } from "@/components/ui/Chips";
+import { CategoryChips, Chip } from "@/components/ui/Chips";
 import { Button } from "@/components/ui/Button";
 import { Icon } from "@/components/ui/Icon";
 import { Segmented } from "@/components/ui/Segmented";
@@ -19,6 +19,7 @@ import {
   distanceKm,
   METRO_BOUNDS,
   OVERSEAS,
+  REGION_MODE_MIN_SCHOOLS,
   REGION_ZOOM,
   regionBBox,
   regionLabelPoint,
@@ -40,10 +41,11 @@ interface MapSchool {
   count: number;
   active: number;
   confirmations: number;
-  dominant: string;
+  dominant: string | null;
+  mob: string | null;
 }
 
-type PointProps = { id: string; name: string; city: string; count: number };
+type PointProps = { id: string; name: string; city: string; count: number; mob: number };
 
 const COMPACT_WIDTH = 640;
 
@@ -67,7 +69,7 @@ export default function NationalMap() {
   const mapRef = useRef<MLMap | null>(null);
   const markersRef = useRef<Marker[]>([]);
   const regionsRef = useRef<RegionFeature[]>([]);
-  const indexRef = useRef<Supercluster<PointProps> | null>(null);
+  const indexRef = useRef<Supercluster<PointProps, { mob: number }> | null>(null);
   const selectRef = useRef<(id: string, at?: LngLat) => void>(() => {});
   const selectedRef = useRef<string | null>(null);
 
@@ -110,6 +112,8 @@ export default function NationalMap() {
     for (const s of schools) t.set(s.region, (t.get(s.region) ?? 0) + s.count);
     return t;
   }, [schools]);
+  const useRegions = schools.length >= REGION_MODE_MIN_SCHOOLS;
+  const regionMobs = useMemo(() => new Set(schools.filter((s) => s.mob).map((s) => s.region)), [schools]);
 
   // Largeur du composant → disposition compacte (mobile) sous 640 px.
   useEffect(() => {
@@ -252,10 +256,19 @@ export default function NationalMap() {
     const features = schools.map((s) => ({
       type: "Feature" as const,
       geometry: { type: "Point" as const, coordinates: [s.lng, s.lat] },
-      properties: { id: s.id, name: s.name, city: s.city, count: s.count },
+      properties: { id: s.id, name: s.name, city: s.city, count: s.count, mob: s.mob ? 1 : 0 },
     }));
     (map.getSource("schools") as GeoJSONSource | undefined)?.setData({ type: "FeatureCollection", features });
-    const index = new Supercluster<PointProps>({ radius: 56, maxZoom: 13, minPoints: 2 });
+    const index = new Supercluster<PointProps, { mob: number }>({
+      // Regroupement léger : seuls les points qui se chevauchent vraiment sont groupés.
+      radius: 20,
+      maxZoom: 9,
+      minPoints: 2,
+      map: (p) => ({ mob: p.mob }),
+      reduce: (acc, p) => {
+        acc.mob += p.mob;
+      },
+    });
     index.load(features);
     indexRef.current = index;
   }, [schools, ready]);
@@ -294,15 +307,21 @@ export default function NationalMap() {
     if (mode === "heat") return;
     const zoom = map.getZoom();
 
-    if (zoom < REGION_ZOOM) {
+    if (useRegions && zoom < REGION_ZOOM) {
       for (const f of regionsRef.current) {
         const total = regionTotals.get(f.properties.name) ?? 0;
-        if (!total) continue;
+        const mobilized = regionMobs.has(f.properties.name);
+        if (!total && !mobilized) continue;
         const b = el("button", "sl-region");
         b.type = "button";
-        b.setAttribute("aria-label", `${f.properties.name} : ${total} ${plural(total, "signalement")}. Zoomer sur la région`);
+        b.setAttribute(
+          "aria-label",
+          `${f.properties.name} : ${total} ${plural(total, "signalement")}${mobilized ? ", mobilisations en cours" : ""}. Zoomer sur la région`,
+        );
         const lvl = total > 150 ? " lvl-3" : total > 60 ? " lvl-2" : "";
-        b.append(el("span", `sl-region-count${lvl}`, formatNumber(total)));
+        const count = el("span", `sl-region-count${lvl}`, total ? formatNumber(total) : "📣");
+        if (mobilized && total) count.append(el("span", "sl-mob-badge", "📣"));
+        b.append(count);
         if (!compact) b.append(el("span", "sl-region-name", f.properties.name));
         b.addEventListener("click", (e) => {
           e.stopPropagation();
@@ -320,6 +339,7 @@ export default function NationalMap() {
     for (const c of clusters) {
       const [lng, lat] = c.geometry.coordinates as LngLat;
       const props = c.properties as PointProps & { cluster?: boolean; cluster_id?: number; point_count?: number };
+      const mobBadge = () => el("span", "sl-mob-badge", "📣");
       if (props.cluster && props.cluster_id !== undefined) {
         const n = props.point_count ?? 0;
         const size = Math.min(56, 36 + Math.log2(n) * 4);
@@ -328,6 +348,7 @@ export default function NationalMap() {
         b.setAttribute("aria-label", `${n} lycées regroupés. Zoomer`);
         const disc = el("span", "sl-cluster-disc", formatNumber(n));
         disc.style.width = disc.style.height = `${size}px`;
+        if (props.mob > 0) disc.append(mobBadge());
         b.append(disc);
         if (zoom >= 8) {
           const cities = new Map<string, number>();
@@ -346,13 +367,22 @@ export default function NationalMap() {
         });
         markersRef.current.push(new Marker({ element: b }).setLngLat([lng, lat]).addTo(map));
       } else {
+        const onlyMob = props.count === 0 && props.mob > 0;
         const lvl = markerLevel(props.count);
-        const b = el("button", `sl-marker sl-marker-${lvl}`);
+        const b = el("button", onlyMob ? "sl-marker sl-marker-mob" : `sl-marker sl-marker-${lvl}`);
         b.type = "button";
-        b.setAttribute("aria-label", `${props.name}, ${props.city} : ${props.count} ${plural(props.count, "signalement")}`);
+        b.setAttribute(
+          "aria-label",
+          `${props.name}, ${props.city} : ${props.count} ${plural(props.count, "signalement")}${props.mob ? ", mobilisation en cours" : ""}`,
+        );
         b.dataset.school = props.id;
         b.setAttribute("aria-expanded", String(props.id === selectedRef.current));
-        b.append(el("span", "sl-marker-dot"));
+        if (onlyMob) b.append(el("span", "sl-marker-dot", "📣"));
+        else {
+          const dot = el("span", "sl-marker-dot");
+          if (props.mob) dot.append(mobBadge());
+          b.append(dot);
+        }
         b.addEventListener("click", (e) => {
           e.stopPropagation();
           selectRef.current(props.id, [lng, lat]);
@@ -360,7 +390,7 @@ export default function NationalMap() {
         markersRef.current.push(new Marker({ element: b }).setLngLat([lng, lat]).addTo(map));
       }
     }
-  }, [ready, mode, regionTotals, compact]);
+  }, [ready, mode, regionTotals, regionMobs, compact, useRegions]);
 
   // Sélection : on met à jour l'attribut sans recréer les marqueurs.
   useEffect(() => {
@@ -464,6 +494,12 @@ export default function NationalMap() {
         </div>
         <CategoryChips value={filters.cats} onChange={(cats) => setFilters((f) => ({ ...f, cats }))} scroll={compact} />
         <div className="sl-nm-row">
+          <Chip
+            label="Mobilisations en cours"
+            emoji="📣"
+            selected={!!filters.mobOnly}
+            onClick={() => setFilters((f) => ({ ...f, mobOnly: !f.mobOnly }))}
+          />
           <Switch
             label={compact ? "Actifs uniquement" : "Problèmes actifs uniquement"}
             checked={filters.activeOnly}
@@ -511,14 +547,16 @@ export default function NationalMap() {
         </div>
 
         <div className="sl-nm-legend">
-          <MapLegend mode={mode} zoomedIn={zoomedIn} note={legendNote} />
+          <MapLegend mode={mode} zoomedIn={zoomedIn || !useRegions} note={legendNote} />
         </div>
 
         {(empty || isError) && (
           <div className="sl-nm-empty" role="status">
             {isError
               ? "La carte n’a pas pu se charger. Réessaie dans un instant."
-              : filters.cats.length || filters.period !== "all"
+              : filters.mobOnly
+                ? "Aucune mobilisation signalée en ce moment."
+                : filters.cats.length || filters.period !== "all"
                 ? "Aucun signalement ne correspond à ces filtres."
                 : "Aucun signalement pour l’instant. Sois le premier à faire entendre ton lycée."}
           </div>
@@ -577,6 +615,7 @@ export default function NationalMap() {
                     <span className="sl-item-main">
                       <span className="sl-item-name">{s.name}</span>
                       <span className="sl-item-meta">
+                        {s.mob && "📣 "}
                         {s.city} · <b>{s.active}</b> {plural(s.active, "actif")} · <b>{formatNumber(s.confirmations)}</b> conf.
                       </span>
                     </span>
@@ -640,6 +679,7 @@ function MapLegend({ mode, zoomedIn, note }: { mode: "markers" | "heat"; zoomedI
         <span className="sl-legend-item">
           {sw(14, "--cluster")}groupe
         </span>
+        <span className="sl-legend-item">📣 mobilisation</span>
       </span>
     </div>
   );

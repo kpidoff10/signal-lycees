@@ -34,7 +34,9 @@ const df = new Intl.DateTimeFormat("fr-FR", { day: "numeric", month: "long" });
 const dfy = new Intl.DateTimeFormat("fr-FR", { day: "numeric", month: "long", year: "numeric" });
 
 export function formatDay(date: Date, now: Date = new Date()): string {
-  return date.getFullYear() === now.getFullYear() ? df.format(date) : dfy.format(date);
+  const s = date.getFullYear() === now.getFullYear() ? df.format(date) : dfy.format(date);
+  // « 1er octobre » plutôt que « 1 octobre ».
+  return s.replace(/^1 /, "1er ");
 }
 
 /** Guillemets français avec espaces insécables. */

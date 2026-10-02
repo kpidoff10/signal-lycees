@@ -9,8 +9,8 @@ export async function GET(req: NextRequest) {
   if (!parsed.success) return NextResponse.json({ error: "Filtres invalides" }, { status: 400 });
   const limit = await rateLimit("map", await ipFingerprint());
   if (!limit.ok) return NextResponse.json({ error: "Trop de requêtes" }, { status: 429 });
-  const { cats, active, period } = parsed.data;
-  const schools = await mapSchools({ cats, activeOnly: active, period });
+  const { cats, active, period, mob } = parsed.data;
+  const schools = await mapSchools({ cats, activeOnly: active, period, mobOnly: mob });
   return NextResponse.json(
     { schools },
     { headers: { "cache-control": "public, max-age=30, s-maxage=60, stale-while-revalidate=300" } },

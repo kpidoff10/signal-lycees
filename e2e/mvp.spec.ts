@@ -85,12 +85,18 @@ test("dépôt : validation des champs", async ({ page }) => {
 test("carte : filtres et zoom sur une région", async ({ page }) => {
   await page.goto("/#carte");
   await expect(page.locator(".maplibregl-canvas")).toBeVisible({ timeout: 20_000 });
-  const bubble = page.getByRole("button", { name: /^Île-de-France : \d+/ });
-  await expect(bubble).toBeVisible();
+  // Bulles régionales (beaucoup de lycées) ou points directement (peu de lycées).
+  await expect(page.locator(".maplibregl-marker").first()).toBeVisible();
   await page.getByRole("button", { name: /Sécurité/ }).first().click();
   await expect(page.getByRole("button", { name: /Sécurité/ }).first()).toHaveAttribute("aria-pressed", "true");
   await page.getByRole("radio", { name: "30 jours" }).click();
-  await page.getByRole("button", { name: /^Île-de-France : \d+/ }).click({ force: true });
+  await page.getByRole("button", { name: /Mobilisations en cours/ }).click();
+  await expect(page.getByRole("button", { name: /Mobilisations en cours/ })).toHaveAttribute("aria-pressed", "true");
+  // Trois crans de zoom : depuis la vue France (plus éloignée sur mobile), on passe au niveau région.
+  for (let i = 0; i < 3; i++) {
+    await page.getByRole("button", { name: "Zoomer", exact: true }).click();
+    await page.waitForTimeout(400);
+  }
   await expect(page.getByRole("button", { name: "France entière" })).toBeVisible();
 });
 

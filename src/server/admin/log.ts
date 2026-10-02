@@ -3,8 +3,8 @@ import type { Prisma } from "@/generated/prisma/client";
 
 type Db = Prisma.TransactionClient;
 
-export type LogTarget = "Issue" | "School" | "AnonymousIdentity" | "PrivacyRequest" | "AppSetting" | "AdminUser";
-export const LOG_TARGETS: LogTarget[] = ["Issue", "School", "AnonymousIdentity", "PrivacyRequest", "AppSetting", "AdminUser"];
+export type LogTarget = "Issue" | "School" | "AnonymousIdentity" | "PrivacyRequest" | "AppSetting" | "AdminUser" | "Mobilization";
+export const LOG_TARGETS: LogTarget[] = ["Issue", "School", "AnonymousIdentity", "PrivacyRequest", "AppSetting", "AdminUser", "Mobilization"];
 
 function json(value: unknown): Prisma.InputJsonValue | undefined {
   if (value === undefined || value === null) return undefined;

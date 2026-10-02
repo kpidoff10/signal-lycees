@@ -17,6 +17,11 @@ export const METRO_BOUNDS: BBox = [-5.3, 41.3, 9.7, 51.15];
 export const OVERSEAS = ["Guadeloupe", "Martinique", "Guyane", "La Réunion", "Mayotte"];
 /** En dessous de ce zoom : une bulle par région ; au-dessus : lycées et groupes. */
 export const REGION_ZOOM = 6.3;
+/**
+ * Bulles régionales seulement quand il y a beaucoup de lycées signalés : en dessous,
+ * les points sont lisibles dès la vue France et on les montre directement.
+ */
+export const REGION_MODE_MIN_SCHOOLS = 400;
 
 function ringArea(r: number[][]) {
   let a = 0;

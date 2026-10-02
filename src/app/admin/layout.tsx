@@ -18,9 +18,14 @@ export const dynamic = "force-dynamic";
 export default async function AdminLayout({ children }: { children: ReactNode }) {
   const session = await getAdminSession();
   const counts = session
-    ? await Promise.all([queueCounts(), prisma.privacyRequest.count({ where: { handled: false } })]).then(([q, r]) => ({
+    ? await Promise.all([
+        queueCounts(),
+        prisma.privacyRequest.count({ where: { handled: false } }),
+        prisma.mobilization.count({ where: { status: "PENDING", expiresAt: { gt: new Date() } } }),
+      ]).then(([q, r, m]) => ({
         queue: q.total,
         requests: r,
+        mobilizations: m,
       }))
     : null;
 

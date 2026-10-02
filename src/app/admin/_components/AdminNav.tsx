@@ -9,11 +9,12 @@ const LINKS = [
   { href: "/admin/issues", label: "Signalements" },
   { href: "/admin/schools", label: "Lycées" },
   { href: "/admin/users", label: "Identités" },
+  { href: "/admin/mobilisations", label: "Mobilisations", countKey: "mobilizations" },
   { href: "/admin/requests", label: "Demandes", countKey: "requests" },
   { href: "/admin/logs", label: "Journal" },
 ] as const;
 
-export function AdminNav({ counts }: { counts: { queue: number; requests: number } }) {
+export function AdminNav({ counts }: { counts: { queue: number; requests: number; mobilizations: number } }) {
   const pathname = usePathname();
   return (
     <nav className="adm-nav" aria-label="Administration">

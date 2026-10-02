@@ -3,7 +3,7 @@
 import { ButtonLink } from "@/components/ui/Button";
 import { Icon } from "@/components/ui/Icon";
 import { category, type CategoryId } from "@/lib/categories";
-import { formatNumber, plural, quote } from "@/lib/format";
+import { formatDay, formatNumber, plural, quote } from "@/lib/format";
 
 export interface SchoolDetail {
   id: string;
@@ -15,6 +15,20 @@ export interface SchoolDetail {
   confirmations: number;
   categories: { id: CategoryId; count: number }[];
   top: { id: string; title: string; category: CategoryId; upCount: number } | null;
+  mobilization: { happenedOn: string; reasons: string | null; sourceName: string | null; sourceUrl: string | null; origin: "STUDENT" | "PRESS" | "ADMIN" } | null;
+}
+
+function MobLine({ d }: { d: SchoolDetail }) {
+  if (!d.mobilization) return null;
+  return (
+    <p className="mt-2 flex items-start gap-1.5 rounded-[var(--radius-sm)] bg-signal-soft px-2.5 py-1.5 text-[13px] font-semibold text-signal-ink">
+      <span aria-hidden="true">📣</span>
+      <span>
+        Mobilisation signalée le {formatDay(new Date(d.mobilization.happenedOn))}
+        {d.mobilization.sourceName ? ` (${d.mobilization.sourceName})` : ""}
+      </span>
+    </p>
+  );
 }
 
 function Figures({ d }: { d: SchoolDetail }) {
@@ -75,6 +89,7 @@ export function SchoolCard({ d, onClose }: { d: SchoolDetail; onClose: () => voi
           <p className="sl-card-city">
             {d.city} — {d.postalCode}
           </p>
+          <MobLine d={d} />
         </div>
         <button type="button" className="sl-card-close" aria-label="Fermer" onClick={onClose}>
           <Icon name="close" />
@@ -134,6 +149,7 @@ export function SchoolSheet({
           <div className="sl-card-titles">
             <h3 className="sl-card-name">{d.name}</h3>
             <p className="sl-card-city">{d.city}</p>
+            <MobLine d={d} />
           </div>
           <button type="button" className="sl-card-close" aria-label="Fermer" onClick={onClose}>
             <Icon name="close" />
