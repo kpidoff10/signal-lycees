@@ -127,6 +127,9 @@ export default function NationalMap() {
   // Création de la carte (une fois).
   useEffect(() => {
     if (!stageRef.current || mapRef.current) return;
+    // Écran tactile (mobile, tablette) : deux doigts pour déplacer, un doigt fait défiler la page.
+    // Souris : la molette zoome directement sur la carte.
+    const touchOnly = window.matchMedia("(pointer: coarse)").matches;
     const map = new MLMap({
       container: stageRef.current,
       style: {
@@ -169,9 +172,7 @@ export default function NationalMap() {
       pitchWithRotate: false,
       touchPitch: false,
       renderWorldCopies: false,
-      // Ordinateur : Ctrl + molette pour zoomer. Mobile : deux doigts pour déplacer,
-      // un doigt laisse défiler la page.
-      cooperativeGestures: true,
+      cooperativeGestures: touchOnly,
       // Sources citées sous la carte (contours IGN, Annuaire de l’éducation).
       attributionControl: false,
       locale: {
@@ -261,7 +262,7 @@ export default function NationalMap() {
     (map.getSource("schools") as GeoJSONSource | undefined)?.setData({ type: "FeatureCollection", features });
     const index = new Supercluster<PointProps, { mob: number }>({
       // Regroupement léger : seuls les points qui se chevauchent vraiment sont groupés.
-      radius: 20,
+      radius: compact ? 30 : 22,
       maxZoom: 9,
       minPoints: 2,
       map: (p) => ({ mob: p.mob }),
@@ -271,7 +272,7 @@ export default function NationalMap() {
     });
     index.load(features);
     indexRef.current = index;
-  }, [schools, ready]);
+  }, [schools, ready, compact]);
 
   useEffect(() => {
     const map = mapRef.current;
@@ -342,13 +343,13 @@ export default function NationalMap() {
       const mobBadge = () => el("span", "sl-mob-badge", "📣");
       if (props.cluster && props.cluster_id !== undefined) {
         const n = props.point_count ?? 0;
-        const size = Math.min(56, 36 + Math.log2(n) * 4);
+        // Groupes discrets : petits, à la couleur du site, sans mégaphone (gardé pour les lycées seuls).
+        const size = Math.min(compact ? 38 : 44, 24 + Math.log2(n) * 4);
         const b = el("button", "sl-cluster");
         b.type = "button";
         b.setAttribute("aria-label", `${n} lycées regroupés. Zoomer`);
         const disc = el("span", "sl-cluster-disc", formatNumber(n));
         disc.style.width = disc.style.height = `${size}px`;
-        if (props.mob > 0) disc.append(mobBadge());
         b.append(disc);
         if (zoom >= 8) {
           const cities = new Map<string, number>();
@@ -589,7 +590,7 @@ export default function NationalMap() {
       </div>
 
       <p className="sl-nm-hint">
-        {compact ? "Deux doigts pour déplacer ou zoomer sur la carte" : "Ctrl + molette ou pincer pour zoomer"} · Les chiffres montrent des signalements, pas une note des
+        {compact ? "Deux doigts pour déplacer ou zoomer sur la carte" : "Molette pour zoomer, glisser pour déplacer"} · Les chiffres montrent des signalements, pas une note des
         établissements. Sources : Annuaire de l’éducation, contours © IGN.
       </p>
 
@@ -682,7 +683,7 @@ function MapLegend({ mode, zoomedIn, note }: { mode: "markers" | "heat"; zoomedI
           {sw(24, "--marker-3")}20+
         </span>
         <span className="sl-legend-item">
-          {sw(14, "--cluster")}groupe
+          {sw(14, "--signal")}groupe
         </span>
         <span className="sl-legend-item">📣 mobilisation</span>
       </span>

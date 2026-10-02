@@ -405,3 +405,13 @@ body {
     transform: none;
   }
 }
+
+/* Groupes de lycées à la couleur du site (retour de Kevin : la carte paraissait noire). */
+.sl-map .sl-cluster-disc {
+  background: var(--signal);
+  color: var(--on-signal);
+  font-size: 12px;
+  box-shadow:
+    var(--shadow-marker),
+    0 0 0 4px color-mix(in srgb, var(--signal) 18%, transparent);
+}
