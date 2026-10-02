@@ -176,11 +176,11 @@ export function ReportWizard({ initialSchool }: { initialSchool: WizardSchool | 
   const h = "font-display text-[28px] font-bold leading-[34px] tracking-[-0.015em] outline-none md:text-[36px] md:leading-[42px]";
 
   return (
-    <div className="mx-auto grid max-w-[640px] gap-8">
+    <div className="mx-auto grid max-w-[640px] grid-cols-[minmax(0,1fr)] gap-8">
       {step !== "done" && <Progress step={step} />}
 
       {step === "school" && (
-        <section className="grid gap-5">
+        <section className="grid min-w-0 grid-cols-[minmax(0,1fr)] gap-5">
           <h1 ref={headingRef} tabIndex={-1} className={h}>
             Dans quel lycée ?
           </h1>
@@ -201,7 +201,7 @@ export function ReportWizard({ initialSchool }: { initialSchool: WizardSchool | 
       )}
 
       {step === "category" && school && (
-        <section className="grid gap-5">
+        <section className="grid min-w-0 grid-cols-[minmax(0,1fr)] gap-5">
           <SchoolReminder school={school} onChange={() => setStep("school")} />
           <h1 ref={headingRef} tabIndex={-1} className={h}>
             Quel est le problème ?
@@ -233,7 +233,7 @@ export function ReportWizard({ initialSchool }: { initialSchool: WizardSchool | 
       )}
 
       {step === "describe" && school && cat && (
-        <section className="grid gap-5">
+        <section className="grid min-w-0 grid-cols-[minmax(0,1fr)] gap-5">
           <SchoolReminder school={school} category={cat} onChange={() => setStep("category")} />
           <h1 ref={headingRef} tabIndex={-1} className={h}>
             Explique-nous ce qui se passe.
@@ -295,7 +295,7 @@ export function ReportWizard({ initialSchool }: { initialSchool: WizardSchool | 
       )}
 
       {step === "duplicates" && school && cat && (
-        <section className="grid gap-5">
+        <section className="grid min-w-0 grid-cols-[minmax(0,1fr)] gap-5">
           <h1 ref={headingRef} tabIndex={-1} className={h}>
             Ce problème semble déjà avoir été signalé.
           </h1>
@@ -357,9 +357,9 @@ export function ReportWizard({ initialSchool }: { initialSchool: WizardSchool | 
 
 function SchoolReminder({ school, category: cat, onChange }: { school: WizardSchool; category?: CategoryId; onChange: () => void }) {
   return (
-    <div className="flex items-center justify-between gap-3 rounded-[var(--radius-md)] border border-border bg-surface px-4 py-3">
-      <span className="min-w-0 text-sm">
-        <b className="block truncate">{school.name}</b>
+    <div className="flex min-w-0 items-center justify-between gap-3 rounded-[var(--radius-md)] border border-border bg-surface px-4 py-3">
+      <span className="min-w-0 flex-1 text-sm">
+        <b className="block truncate" title={school.name}>{school.name}</b>
         <span className="text-ink-muted">
           {school.city}
           {cat ? ` · ${category(cat).emoji} ${category(cat).label}` : ""}
@@ -393,7 +393,7 @@ function Field({ label, hint, error, id, children }: { label: string; hint: stri
 
 function Done({ heading, headingRef, children, tone = "resolved" }: { heading: string; headingRef: React.RefObject<HTMLHeadingElement | null>; children: React.ReactNode; tone?: "resolved" | "signal" }) {
   return (
-    <section className="grid gap-5">
+    <section className="grid min-w-0 grid-cols-[minmax(0,1fr)] gap-5">
       <span className={`grid h-14 w-14 place-items-center rounded-full ${tone === "resolved" ? "bg-resolved-soft text-resolved" : "bg-signal-soft text-signal-ink"}`} aria-hidden="true">
         <Icon name={tone === "resolved" ? "check" : "info"} size={28} />
       </span>
