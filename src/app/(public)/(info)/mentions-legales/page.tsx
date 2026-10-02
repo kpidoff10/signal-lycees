@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { InfoHeader, Todo } from "../_components/InfoHeader";
+import { InfoHeader } from "../_components/InfoHeader";
 
 export const metadata: Metadata = {
   title: "Mentions légales",
@@ -15,12 +15,17 @@ export default function MentionsLegalesPage() {
       <div className="sl-prose">
         <h2>Éditeur</h2>
         <p>
-          Signal Lycées est édité par <strong>Kevin Pidoff</strong>, personne physique.
-          <br />
-          Adresse : <Todo>adresse postale de l’éditeur</Todo>
-          <br />
-          Contact : <Todo>adresse e-mail ou téléphone de contact de l’éditeur</Todo>, ou la{" "}
-          <Link href="/contact">page de contact</Link>.
+          Signal Lycées est édité par <strong>Kevin Pidoff</strong>, personne physique agissant à titre non professionnel. Le site est
+          gratuit, sans publicité et sans but lucratif.
+        </p>
+        <p>
+          Conformément à l’article 6, III, 2° de la loi n° 2004-575 du 21 juin 2004 pour la confiance dans l’économie numérique (LCEN),
+          l’éditeur a choisi de ne pas rendre publiques ses coordonnées personnelles. Ses éléments d’identification ont été communiqués
+          à l’hébergeur, dont les coordonnées figurent ci-dessous.
+        </p>
+        <p>
+          Pour contacter l’éditeur : <Link href="/contact">page de contact</Link>. Chaque message est lu et reçoit une réponse si tu
+          laisses un moyen de te recontacter.
         </p>
 
         <h2>Directeur de la publication</h2>

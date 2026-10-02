@@ -114,8 +114,10 @@ export default function ConfidentialitePage() {
 
         <h2>Qui est responsable de tes données ?</h2>
         <p>
-          Le responsable de traitement est <strong>Kevin Pidoff</strong>, une personne physique qui édite Signal Lycées. Adresse : <Todo>adresse postale du responsable de traitement</Todo>. Pour toute question, utilise la{" "}
-          <Link href="/contact">page de contact</Link>.
+          Le responsable de traitement est <strong>Kevin Pidoff</strong>, une personne physique qui édite Signal Lycées à titre non
+          professionnel (voir les <Link href="/mentions-legales">mentions légales</Link>). Pour toute question ou pour exercer tes
+          droits, utilise la <Link href="/contact">page de contact</Link> : c’est le moyen de joindre directement le responsable de
+          traitement.
         </p>
 
         <h2>Ce qu’on ne collecte pas</h2>
