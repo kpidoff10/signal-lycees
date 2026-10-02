@@ -1,6 +1,7 @@
 // Fréquentation pour le tableau de bord : compteurs agrégés (voir src/server/traffic.ts).
 import "server-only";
 import { prisma } from "@/lib/db";
+import { SHARE_LINKS } from "@/lib/share-links";
 import { parisDay } from "@/lib/traffic";
 
 const STATIC_LABELS: Record<string, string> = {
@@ -13,6 +14,8 @@ const STATIC_LABELS: Record<string, string> = {
   "/cgu": "Conditions d’utilisation",
   "/mentions-legales": "Mentions légales",
   "/contact": "Contact",
+  "/presse": "Espace presse",
+  "/affiches": "Affiches à imprimer",
 };
 
 function dayDate(offset: number): Date {
@@ -24,11 +27,17 @@ function dayDate(offset: number): Date {
 export async function trafficOverview() {
   const since30 = dayDate(29);
   const since7 = dayDate(6);
-  const [days, pages, sources] = await Promise.all([
+  const [days, pages, sources, linkRows] = await Promise.all([
     prisma.trafficDay.findMany({ where: { day: { gte: since30 } }, orderBy: { day: "asc" } }),
     prisma.trafficPage.groupBy({ by: ["path"], where: { day: { gte: since7 } }, _sum: { views: true }, orderBy: { _sum: { views: "desc" } }, take: 10 }),
     prisma.trafficSource.groupBy({ by: ["source"], where: { day: { gte: since7 } }, _sum: { views: true }, orderBy: { _sum: { views: "desc" } }, take: 8 }),
+    prisma.trafficSource.groupBy({
+      by: ["source"],
+      where: { day: { gte: since30 }, source: { in: SHARE_LINKS.map((l) => l.label) } },
+      _sum: { views: true },
+    }),
   ]);
+  const linkVisits = new Map(linkRows.map((r) => [r.source, r._sum.views ?? 0]));
 
   // 30 jours complets, y compris les jours sans visite.
   const byDay = new Map(days.map((d) => [d.day.toISOString().slice(0, 10), d]));
@@ -66,5 +75,7 @@ export async function trafficOverview() {
     series,
     pages: pages.map((p) => ({ path: p.path, label: label(p.path), views: p._sum.views ?? 0 })),
     sources: sources.map((s) => ({ source: s.source, views: s._sum.views ?? 0 })),
+    // Arrivées par lien de partage sur 30 jours (une par visiteur et par jour).
+    links: SHARE_LINKS.map((l) => ({ ...l, visits: linkVisits.get(l.label) ?? 0 })),
   };
 }

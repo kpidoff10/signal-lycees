@@ -1,4 +1,5 @@
 // Règles de comptage de la fréquentation (fonctions pures, testées).
+import { CAMPAIGN_LABELS } from "./share-links";
 
 const BOT = /bot|crawl|spider|slurp|bingpreview|facebookexternalhit|embedly|quora link|whatsapp|telegrambot|discordbot|preview|headless|lighthouse|pagespeed|curl|wget|python|axios|node-fetch|go-http|monitor|uptime/i;
 
@@ -46,12 +47,9 @@ export function sourceFromReferrer(referrer: unknown, ownHost: string): string {
   return host.slice(0, 60);
 }
 
-// Marqueurs posés dans nos propres liens (QR code des affiches…), prioritaires sur le référent.
-const CAMPAIGNS: Record<string, string> = { affiche: "Affiche (QR code)" };
-
-/** Provenance indiquée par le marqueur ?src= de l'URL d'arrivée, ou null. */
+/** Provenance indiquée par le marqueur ?src= de nos liens de partage (prioritaire sur le référent), ou null. */
 export function sourceFromCampaign(src: unknown): string | null {
-  return typeof src === "string" ? (CAMPAIGNS[src] ?? null) : null;
+  return typeof src === "string" && Object.hasOwn(CAMPAIGN_LABELS, src) ? CAMPAIGN_LABELS[src]! : null;
 }
 
 /** Jour (AAAA-MM-JJ) à l'heure de Paris : les statistiques suivent la journée française. */

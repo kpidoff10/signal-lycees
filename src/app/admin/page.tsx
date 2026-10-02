@@ -2,6 +2,8 @@ import Link from "next/link";
 import { requireAdmin } from "@/server/admin/auth";
 import { dashboardCounts } from "@/server/admin/dashboard";
 import { trafficOverview } from "@/server/admin/traffic";
+import { ShareLinksPanel } from "./_components/ShareLinksPanel";
+import { publicEnv } from "@/lib/env";
 import { TrafficPanel } from "./_components/TrafficPanel";
 import { ActionForm } from "./_components/ActionForm";
 import { PageHeader, Submit } from "./_components/ui";
@@ -42,6 +44,8 @@ export default async function AdminHome() {
       )}
 
       <TrafficPanel t={traffic} />
+
+      <ShareLinksPanel links={traffic.links} siteUrl={publicEnv.siteUrl} />
 
       <section className={`adm-card${c.frozen ? " adm-urgent" : ""}`} aria-labelledby="freeze-h">
         <h2 id="freeze-h" className="adm-h2">
