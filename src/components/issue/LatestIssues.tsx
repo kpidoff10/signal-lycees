@@ -36,7 +36,7 @@ function Card({ i, className = "" }: { i: LatestIssue; className?: string }) {
 }
 
 /** Aperçu de l'accueil : les derniers signalements, sans nommer le lycée. */
-export function LatestIssues({ items }: { items: LatestIssue[] }) {
+export function LatestIssues({ items, variant }: { items: LatestIssue[]; variant: "stack" | "scroll" }) {
   if (!items.length) return null;
   return (
     <section aria-labelledby="derniers-titre">
@@ -44,22 +44,26 @@ export function LatestIssues({ items }: { items: LatestIssue[] }) {
         <span className="sl-live-dot" aria-hidden="true" />
         Derniers signalements
       </p>
-      {/* Ordinateur : cartes empilées en quinconce. */}
-      <ul className="hidden gap-3 lg:grid">
+      {/* Ordinateur : cartes empilées en quinconce (la 4e disparaît sur les écrans peu hauts). */}
+      {variant === "stack" && (
+      <ul className="grid gap-3">
         {items.map((i, k) => (
-          <li key={i.id} className={k % 2 ? "pl-10" : "pr-10"}>
+          <li key={i.id} className={`${k % 2 ? "pl-10" : "pr-10"}${k === 3 ? " latest-4th" : ""}`}>
             <Card i={i} />
           </li>
         ))}
       </ul>
+      )}
       {/* Mobile : défilement horizontal. */}
-      <ul className="-mx-4 flex snap-x snap-mandatory gap-3 overflow-x-auto px-4 pb-2 [scrollbar-width:none] lg:hidden">
+      {variant === "scroll" && (
+      <ul className="-mx-4 flex snap-x snap-mandatory gap-3 overflow-x-auto px-4 pb-2 [scrollbar-width:none] md:-mx-12 md:px-12">
         {items.map((i) => (
-          <li key={i.id} className="w-[78%] shrink-0 snap-start">
+          <li key={i.id} className="w-[78%] max-w-[360px] shrink-0 snap-start">
             <Card i={i} className="h-full !shadow-none" />
           </li>
         ))}
       </ul>
+      )}
     </section>
   );
 }

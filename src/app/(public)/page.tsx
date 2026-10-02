@@ -15,30 +15,48 @@ export default async function HomePage() {
 
   return (
     <>
-      <section className="container-page grid grid-cols-[minmax(0,1fr)] items-center gap-10 pb-16 pt-10 md:pt-20 lg:grid-cols-[1.25fr_1fr]">
+      <section className="hero-screen relative">
+        <div className="container-page grid grid-cols-[minmax(0,1fr)] items-center gap-10 py-10 lg:grid-cols-[1.25fr_1fr]">
         <div>
           <p className="eyebrow">Par et pour les lycéens</p>
-          <h1 className="display-l mt-4">Ce qui se passe dans ton lycée mérite d’être entendu.</h1>
-          <p className="mt-6 max-w-[560px] text-[18px] leading-[26px] text-ink-muted">
-            Signale un problème, découvre si d’autres élèves le rencontrent et fais remonter les situations qui comptent. C’est anonyme,
-            chaque signalement est vérifié, et il n’y a ni note ni classement : juste des faits.
+          <h1 className="display-l mt-3 md:mt-4">Ce qui se passe dans ton lycée mérite d’être entendu.</h1>
+          <p className="mt-4 max-w-[560px] text-[17px] leading-[25px] text-ink-muted md:mt-6 md:text-[18px] md:leading-[26px]">
+            <span className="md:hidden">Signale un problème et vois si d’autres élèves le vivent aussi. Anonyme, vérifié, sans classement.</span>
+            <span className="hidden md:inline">
+              Signale un problème, découvre si d’autres élèves le rencontrent et fais remonter les situations qui comptent. C’est anonyme,
+              chaque signalement est vérifié, et il n’y a ni note ni classement : juste des faits.
+            </span>
           </p>
-          <div className="mt-8 grid max-w-[600px] gap-3">
-            <p className="text-sm font-semibold">Recherche ton lycée</p>
+          <div className="mt-6 grid max-w-[600px] gap-3 md:mt-8">
+            <p className="text-sm font-semibold max-md:hidden">Recherche ton lycée</p>
             <HomeSearch />
-            <div className="mt-2 flex flex-wrap gap-3">
-              <ButtonLink href="/signaler">Signaler un problème</ButtonLink>
-              <ButtonLink href="/#carte" variant="secondary">
-                Trouver mon lycée sur la carte
+            <div className="mt-1 flex gap-2 md:mt-2 md:gap-3">
+              <ButtonLink href="/signaler" className="max-md:flex-1">
+                Signaler un problème
+              </ButtonLink>
+              <ButtonLink href="/#carte" variant="secondary" className="max-md:flex-1">
+                <span className="md:hidden">Voir la carte</span>
+                <span className="hidden md:inline">Trouver mon lycée sur la carte</span>
               </ButtonLink>
             </div>
-            <TrustLine className="mt-2" />
+            <TrustLine className="mt-1 md:mt-2" />
+          </div>
+          {/* Mobile et tablette : les derniers signalements dans la première partie. */}
+          <div className="hero-latest mt-6 lg:hidden">
+            <LatestIssues items={latest} variant="scroll" />
           </div>
         </div>
 
-        <div className="min-w-0">
-          <LatestIssues items={latest} />
+        <div className="hidden min-w-0 lg:block">
+          <LatestIssues items={latest} variant="stack" />
         </div>
+        </div>
+        <a href="#carte" className="hero-scroll" aria-label="Explorer la carte des lycées">
+          <span>Explorer la carte</span>
+          <svg viewBox="0 0 24 24" width={20} height={20} fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round" aria-hidden="true">
+            <path d="M12 5v14M6 13l6 6 6-6" />
+          </svg>
+        </a>
       </section>
 
       <section id="carte" className="container-page scroll-mt-20 pt-8" aria-labelledby="carte-titre">
