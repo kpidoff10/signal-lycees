@@ -11,6 +11,7 @@ import { type CategoryId } from "@/lib/categories";
 import { formatNumber, plural, timeAgo } from "@/lib/format";
 import { wilsonLowerBound } from "@/lib/wilson";
 import { ConfirmButton } from "./ConfirmButton";
+import { PressBadge } from "./PressBadge";
 
 export interface IssueItem {
   id: string;
@@ -22,6 +23,7 @@ export interface IssueItem {
   createdAt: string;
   lastActivityAt: string;
   resolvedAt: string | null;
+  source: { name: string; url: string; date: string | null } | null;
 }
 
 type Sort = "confirmed" | "recent" | "active";
@@ -43,7 +45,7 @@ function IssueRow({ issue, myVote }: { issue: IssueItem; myVote: "UP" | "DOWN" |
             {resolved && <ResolvedBadge />}
             {issue.status === "POSSIBLY_RESOLVED" && <ResolvedBadge label="Peut-être résolu" />}
             <CategoryBadge id={issue.category} />
-            <span>Signalé {timeAgo(new Date(issue.createdAt))}</span>
+            {issue.source ? <PressBadge source={issue.source} withLink={false} /> : <span>Signalé {timeAgo(new Date(issue.createdAt))}</span>}
           </div>
           <Link href={`/probleme/${issue.id}`} className="mt-2 block text-[17px] font-semibold leading-6 hover:underline">
             {issue.title}

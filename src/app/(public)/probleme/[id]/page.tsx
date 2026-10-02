@@ -7,6 +7,7 @@ import { Icon } from "@/components/ui/Icon";
 import { TrackView } from "@/components/ui/TrackView";
 import { TrustLine } from "@/components/ui/TrustNote";
 import { IssueActions } from "@/components/issue/IssueActions";
+import { PressBadge } from "@/components/issue/PressBadge";
 import { formatDay, timeAgo } from "@/lib/format";
 import { getPublicIssue } from "@/server/issue-page";
 
@@ -40,7 +41,7 @@ export default async function IssuePage({ params }: Props) {
           {resolved && <ResolvedBadge />}
           {issue.status === "POSSIBLY_RESOLVED" && <ResolvedBadge label="Peut-être résolu" />}
           <CategoryBadge id={issue.category} />
-          <span>Signalé {timeAgo(issue.createdAt)}</span>
+          {!issue.source && <span>Signalé {timeAgo(issue.createdAt)}</span>}
           <span aria-hidden="true">·</span>
           <span>
             {issue.school.city} ({issue.school.postalCode})
@@ -48,7 +49,17 @@ export default async function IssuePage({ params }: Props) {
         </div>
         <h1 className="mt-4 font-display text-[30px] font-bold leading-[36px] tracking-[-0.015em] md:text-[40px] md:leading-[46px]">{issue.title}</h1>
         <p className="user-text mt-5 text-[17px] leading-7">{issue.description}</p>
-        <p className="mt-4 text-[13px] text-ink-muted">Signalement anonyme, vérifié avant publication.</p>
+        {issue.source ? (
+          <div className="mt-5 grid gap-2 rounded-[var(--radius-md)] border border-border bg-surface p-4 text-[14px]">
+            <PressBadge source={issue.source} />
+            <p className="text-ink-muted">
+              Ce problème n’a pas été déposé par un élève : il est repris d’un article de presse pour faire connaître la situation. Tu es
+              dans ce lycée et tu vis la même chose ? Confirme-le ci-dessous.
+            </p>
+          </div>
+        ) : (
+          <p className="mt-4 text-[13px] text-ink-muted">Signalement anonyme, vérifié avant publication.</p>
+        )}
       </article>
 
       <div className="mt-8 grid gap-10 md:grid-cols-[minmax(0,1fr)_300px]">

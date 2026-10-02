@@ -20,7 +20,9 @@
     "db:seed": "prisma db seed",
     "import:schools": "tsx scripts/import-schools.ts",
     "build:regions": "python3 scripts/build-regions.py",
-    "admin:create": "tsx scripts/create-admin.ts"
+    "admin:create": "tsx scripts/create-admin.ts",
+    "import:press": "tsx scripts/import-press.ts",
+    "import:remove": "tsx scripts/remove-import.ts"
   },
   "dependencies": {
     "@hookform/resolvers": "^5.9.1",

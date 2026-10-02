@@ -21,6 +21,12 @@ enum IssueCategory {
   OTHER // Autres
 }
 
+// Origine d'un problème : déposé par un élève, ou repris de la presse pour amorcer le site.
+enum IssueOrigin {
+  STUDENT
+  PRESS
+}
+
 enum IssueStatus {
   ACTIVE
   POSSIBLY_RESOLVED
@@ -144,6 +150,13 @@ model Issue {
   flaggedForReview    Boolean          @default(false)
   // Nombre de 👎 au moment de la dernière revue humaine : seuls les 👎 suivants comptent.
   downCountAtReview   Int              @default(0)
+  origin              IssueOrigin      @default(STUDENT)
+  // Lot d'import (ex. « presse-2026-10 ») : permet de retirer d'un coup des problèmes importés.
+  importBatch         String?
+  // Problème repris d'un article de presse (et non déposé par un élève) : toujours affiché comme tel.
+  sourceName          String?
+  sourceUrl           String?
+  sourceDate          DateTime?
   // Hash SHA-256 du jeton de suivi remis à l'auteur.
   trackingTokenHash   String           @unique
   publishedAt         DateTime?
@@ -166,6 +179,7 @@ model Issue {
   @@index([schoolId, moderationStatus, status])
   @@index([moderationStatus, reviewPriority, createdAt])
   @@index([flaggedForReview])
+  @@index([origin, importBatch])
   @@index([category])
   @@index([lastActivityAt])
   @@index([title(ops: raw("gin_trgm_ops"))], type: Gin, map: "Issue_title_trgm_idx")

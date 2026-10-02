@@ -5,6 +5,8 @@ export interface TimelineInput {
   createdAt: Date;
   events: { type: string; data: unknown; createdAt: Date }[];
   daily: { day: Date; upTotal: number; resolvedTotal: number }[];
+  /** Libellé du premier événement (ex. « Rapporté par franceinfo » pour un problème repris de la presse). */
+  firstLabel?: string;
 }
 
 export interface TimelineEntry {
@@ -24,9 +26,9 @@ const STATUS_TEXT: Record<string, { text: string; tone?: "signal" | "resolved" }
  * les votes « résolu » et les changements de statut. Plus récent en dernier.
  */
 export function buildTimeline(input: TimelineInput, max = 12): TimelineEntry[] {
-  const entries: TimelineEntry[] = [{ date: input.createdAt, text: "Premier signalement" }];
+  const entries: TimelineEntry[] = [{ date: input.createdAt, text: input.firstLabel ?? "Premier signalement" }];
   const days = [...input.daily].sort((a, b) => a.day.getTime() - b.day.getTime());
-  let lastUp = 1;
+  let lastUp = input.firstLabel ? 0 : 1;
   let lastResolved = 0;
   for (const d of days) {
     const grew = d.upTotal - lastUp;

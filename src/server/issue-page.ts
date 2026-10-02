@@ -18,12 +18,26 @@ export const getPublicIssue = cache(async (id: string) => {
       resolvedVoteCount: true,
       createdAt: true,
       lastActivityAt: true,
+      origin: true,
+      sourceName: true,
+      sourceUrl: true,
+      sourceDate: true,
       school: { select: { id: true, slug: true, name: true, city: true, postalCode: true } },
       events: { select: { type: true, data: true, createdAt: true }, orderBy: { createdAt: "asc" } },
       dailyStats: { select: { day: true, upTotal: true, resolvedTotal: true }, orderBy: { day: "asc" } },
     },
   });
   if (!issue) return null;
-  const { events, dailyStats, ...rest } = issue;
-  return { ...rest, timeline: buildTimeline({ createdAt: issue.createdAt, events, daily: dailyStats }) };
+  const { events, dailyStats, origin, sourceName, sourceUrl, sourceDate, ...rest } = issue;
+  const source = origin === "PRESS" && sourceName && sourceUrl ? { name: sourceName, url: sourceUrl, date: sourceDate } : null;
+  return {
+    ...rest,
+    source,
+    timeline: buildTimeline({
+      createdAt: issue.createdAt,
+      events,
+      daily: dailyStats,
+      firstLabel: source ? `Rapporté par ${source.name}` : undefined,
+    }),
+  };
 });

@@ -66,7 +66,7 @@ export async function heroHighlights(): Promise<{ top: HighlightIssue | null; re
   const since = new Date(Date.now() - 30 * 86_400_000);
   const [top, resolved] = await Promise.all([
     prisma.issue.findFirst({
-      where: { ...PUBLIC_ISSUE_WHERE, status: "ACTIVE", lastActivityAt: { gte: since }, flaggedForReview: false },
+      where: { ...PUBLIC_ISSUE_WHERE, status: "ACTIVE", lastActivityAt: { gte: since }, flaggedForReview: false, origin: "STUDENT" },
       orderBy: { upCount: "desc" },
       select,
     }),

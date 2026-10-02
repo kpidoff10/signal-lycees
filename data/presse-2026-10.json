@@ -1,0 +1,62 @@
+{
+  "batch": "presse-2026-10",
+  "note": "Problèmes rapportés par la presse pendant le mouvement lycéen de fin septembre 2026. Textes reformulés, sans viser personne. Retrait : npm run import:remove -- presse-2026-10",
+  "issues": [
+    {
+      "school": "lycee-victor-hugo-poitiers",
+      "category": "BUILDING",
+      "title": "Fuites au plafond et couloirs moisis au 3e étage",
+      "description": "D’après des élèves interrogés par la presse, le plafond fuit au troisième étage, des couloirs sont moisis et la température des salles n’est pas régulée.",
+      "source": { "name": "ici (France Bleu)", "date": "2026-10-01", "url": "https://www.ici.fr/infos/education/blocages-des-lycees-professeurs-absents-batiments-vetustes-parcoursup-ce-que-reclament-les-lyceens-4824877" }
+    },
+    {
+      "school": "lycee-polyvalent-johannes-gutenberg-creteil",
+      "category": "BUILDING",
+      "title": "De l’eau coule à l’intérieur quand il pleut",
+      "description": "Selon des élèves cités par la presse, des fenêtres et des portes sont cassées et peuvent être dangereuses, et au troisième étage l’eau coule à l’intérieur quand il pleut.",
+      "source": { "name": "franceinfo", "date": "2026-09-29", "url": "https://www.franceinfo.fr/societe/education/manque-de-moyens-etablissements-insalubres-motivations-politiques-pourquoi-les-lyceens-se-mobilisent-depuis-une-semaine_8214617.html" }
+    },
+    {
+      "school": "lycee-cite-scolaire-monnet-fourneyron-legt-jean-monnet-saint-etienne",
+      "category": "SECURITY",
+      "title": "Des fenêtres lâchent pendant les cours",
+      "description": "Des élèves rapportent à la presse que des fenêtres cèdent et tombent pendant les cours.",
+      "source": { "name": "ici (France Bleu)", "date": "2026-10-01", "url": "https://www.ici.fr/infos/education/blocages-des-lycees-professeurs-absents-batiments-vetustes-parcoursup-ce-que-reclament-les-lyceens-4824877" }
+    },
+    {
+      "school": "lycee-valentine-labbe-la-madeleine",
+      "category": "BUILDING",
+      "title": "Préfabriqués mal isolés, fuites et lumières en panne",
+      "description": "Les élèves qui ont cours dans des bâtiments préfabriqués décrivent une mauvaise isolation, des fuites et des lumières qui ne fonctionnent pas.",
+      "source": { "name": "ici (France Bleu)", "date": "2026-10-01", "url": "https://www.ici.fr/infos/education/blocages-des-lycees-professeurs-absents-batiments-vetustes-parcoursup-ce-que-reclament-les-lyceens-4824877" }
+    },
+    {
+      "school": "lycee-polyvalent-gabriel-faure-tournon-sur-rhone",
+      "category": "CLASSES",
+      "title": "Cours de philosophie assurés seulement 2 h sur 4",
+      "description": "D’après la presse, le cours de philosophie n’est assuré que deux heures sur quatre chaque semaine, alors que l’épreuve du bac a lieu en fin d’année.",
+      "source": { "name": "ici (France Bleu)", "date": "2026-10-01", "url": "https://www.ici.fr/infos/education/blocages-des-lycees-professeurs-absents-batiments-vetustes-parcoursup-ce-que-reclament-les-lyceens-4824877" }
+    },
+    {
+      "school": "lycee-polyvalent-monge-chambery",
+      "category": "CLASSES",
+      "title": "Classes de 35 élèves",
+      "description": "Des élèves rapportent à la presse des classes de 35 élèves.",
+      "source": { "name": "ici (France Bleu)", "date": "2026-10-01", "url": "https://www.ici.fr/infos/education/blocages-des-lycees-professeurs-absents-batiments-vetustes-parcoursup-ce-que-reclament-les-lyceens-4824877" }
+    },
+    {
+      "school": "lycee-international-montebello-lille",
+      "category": "CLASSES",
+      "title": "Classes de 35 élèves",
+      "description": "Des élèves rapportent à la presse des classes de 35 élèves.",
+      "source": { "name": "ici (France Bleu)", "date": "2026-10-01", "url": "https://www.ici.fr/infos/education/blocages-des-lycees-professeurs-absents-batiments-vetustes-parcoursup-ce-que-reclament-les-lyceens-4824877" }
+    },
+    {
+      "school": "lycee-brequigny-rennes",
+      "category": "CLASSES",
+      "title": "Classes de 35 élèves",
+      "description": "Des élèves rapportent à la presse des classes de 35 élèves.",
+      "source": { "name": "ici (France Bleu)", "date": "2026-10-01", "url": "https://www.ici.fr/infos/education/blocages-des-lycees-professeurs-absents-batiments-vetustes-parcoursup-ce-que-reclament-les-lyceens-4824877" }
+    }
+  ]
+}
