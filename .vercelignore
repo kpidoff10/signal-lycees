@@ -1,0 +1,9 @@
+.env
+.env.*
+docker-compose.override.yml
+node_modules
+.next
+src/generated
+public/maplibre
+test-results
+playwright-report

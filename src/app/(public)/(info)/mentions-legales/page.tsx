@@ -38,7 +38,7 @@ export default function MentionsLegalesPage() {
         <p>
           Conformément au règlement européen sur les services numériques (DSA), le point de contact unique pour les autorités des
           États membres, la Commission européenne et les utilisateurs est la <Link href="/contact">page de contact</Link> (choisis
-          « Autre demande ou contact DSA »). Langue(s) acceptée(s) : <Todo>langue(s) de communication du point de contact, ex. français</Todo>.
+          « Autre demande ou contact DSA »). Langue acceptée : français.
         </p>
         <p>
           Pour signaler un contenu illicite précis, utilise de préférence le bouton « Signaler un contenu » présent sur chaque

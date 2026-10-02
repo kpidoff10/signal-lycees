@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { InfoHeader, Todo } from "../_components/InfoHeader";
+import { InfoHeader } from "../_components/InfoHeader";
 
 export const metadata: Metadata = {
   title: "Conditions d’utilisation",
@@ -119,7 +119,11 @@ export default function CguPage() {
           <a href="https://www.gnu.org/licenses/agpl-3.0.html" target="_blank" rel="noopener noreferrer">
             GNU Affero General Public License v3.0 (AGPL-3.0)
           </a>
-          . Code source : <Todo>adresse du dépôt du code source</Todo>. Cette licence porte sur le code, pas sur les contenus publiés
+          . Code source :{" "}
+          <a href="https://github.com/kpidoff10/signal-lycees" className="link">
+            github.com/kpidoff10/signal-lycees
+          </a>
+          . Cette licence porte sur le code, pas sur les contenus publiés
           par les utilisateurs.
         </p>
 

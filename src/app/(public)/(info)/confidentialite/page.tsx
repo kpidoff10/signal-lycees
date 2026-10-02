@@ -54,13 +54,13 @@ const DATA_ROWS: { what: string; why: string; duration: string; who: string }[] 
   {
     what: "Signalement de contenu : motif et commentaire facultatif",
     why: "Modération (obligation de traiter les notifications, DSA)",
-    duration: "",
+    duration: "12 mois après son traitement par la modération",
     who: "L’éditeur ; hébergeurs",
   },
   {
     what: "Demande envoyée via le formulaire de contact : message, référence du signalement, moyen de contact si tu en donnes un",
     why: "Répondre à ta demande (suppression, exercice de tes droits, contact)",
-    duration: "",
+    duration: "12 mois après son traitement",
     who: "L’éditeur ; hébergeurs",
   },
   {
@@ -229,7 +229,10 @@ export default function ConfidentialitePage() {
         </dl>
         <p>
           Certains de ces prestataires sont situés hors de l’Union européenne. Garanties encadrant ces transferts :{" "}
-          <Todo>garanties de transfert hors UE pour chaque prestataire concerné (ex. clauses contractuelles types, Data Privacy Framework)</Todo>
+          les prestataires établis aux États-Unis (Vercel, Cloudflare, Upstash, Voyage AI, TypeSafe AI via Vercel) sont encadrés par
+          les clauses contractuelles types de la Commission européenne et, lorsqu’ils y adhèrent, par le cadre de protection des données
+          UE–États-Unis (Data Privacy Framework). La base de données est hébergée au Royaume-Uni, pays qui bénéficie d’une décision
+          d’adéquation de la Commission européenne.
         </p>
 
         <h2>Tes droits</h2>
