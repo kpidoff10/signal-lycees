@@ -74,6 +74,31 @@ export function decidePress(s: PressScores | null): PressDecision {
   return { status: "PENDING", reason: "Doute de Jev" };
 }
 
+/** Second avis (GPT) sur un article que Jev a mis en vérification. */
+export interface SecondOpinion {
+  aboutHighSchools: boolean; // parle bien de la vie des lycées en France
+  identifiesPerson: boolean; // nomme ou rend reconnaissable un élève, un adulte de l'établissement, une victime
+  sensational: boolean; // titre racoleur, choquant, qui fait d'un fait divers un spectacle
+  factual: boolean; // information rapportée par un média, pas une opinion ni une rumeur
+  verdict: "publish" | "reject" | "unsure";
+  reason: string;
+}
+
+/**
+ * Double vérification (règle éditoriale A) : un article factuel sur les lycées, même sur des incidents,
+ * peut être publié si personne n'est reconnaissable et que le titre n'est pas racoleur.
+ * Le second avis ne publie jamais seul : il ne départage que ce que Jev a déjà jugé pertinent.
+ */
+export function decideWithSecondOpinion(jev: PressScores, gpt: SecondOpinion | null): PressDecision {
+  if (!gpt) return { status: "PENDING", reason: "Second avis indisponible" };
+  const why = gpt.reason.slice(0, 160);
+  if (!gpt.aboutHighSchools && gpt.verdict === "reject") return { status: "REJECTED", reason: `Écarté après double vérification : ${why}` };
+  const clean = gpt.aboutHighSchools && gpt.factual && !gpt.identifiesPerson && !gpt.sensational;
+  if (clean && gpt.verdict === "publish" && jev.relevance >= 0.6 && jev.offTopic < 0.5)
+    return { status: "PUBLISHED", reason: `Publié après double vérification : ${why}` };
+  return { status: "PENDING", reason: `Doute confirmé par le second avis : ${why}` };
+}
+
 export interface CityRef {
   slug: string;
   name: string;

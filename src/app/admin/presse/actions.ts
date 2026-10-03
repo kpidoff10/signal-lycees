@@ -27,7 +27,10 @@ export async function fetchPressAction(): Promise<ActionState> {
   let summary = "";
   const res = await runAction(async () => {
     const r = await fetchPressNow();
-    summary = "PUBLISHED" in r ? `${r.added} nouveaux : ${r.PUBLISHED} publiés, ${r.PENDING} à vérifier, ${r.REJECTED} écartés.` : "Aucun nouvel article.";
+    const rc = r.rechecked;
+    summary =
+      ("PUBLISHED" in r ? `${r.added} nouveaux : ${r.PUBLISHED} publiés, ${r.PENDING} à vérifier, ${r.REJECTED} écartés.` : "Aucun nouvel article.") +
+      (rc.PUBLISHED + rc.PENDING + rc.REJECTED ? ` Double vérification d'articles en attente : ${rc.PUBLISHED} publiés, ${rc.REJECTED} écartés, ${rc.PENDING} restent à vérifier.` : "");
   }, "");
   return res.ok ? { ok: true, message: summary } : res;
 }

@@ -21,6 +21,7 @@ const serverSchema = z.object({
   /** Présent automatiquement sur Vercel : la passerelle IA s'authentifie seule. */
   VERCEL_OIDC_TOKEN: optional,
   JEV_GATEWAY_MODEL: z.string().default("typesafe-ai/jev"),
+  PRESS_SECOND_MODEL: z.string().default("openai/gpt-5-mini"),
   TYPESAFE_API_KEY: optional,
   TYPESAFE_API_URL: z.string().url().default("https://api.typesafe.ai/v1/systemone"),
   JEV_MODEL: z.string().default("jev-latest"),

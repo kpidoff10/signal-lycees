@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { decidePress, matchPlaces, mentionsHighSchool, parseRss } from "../press";
+import { decidePress, decideWithSecondOpinion, matchPlaces, mentionsHighSchool, parseRss } from "../press";
 
 const rss = `<?xml version="1.0"?><rss><channel>
 <item><title>Blocus au lycée Ampère : les élèves réclament des moyens - Lyon Capitale</title>
@@ -56,5 +56,16 @@ describe("revue de presse", () => {
     const lyon = [{ slug: "lyon", name: "Lyon", schools: [{ id: "c", name: "Lycée professionnel de coiffure de Lyon" }, { id: "d", name: "Ecole professionnelle privée Académie d'Art Dentaire Lyon" }] }];
     expect(matchPlaces("Mobilisation lycéenne à Lyon : après les violences", lyon).schoolIds).toEqual([]);
     expect(matchPlaces("Nîmes : rassemblement devant le lycée Hemingway", nimes).schoolIds).toEqual(["h1", "h2"]);
+  });
+  it("double vérification : publie seulement un article factuel, sans personne reconnaissable ni titre racoleur", () => {
+    const jev = { relevance: 0.96, sensitive: 0.7, offTopic: 0.04 };
+    const ok = { aboutHighSchools: true, identifiesPerson: false, sensational: false, factual: true, verdict: "publish" as const, reason: "fait rapporté" };
+    expect(decideWithSecondOpinion(jev, ok).status).toBe("PUBLISHED");
+    expect(decideWithSecondOpinion(jev, { ...ok, identifiesPerson: true }).status).toBe("PENDING");
+    expect(decideWithSecondOpinion(jev, { ...ok, sensational: true }).status).toBe("PENDING");
+    expect(decideWithSecondOpinion(jev, { ...ok, verdict: "unsure" }).status).toBe("PENDING");
+    expect(decideWithSecondOpinion({ ...jev, relevance: 0.4 }, ok).status).toBe("PENDING");
+    expect(decideWithSecondOpinion(jev, { ...ok, aboutHighSchools: false, verdict: "reject" }).status).toBe("REJECTED");
+    expect(decideWithSecondOpinion(jev, null).status).toBe("PENDING");
   });
 });

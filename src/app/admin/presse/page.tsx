@@ -43,7 +43,7 @@ export default async function PressAdminPage() {
     <div className="grid gap-8">
       <PageHeader
         title="Revue de presse"
-        sub="Récupérée automatiquement (Google Actualités et quelques flux). Jev publie ce dont il est sûr et t'envoie le reste ici. Seuls le titre, la source et le lien sont affichés sur le site."
+        sub="Récupérée automatiquement (Google Actualités et quelques flux). Jev publie ce dont il est sûr ; quand il hésite, un second avis (GPT-5 mini) départage, et seuls les doutes qui restent arrivent ici. Seuls le titre, la source et le lien sont affichés sur le site."
       >
         <ActionForm action={fetchPressAction} className="adm-form">
           <Submit variant="secondary">Récupérer maintenant</Submit>
