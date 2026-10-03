@@ -3,6 +3,8 @@ import type { ReactNode } from "react";
 import { prisma } from "@/lib/db";
 import { getAdminSession } from "@/server/admin/auth";
 import { queueCounts } from "@/server/admin/moderation";
+import Link from "next/link";
+import { Icon } from "@/components/ui/Icon";
 import { AdminNav } from "./_components/AdminNav";
 import { logoutAction } from "./actions";
 import "./admin.css";
@@ -31,24 +33,46 @@ export default async function AdminLayout({ children }: { children: ReactNode })
       }))
     : null;
 
+  if (!session || !counts) return <div className="adm container-page">{children}</div>;
+
+  const logoutForm = (
+    <form action={logoutAction}>
+      <button type="submit" className="adm-logout">
+        <Icon name="logout" size={16} />
+        <span className="adm-logout-label">Se déconnecter</span>
+      </button>
+    </form>
+  );
+
   return (
-    <div className="adm container-page">
-      {session && counts && (
-        <>
-          <div className="adm-bar">
-            <span>
-              Connecté : <b>{session.username}</b> ({session.role === "ADMIN" ? "administrateur" : "modérateur"})
+    <div className="adm adm-shell">
+      <aside className="adm-side">
+        <div className="adm-brand-row">
+          <Link href="/admin" className="adm-brand">
+            <span className="adm-brand-dot" aria-hidden="true" />
+            Signal Lycées
+            <span className="adm-brand-tag">admin</span>
+          </Link>
+          <div className="adm-only-mobile">{logoutForm}</div>
+        </div>
+        <AdminNav counts={counts} />
+        <div className="adm-side-foot">
+          <span className="adm-user">
+            <span className="adm-avatar" aria-hidden="true">
+              {session.username.slice(0, 1).toUpperCase()}
             </span>
-            <form action={logoutAction} className="ml-auto">
-              <button type="submit" className="sl-btn sl-btn-ghost sl-btn-sm">
-                Se déconnecter
-              </button>
-            </form>
-          </div>
-          <AdminNav counts={counts} />
-        </>
-      )}
-      {children}
+            <span>
+              <b>{session.username}</b>
+              <span className="adm-small adm-muted">{session.role === "ADMIN" ? "Administrateur" : "Modérateur"}</span>
+            </span>
+          </span>
+          {logoutForm}
+          <Link href="/" className="adm-small adm-muted adm-site-link">
+            Voir le site public
+          </Link>
+        </div>
+      </aside>
+      <main className="adm-main">{children}</main>
     </div>
   );
 }

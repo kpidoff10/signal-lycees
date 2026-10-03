@@ -121,7 +121,7 @@ export async function similarIssues(issue: { id: string; schoolId: string; categ
 
 const queueInclude = {
   school: { select: { name: true, city: true, postalCode: true } },
-  analyses: { orderBy: { createdAt: "desc" }, take: 1 },
+  analyses: { orderBy: { createdAt: "desc" }, take: 4 },
   contentReports: { where: { status: "OPEN" }, orderBy: { createdAt: "asc" }, select: { id: true, reason: true, comment: true, createdAt: true } },
 } satisfies Prisma.IssueInclude;
 
@@ -162,7 +162,15 @@ export async function getQueuePage(page: number) {
         createdAt: i.createdAt,
         publishedAt: i.publishedAt,
         isPublic: PUBLIC_STATUSES.includes(i.moderationStatus),
-        analysis: i.analyses[0] ? toAnalysisView(i.analyses[0]) : null,
+        // Analyse de Jev (avec les probabilités) et, à part, le second avis GPT s'il y en a eu un.
+        analysis: (() => {
+          const a = i.analyses.find((x) => x.provider !== "second");
+          return a ? toAnalysisView(a) : null;
+        })(),
+        secondOpinion: (() => {
+          const a = i.analyses.find((x) => x.provider === "second");
+          return a ? { model: a.model, ok: a.ok, error: a.error, reason: a.reason } : null;
+        })(),
         reports: i.contentReports,
         similar: await similarIssues(i),
       })),

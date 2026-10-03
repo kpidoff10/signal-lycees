@@ -16,10 +16,7 @@ export function ShareLinksPanel({ links, posterVisits, siteUrl }: { links: Link[
   const base = siteUrl.replace(/\/$/, "");
 
   return (
-    <section className="adm-card" aria-labelledby="links-h">
-      <h2 id="links-h" className="adm-h2">
-        Liens de partage
-      </h2>
+    <div className="adm-fold-body">
       <p className="m-0 mb-4 adm-small adm-muted">
         Chaque canal a un code court tiré au hasard, qui ne dit pas d’où vient le lien. Utilise celui qui correspond à l’endroit où tu le publies : les visiteurs arrivés par ce lien apparaissent sous ce
         nom dans la provenance. Arrivées comptées sur 30 jours, une par visiteur et par jour, sans cookie.
@@ -64,6 +61,6 @@ export function ShareLinksPanel({ links, posterVisits, siteUrl }: { links: Link[
         Affiches : {posterVisits.toLocaleString("fr-FR")} arrivée{posterVisits > 1 ? "s" : ""} par QR code sur 30 jours (marqueur
         ajouté automatiquement).
       </p>
-    </section>
+    </div>
   );
 }

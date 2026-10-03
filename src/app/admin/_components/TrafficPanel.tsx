@@ -45,9 +45,9 @@ export function TrafficPanel({ t }: { t: Overview }) {
         <span className="adm-chart-max adm-small adm-muted">{fmt(max)}</span>
         <div className="adm-chart-bars">
           {t.series.map((d) => (
-            <span key={d.day} className="adm-bar-hit" tabIndex={0}>
-              <span className="adm-bar" style={{ height: `${d.visitors ? Math.max(3, (d.visitors / max) * 100) : 0}%` }} />
-              <span className="adm-bar-tip" role="tooltip">
+            <span key={d.day} className="adm-col-hit" tabIndex={0}>
+              <span className="adm-col" style={{ height: `${d.visitors ? Math.max(3, (d.visitors / max) * 100) : 0}%` }} />
+              <span className="adm-col-tip" role="tooltip">
                 <b>{dayLabel(d.day)}</b>
                 <span>
                   {fmt(d.visitors)} visiteur{d.visitors > 1 ? "s" : ""} · {fmt(d.views)} page{d.views > 1 ? "s" : ""}

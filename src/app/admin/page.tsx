@@ -1,150 +1,175 @@
 import Link from "next/link";
-import { requireAdmin } from "@/server/admin/auth";
+import { Icon, type IconName } from "@/components/ui/Icon";
+import { publicEnv } from "@/lib/env";
+import { getAdminSession, requireAdmin } from "@/server/admin/auth";
 import { dashboardCounts } from "@/server/admin/dashboard";
 import { trafficOverview } from "@/server/admin/traffic";
-import { ShareLinksPanel } from "./_components/ShareLinksPanel";
-import { publicEnv } from "@/lib/env";
-import { TrafficPanel } from "./_components/TrafficPanel";
 import { ActionForm } from "./_components/ActionForm";
-import { PageHeader, Submit } from "./_components/ui";
+import { ShareLinksPanel } from "./_components/ShareLinksPanel";
+import { TrafficPanel } from "./_components/TrafficPanel";
 import { freezeAction, secondOpinionAction } from "./actions";
 
 export const dynamic = "force-dynamic";
 
+const dayFmt = new Intl.DateTimeFormat("fr-FR", { weekday: "long", day: "numeric", month: "long", timeZone: "Europe/Paris" });
+
+function greeting() {
+  const h = Number(new Intl.DateTimeFormat("fr-FR", { hour: "numeric", hour12: false, timeZone: "Europe/Paris" }).format(new Date()));
+  return h >= 18 || h < 5 ? "Bonsoir" : "Bonjour";
+}
+
+/** Interrupteur : un bouton de formulaire qui bascule le réglage. */
+function Toggle({
+  action,
+  on,
+  label,
+  hint,
+  fields,
+  confirm,
+  danger,
+}: {
+  action: Parameters<typeof ActionForm>[0]["action"];
+  on: boolean;
+  label: string;
+  hint: string;
+  fields: Record<string, string>;
+  confirm?: string;
+  danger?: boolean;
+}) {
+  return (
+    <ActionForm action={action} confirmMessage={confirm} className="adm-toggle-row">
+      {Object.entries(fields).map(([k, v]) => (
+        <input key={k} type="hidden" name={k} value={v} />
+      ))}
+      <span className="adm-toggle-text">
+        <b>{label}</b>
+        <span className="adm-small adm-muted">{hint}</span>
+      </span>
+      <button type="submit" role="switch" aria-checked={on} aria-label={label} className={`adm-switch${danger ? " is-danger" : ""}`}>
+        <span className="adm-switch-knob" />
+      </button>
+    </ActionForm>
+  );
+}
+
 export default async function AdminHome() {
   await requireAdmin();
-  const [c, traffic] = await Promise.all([dashboardCounts(), trafficOverview()]);
+  const [c, traffic, session] = await Promise.all([dashboardCounts(), trafficOverview(), getAdminSession()]);
 
-  const stats = [
-    { label: "dans la file de modération", value: c.queue, href: "/admin/moderation", hot: c.queue > 0 },
-    { label: "urgents", value: c.urgent, href: "/admin/moderation", hot: c.urgent > 0 },
-    { label: "publiés signalés par 👎", value: c.flagged, href: "/admin/moderation", hot: false },
-    { label: "signalements de contenu ouverts", value: c.openReports, href: "/admin/moderation", hot: false },
-    { label: "demandes de confidentialité à traiter", value: c.pendingRequests, href: "/admin/requests", hot: c.pendingRequests > 0 },
+  const todo: { href: string; icon: IconName; value: number; label: string; urgent?: boolean }[] = [
+    { href: "/admin/moderation", icon: "alert", value: c.urgent, label: c.urgent > 1 ? "signalements urgents" : "signalement urgent", urgent: true },
+    { href: "/admin/moderation", icon: "inbox", value: c.queue, label: "dans la file de modération" },
+    { href: "/admin/moderation", icon: "flag", value: c.openReports, label: "contenus signalés par des visiteurs" },
+    { href: "/admin/moderation", icon: "thumbDown", value: c.flagged, label: "publiés avec beaucoup de 👎" },
+    { href: "/admin/mobilisations", icon: "megaphone", value: c.pendingMobs, label: "mobilisations à valider" },
+    { href: "/admin/presse", icon: "news", value: c.pendingPress, label: "articles de presse à vérifier" },
+    { href: "/admin/requests", icon: "mail", value: c.pendingRequests, label: "demandes (contact, suppression)" },
   ];
+  const pending = todo.filter((t) => t.value > 0);
+  const total = pending.reduce((s, t) => s + t.value, 0);
 
   return (
-    <div className="adm-stack">
-      <PageHeader title="Tableau de bord" />
+    <div className="adm-stack adm-stack-lg">
+      <header className="adm-hello">
+        <p className="adm-hello-date">{dayFmt.format(new Date())}</p>
+        <h1 className="adm-h1">
+          {greeting()} <span className="adm-name">{session?.username ?? ""}</span> 👋
+        </h1>
+        <p className="adm-sub">{total === 0 ? "Rien ne t'attend : tout est à jour." : `${total} élément${total > 1 ? "s" : ""} t'attend${total > 1 ? "ent" : ""}.`}</p>
+      </header>
 
-      <div className="adm-stats">
-        {stats.map((s) => (
-          <Link key={s.label} href={s.href} className={`adm-stat${s.hot ? " is-hot" : ""}`}>
-            <span className="adm-stat-value">{s.value.toLocaleString("fr-FR")}</span>
-            <span className="adm-stat-label">{s.label}</span>
-          </Link>
-        ))}
-      </div>
-
-      {c.limiter === "memory" && process.env.NODE_ENV === "production" && (
-        <p className="adm-msg adm-msg-error">
-          Limitation anti-abus non partagée (Upstash non configuré) : les limites de dépôts, votes et connexions sont faciles à
-          contourner.
+      {c.frozen && (
+        <p className="adm-msg adm-msg-error adm-msg-big">
+          <Icon name="alert" /> Publication automatique suspendue : chaque nouveau signalement part en revue manuelle.
         </p>
       )}
 
-      <TrafficPanel t={traffic} />
-
-      <ShareLinksPanel links={traffic.links} posterVisits={traffic.posterVisits} siteUrl={publicEnv.siteUrl} />
-
-      <section className={`adm-card${c.frozen ? " adm-urgent" : ""}`} aria-labelledby="freeze-h">
-        <h2 id="freeze-h" className="adm-h2">
-          Interrupteur d&apos;urgence
+      <section aria-labelledby="todo-h" className="adm-stack">
+        <h2 id="todo-h" className="adm-h2">
+          À traiter
         </h2>
-        <p className="m-0 mb-3 text-[15px] leading-[22px]">
-          {c.frozen ? (
-            <>
-              <b>Publication automatique suspendue.</b> Chaque nouveau signalement part en revue manuelle.
-            </>
-          ) : (
-            <>
-              Publication automatique <b>active</b> : les signalements sans risque détecté sont publiés directement.
-            </>
-          )}
-        </p>
-        {c.frozenByEnv ? (
-          <p className="adm-msg adm-msg-error">
-            Suspension forcée par la variable d&apos;environnement MODERATION_FREEZE : à modifier dans la configuration du serveur.
-          </p>
-        ) : c.frozen ? (
-          <ActionForm action={freezeAction} confirmMessage="Réactiver la publication automatique ?">
-            <input type="hidden" name="frozen" value="0" />
-            <div>
-              <Submit variant="secondary">Réactiver la publication automatique</Submit>
-            </div>
-          </ActionForm>
+        {pending.length === 0 ? (
+          <div className="adm-calm">
+            <span className="adm-calm-icon" aria-hidden="true">
+              <Icon name="check" size={22} />
+            </span>
+            <span>
+              <b>Tout est à jour.</b>
+              <span className="adm-muted"> Jev et le second avis s&apos;occupent du reste ; Telegram te prévient s&apos;il faut agir.</span>
+            </span>
+          </div>
         ) : (
-          <ActionForm action={freezeAction} confirmMessage="Suspendre la publication automatique ? Tout passera en revue manuelle.">
-            <input type="hidden" name="frozen" value="1" />
-            <div>
-              <Submit>Suspendre la publication automatique</Submit>
-            </div>
-          </ActionForm>
+          <div className="adm-todo">
+            {pending.map((t) => (
+              <Link key={t.label} href={t.href} className={`adm-todo-card${t.urgent ? " is-urgent" : ""}`}>
+                <span className="adm-todo-icon" aria-hidden="true">
+                  <Icon name={t.icon} size={20} />
+                </span>
+                <span className="adm-todo-value">{t.value.toLocaleString("fr-FR")}</span>
+                <span className="adm-todo-label">{t.label}</span>
+                <Icon name="chevron" size={18} className="adm-todo-go" />
+              </Link>
+            ))}
+          </div>
         )}
       </section>
 
-      <section className="adm-card" aria-labelledby="second-h">
-        <h2 id="second-h" className="adm-h2">
-          Second avis GPT
+      <TrafficPanel t={traffic} />
+
+      <section className="adm-card" aria-labelledby="settings-h">
+        <h2 id="settings-h" className="adm-h2">
+          Réglages de la modération
         </h2>
-        <p className="m-0 mb-3 text-[15px] leading-[22px]">
-          Quand Jev hésite, GPT-5 mini départage. Désactivé, tout ce dont Jev doute arrive dans ta file de modération.
+        <div className="adm-toggles">
+          {c.frozenByEnv ? (
+            <p className="adm-msg adm-msg-error">
+              Publication automatique suspendue par la variable d&apos;environnement MODERATION_FREEZE : à modifier dans la configuration du serveur.
+            </p>
+          ) : (
+            <Toggle
+              action={freezeAction}
+              on={!c.frozen}
+              label="Publication automatique"
+              hint={c.frozen ? "Suspendue : tout part en revue manuelle." : "Les signalements sans risque sont publiés directement."}
+              fields={{ frozen: c.frozen ? "0" : "1" }}
+              confirm={c.frozen ? "Réactiver la publication automatique ?" : "Suspendre la publication automatique ? Tout passera en revue manuelle."}
+              danger
+            />
+          )}
+          <Toggle
+            action={secondOpinionAction}
+            on={c.secondOpinion.issues}
+            label="Second avis GPT : signalements"
+            hint={
+              c.secondOpinion.issues
+                ? "Quand Jev hésite, GPT publie, reformule légèrement ou te laisse la décision."
+                : "Désactivé : les doutes de Jev arrivent dans ta file."
+            }
+            fields={{ scope: "issues", enabled: c.secondOpinion.issues ? "0" : "1" }}
+          />
+          <Toggle
+            action={secondOpinionAction}
+            on={c.secondOpinion.press}
+            label="Second avis GPT : revue de presse"
+            hint={c.secondOpinion.press ? "Quand Jev hésite, GPT publie ou écarte l'article." : "Désactivé : les doutes de Jev arrivent dans Presse."}
+            fields={{ scope: "press", enabled: c.secondOpinion.press ? "0" : "1" }}
+          />
+        </div>
+        <p className="m-0 mt-3 adm-small adm-muted">
+          Limitation anti-abus : {c.limiter === "upstash" ? "partagée (Upstash) ✓" : "en mémoire (développement)"}
+          {c.limiter === "memory" && process.env.NODE_ENV === "production" && " : non partagée, les limites sont faciles à contourner."}
         </p>
-        <ul className="adm-list">
-          {(
-            [
-              ["issues", "Signalements des élèves", "publie, reformule légèrement ou te laisse la décision"],
-              ["press", "Revue de presse", "publie ou écarte les articles"],
-            ] as const
-          ).map(([scope, label, does]) => {
-            const on = c.secondOpinion[scope];
-            return (
-              <li key={scope} className="adm-row">
-                <span className="adm-meta">
-                  <b>{label}</b>
-                  <span>{on ? `actif : ${does}` : "désactivé : revue humaine"}</span>
-                </span>
-                <ActionForm action={secondOpinionAction}>
-                  <input type="hidden" name="scope" value={scope} />
-                  <input type="hidden" name="enabled" value={on ? "0" : "1"} />
-                  <div>
-                    <Submit variant={on ? "secondary" : "primary"}>{on ? "Désactiver" : "Réactiver"}</Submit>
-                  </div>
-                </ActionForm>
-              </li>
-            );
-          })}
-        </ul>
       </section>
 
-      <p className="m-0 adm-small adm-muted">
-        Limitation anti-abus : {c.limiter === "upstash" ? "partagée (Upstash) ✓" : "en mémoire (développement)"}
-      </p>
-
-      <section className="adm-card" aria-labelledby="links-h">
-        <h2 id="links-h" className="adm-h2">
-          Sections
-        </h2>
-        <ul className="adm-list">
-          {(
-            [
-            ["/admin/moderation", "File de modération", "Publier, modifier, refuser ; problèmes publiés signalés."],
-            ["/admin/issues", "Signalements", "Recherche, statut public, dépublication, suppression."],
-            ["/admin/schools", "Lycées", "Nom, adresse, coordonnées, ouverture."],
-            ["/admin/users", "Identités anonymes", "Bannir ou débannir un appareil."],
-            ["/admin/requests", "Demandes", "Suppressions et contacts (RGPD, DSA)."],
-            ["/admin/logs", "Journal", "Toutes les actions d'administration."],
-            ] as const
-          ).map(([href, title, sub]) => (
-            <li key={href}>
-              <Link href={href} className="adm-row">
-                <span className="adm-row-title">{title}</span>
-                <span className="adm-small adm-muted">{sub}</span>
-              </Link>
-            </li>
-          ))}
-        </ul>
-      </section>
+      <details className="adm-card adm-fold">
+        <summary>
+          <span className="adm-fold-title">
+            <span className="adm-h2">Liens de partage</span>
+            <span className="adm-small adm-muted">Un lien suivi par canal (Instagram, X, affiches…), à copier.</span>
+          </span>
+        </summary>
+        <ShareLinksPanel links={traffic.links} posterVisits={traffic.posterVisits} siteUrl={publicEnv.siteUrl} />
+      </details>
     </div>
   );
 }

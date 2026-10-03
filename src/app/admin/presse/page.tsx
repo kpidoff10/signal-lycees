@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { requireAdmin } from "@/server/admin/auth";
 import { listPress } from "@/server/admin/press";
 import { ActionForm } from "../_components/ActionForm";
-import { Badge, Empty, formatDateTime, PageHeader, Submit } from "../_components/ui";
+import { Empty, formatDateTime, PageHeader, Submit } from "../_components/ui";
 import { fetchPressAction, publishPressAction, rejectPressAction } from "./actions";
 
 export const metadata: Metadata = { title: "Revue de presse" };
@@ -104,9 +104,7 @@ export default async function PressAdminPage() {
             {rejected.map((a) => (
               <li key={a.id} className="adm-row" style={{ gap: "var(--space-2)" }}>
                 <Article a={a} />
-                <span className="adm-meta">
-                  <Badge tone="outline">{a.reason ?? "Écarté"}</Badge>
-                </span>
+                <p className="m-0 adm-small adm-muted">{a.reason ?? "Écarté"}</p>
                 <ActionForm action={publishPressAction} className="adm-form">
                   <input type="hidden" name="id" value={a.id} />
                   <Submit variant="secondary">Publier quand même</Submit>

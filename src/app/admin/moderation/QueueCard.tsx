@@ -175,6 +175,16 @@ export function QueueCard({ item }: { item: QueueItem }) {
       <div className="adm-section">
         <h3 className="adm-h2">Analyse automatique</h3>
         <Analysis analysis={item.analysis} currentCategory={item.category} />
+        {item.secondOpinion && (
+          <div className="adm-second">
+            <p className="adm-meta m-0">
+              <Badge tone="outline">second avis</Badge>
+              {item.secondOpinion.model && <span>{item.secondOpinion.model}</span>}
+              {!item.secondOpinion.ok && item.secondOpinion.error && <span>erreur : {item.secondOpinion.error}</span>}
+            </p>
+            <p className="m-0 text-[15px] leading-[22px]">{item.secondOpinion.reason}</p>
+          </div>
+        )}
       </div>
 
       {item.similar.length > 0 && (
