@@ -5,6 +5,9 @@ import type { Prisma } from "@/generated/prisma/client";
 import { randomToken, sha256 } from "./crypto";
 import { embed, toVectorLiteral } from "./embeddings";
 import { moderate } from "./moderation/pipeline";
+import { isEligibleForSecondOpinion } from "./moderation/second-decide";
+import { resolveWithSecondOpinion } from "./moderation/second";
+import { after } from "next/server";
 import { crossedMilestone, needsDownvoteReview, nextStatus, STATUS_RULES } from "./status";
 import { notify } from "./notify";
 
@@ -86,13 +89,18 @@ export async function createIssue(draft: IssueDraft, authorId: string): Promise<
     await prisma.$executeRawUnsafe(`UPDATE "Issue" SET embedding = $1::vector WHERE id = $2`, toVectorLiteral(vector), issue.id);
   }
   await recordDailyStat(issue.id);
-  notify({
-    type: "issue",
-    issueId: issue.id,
-    status: moderationStatus === "PUBLISHED" ? "PUBLISHED" : moderationStatus === "REJECTED" ? "REJECTED" : "MANUAL_REVIEW",
-    priority: outcome.priority,
-    showHelp: outcome.showHelp,
-  });
+  // Jev hésite : second avis après la réponse ; la modération n'est prévenue que s'il doute aussi.
+  if (isEligibleForSecondOpinion(outcome, outcome.jev, outcome.rules)) {
+    after(() => resolveWithSecondOpinion(issue.id, draft, outcome));
+  } else {
+    notify({
+      type: "issue",
+      issueId: issue.id,
+      status: moderationStatus === "PUBLISHED" ? "PUBLISHED" : moderationStatus === "REJECTED" ? "REJECTED" : "MANUAL_REVIEW",
+      priority: outcome.priority,
+      showHelp: outcome.showHelp,
+    });
+  }
 
   return {
     issueId: issue.id,

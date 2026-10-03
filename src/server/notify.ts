@@ -68,26 +68,34 @@ async function send(text: string) {
   }
 }
 
+function enabled(e: NotifyEvent): boolean {
+  const { TELEGRAM_BOT_TOKEN, TELEGRAM_CHAT_ID, TELEGRAM_NOTIFY_PUBLISHED } = env();
+  if (!TELEGRAM_BOT_TOKEN || !TELEGRAM_CHAT_ID) return false;
+  return !(e.type === "issue" && e.status === "PUBLISHED" && !TELEGRAM_NOTIFY_PUBLISHED);
+}
+
+/** Envoie tout de suite (pour du code qui tourne déjà après la réponse, dans un `after`). */
+export async function notifyNow(e: NotifyEvent) {
+  if (!enabled(e)) return;
+  let info: IssueInfo | null = null;
+  if ("issueId" in e) {
+    const i = await prisma.issue.findUnique({
+      where: { id: e.issueId },
+      select: { category: true, school: { select: { name: true, city: true } } },
+    });
+    if (i) info = { school: i.school.name, city: i.school.city, category: i.category };
+  } else if (e.type === "mobilization") {
+    const m = await prisma.mobilization.findUnique({ where: { id: e.mobilizationId }, select: { school: { select: { name: true, city: true } } } });
+    if (m) info = { school: m.school.name, city: m.school.city, category: null };
+  }
+  const text = formatNotification(e, info, publicEnv.siteUrl);
+  if (text) await send(text);
+}
+
 /** Envoie la notification après la réponse à l'élève (ne ralentit jamais son action). */
 export function notify(e: NotifyEvent) {
-  const { TELEGRAM_BOT_TOKEN, TELEGRAM_CHAT_ID, TELEGRAM_NOTIFY_PUBLISHED } = env();
-  if (!TELEGRAM_BOT_TOKEN || !TELEGRAM_CHAT_ID) return;
-  if (e.type === "issue" && e.status === "PUBLISHED" && !TELEGRAM_NOTIFY_PUBLISHED) return;
-  after(async () => {
-    let info: IssueInfo | null = null;
-    if ("issueId" in e) {
-      const i = await prisma.issue.findUnique({
-        where: { id: e.issueId },
-        select: { category: true, school: { select: { name: true, city: true } } },
-      });
-      if (i) info = { school: i.school.name, city: i.school.city, category: i.category };
-    } else if (e.type === "mobilization") {
-      const m = await prisma.mobilization.findUnique({ where: { id: e.mobilizationId }, select: { school: { select: { name: true, city: true } } } });
-      if (m) info = { school: m.school.name, city: m.school.city, category: null };
-    }
-    const text = formatNotification(e, info, publicEnv.siteUrl);
-    if (text) await send(text);
-  });
+  if (!enabled(e)) return;
+  after(() => notifyNow(e));
 }
 
 /** Message de test (script). */

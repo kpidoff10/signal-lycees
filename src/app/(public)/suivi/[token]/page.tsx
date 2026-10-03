@@ -60,6 +60,9 @@ export default async function TrackingPage({ params }: { params: Promise<{ token
         {issue.moderationStatus === "REJECTED" && issue.decisions[0]?.publicReason && (
           <p className="rounded-[var(--radius-md)] bg-surface-sunken p-3 text-[15px]">Motif : {issue.decisions[0].publicReason}</p>
         )}
+        {published && issue.decisions[0]?.publicReason && (
+          <p className="rounded-[var(--radius-md)] bg-surface-sunken p-3 text-[15px]">{issue.decisions[0].publicReason}</p>
+        )}
         {published && (
           <Link href={`/probleme/${issue.id}`} className="link">
             Voir le signalement publié

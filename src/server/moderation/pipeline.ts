@@ -33,7 +33,8 @@ export async function moderate(input: { title: string; description: string; cate
   let jevError: string | undefined;
   let provider: "jev" | "none" = "none";
 
-  const viaGateway = !!(e.AI_GATEWAY_API_KEY || e.VERCEL_OIDC_TOKEN);
+  // Sur Vercel, le jeton OIDC arrive avec chaque requête (pas dans l'environnement) : la passerelle est toujours joignable.
+  const viaGateway = !!(e.AI_GATEWAY_API_KEY || e.VERCEL_OIDC_TOKEN || process.env.VERCEL);
   if (!viaGateway && !e.TYPESAFE_API_KEY) {
     jevError = "non configurée";
   } else if (!(await jevBudgetLeft())) {
