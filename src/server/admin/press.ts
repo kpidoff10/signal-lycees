@@ -6,6 +6,16 @@ import { AdminError } from "./forms";
 import { adminLog } from "./log";
 
 export async function listPress() {
+  try {
+    return { ...(await loadPress()), missing: false };
+  } catch (e) {
+    // Table absente tant que la migration press_articles n'est pas appliquée.
+    console.error("admin press", e instanceof Error ? e.message.slice(0, 200) : e);
+    return { pending: [], published: [], rejected: [], missing: true };
+  }
+}
+
+async function loadPress() {
   const [pending, published, rejected] = await Promise.all([
     prisma.pressArticle.findMany({ where: { status: "PENDING" }, orderBy: { publishedAt: "desc" }, take: 100 }),
     prisma.pressArticle.findMany({ where: { status: "PUBLISHED" }, orderBy: { publishedAt: "desc" }, take: 40 }),

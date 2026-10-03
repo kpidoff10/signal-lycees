@@ -27,7 +27,17 @@ function Article({ a }: { a: Row }) {
 
 export default async function PressAdminPage() {
   await requireAdmin();
-  const { pending, published, rejected } = await listPress();
+  const { pending, published, rejected, missing } = await listPress();
+  if (missing)
+    return (
+      <div className="grid gap-4">
+        <PageHeader title="Revue de presse" />
+        <Empty>
+          La base de données n&apos;est pas encore prête : la migration « press_articles » doit être appliquée (prisma migrate deploy). La page
+          fonctionnera ensuite sans autre changement.
+        </Empty>
+      </div>
+    );
 
   return (
     <div className="grid gap-8">
