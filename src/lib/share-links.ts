@@ -18,6 +18,7 @@ export const SHARE_LINKS: ShareLink[] = [
   { code: "eqaqj", label: "Lien · Instagram (bio)", hint: "Champ « Liens » du profil Instagram" },
   { code: "gksef", label: "Lien · Instagram (story)", hint: "Sticker « Lien » d’une story" },
   { code: "qptvj", label: "Lien · Instagram (message)", hint: "Messages privés Instagram" },
+  { code: "wh422", label: "Lien · Instagram (commentaire)", hint: "Commentaires sous des publications Instagram" },
   { code: "fshyx", label: "Lien · Snapchat", hint: "Story ou message Snapchat" },
   { code: "q2qkc", label: "Lien · TikTok", hint: "Bio ou commentaire TikTok" },
   { code: "unxs8", label: "Lien · WhatsApp", hint: "Groupes et messages WhatsApp" },
