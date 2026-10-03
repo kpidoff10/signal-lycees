@@ -43,7 +43,7 @@ export default async function PressAdminPage() {
     <div className="grid gap-8">
       <PageHeader
         title="Revue de presse"
-        sub="Récupérée automatiquement (Google Actualités et quelques flux). Jev publie ce dont il est sûr ; quand il hésite, un second avis (GPT-5 mini) départage, et seuls les doutes qui restent arrivent ici. Seuls le titre, la source et le lien sont affichés sur le site."
+        sub="Récupérée automatiquement (Google Actualités et quelques flux). Jev publie ce dont il est sûr ; quand il hésite, un second avis (GPT-5 mini) publie ou écarte. N'arrivent ici que les articles qu'aucune IA n'a pu juger (panne), réessayés au passage suivant. Seuls le titre, la source et le lien sont affichés sur le site."
       >
         <ActionForm action={fetchPressAction} className="adm-form">
           <Submit variant="secondary">Récupérer maintenant</Submit>
@@ -53,7 +53,7 @@ export default async function PressAdminPage() {
       <section>
         <h2 className="adm-h2">À vérifier ({pending.length})</h2>
         {pending.length === 0 ? (
-          <Empty>Rien en attente : Jev n&apos;a aucun doute pour l&apos;instant.</Empty>
+          <Empty>Rien en attente.</Empty>
         ) : (
           <ul className="adm-list">
             {pending.map((a) => (

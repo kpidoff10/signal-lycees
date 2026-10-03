@@ -69,7 +69,7 @@ const resultSchema = z.object({
 type EvaluateFn = (args: { model: string; state: unknown; questions: unknown; abortSignal?: AbortSignal; maxRetries?: number }) => Promise<unknown>;
 
 /** Jev juge le titre ; null s'il est indisponible (l'article part alors en vérification). */
-async function scoreWithJev(item: FeedItem): Promise<PressScores | null> {
+async function scoreWithJev(item: { title: string; source: string }): Promise<PressScores | null> {
   const e = env();
   // Sur Vercel, le jeton OIDC arrive avec chaque requête (pas dans l'environnement) : la passerelle est toujours joignable.
   if (!e.AI_GATEWAY_API_KEY && !e.VERCEL_OIDC_TOKEN && !process.env.VERCEL) return null;
@@ -140,21 +140,22 @@ async function judge(item: { title: string; source: string }, scores: PressScore
   return decideWithSecondOpinion(scores, await secondOpinion(item, first.reason));
 }
 
-const FIRST_PASS_REASONS = ["Sujet sensible : à vérifier", "Doute de Jev", "Second avis indisponible"];
-
-/** Articles mis en attente avant la double vérification : on leur donne le second avis (40 par passage). */
+/**
+ * Articles restés en attente (avant la double vérification, ou pendant une panne de Jev ou de GPT) :
+ * on les juge à nouveau, 40 par passage. Une IA toujours indisponible : on réessaiera au suivant.
+ */
 async function recheckPending(now: Date) {
-  const rows = await prisma.pressArticle.findMany({
-    where: { status: "PENDING", reason: { in: FIRST_PASS_REASONS }, relevance: { not: null } },
-    orderBy: { publishedAt: "desc" },
-    take: MAX_JEV_PER_RUN,
-  });
+  const rows = await prisma.pressArticle.findMany({ where: { status: "PENDING" }, orderBy: { publishedAt: "desc" }, take: MAX_JEV_PER_RUN });
   const counts = { PUBLISHED: 0, PENDING: 0, REJECTED: 0 };
   for (const a of rows) {
-    const scores = { relevance: a.relevance!, sensitive: a.sensitive ?? 0, offTopic: a.offTopic ?? 0 };
-    const d = decideWithSecondOpinion(scores, await secondOpinion(a, a.reason ?? ""));
-    if (d.reason === "Second avis indisponible") continue; // on réessaiera au prochain passage
-    await prisma.pressArticle.update({ where: { id: a.id }, data: { status: d.status, reason: d.reason, reviewedAt: d.status === "PENDING" ? null : now } });
+    const scores = a.relevance != null ? { relevance: a.relevance, sensitive: a.sensitive ?? 0, offTopic: a.offTopic ?? 0 } : await scoreWithJev(a);
+    if (!scores) continue;
+    const d = await judge(a, scores);
+    if (d.status === "PENDING") continue;
+    await prisma.pressArticle.update({
+      where: { id: a.id },
+      data: { status: d.status, reason: d.reason, relevance: scores.relevance, sensitive: scores.sensitive, offTopic: scores.offTopic, reviewedAt: now },
+    });
     counts[d.status]++;
   }
   return counts;

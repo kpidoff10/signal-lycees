@@ -2,10 +2,14 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { Breadcrumb } from "@/components/places/Breadcrumb";
 import { PressList } from "@/components/press/PressList";
+import { ButtonLink } from "@/components/ui/Button";
 import { directory } from "@/server/places";
 import { latestPress, refreshPressIfStale } from "@/server/press";
 
-export const revalidate = 600;
+const STEP = 40;
+const MAX = 400;
+
+type Props = { searchParams: Promise<{ n?: string }> };
 
 export const metadata: Metadata = {
   title: "Actualités des lycées : la revue de presse",
@@ -17,9 +21,13 @@ export const metadata: Metadata = {
 const dayFmt = new Intl.DateTimeFormat("fr-FR", { weekday: "long", day: "numeric", month: "long", timeZone: "Europe/Paris" });
 const dayKey = new Intl.DateTimeFormat("fr-CA", { timeZone: "Europe/Paris" });
 
-export default async function ActualitesPage() {
+export default async function ActualitesPage({ searchParams }: Props) {
+  const asked = Number((await searchParams).n);
+  const take = Number.isFinite(asked) ? Math.min(MAX, Math.max(STEP, Math.ceil(asked / STEP) * STEP)) : STEP;
   await refreshPressIfStale();
-  const [articles, dir] = await Promise.all([latestPress(80), directory()]);
+  const [rows, dir] = await Promise.all([latestPress(take + 1), directory()]);
+  const hasMore = rows.length > take && take < MAX;
+  const articles = rows.slice(0, take);
   const cityNames = new Map([...dir.cityBySlug.values()].map((c) => [c.slug, c.name]));
   const days = new Map<string, typeof articles>();
   for (const a of articles) {
@@ -47,6 +55,13 @@ export default async function ActualitesPage() {
             <PressList articles={list} cityNames={cityNames} showDate={false} />
           </section>
         ))
+      )}
+      {hasMore && (
+        <div className="flex justify-center">
+          <ButtonLink href={`/actualites?n=${take + STEP}`} variant="secondary" scroll={false}>
+            Afficher plus
+          </ButtonLink>
+        </div>
       )}
       <p className="text-sm text-ink-muted">
         Un article manque ou pose problème ? Écris-nous depuis la page{" "}
