@@ -7,7 +7,7 @@ import { publicEnv } from "@/lib/env";
 import { TrafficPanel } from "./_components/TrafficPanel";
 import { ActionForm } from "./_components/ActionForm";
 import { PageHeader, Submit } from "./_components/ui";
-import { freezeAction } from "./actions";
+import { freezeAction, secondOpinionAction } from "./actions";
 
 export const dynamic = "force-dynamic";
 
@@ -81,6 +81,40 @@ export default async function AdminHome() {
             </div>
           </ActionForm>
         )}
+      </section>
+
+      <section className="adm-card" aria-labelledby="second-h">
+        <h2 id="second-h" className="adm-h2">
+          Second avis GPT
+        </h2>
+        <p className="m-0 mb-3 text-[15px] leading-[22px]">
+          Quand Jev hésite, GPT-5 mini départage. Désactivé, tout ce dont Jev doute arrive dans ta file de modération.
+        </p>
+        <ul className="adm-list">
+          {(
+            [
+              ["issues", "Signalements des élèves", "publie, reformule légèrement ou te laisse la décision"],
+              ["press", "Revue de presse", "publie ou écarte les articles"],
+            ] as const
+          ).map(([scope, label, does]) => {
+            const on = c.secondOpinion[scope];
+            return (
+              <li key={scope} className="adm-row">
+                <span className="adm-meta">
+                  <b>{label}</b>
+                  <span>{on ? `actif : ${does}` : "désactivé : revue humaine"}</span>
+                </span>
+                <ActionForm action={secondOpinionAction}>
+                  <input type="hidden" name="scope" value={scope} />
+                  <input type="hidden" name="enabled" value={on ? "0" : "1"} />
+                  <div>
+                    <Submit variant={on ? "secondary" : "primary"}>{on ? "Désactiver" : "Réactiver"}</Submit>
+                  </div>
+                </ActionForm>
+              </li>
+            );
+          })}
+        </ul>
       </section>
 
       <p className="m-0 adm-small adm-muted">

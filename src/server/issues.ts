@@ -8,6 +8,7 @@ import { moderate } from "./moderation/pipeline";
 import { isEligibleForSecondOpinion } from "./moderation/second-decide";
 import { resolveWithSecondOpinion } from "./moderation/second";
 import { after } from "next/server";
+import { isSecondOpinionEnabled } from "./settings";
 import { crossedMilestone, needsDownvoteReview, nextStatus, STATUS_RULES } from "./status";
 import { notify } from "./notify";
 
@@ -90,7 +91,7 @@ export async function createIssue(draft: IssueDraft, authorId: string): Promise<
   }
   await recordDailyStat(issue.id);
   // Jev hésite : second avis après la réponse ; la modération n'est prévenue que s'il doute aussi.
-  if (isEligibleForSecondOpinion(outcome, outcome.jev, outcome.rules)) {
+  if (isEligibleForSecondOpinion(outcome, outcome.jev, outcome.rules) && (await isSecondOpinionEnabled("issues"))) {
     after(() => resolveWithSecondOpinion(issue.id, draft, outcome));
   } else {
     notify({

@@ -20,6 +20,7 @@ import {
 } from "@/lib/press";
 import { directory } from "./places";
 import { notify } from "./notify";
+import { isSecondOpinionEnabled } from "./settings";
 
 const google = (q: string) => `https://news.google.com/rss/search?q=${encodeURIComponent(`${q} when:3d`)}&hl=fr&gl=FR&ceid=FR:fr`;
 
@@ -136,7 +137,7 @@ async function secondOpinion(item: { title: string; source: string }, jevReason:
 /** Avis de Jev, puis second avis quand Jev hésite. */
 async function judge(item: { title: string; source: string }, scores: PressScores | null): Promise<PressDecision> {
   const first = decidePress(scores);
-  if (first.status !== "PENDING" || !scores) return first;
+  if (first.status !== "PENDING" || !scores || !(await isSecondOpinionEnabled("press"))) return first;
   return decideWithSecondOpinion(scores, await secondOpinion(item, first.reason));
 }
 
@@ -151,7 +152,11 @@ async function recheckPending(now: Date) {
     const scores = a.relevance != null ? { relevance: a.relevance, sensitive: a.sensitive ?? 0, offTopic: a.offTopic ?? 0 } : await scoreWithJev(a);
     if (!scores) continue;
     const d = await judge(a, scores);
-    if (d.status === "PENDING") continue;
+    if (d.status === "PENDING") {
+      // Second avis désactivé ou indisponible : on garde au moins le score de Jev pour ne pas le redemander.
+      if (a.relevance == null) await prisma.pressArticle.update({ where: { id: a.id }, data: { ...scores, reason: d.reason } });
+      continue;
+    }
     await prisma.pressArticle.update({
       where: { id: a.id },
       data: { status: d.status, reason: d.reason, relevance: scores.relevance, sensitive: scores.sensitive, offTopic: scores.offTopic, reviewedAt: now },

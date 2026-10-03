@@ -16,3 +16,17 @@ export async function setModerationFrozen(frozen: boolean) {
     update: { value: frozen },
   });
 }
+
+export type SecondOpinionScope = "issues" | "press";
+const SECOND_OPINION_KEYS: Record<SecondOpinionScope, string> = { issues: "secondOpinionIssues", press: "secondOpinionPress" };
+
+/** Second avis GPT (actif par défaut) : désactivable depuis le tableau de bord. */
+export async function isSecondOpinionEnabled(scope: SecondOpinionScope): Promise<boolean> {
+  const s = await prisma.appSetting.findUnique({ where: { key: SECOND_OPINION_KEYS[scope] } });
+  return s?.value !== false;
+}
+
+export async function setSecondOpinionEnabled(scope: SecondOpinionScope, enabled: boolean) {
+  const key = SECOND_OPINION_KEYS[scope];
+  await prisma.appSetting.upsert({ where: { key }, create: { key, value: enabled }, update: { value: enabled } });
+}
