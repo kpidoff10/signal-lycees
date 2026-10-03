@@ -60,7 +60,8 @@ type EvaluateFn = (args: { model: string; state: unknown; questions: unknown; ab
 /** Jev juge le titre ; null s'il est indisponible (l'article part alors en vérification). */
 async function scoreWithJev(item: FeedItem): Promise<PressScores | null> {
   const e = env();
-  if (!e.AI_GATEWAY_API_KEY && !e.VERCEL_OIDC_TOKEN) return null;
+  // Sur Vercel, le jeton OIDC arrive avec chaque requête (pas dans l'environnement) : la passerelle est toujours joignable.
+  if (!e.AI_GATEWAY_API_KEY && !e.VERCEL_OIDC_TOKEN && !process.env.VERCEL) return null;
   try {
     const evaluate = (await import("ai")).experimental_evaluate as unknown as EvaluateFn;
     const result = await evaluate({
