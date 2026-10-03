@@ -22,7 +22,7 @@ export default async function AdminLayout({ children }: { children: ReactNode })
         queueCounts(),
         prisma.privacyRequest.count({ where: { handled: false } }),
         prisma.mobilization.count({ where: { status: "PENDING", expiresAt: { gt: new Date() } } }),
-        prisma.pressArticle.count({ where: { status: "PENDING" } }),
+        prisma.pressArticle.count({ where: { status: "PENDING" } }).catch(() => 0),
       ]).then(([q, r, m, p]) => ({
         queue: q.total,
         requests: r,

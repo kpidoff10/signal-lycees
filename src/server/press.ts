@@ -148,6 +148,14 @@ export async function runPressJob(now = new Date()) {
 
 /** Rafraîchit la revue en tâche de fond quand la dernière récupération date de plus de 2 h. */
 export async function refreshPressIfStale() {
+  try {
+    await refresh();
+  } catch (e) {
+    console.error("press refresh", e instanceof Error ? e.message.slice(0, 200) : e);
+  }
+}
+
+async function refresh() {
   const last = await prisma.appSetting.findUnique({ where: { key: LAST_RUN_KEY } });
   const at = typeof last?.value === "string" ? Date.parse(last.value) : 0;
   if (Date.now() - at < 2 * 3600_000) return;
@@ -167,14 +175,21 @@ export interface PublicArticle {
 
 const PUBLIC_SELECT = { id: true, title: true, source: true, url: true, publishedAt: true, citySlug: true } as const;
 
+/** La revue de presse est un bonus : une erreur de base ne doit jamais faire tomber une fiche lycée. */
+const orEmpty = (p: Promise<PublicArticle[]>) =>
+  p.catch((e) => {
+    console.error("press", e instanceof Error ? e.message.slice(0, 200) : e);
+    return [];
+  });
+
 export function latestPress(take = 60): Promise<PublicArticle[]> {
-  return prisma.pressArticle.findMany({ where: { status: "PUBLISHED" }, orderBy: { publishedAt: "desc" }, take, select: PUBLIC_SELECT });
+  return orEmpty(prisma.pressArticle.findMany({ where: { status: "PUBLISHED" }, orderBy: { publishedAt: "desc" }, take, select: PUBLIC_SELECT }));
 }
 
 export function pressForSchool(schoolId: string, take = 5): Promise<PublicArticle[]> {
-  return prisma.pressArticle.findMany({ where: { status: "PUBLISHED", schoolIds: { has: schoolId } }, orderBy: { publishedAt: "desc" }, take, select: PUBLIC_SELECT });
+  return orEmpty(prisma.pressArticle.findMany({ where: { status: "PUBLISHED", schoolIds: { has: schoolId } }, orderBy: { publishedAt: "desc" }, take, select: PUBLIC_SELECT }));
 }
 
 export function pressForCity(citySlug: string, take = 5): Promise<PublicArticle[]> {
-  return prisma.pressArticle.findMany({ where: { status: "PUBLISHED", citySlug }, orderBy: { publishedAt: "desc" }, take, select: PUBLIC_SELECT });
+  return orEmpty(prisma.pressArticle.findMany({ where: { status: "PUBLISHED", citySlug }, orderBy: { publishedAt: "desc" }, take, select: PUBLIC_SELECT }));
 }
