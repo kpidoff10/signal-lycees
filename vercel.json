@@ -3,6 +3,7 @@
   "regions": ["lhr1"],
   "crons": [
     { "path": "/api/cron/status", "schedule": "15 3 * * *" },
-    { "path": "/api/cron/purge", "schedule": "45 3 * * *" }
+    { "path": "/api/cron/purge", "schedule": "45 3 * * *" },
+    { "path": "/api/cron/indexnow", "schedule": "15 4 * * *" }
   ]
 }
