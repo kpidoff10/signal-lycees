@@ -18,6 +18,7 @@ const TARGET_LABEL: Record<(typeof LOG_TARGETS)[number], string> = {
   AppSetting: "Réglages",
   AdminUser: "Comptes admin",
   Mobilization: "Mobilisations",
+  PressArticle: "Revue de presse",
 };
 
 function targetHref(type: string, id: string | null): string | null {

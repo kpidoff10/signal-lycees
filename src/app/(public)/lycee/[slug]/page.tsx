@@ -19,6 +19,8 @@ import { PlaceLinkGrid } from "@/components/places/PlaceLists";
 import { cityLabel, inCity } from "@/lib/places";
 import { MobilizationBanner } from "@/components/school/MobilizationBanner";
 import { ReportMobilization } from "@/components/school/ReportMobilization";
+import { PressList } from "@/components/press/PressList";
+import { pressForSchool } from "@/server/press";
 
 export const revalidate = 60;
 
@@ -59,11 +61,12 @@ export default async function SchoolPage({ params }: Props) {
   const { slug } = await params;
   const school = await getSchoolBySlug(slug);
   if (!school) notFound();
-  const [issues, mobs, dir, near] = await Promise.all([
+  const [issues, mobs, dir, near, press] = await Promise.all([
     getSchoolIssues(school.id),
     activeMobilizations([school.id]),
     directory(),
     nearbySchools(school.latitude, school.longitude, 7).then((hits) => withActivity(hits.filter((h) => h.id !== school.id).slice(0, 6))),
+    pressForSchool(school.id),
   ]);
   const place = dir.cityBySlug.get(dir.citySlugBySchool.get(school.id) ?? "");
   const mobilization = mobs.get(school.id) ?? null;
@@ -218,6 +221,20 @@ export default async function SchoolPage({ params }: Props) {
           </p>
         </aside>
       </div>
+
+      {press.length > 0 && (
+        <section className="mt-12 grid gap-3" aria-labelledby="press-h">
+          <div className="flex flex-wrap items-baseline justify-between gap-2">
+            <h2 id="press-h" className="font-display text-2xl font-bold">
+              Dans la presse
+            </h2>
+            <Link href="/actualites" className="link text-[15px]">
+              Toutes les actualités
+            </Link>
+          </div>
+          <PressList articles={press} />
+        </section>
+      )}
 
       {near.length > 0 && (
         <section className="mt-12 grid gap-3" aria-labelledby="near-h">

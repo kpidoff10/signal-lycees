@@ -36,7 +36,7 @@ export async function runIndexNowJob(now = new Date()) {
   if (!done) {
     const schools = await prisma.school.findMany({ where: { isOpen: true }, select: { slug: true } });
     urls = [
-      ...["", "/lycees", "/comment-ca-marche", "/regles", "/aide", "/presse", "/affiches", "/contact", "/confidentialite", "/cgu", "/mentions-legales"].map((p) => base + p),
+      ...["", "/lycees", "/comment-ca-marche", "/regles", "/aide", "/presse", "/actualites", "/affiches", "/contact", "/confidentialite", "/cgu", "/mentions-legales"].map((p) => base + p),
       ...dir.departments.map((d) => `${base}/departement/${d.slug}`),
       ...[...dir.cityBySlug.values()].map((c) => `${base}/ville/${c.slug}`),
       ...schools.map((s) => `${base}/lycee/${s.slug}`),
@@ -52,7 +52,7 @@ export async function runIndexNowJob(now = new Date()) {
     const schools = await prisma.school.findMany({ where: { id: { in: ids } }, select: { id: true, slug: true } });
     const cities = new Set(schools.map((s) => dir.citySlugBySchool.get(s.id)).filter(Boolean) as string[]);
     const depts = new Set([...cities].map((c) => dir.cityBySlug.get(c)?.departmentSlug).filter(Boolean) as string[]);
-    urls = [base, `${base}/lycees`, `${base}/presse`, ...schools.map((s) => `${base}/lycee/${s.slug}`), ...[...cities].map((c) => `${base}/ville/${c}`), ...[...depts].map((d) => `${base}/departement/${d}`)];
+    urls = [base, `${base}/lycees`, `${base}/actualites`, `${base}/presse`, ...schools.map((s) => `${base}/lycee/${s.slug}`), ...[...cities].map((c) => `${base}/ville/${c}`), ...[...depts].map((d) => `${base}/departement/${d}`)];
   }
   const submitted = await submit(urls);
   if (!done) await prisma.appSetting.create({ data: { key: DONE_KEY, value: now.toISOString() } });

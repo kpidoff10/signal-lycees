@@ -408,3 +408,31 @@ model AppSetting {
   value     Json
   updatedAt DateTime @updatedAt
 }
+
+// Revue de presse automatique : titres d'articles récupérés par flux RSS, vérifiés par Jev.
+// On ne conserve que le titre, la source, la date et le lien : jamais le contenu de l'article.
+enum PressStatus {
+  PUBLISHED // publié automatiquement (Jev sûr) ou validé par la modération
+  PENDING // doute de Jev : en attente de la modération
+  REJECTED // hors sujet ou refusé
+}
+
+model PressArticle {
+  id          String      @id @default(cuid())
+  url         String      @unique
+  title       String
+  source      String
+  publishedAt DateTime
+  status      PressStatus @default(PENDING)
+  feed        String
+  relevance   Float? // probabilité « parle de lycées français » (Jev)
+  sensitive   Float? // probabilité « fait divers grave ou mise en cause de personnes » (Jev)
+  offTopic    Float? // probabilité « publicité ou hors sujet » (Jev)
+  reason      String?
+  schoolIds   String[]    @default([])
+  citySlug    String?
+  createdAt   DateTime    @default(now())
+  reviewedAt  DateTime?
+
+  @@index([status, publishedAt])
+}

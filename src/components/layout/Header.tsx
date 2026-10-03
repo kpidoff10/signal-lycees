@@ -17,6 +17,7 @@ export function Logo() {
 const NAV = [
   { href: "/#carte", label: "La carte" },
   { href: "/lycees", label: "Lycées" },
+  { href: "/actualites", label: "Actualités" },
   { href: "/comment-ca-marche", label: "Comment ça marche" },
   { href: "/affiches", label: "Affiches" },
 ];

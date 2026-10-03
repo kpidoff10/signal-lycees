@@ -8,6 +8,10 @@ const info = { school: "Lycée <Test>", city: "Dijon", category: "BUILDING" as c
 const url = "https://signal-lycees.fr";
 
 describe("formatNotification", () => {
+  it("revue de presse : nombre d'articles à vérifier et lien vers l'admin", () => {
+    expect(formatNotification({ type: "press", pending: 3 }, null, url)).toBe("📰 <b>3 articles de presse à vérifier</b> (doute de Jev)\nhttps://signal-lycees.fr/admin/presse");
+    expect(formatNotification({ type: "press", pending: 1 }, null, url)).toContain("1 article de presse");
+  });
   it("signalement urgent : lien vers la file, mention détresse", () => {
     const t = formatNotification({ type: "issue", issueId: "abc", status: "MANUAL_REVIEW", priority: "URGENT", showHelp: true }, info, url)!;
     expect(t).toContain("URGENT");

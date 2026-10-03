@@ -13,7 +13,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     prisma.school.findMany({ where: { isOpen: true }, select: { slug: true, updatedAt: true } }),
     directory(),
   ]);
-  const statics = ["", "/comment-ca-marche", "/regles", "/aide", "/confidentialite", "/cgu", "/mentions-legales", "/contact", "/presse", "/affiches", "/lycees"];
+  const statics = ["", "/comment-ca-marche", "/regles", "/aide", "/confidentialite", "/cgu", "/mentions-legales", "/contact", "/presse", "/affiches", "/lycees", "/actualites"];
   return [
     ...statics.map((p) => ({ url: `${base}${p}`, changeFrequency: "weekly" as const, priority: p === "" ? 1 : 0.5 })),
     ...dir.departments.map((d) => ({ url: `${base}/departement/${d.slug}`, changeFrequency: "daily" as const, priority: 0.6 })),

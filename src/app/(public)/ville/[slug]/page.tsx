@@ -6,6 +6,8 @@ import { ButtonLink } from "@/components/ui/Button";
 import { formatNumber, plural } from "@/lib/format";
 import { inCity } from "@/lib/places";
 import { activityBySchool, directory, totals } from "@/server/places";
+import { PressList } from "@/components/press/PressList";
+import { pressForCity } from "@/server/press";
 
 export const revalidate = 600;
 
@@ -43,6 +45,7 @@ export default async function VillePage({ params }: Props) {
   const data = await load((await params).slug);
   if (!data) notFound();
   const { city, activity, t } = data;
+  const press = await pressForCity(city.slug);
   const arrondissements = new Set(city.schools.map((s) => s.cityLabel)).size > 1;
 
   return (
@@ -66,6 +69,15 @@ export default async function VillePage({ params }: Props) {
       </div>
 
       <SchoolList schools={city.schools} activity={activity} showCity={arrondissements} />
+
+      {press.length > 0 && (
+        <section className="grid gap-3" aria-labelledby="press-h">
+          <h2 id="press-h" className="font-display text-2xl font-bold">
+            {city.name} dans la presse
+          </h2>
+          <PressList articles={press} />
+        </section>
+      )}
 
       <section className="rounded-[20px] bg-signal-soft p-6">
         <h2 className="font-display text-xl font-bold">Un problème dans ton lycée ?</h2>

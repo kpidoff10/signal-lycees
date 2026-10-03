@@ -13,7 +13,8 @@ export type NotifyEvent =
   | { type: "contentReport"; issueId: string; hidden: boolean }
   | { type: "downvotes"; issueId: string }
   | { type: "privacy"; kind: "DELETION" | "CONTACT"; linked: boolean }
-  | { type: "mobilization"; mobilizationId: string; flagged: boolean };
+  | { type: "mobilization"; mobilizationId: string; flagged: boolean }
+  | { type: "press"; pending: number };
 
 interface IssueInfo {
   school: string;
@@ -44,6 +45,8 @@ export function formatNotification(e: NotifyEvent, info: IssueInfo | null, siteU
       return `👎 <b>Beaucoup de « pas sérieux »</b> sur un problème publié\n${where}\n${admin}/moderation`;
     case "mobilization":
       return `📣 <b>Mobilisation signalée par un élève, à valider</b>${e.flagged ? " (motifs à relire attentivement)" : ""}\n${where}\n${admin}/mobilisations`;
+    case "press":
+      return `📰 <b>${e.pending} article${e.pending > 1 ? "s" : ""} de presse à vérifier</b> (doute de Jev)\n${admin}/presse`;
     case "privacy":
       return `📨 <b>${e.kind === "DELETION" ? "Demande de suppression" : "Nouveau message de contact"}</b>${e.linked ? " (liée à un signalement)" : ""}\n${admin}/requests`;
   }
