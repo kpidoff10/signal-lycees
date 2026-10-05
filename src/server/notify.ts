@@ -13,7 +13,8 @@ export type NotifyEvent =
   | { type: "contentReport"; issueId: string; hidden: boolean }
   | { type: "downvotes"; issueId: string }
   | { type: "privacy"; kind: "DELETION" | "CONTACT"; linked: boolean }
-  | { type: "mobilization"; mobilizationId: string; flagged: boolean; press?: boolean }
+  | { type: "mobilization"; mobilizationId: string; flagged: boolean; press?: boolean; note?: string }
+  | { type: "mobilizationRefused"; schoolId: string; title: string; source: string; url: string; reason: string }
   | { type: "press"; pending: number }
   | { type: "pressList"; source: string; created: number; unmatched: string[] };
 
@@ -45,7 +46,10 @@ export function formatNotification(e: NotifyEvent, info: IssueInfo | null, siteU
     case "downvotes":
       return `👎 <b>Beaucoup de « pas sérieux »</b> sur un problème publié\n${where}\n${admin}/moderation`;
     case "mobilization":
-      return `📣 <b>Mobilisation ${e.press ? "repérée dans la presse" : "signalée par un élève"}, à valider</b>${e.flagged ? " (motifs à relire attentivement)" : ""}\n${where}\n${admin}/mobilisations`;
+      return `📣 <b>Mobilisation ${e.press ? "repérée dans la presse" : "signalée par un élève"}, à valider</b>${e.flagged ? " (motifs à relire attentivement)" : ""}\n${where}${e.note ? `\n🤖 ${esc(e.note)}` : ""}\n${admin}/mobilisations`;
+    case "mobilizationRefused":
+      // Titre et média d'un article publié : information publique.
+      return `🚫 <b>Mobilisation écartée par les IA</b>\n${where}\n📰 ${esc(e.title)} (${esc(e.source)})\n🤖 ${esc(e.reason)}\nArticle : ${e.url}\nSi c'est une erreur, ajoute-la à la main : ${admin}/mobilisations`;
     case "press":
       return `📰 <b>${e.pending} article${e.pending > 1 ? "s" : ""} de presse à vérifier</b> (doute de Jev)\n${admin}/presse`;
     case "pressList": {
@@ -90,6 +94,9 @@ export async function notifyNow(e: NotifyEvent) {
       select: { category: true, school: { select: { name: true, city: true } } },
     });
     if (i) info = { school: i.school.name, city: i.school.city, category: i.category };
+  } else if (e.type === "mobilizationRefused") {
+    const s = await prisma.school.findUnique({ where: { id: e.schoolId }, select: { name: true, city: true } });
+    if (s) info = { school: s.name, city: s.city, category: null };
   } else if (e.type === "mobilization") {
     const m = await prisma.mobilization.findUnique({ where: { id: e.mobilizationId }, select: { school: { select: { name: true, city: true } } } });
     if (m) info = { school: m.school.name, city: m.school.city, category: null };

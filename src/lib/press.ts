@@ -104,12 +104,38 @@ export interface PressScores {
 export type PressDecision = { status: "PUBLISHED" | "PENDING" | "REJECTED"; reason: string };
 
 /**
- * Mobilisation tirée d'un titre rattaché à un ou deux lycées précis : publiée si Jev est sûr et que
- * l'article lui-même est publié, à valider par la modération s'il hésite, ignorée sinon.
+ * Mobilisation tirée d'un titre rattaché à un ou deux lycées précis. Jev sûr et article publié : publiée.
+ * Jev hésite ou penche pour non (0,2 à 0,85) : second avis. Jev sûr que non : rien, sans bruit.
  */
-export function decidePressMobilization(probability: number | undefined, articleStatus: PressDecision["status"]): "PUBLISHED" | "PENDING" | null {
-  if (probability == null || articleStatus === "REJECTED" || probability < 0.5) return null;
-  return probability >= 0.85 && articleStatus === "PUBLISHED" ? "PUBLISHED" : "PENDING";
+export function decidePressMobilization(probability: number | undefined, articleStatus: PressDecision["status"]): "PUBLISHED" | "CHECK" | null {
+  if (probability == null || articleStatus === "REJECTED" || probability < 0.2) return null;
+  return probability >= 0.85 && articleStatus === "PUBLISHED" ? "PUBLISHED" : "CHECK";
+}
+
+/** Second avis (GPT) sur un titre où Jev n'a pas tranché la mobilisation. */
+export interface MobilizationOpinion {
+  blockade: boolean; // le titre rapporte un blocus, une fermeture ou une mobilisation dans ce lycée
+  verdict: "publish" | "reject" | "unsure";
+  reason: string;
+}
+
+export type MobilizationOutcome = { action: "PUBLISHED" | "PENDING" | "REFUSED"; reason: string };
+
+/**
+ * Publiée si le second avis confirme (et que l'article est publié), refusée s'il infirme, à valider sinon.
+ * Second avis désactivé ou indisponible : à valider seulement si Jev penchait pour oui (comme avant).
+ */
+export function decideMobilizationWithSecondOpinion(
+  jev: number,
+  gpt: MobilizationOpinion | null,
+  articleStatus: PressDecision["status"],
+): MobilizationOutcome | null {
+  if (!gpt) return jev >= 0.5 ? { action: "PENDING", reason: "Second avis indisponible" } : null;
+  const why = gpt.reason.slice(0, 200);
+  if (gpt.verdict === "publish" && gpt.blockade)
+    return articleStatus === "PUBLISHED" ? { action: "PUBLISHED", reason: why } : { action: "PENDING", reason: `Confirmée, mais article en vérification : ${why}` };
+  if (gpt.verdict === "reject" || !gpt.blockade) return { action: "REFUSED", reason: why };
+  return { action: "PENDING", reason: why };
 }
 
 /** Publié seulement si Jev est sûr ; refusé seulement s'il est sûr du contraire ; sinon la modération tranche. */

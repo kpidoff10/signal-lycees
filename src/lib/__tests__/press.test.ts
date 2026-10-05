@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { announcesSchoolList, decidePress, decidePressMobilization, decideWithSecondOpinion, matchPlaces, mentionsHighSchool, parseRss, parseSchoolList } from "../press";
+import { announcesSchoolList, decidePress, decideMobilizationWithSecondOpinion, decidePressMobilization, decideWithSecondOpinion, matchPlaces, mentionsHighSchool, parseRss, parseSchoolList } from "../press";
 
 const rss = `<?xml version="1.0"?><rss><channel>
 <item><title>Blocus au lycée Ampère : les élèves réclament des moyens - Lyon Capitale</title>
@@ -68,13 +68,23 @@ describe("revue de presse", () => {
     expect(decideWithSecondOpinion(jev, { ...ok, aboutHighSchools: false, verdict: "reject" }).status).toBe("REJECTED");
     expect(decideWithSecondOpinion(jev, null).status).toBe("PENDING"); // GPT indisponible : on réessaiera
   });
-  it("mobilisation tirée d'un titre : publiée si Jev est sûr, à valider s'il hésite, jamais depuis un article écarté", () => {
+  it("mobilisation tirée d'un titre : publiée si Jev est sûr, second avis s'il hésite, rien s'il est sûr que non", () => {
     expect(decidePressMobilization(0.95, "PUBLISHED")).toBe("PUBLISHED");
-    expect(decidePressMobilization(0.95, "PENDING")).toBe("PENDING");
-    expect(decidePressMobilization(0.7, "PUBLISHED")).toBe("PENDING");
-    expect(decidePressMobilization(0.3, "PUBLISHED")).toBeNull();
+    expect(decidePressMobilization(0.95, "PENDING")).toBe("CHECK");
+    expect(decidePressMobilization(0.7, "PUBLISHED")).toBe("CHECK");
+    expect(decidePressMobilization(0.3, "PUBLISHED")).toBe("CHECK");
+    expect(decidePressMobilization(0.1, "PUBLISHED")).toBeNull();
     expect(decidePressMobilization(0.95, "REJECTED")).toBeNull();
     expect(decidePressMobilization(undefined, "PUBLISHED")).toBeNull();
+  });
+  it("second avis sur une mobilisation : confirme, refuse ou laisse la modération trancher", () => {
+    const yes = { blockade: true, verdict: "publish" as const, reason: "blocus rapporté devant le lycée" };
+    expect(decideMobilizationWithSecondOpinion(0.6, yes, "PUBLISHED")?.action).toBe("PUBLISHED");
+    expect(decideMobilizationWithSecondOpinion(0.6, yes, "PENDING")?.action).toBe("PENDING");
+    expect(decideMobilizationWithSecondOpinion(0.6, { ...yes, blockade: false, verdict: "reject" }, "PUBLISHED")?.action).toBe("REFUSED");
+    expect(decideMobilizationWithSecondOpinion(0.6, { ...yes, verdict: "unsure" }, "PUBLISHED")?.action).toBe("PENDING");
+    expect(decideMobilizationWithSecondOpinion(0.6, null, "PUBLISHED")?.action).toBe("PENDING"); // GPT indisponible
+    expect(decideMobilizationWithSecondOpinion(0.3, null, "PUBLISHED")).toBeNull();
   });
   it("repère les titres qui annoncent une liste de lycées fermés", () => {
     expect(announcesSchoolList("Quels lycées sont fermés lundi 5 octobre dans les Alpes-Maritimes ?")).toBe(true);
