@@ -197,3 +197,8 @@ a.adm-row:hover { border-color: var(--border-strong); }
 
 /* Second avis GPT dans la file */
 .adm-second { display: grid; gap: 6px; margin-top: var(--space-2); padding: var(--space-3); border-radius: var(--radius-md); background: var(--surface-sunken); }
+
+/* Campagnes : un contact = un accordéon compact dans l'accordéon de sa campagne. */
+.adm-contact { padding: var(--space-2) var(--space-3); border: 1px solid var(--border); border-radius: var(--radius-md); }
+.adm-contact > summary::after { width: 26px; height: 26px; font-size: 16px; }
+.adm-contact .adm-fold-body { margin-top: var(--space-2); }
