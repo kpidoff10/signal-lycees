@@ -52,6 +52,17 @@ export function sourceFromCampaign(src: unknown): string | null {
   return typeof src === "string" && Object.hasOwn(CAMPAIGN_LABELS, src) ? CAMPAIGN_LABELS[src]! : null;
 }
 
+/** Code ?src= d'un contact démarché : 6 caractères a-z et 2-9, hors codes des liens de partage. */
+export function isOutreachCode(src: string): boolean {
+  return /^[a-z2-9]{6}$/.test(src) && !Object.hasOwn(CAMPAIGN_LABELS, src);
+}
+
+/** Code aléatoire pour un contact (sans 0, 1, o, l : lisible si on le recopie). */
+export function newOutreachCode(random: () => number = Math.random): string {
+  const alphabet = "abcdefghijkmnpqrstuvwxyz23456789";
+  return Array.from({ length: 6 }, () => alphabet[Math.floor(random() * alphabet.length)]).join("");
+}
+
 /** Jour (AAAA-MM-JJ) à l'heure de Paris : les statistiques suivent la journée française. */
 export function parisDay(d = new Date()): string {
   return new Intl.DateTimeFormat("fr-CA", { timeZone: "Europe/Paris", year: "numeric", month: "2-digit", day: "2-digit" }).format(d);

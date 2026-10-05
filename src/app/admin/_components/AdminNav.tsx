@@ -12,6 +12,7 @@ const LINKS: { href: string; label: string; icon: IconName; countKey?: keyof Nav
   { href: "/admin/issues", label: "Signalements", icon: "list" },
   { href: "/admin/mobilisations", label: "Mobilisations", icon: "megaphone", countKey: "mobilizations" },
   { href: "/admin/presse", label: "Presse", icon: "news", countKey: "press" },
+  { href: "/admin/campagnes", label: "Campagnes", icon: "share" },
   { href: "/admin/schools", label: "Lycées", icon: "school" },
   { href: "/admin/users", label: "Identités", icon: "users" },
   { href: "/admin/requests", label: "Demandes", icon: "mail", countKey: "requests" },

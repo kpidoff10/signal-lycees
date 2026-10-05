@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { countablePath, isBot, parisDay, sourceFromCampaign, sourceFromReferrer } from "../traffic";
+import { countablePath, isBot, isOutreachCode, newOutreachCode, parisDay, sourceFromCampaign, sourceFromReferrer } from "../traffic";
 
 describe("fréquentation", () => {
   it("ignore les robots", () => {
@@ -37,5 +37,14 @@ describe("fréquentation", () => {
   });
   it("jour à l'heure de Paris", () => {
     expect(parisDay(new Date("2026-10-01T22:30:00Z"))).toBe("2026-10-02");
+  });
+  it("reconnaît les codes personnels des contacts, sans les confondre avec les liens de partage", () => {
+    const code = newOutreachCode();
+    expect(code).toMatch(/^[a-z2-9]{6}$/);
+    expect(isOutreachCode(code)).toBe(true);
+    expect(isOutreachCode("k5zf4")).toBe(false); // lien de partage « Mail presse »
+    expect(isOutreachCode("rh38a")).toBe(false); // QR code des affiches
+    expect(isOutreachCode("ABCDEF")).toBe(false);
+    expect(isOutreachCode("abc")).toBe(false);
   });
 });

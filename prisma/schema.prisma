@@ -436,3 +436,29 @@ model PressArticle {
 
   @@index([status, publishedAt])
 }
+
+// Contacts démarchés par mail (rédactions, organisations) : chaque mail porte ses propres liens
+// ?src=<code>, tiré au hasard, pour savoir qui est venu voir le site. Aucun pixel d'ouverture.
+model OutreachContact {
+  id        String          @id @default(cuid())
+  code      String          @unique
+  campaign  String // ex. « orgas-2026-10-05 »
+  label     String // ex. « FCPE »
+  email     String
+  sentAt    DateTime?
+  createdAt DateTime        @default(now())
+  visits    OutreachVisit[]
+
+  @@index([campaign])
+}
+
+// Arrivée sur le site par le lien d'un contact : page d'arrivée et heure seulement.
+model OutreachVisit {
+  id        String          @id @default(cuid())
+  contactId String
+  contact   OutreachContact @relation(fields: [contactId], references: [id], onDelete: Cascade)
+  path      String
+  at        DateTime        @default(now())
+
+  @@index([contactId, at])
+}
