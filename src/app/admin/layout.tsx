@@ -53,9 +53,18 @@ export default async function AdminLayout({ children }: { children: ReactNode })
             Signal Lycées
             <span className="adm-brand-tag">admin</span>
           </Link>
-          <div className="adm-only-mobile">{logoutForm}</div>
         </div>
-        <AdminNav counts={counts} />
+        <AdminNav
+          counts={counts}
+          menuFooter={
+            <>
+              {logoutForm}
+              <Link href="/" className="adm-small adm-muted adm-site-link">
+                Voir le site public
+              </Link>
+            </>
+          }
+        />
         <div className="adm-side-foot">
           <span className="adm-user">
             <span className="adm-avatar" aria-hidden="true">

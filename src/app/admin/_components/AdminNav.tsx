@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { useState, type ReactNode } from "react";
 import { Icon, type IconName } from "@/components/ui/Icon";
 
 export type NavCounts = { queue: number; requests: number; mobilizations: number; press: number };
@@ -38,11 +39,37 @@ const GROUPS: { title: string; links: NavLink[] }[] = [
   { title: "Système", links: [{ href: "/admin/logs", label: "Journal", icon: "clock" }] },
 ];
 
-/** Barre latérale sur ordinateur, rangée de pastilles défilante sur mobile (même liste, mise en page en CSS). */
-export function AdminNav({ counts }: { counts: NavCounts }) {
+/**
+ * Barre latérale sur ordinateur ; sur mobile, bouton « Menu » (hamburger) qui ouvre la même liste
+ * dans un panneau, refermé à chaque changement de page.
+ */
+export function AdminNav({ counts, menuFooter }: { counts: NavCounts; menuFooter?: ReactNode }) {
   const pathname = usePathname();
+  // Ouvert « sur » une page : naviguer ailleurs le referme sans effet de bord.
+  const [openOn, setOpenOn] = useState<string | null>(null);
+  const open = openOn === pathname;
+  const pending = counts.queue + counts.mobilizations + counts.press + counts.requests;
   return (
-    <nav className="adm-nav" aria-label="Administration">
+    <>
+      <button
+        type="button"
+        className="adm-burger"
+        aria-expanded={open}
+        aria-controls="adm-menu"
+        onClick={() => setOpenOn(open ? null : pathname)}
+      >
+        <Icon name={open ? "close" : "menu"} size={20} />
+        <span>Menu</span>
+        {pending > 0 && !open && <span className="adm-count">{pending > 99 ? "99+" : pending}</span>}
+      </button>
+    <nav
+      id="adm-menu"
+      className={`adm-nav${open ? " is-open" : ""}`}
+      aria-label="Administration"
+      onKeyDown={(e) => {
+        if (e.key === "Escape") setOpenOn(null);
+      }}
+    >
       {GROUPS.flatMap((g) => [
         <span key={g.title} className="adm-nav-group" aria-hidden="true">
           {g.title}
@@ -63,6 +90,8 @@ export function AdminNav({ counts }: { counts: NavCounts }) {
         );
         }),
       ])}
+      {menuFooter && <div className="adm-nav-foot">{menuFooter}</div>}
     </nav>
+    </>
   );
 }
