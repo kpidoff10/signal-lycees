@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { decidePress, decideWithSecondOpinion, matchPlaces, mentionsHighSchool, parseRss } from "../press";
+import { decidePress, decidePressMobilization, decideWithSecondOpinion, matchPlaces, mentionsHighSchool, parseRss } from "../press";
 
 const rss = `<?xml version="1.0"?><rss><channel>
 <item><title>Blocus au lycée Ampère : les élèves réclament des moyens - Lyon Capitale</title>
@@ -67,5 +67,13 @@ describe("revue de presse", () => {
     expect(decideWithSecondOpinion({ ...jev, relevance: 0.4 }, ok).status).toBe("REJECTED");
     expect(decideWithSecondOpinion(jev, { ...ok, aboutHighSchools: false, verdict: "reject" }).status).toBe("REJECTED");
     expect(decideWithSecondOpinion(jev, null).status).toBe("PENDING"); // GPT indisponible : on réessaiera
+  });
+  it("mobilisation tirée d'un titre : publiée si Jev est sûr, à valider s'il hésite, jamais depuis un article écarté", () => {
+    expect(decidePressMobilization(0.95, "PUBLISHED")).toBe("PUBLISHED");
+    expect(decidePressMobilization(0.95, "PENDING")).toBe("PENDING");
+    expect(decidePressMobilization(0.7, "PUBLISHED")).toBe("PENDING");
+    expect(decidePressMobilization(0.3, "PUBLISHED")).toBeNull();
+    expect(decidePressMobilization(0.95, "REJECTED")).toBeNull();
+    expect(decidePressMobilization(undefined, "PUBLISHED")).toBeNull();
   });
 });

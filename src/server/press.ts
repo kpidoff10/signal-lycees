@@ -1,13 +1,16 @@
 // Revue de presse automatique : flux RSS → tri par mots-clés → vérification par Jev → publication,
 // sinon second avis (GPT) pour départager, et mise en attente pour la modération si le doute demeure. On ne reprend que le titre, la source,
-// la date et le lien : jamais le contenu des articles.
+// la date et le lien : jamais le contenu des articles. Un titre qui rapporte un blocus dans un lycée précis
+// devient aussi une mobilisation 📣 (publiée si Jev est sûr, sinon à valider dans /admin/mobilisations).
 import "server-only";
 import { after } from "next/server";
 import { z } from "zod";
 import { prisma } from "@/lib/db";
 import { env } from "@/lib/env";
+import { expiryFor, startOfDay } from "@/lib/mobilization";
 import {
   decidePress,
+  decidePressMobilization,
   decideWithSecondOpinion,
   matchPlaces,
   mentionsHighSchool,
@@ -57,6 +60,8 @@ const QUESTIONS = {
   sensitive:
     "Ce titre relève-t-il d'un fait divers grave (violence, agression, décès, affaire judiciaire, suicide, harcèlement) ou met-il en cause une personne identifiable ?",
   offTopic: "Ce titre est-il publicitaire, sponsorisé, une offre commerciale ou sans rapport avec l'actualité des lycées ?",
+  mobilization:
+    "Ce titre rapporte-t-il qu'un lycée précis, nommé dans le titre, est ou a été bloqué, fermé à cause du mouvement lycéen, ou le lieu d'une mobilisation de ses élèves (blocus, rassemblement, grève) ?",
 } as const;
 
 const resultSchema = z.object({
@@ -64,6 +69,7 @@ const resultSchema = z.object({
     relevance: z.object({ probability: z.number().min(0).max(1) }),
     sensitive: z.object({ probability: z.number().min(0).max(1) }),
     offTopic: z.object({ probability: z.number().min(0).max(1) }),
+    mobilization: z.object({ probability: z.number().min(0).max(1) }).optional(),
   }),
 });
 
@@ -89,7 +95,7 @@ async function scoreWithJev(item: { title: string; source: string }): Promise<Pr
       maxRetries: 1,
     });
     const a = resultSchema.parse(result).answers;
-    return { relevance: a.relevance.probability, sensitive: a.sensitive.probability, offTopic: a.offTopic.probability };
+    return { relevance: a.relevance.probability, sensitive: a.sensitive.probability, offTopic: a.offTopic.probability, mobilization: a.mobilization?.probability };
   } catch (err) {
     console.error("press jev", err instanceof Error ? err.message.slice(0, 200) : err);
     return null;
@@ -208,6 +214,7 @@ async function ingest(now: Date) {
 
   const cities = await cityRefs();
   const counts = { PUBLISHED: 0, PENDING: 0, REJECTED: 0 };
+  const mobilizations = { PUBLISHED: 0, PENDING: 0 };
   for (const item of fresh) {
     const scores = await scoreWithJev(item);
     const d = await judge(item, scores);
@@ -230,9 +237,37 @@ async function ingest(now: Date) {
       },
     }).catch(() => null); // course avec une autre exécution : l'URL existe déjà
     counts[d.status]++;
+    const m = decidePressMobilization(scores?.mobilization, d.status);
+    if (m) for (const schoolId of places.schoolIds) if (await addPressMobilization(schoolId, m, item, now)) mobilizations[m]++;
   }
   if (counts.PENDING) notify({ type: "press", pending: counts.PENDING });
-  return { fetched: all.length, candidates: candidates.length, added: fresh.length, ...counts };
+  return { fetched: all.length, candidates: candidates.length, added: fresh.length, ...counts, mobilizations };
+}
+
+const AUTO_BATCH = "presse-auto";
+
+/** Mobilisation tirée d'un article ; rien si le lycée en a déjà une pour ce jour ou plus récente, ou si elle a expiré. */
+async function addPressMobilization(schoolId: string, status: "PUBLISHED" | "PENDING", item: FeedItem, now: Date): Promise<boolean> {
+  const happenedOn = startOfDay(item.publishedAt);
+  const expiresAt = expiryFor(happenedOn, env().MOBILIZATION_TTL_HOURS);
+  if (expiresAt <= now) return false;
+  const known = await prisma.mobilization.findFirst({ where: { schoolId, status: { not: "REJECTED" }, happenedOn: { gte: happenedOn } }, select: { id: true } });
+  if (known) return false;
+  const created = await prisma.mobilization.create({
+    data: {
+      schoolId,
+      origin: "PRESS",
+      status,
+      happenedOn,
+      expiresAt,
+      sourceName: item.source,
+      sourceUrl: item.url,
+      importBatch: AUTO_BATCH,
+      reviewedAt: status === "PUBLISHED" ? now : null,
+    },
+  });
+  if (status === "PENDING") notify({ type: "mobilization", mobilizationId: created.id, flagged: false, press: true });
+  return true;
 }
 
 /** Rafraîchit la revue en tâche de fond quand la dernière récupération date de plus de 2 h. */

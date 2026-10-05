@@ -60,9 +60,19 @@ export interface PressScores {
   relevance: number; // parle de lycées en France
   sensitive: number; // fait divers grave, mise en cause de personnes
   offTopic: number; // publicité, contenu sponsorisé, sans rapport
+  mobilization?: number; // rapporte un blocus, une fermeture ou une mobilisation dans un lycée précis
 }
 
 export type PressDecision = { status: "PUBLISHED" | "PENDING" | "REJECTED"; reason: string };
+
+/**
+ * Mobilisation tirée d'un titre rattaché à un ou deux lycées précis : publiée si Jev est sûr et que
+ * l'article lui-même est publié, à valider par la modération s'il hésite, ignorée sinon.
+ */
+export function decidePressMobilization(probability: number | undefined, articleStatus: PressDecision["status"]): "PUBLISHED" | "PENDING" | null {
+  if (probability == null || articleStatus === "REJECTED" || probability < 0.5) return null;
+  return probability >= 0.85 && articleStatus === "PUBLISHED" ? "PUBLISHED" : "PENDING";
+}
 
 /** Publié seulement si Jev est sûr ; refusé seulement s'il est sûr du contraire ; sinon la modération tranche. */
 export function decidePress(s: PressScores | null): PressDecision {

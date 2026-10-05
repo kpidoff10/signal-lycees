@@ -28,18 +28,23 @@ export default async function MobilizationsPage() {
       <section>
         <h2 className="adm-h2">À valider ({pending.length})</h2>
         {pending.length === 0 ? (
-          <Empty>Aucune mobilisation signalée par des élèves en attente.</Empty>
+          <Empty>Aucune mobilisation en attente (élèves ou presse).</Empty>
         ) : (
           <ul className="adm-list">
             {pending.map((m) => (
               <li key={m.id} className="adm-row" style={{ gap: "var(--space-2)" }}>
                 <span className="adm-meta">
-                  <Badge tone="signal">Élève</Badge>
+                  <Badge tone="signal">{ORIGIN[m.origin]}</Badge>
                   <span>
                     {m.school.name} ({m.school.city})
                   </span>
                   <span>le {formatDate(m.happenedOn)}</span>
                   <span className="adm-muted">reçue {formatDateTime(m.createdAt)}</span>
+                  {m.sourceUrl && (
+                    <a href={m.sourceUrl} className="link adm-small" target="_blank" rel="noopener noreferrer">
+                      {m.sourceName ?? "Source"}
+                    </a>
+                  )}
                 </span>
                 <ActionForm action={approveAction} className="adm-form">
                   <input type="hidden" name="id" value={m.id} />
