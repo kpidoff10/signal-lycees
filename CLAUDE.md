@@ -34,6 +34,9 @@ Node n'est pas installé sur l'hôte : tout passe par Docker.
 - `./dev.sh npx tsx prisma/seed.ts` : données fictives de développement
 - `ADMIN_PASSWORD=… ./dev.sh npm run admin:create -- <identifiant> ADMIN [--totp]`
 - `python3 scripts/build-regions.py` : régénère `public/geo/regions.json`
+- `./dev.sh npm run outreach -- add <fichier.json> | sent <code>…` : contacts démarchés par mail, un lien `?src=` par contact (suivi dans /admin/campagnes)
+
+Modération humaine : voir `docs/MODERATION.md` (à tenir à jour quand les règles, seuils ou motifs changent).
 
 ## Pièges connus
 
