@@ -108,7 +108,7 @@ export async function resolveWithSecondOpinion(issueId: string, input: { title: 
     });
     if (!published) return await toHuman();
     if (d.action === "publish" && d.rephrased) {
-      const vector = await embed(`${d.title}. ${d.description}`, "document").catch(() => null);
+      const vector = await embed(`${d.title}. ${d.description}`).catch(() => null);
       if (vector) await prisma.$executeRaw`UPDATE "Issue" SET embedding = ${toVectorLiteral(vector)}::vector WHERE id = ${issueId}`;
     }
     await notifyNow({ type: "issue", issueId, status: "PUBLISHED", priority: outcome.priority });

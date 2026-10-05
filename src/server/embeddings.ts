@@ -4,25 +4,26 @@ import { env } from "@/lib/env";
 export const EMBEDDING_DIM = 1024;
 
 /**
- * Embedding du texte d'un signalement (Voyage AI). Renvoie null si le service
- * n'est pas configuré ou échoue : la détection de doublons se replie alors sur
- * la similarité textuelle (pg_trgm).
+ * Embedding du texte d'un signalement (OpenAI text-embedding-3-small via la passerelle Vercel,
+ * réduit à 1024 dimensions comme la colonne pgvector). Renvoie null si la passerelle n'est pas
+ * joignable ou échoue : la détection de doublons se replie alors sur la similarité textuelle (pg_trgm).
  */
-export async function embed(text: string, inputType: "document" | "query" = "document"): Promise<number[] | null> {
-  const { VOYAGE_API_KEY: key, VOYAGE_MODEL: model } = env();
-  if (!key) return null;
+export async function embed(text: string): Promise<number[] | null> {
+  const e = env();
+  // Sur Vercel, le jeton OIDC arrive avec chaque requête : la passerelle est toujours joignable.
+  if (!e.AI_GATEWAY_API_KEY && !e.VERCEL_OIDC_TOKEN && !process.env.VERCEL) return null;
   try {
-    const res = await fetch("https://api.voyageai.com/v1/embeddings", {
-      method: "POST",
-      headers: { "content-type": "application/json", authorization: `Bearer ${key}` },
-      body: JSON.stringify({ input: [text], model, input_type: inputType, output_dimension: EMBEDDING_DIM }),
-      signal: AbortSignal.timeout(5000),
+    const { embed: embedValue } = await import("ai");
+    const { embedding: v } = await embedValue({
+      model: e.EMBEDDING_MODEL,
+      value: text,
+      providerOptions: { openai: { dimensions: EMBEDDING_DIM } },
+      abortSignal: AbortSignal.timeout(5000),
+      maxRetries: 1,
     });
-    if (!res.ok) return null;
-    const json = (await res.json()) as { data?: { embedding?: number[] }[] };
-    const v = json.data?.[0]?.embedding;
     return Array.isArray(v) && v.length === EMBEDDING_DIM && v.every((x) => typeof x === "number") ? v : null;
-  } catch {
+  } catch (err) {
+    console.error("embed", err instanceof Error ? err.message.slice(0, 200) : err);
     return null;
   }
 }

@@ -27,7 +27,7 @@ export async function createIssue(draft: IssueDraft, authorId: string): Promise<
 
   const [outcome, vector] = await Promise.all([
     moderate(draft),
-    embed(`${draft.title}. ${draft.description}`, "document"),
+    embed(`${draft.title}. ${draft.description}`),
   ]);
 
   const trackingToken = randomToken(24);

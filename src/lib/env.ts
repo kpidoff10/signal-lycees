@@ -31,8 +31,8 @@ const serverSchema = z.object({
   JEV_MODEL: z.string().default("jev-latest"),
   JEV_DAILY_LIMIT: z.coerce.number().int().positive().default(5000),
   JEV_TIMEOUT_MS: z.coerce.number().int().positive().default(6000),
-  VOYAGE_API_KEY: optional,
-  VOYAGE_MODEL: z.string().default("voyage-3.5-lite"),
+  // Embeddings des signalements (détection de doublons), via la passerelle Vercel.
+  EMBEDDING_MODEL: z.string().default("openai/text-embedding-3-small"),
   TURNSTILE_SECRET_KEY: optional,
   UPSTASH_REDIS_REST_URL: optional,
   UPSTASH_REDIS_REST_TOKEN: optional,
@@ -51,7 +51,7 @@ const serverSchema = z.object({
     .string()
     .optional()
     .transform((v) => v !== "false" && v !== "0"),
-  DUPLICATE_THRESHOLD: z.coerce.number().min(0).max(1).default(0.82),
+  DUPLICATE_THRESHOLD: z.coerce.number().min(0).max(1).default(0.6),
   DUPLICATE_TRGM_THRESHOLD: z.coerce.number().min(0).max(1).default(0.35),
 });
 

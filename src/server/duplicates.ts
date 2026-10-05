@@ -27,7 +27,7 @@ export async function findDuplicates(input: {
   vector?: number[] | null;
 }): Promise<DuplicateCandidate[]> {
   const text = `${input.title}. ${input.description}`;
-  const vector = input.vector !== undefined ? input.vector : await embed(text, "query");
+  const vector = input.vector !== undefined ? input.vector : await embed(text);
 
   if (vector) {
     const rows = await prisma.$queryRawUnsafe<DuplicateCandidate[]>(

@@ -200,7 +200,7 @@ function snapshot(i: { moderationStatus: ModerationStatus; flaggedForReview: boo
 }
 
 async function refreshEmbedding(issueId: string, edit: EditInput) {
-  const vector = await embed(`${edit.title}. ${edit.description}`, "document");
+  const vector = await embed(`${edit.title}. ${edit.description}`);
   if (vector) await prisma.$executeRaw`UPDATE "Issue" SET embedding = ${toVectorLiteral(vector)}::vector WHERE id = ${issueId}`;
 }
 

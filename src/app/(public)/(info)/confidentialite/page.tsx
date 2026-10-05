@@ -45,13 +45,13 @@ const DATA_ROWS: { what: string; why: string; duration: string; who: string }[] 
     what: "Analyses automatiques de modération (résultat du classement du texte)",
     why: "Modération et sécurité ; amélioration des règles",
     duration: "12 mois",
-    who: "L’éditeur ; Jev (TypeSafe AI) reçoit uniquement le texte du signalement",
+    who: "L’éditeur ; Jev (TypeSafe AI) et, en cas de doute, OpenAI reçoivent uniquement le texte du signalement",
   },
   {
     what: "Représentation numérique du texte (« embedding »)",
     why: "Repérer les doublons et te proposer un problème déjà signalé",
     duration: "Conservée avec le signalement",
-    who: "Voyage AI (calcul) ; hébergeurs",
+    who: "OpenAI (calcul, via Vercel) ; hébergeurs",
   },
   {
     what: "Signalement de contenu : motif et commentaire facultatif",
@@ -86,7 +86,7 @@ export default function ConfidentialitePage() {
         eyebrow="Tes données"
         title="Politique de confidentialité"
         lead="Signal Lycées est conçu pour fonctionner en sachant le moins possible sur toi. Voici, sans jargon, ce qui est traité, pourquoi, et comment garder la main."
-        updated="2 octobre 2026"
+        updated="5 octobre 2026"
       />
 
       <div className="sl-prose">
@@ -204,6 +204,11 @@ export default function ConfidentialitePage() {
             <strong>Jev</strong>, un service d’intelligence artificielle de <strong>TypeSafe AI</strong> qui classe le texte (par
             exemple : vise-t-il une personne ?). Il reçoit seulement le titre et la description, sans aucune donnée d’identité ;
           </li>
+          <li>
+            si Jev hésite, un <strong>second avis</strong> d’un modèle d’<strong>OpenAI</strong> (GPT), qui peut publier, reformuler
+            légèrement pour retirer un détail identifiant, ou laisser la décision à une personne. Il reçoit lui aussi seulement le
+            titre et la description, et n’est jamais utilisé pour les cas graves (détresse, menace) ;
+          </li>
           <li>une relecture humaine par l’éditeur pour les cas douteux, contestés ou signalés.</li>
         </ul>
         <p>
@@ -230,8 +235,11 @@ export default function ConfidentialitePage() {
             <dd>Analyse automatique du texte des signalements pour la modération.</dd>
           </div>
           <div>
-            <dt>Voyage AI</dt>
-            <dd>Calcul des représentations numériques du texte, pour détecter les doublons.</dd>
+            <dt>OpenAI (via Vercel)</dt>
+            <dd>
+              Second avis de modération quand Jev hésite, et calcul des représentations numériques du texte pour détecter les
+              doublons. Les données envoyées par l’API ne servent pas à entraîner ses modèles.
+            </dd>
           </div>
           <div>
             <dt>Cloudflare (Turnstile)</dt>
@@ -257,7 +265,7 @@ export default function ConfidentialitePage() {
         </dl>
         <p>
           Certains de ces prestataires sont situés hors de l’Union européenne. Garanties encadrant ces transferts :{" "}
-          les prestataires établis aux États-Unis (Vercel, Cloudflare, Upstash, Voyage AI, TypeSafe AI via Vercel) sont encadrés par
+          les prestataires établis aux États-Unis (Vercel, Cloudflare, Upstash, TypeSafe AI et OpenAI via Vercel) sont encadrés par
           les clauses contractuelles types de la Commission européenne et, lorsqu’ils y adhèrent, par le cadre de protection des données
           UE–États-Unis (Data Privacy Framework). La base de données est hébergée au Royaume-Uni, pays qui bénéficie d’une décision
           d’adéquation de la Commission européenne.

@@ -25,7 +25,7 @@ docker compose up -d            # Postgres + serveur de dev sur http://127.0.0.1
 ## Déployer (Vercel + Neon)
 
 1. Créer une base Neon (région UE) ; `DATABASE_URL` = URL poolée, `DIRECT_URL` = URL directe.
-2. Variables Vercel : voir `.env.example` (APP_SECRET, TYPESAFE_API_KEY, VOYAGE_API_KEY, TURNSTILE, UPSTASH, CRON_SECRET…).
+2. Variables Vercel : voir `.env.example` (APP_SECRET, TYPESAFE_API_KEY, TURNSTILE, UPSTASH, CRON_SECRET…).
 3. `npx prisma migrate deploy`, `npm run import:schools`, `npm run admin:create -- <identifiant> ADMIN --totp`.
 4. Les tâches planifiées (`vercel.json`) recalculent les statuts et purgent les données selon la politique de conservation.
 

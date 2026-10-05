@@ -81,7 +81,7 @@ export async function checkDuplicatesAction(input: unknown): Promise<{ ok: true;
   const limit = await rateLimit("search", await ipFingerprint());
   if (!limit.ok) return { ok: false, error: RATE_LIMITED };
   try {
-    const vector = await embed(`${parsed.data.title}. ${parsed.data.description}`, "query");
+    const vector = await embed(`${parsed.data.title}. ${parsed.data.description}`);
     const dups = await findDuplicates({ ...parsed.data, vector });
     return {
       ok: true,

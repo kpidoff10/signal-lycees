@@ -25,7 +25,8 @@
     "import:remove": "tsx scripts/remove-import.ts",
     "import:mobilizations": "tsx scripts/import-mobilizations.ts",
     "import:remove-mobilizations": "tsx scripts/remove-mobilizations.ts",
-    "outreach": "tsx scripts/outreach.ts"
+    "outreach": "tsx scripts/outreach.ts",
+    "backfill:embeddings": "tsx scripts/backfill-embeddings.ts"
   },
   "dependencies": {
     "@hookform/resolvers": "^5.9.1",
