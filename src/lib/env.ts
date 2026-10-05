@@ -69,8 +69,4 @@ export function resetEnvCache() {
   cached = undefined;
 }
 
-export const publicEnv = {
-  siteUrl: process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3100",
-  turnstileSiteKey: process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY || undefined,
-  plausibleDomain: process.env.NEXT_PUBLIC_PLAUSIBLE_DOMAIN || undefined,
-};
+export { publicEnv } from "./public-env";

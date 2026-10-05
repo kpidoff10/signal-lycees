@@ -1,4 +1,4 @@
-import { z } from "zod";
+// Filtres de la carte, partagés avec le navigateur : pas de Zod ici (voir map-query.ts, côté serveur).
 import { CATEGORIES, type CategoryId } from "./categories";
 
 export const PERIODS = [
@@ -20,24 +20,6 @@ export interface MapFilters {
 }
 
 export const DEFAULT_FILTERS: MapFilters = { cats: [], activeOnly: true, period: "all" };
-
-const slugToId = new Map(CATEGORIES.map((c) => [c.slug, c.id]));
-
-export const mapQuerySchema = z.object({
-  cats: z
-    .string()
-    .max(200)
-    .optional()
-    .transform((v) =>
-      (v ?? "")
-        .split(",")
-        .map((s) => slugToId.get(s as never))
-        .filter((x): x is CategoryId => !!x),
-    ),
-  active: z.enum(["0", "1"]).default("1").transform((v) => v === "1"),
-  period: z.enum(["today", "7d", "30d", "all"]).default("all"),
-  mob: z.enum(["show", "hide", "only"]).default("show"),
-});
 
 export function filtersToQuery(f: MapFilters): string {
   const p = new URLSearchParams();

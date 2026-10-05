@@ -1,5 +1,5 @@
 import { NextResponse, type NextRequest } from "next/server";
-import { mapQuerySchema } from "@/lib/map-filters";
+import { mapQuerySchema } from "@/lib/map-query";
 import { mapSchools } from "@/server/map";
 import { rateLimit } from "@/server/rate-limit";
 import { ipFingerprint } from "@/server/request";

@@ -1,7 +1,7 @@
 "use client";
 
 import { createContext, useCallback, useContext, useEffect, useRef, useState, type ReactNode } from "react";
-import { publicEnv } from "@/lib/env";
+import { publicEnv } from "@/lib/public-env";
 
 declare global {
   interface Window {
