@@ -17,7 +17,7 @@ export type NotifyEvent =
   | { type: "mobilizationRefused"; schoolId: string; title: string; source: string; url: string; reason: string }
   | { type: "press"; pending: number }
   | { type: "pressList"; source: string; created: number; unmatched: string[] }
-  | { type: "research"; created: number; unmatched: number; date: string };
+  | { type: "research"; created: number; published: number; rejected: number; pending: number; unmatched: number; date: string };
 
 interface IssueInfo {
   school: string;
@@ -59,7 +59,7 @@ export function formatNotification(e: NotifyEvent, info: IssueInfo | null, siteU
       return `📣 <b>Liste de ${e.created} lycée${e.created > 1 ? "s" : ""} fermé${e.created > 1 ? "s" : ""} ou bloqué${e.created > 1 ? "s" : ""}</b> (${esc(e.source)}), à valider${missing}\n${admin}/mobilisations`;
     }
     case "research":
-      return `🔎 <b>Recherche du jour : ${e.created} lycée${e.created > 1 ? "s" : ""} mobilisé${e.created > 1 ? "s" : ""} à valider</b>${e.unmatched ? ` (${e.unmatched} introuvable${e.unmatched > 1 ? "s" : ""} dans l'annuaire)` : ""}\n${admin}/mobilisations`;
+      return `🔎 <b>Recherche du jour : ${e.created} lycée${e.created > 1 ? "s" : ""} trouvé${e.created > 1 ? "s" : ""}</b>${e.published || e.rejected ? `\n✅ ${e.published} publié(s) après vérification · 🚫 ${e.rejected} écarté(s)` : ""}${e.pending ? `\n👀 ${e.pending} à valider` : ""}${e.unmatched ? `\n${e.unmatched} introuvable(s) dans l'annuaire` : ""}\n${admin}/mobilisations`;
     case "privacy":
       return `📨 <b>${e.kind === "DELETION" ? "Demande de suppression" : "Nouveau message de contact"}</b>${e.linked ? " (liée à un signalement)" : ""}\n${admin}/requests`;
   }

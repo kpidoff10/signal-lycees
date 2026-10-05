@@ -347,6 +347,8 @@ model Mobilization {
   sourceName  String?
   sourceUrl   String?
   importBatch String?
+  // Avis de l'IA qui a vérifié l'article (recherches, listes) : visible dans l'admin seulement.
+  reviewNote  String?
   // Identité anonyme de l'élève qui l'a signalée (jamais affichée).
   reporterId  String?
   reviewedAt  DateTime?

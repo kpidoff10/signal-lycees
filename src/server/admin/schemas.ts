@@ -77,4 +77,4 @@ export const banSchema = z.object({ identityId: idSchema, banned: flag });
 export const handledSchema = z.object({ requestId: idSchema, handled: flag });
 export const deleteRequestSchema = confirmDeleteSchema.extend({ requestId: idSchema });
 export const freezeSchema = z.object({ frozen: flag });
-export const secondOpinionSchema = z.object({ scope: z.enum(["issues", "press", "mobilizations"]), enabled: flag });
+export const secondOpinionSchema = z.object({ scope: z.enum(["issues", "press", "mobilizations", "verification"]), enabled: flag });

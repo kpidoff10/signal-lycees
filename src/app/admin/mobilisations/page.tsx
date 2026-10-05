@@ -5,7 +5,7 @@ import { requireAdmin } from "@/server/admin/auth";
 import { listMobilizations } from "@/server/admin/mobilizations";
 import { ActionForm } from "../_components/ActionForm";
 import { Badge, Empty, formatDate, formatDateTime, PageHeader, Submit } from "../_components/ui";
-import { addAction, approveAction, approveBatchAction, approveListAction, endAction, rejectAction } from "./actions";
+import { addAction, approveAction, approveBatchAction, approveListAction, endAction, rejectAction, verifyPendingAction } from "./actions";
 
 export const metadata: Metadata = { title: "Mobilisations" };
 export const dynamic = "force-dynamic";
@@ -18,6 +18,7 @@ export default async function MobilizationsPage() {
   const ttl = env().MOBILIZATION_TTL_HOURS;
   const today = new Date().toISOString().slice(0, 10);
   // Recherches automatiques (un lot par jour) et listes tirées d'un même article : validables d'un coup.
+  const unverified = pending.filter((m) => m.origin === "PRESS" && m.sourceUrl && !m.reviewNote && m.importBatch).length;
   const research = [...Map.groupBy(pending.filter((m) => m.importBatch?.startsWith("recherche-")), (m) => m.importBatch!)];
   const lists = [...Map.groupBy(pending.filter((m) => m.origin === "PRESS" && m.sourceUrl && !m.importBatch?.startsWith("recherche-")), (m) => m.sourceUrl!)].filter(
     ([, ms]) => ms.length > 1,
@@ -32,6 +33,17 @@ export default async function MobilizationsPage() {
 
       <section>
         <h2 className="adm-h2">À valider ({pending.length})</h2>
+        {unverified > 0 && (
+          <ActionForm action={verifyPendingAction} className="adm-form adm-bulk adm-auto-action">
+            <p className="m-0">
+              <b>🤖 {unverified} lycée{unverified > 1 ? "s" : ""} pas encore vérifié{unverified > 1 ? "s" : ""} par l’IA.</b> Perplexity relit l’article de chacun :
+              publié s’il confirme, écarté s’il infirme, laissé ici avec sa raison s’il doute.
+            </p>
+            <div className="adm-actions">
+              <Submit>Faire vérifier par l’IA</Submit>
+            </div>
+          </ActionForm>
+        )}
         {research.map(([batch, ms]) => (
           <ActionForm key={batch} action={approveBatchAction} className="adm-form adm-bulk">
             <input type="hidden" name="importBatch" value={batch} />
@@ -78,6 +90,7 @@ export default async function MobilizationsPage() {
                     </a>
                   )}
                 </span>
+                {m.reviewNote && <p className="m-0 adm-small adm-ai-note">🤖 {m.reviewNote}</p>}
                 {m.origin === "STUDENT" ? (
                   <ActionForm action={approveAction} className="adm-form">
                     <input type="hidden" name="id" value={m.id} />

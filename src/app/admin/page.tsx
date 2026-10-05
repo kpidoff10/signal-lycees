@@ -179,6 +179,17 @@ export default async function AdminHome() {
             }
             fields={{ scope: "mobilizations", enabled: c.secondOpinion.mobilizations ? "0" : "1" }}
           />
+          <Toggle
+            action={secondOpinionAction}
+            on={c.secondOpinion.verification}
+            label="Vérification IA des recherches et listes"
+            hint={
+              c.secondOpinion.verification
+                ? "Perplexity relit l’article de chaque lycée trouvé : publié s’il confirme, écarté s’il infirme, à valider s’il doute."
+                : "Désactivé : tous les lycées trouvés par les recherches et les listes arrivent à valider."
+            }
+            fields={{ scope: "verification", enabled: c.secondOpinion.verification ? "0" : "1" }}
+          />
         </div>
         <p className="m-0 mt-3 adm-small adm-muted">
           Limitation anti-abus : {c.limiter === "upstash" ? "partagée (Upstash) ✓" : "en mémoire (développement)"}

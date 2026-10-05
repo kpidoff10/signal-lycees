@@ -7,12 +7,14 @@ import { env } from "@/lib/env";
 import { expiryFor, startOfDay } from "@/lib/mobilization";
 import { parisDay } from "@/lib/traffic";
 import { notify } from "../notify";
+import { isSecondOpinionEnabled } from "../settings";
 import { researchMobilizations, type ResearchResult } from "./core";
 import { withRun } from "./runs";
+import { verifyPendingMobilizations, type VerifyStats } from "./verify";
 
 export const researchBatch = (date: string) => `recherche-${date}`;
 
-export type ResearchJobResult = ResearchResult & { date: string; created: number };
+export type ResearchJobResult = ResearchResult & { date: string; created: number; verified: VerifyStats | null };
 
 /** Une recherche déjà en cours depuis moins de 10 minutes : on n'en lance pas une deuxième. */
 export async function researchInProgress(): Promise<boolean> {
@@ -37,12 +39,33 @@ export async function runResearchJob(opts: { trigger: "AUTO" | "MANUAL"; adminId
         });
         created++;
       }
-      if (created) notify({ type: "research", created, unmatched: r.unmatched.length, date });
-      return { ...r, date, created };
+      // Chaque lycée trouvé est relu par l'IA dans son article (interrupteur au tableau de bord).
+      const verified = created && (await isSecondOpinionEnabled("verification")) ? await verifyPendingMobilizations(prisma, { importBatch: researchBatch(date) }) : null;
+      const pending = verified ? verified.pending : created;
+      if (created) notify({ type: "research", created, published: verified?.published ?? 0, rejected: verified?.rejected ?? 0, pending, unmatched: r.unmatched.length, date });
+      return { ...r, date, created, verified };
     },
     (r) => ({
-      stats: { requests: r.requests, failedRequests: r.failedRequests, cited: r.cited, alreadyKnown: r.alreadyKnown, created: r.created, unmatched: r.unmatched.length },
+      stats: {
+        requests: r.requests,
+        failedRequests: r.failedRequests,
+        cited: r.cited,
+        alreadyKnown: r.alreadyKnown,
+        created: r.created,
+        unmatched: r.unmatched.length,
+        ...(r.verified ? { verifiedPublished: r.verified.published, verifiedRejected: r.verified.rejected, verifiedPending: r.verified.pending } : {}),
+      },
       details: { unmatched: r.unmatched },
     }),
+  );
+}
+
+/** Fait vérifier par l'IA les lycées de recherches et de listes encore en attente (bouton de l'admin). */
+export async function runVerifyPendingJob(adminId: string): Promise<VerifyStats> {
+  return withRun(
+    prisma,
+    { kind: "RESEARCH", trigger: "MANUAL", label: "Vérification IA des mobilisations en attente", adminId },
+    () => verifyPendingMobilizations(prisma, { batchPrefixes: ["recherche-", "presse-liste", "mobilisations-"] }),
+    (v) => ({ stats: { verifiedChecked: v.checked, verifiedPublished: v.published, verifiedRejected: v.rejected, verifiedPending: v.pending } }),
   );
 }

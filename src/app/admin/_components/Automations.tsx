@@ -38,7 +38,16 @@ export function Automations({ research, press, historyLink = true }: { research:
         <RunStatus run={research} />
         {research?.status === "OK" && (
           <p className="adm-auto-figures">
-            <b>{rs.created ?? 0}</b> à valider · {rs.alreadyKnown ?? 0} déjà sur la carte · {rs.unmatched ?? 0} introuvable(s)
+            {"verifiedPublished" in rs ? (
+              <>
+                <b>{rs.created ?? 0}</b> trouvé(s) : {rs.verifiedPublished} publié(s), {rs.verifiedRejected} écarté(s), {rs.verifiedPending} à valider
+              </>
+            ) : (
+              <>
+                <b>{rs.created ?? 0}</b> à valider
+              </>
+            )}{" "}
+            · {rs.alreadyKnown ?? 0} déjà sur la carte · {rs.unmatched ?? 0} introuvable(s)
           </p>
         )}
         <ActionForm action={runResearchAction} className="adm-auto-action">

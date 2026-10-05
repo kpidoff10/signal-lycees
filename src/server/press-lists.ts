@@ -8,6 +8,8 @@ import { env } from "@/lib/env";
 import { expiryFor, startOfDay } from "@/lib/mobilization";
 import { matchPlaces, parseSchoolList, type CityRef, type FeedItem } from "@/lib/press";
 import { notify } from "./notify";
+import { verifyPendingMobilizations } from "./research/verify";
+import { isSecondOpinionEnabled } from "./settings";
 
 export const LIST_BATCH = "presse-liste";
 
@@ -44,6 +46,7 @@ export async function importSchoolList(item: FeedItem, cities: CityRef[], now: D
   const expiresAt = expiryFor(happenedOn, e.MOBILIZATION_TTL_HOURS);
   if (expiresAt <= now) return null;
   const result: ListResult = { found: list.schools.length, created: 0, unmatched: [] };
+  const createdIds: string[] = [];
   for (const s of list.schools) {
     // Même règle prudente que pour les titres : commune avec majuscule, un ou deux lycées possibles.
     const { schoolIds } = matchPlaces(`Lycée ${s.name} à ${s.city}`, cities);
@@ -54,12 +57,17 @@ export async function importSchoolList(item: FeedItem, cities: CityRef[], now: D
     for (const schoolId of schoolIds) {
       const known = await prisma.mobilization.findFirst({ where: { schoolId, status: { not: "REJECTED" }, happenedOn: { gte: happenedOn } }, select: { id: true } });
       if (known) continue;
-      await prisma.mobilization.create({
+      const m = await prisma.mobilization.create({
         data: { schoolId, origin: "PRESS", status: "PENDING", happenedOn, expiresAt, sourceName: item.source, sourceUrl: list.url, importBatch: LIST_BATCH },
+        select: { id: true },
       });
+      createdIds.push(m.id);
       result.created++;
     }
   }
-  if (result.created) notify({ type: "pressList", source: item.source, created: result.created, unmatched: result.unmatched });
+  // Chaque lycée de la liste est relu par l'IA dans l'article : publié, écarté, ou laissé à valider.
+  const verified = createdIds.length && (await isSecondOpinionEnabled("verification")) ? await verifyPendingMobilizations(prisma, { ids: createdIds }) : null;
+  const toValidate = verified ? verified.pending : result.created;
+  if (toValidate) notify({ type: "pressList", source: item.source, created: toValidate, unmatched: result.unmatched });
   return result;
 }

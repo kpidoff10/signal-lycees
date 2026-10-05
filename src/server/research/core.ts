@@ -76,7 +76,7 @@ export async function researchMobilizations(
   const cities = [...byCity.values()];
   const slugById = new Map(schools.map((s) => [s.id, s.slug]));
   const known = new Set(
-    (await db.mobilization.findMany({ where: { happenedOn: new Date(`${opts.date}T00:00:00Z`), status: { not: "REJECTED" } }, select: { schoolId: true } })).map(
+    (await db.mobilization.findMany({ where: { happenedOn: new Date(`${opts.date}T00:00:00Z`) }, select: { schoolId: true } })).map(
       (m) => m.schoolId,
     ),
   );

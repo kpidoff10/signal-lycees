@@ -1,5 +1,7 @@
 "use server";
 
+import { after } from "next/server";
+import { runVerifyPendingJob } from "@/server/research/job";
 import { z } from "zod";
 import { cleanUserText } from "@/lib/text";
 import { requireAdmin } from "@/server/admin/auth";
@@ -37,6 +39,13 @@ export async function approveListAction(_prev: ActionState, fd: FormData): Promi
   const p = parseForm(sourceOnly, fd);
   if (!p.ok) return { error: p.error };
   return runAction(() => approveMobilizationsFromSource(admin.id, p.data.sourceUrl), "Liste publiée.");
+}
+
+/** Relecture IA des lycées trouvés par recherche ou liste, encore en attente (en tâche de fond). */
+export async function verifyPendingAction(): Promise<ActionState> {
+  const admin = await requireAdmin();
+  after(() => runVerifyPendingJob(admin.id).catch((e) => console.error("verify", e instanceof Error ? e.message : e)));
+  return { ok: true, message: "Vérification lancée : le bandeau en haut de page te préviendra à la fin." };
 }
 
 const batchOnly = z.object({ importBatch: z.string().regex(/^recherche-\d{4}-\d{2}-\d{2}$/) });
