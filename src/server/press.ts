@@ -29,6 +29,7 @@ import {
 import { directory } from "./places";
 import { importSchoolList } from "./press-lists";
 import { notify } from "./notify";
+import { withRun } from "./research/runs";
 import { isSecondOpinionEnabled } from "./settings";
 
 const google = (q: string) => `https://news.google.com/rss/search?q=${encodeURIComponent(`${q} when:3d`)}&hl=fr&gl=FR&ceid=FR:fr`;
@@ -218,10 +219,28 @@ async function cityRefs(): Promise<CityRef[]> {
   return [...dir.cityBySlug.values()].map((c) => ({ slug: c.slug, name: c.name, schools: c.schools.map((s) => ({ id: s.id, name: s.name })) }));
 }
 
-export async function runPressJob(now = new Date()) {
-  const added = await ingest(now);
-  const rechecked = await recheckPending(now);
-  return { ...added, rechecked };
+export async function runPressJob(now = new Date(), trigger: "AUTO" | "MANUAL" = "AUTO", adminId?: string) {
+  return withRun(
+    prisma,
+    { kind: "PRESS", trigger, label: "Revue de presse", adminId },
+    async () => {
+      const added = await ingest(now);
+      const rechecked = await recheckPending(now);
+      return { ...added, rechecked };
+    },
+    (r) => ({
+      stats: {
+        fetched: r.fetched,
+        added: r.added,
+        published: "PUBLISHED" in r ? r.PUBLISHED : 0,
+        pending: "PENDING" in r ? r.PENDING : 0,
+        rejected: "REJECTED" in r ? r.REJECTED : 0,
+        mobilizations: "mobilizations" in r ? r.mobilizations.PUBLISHED + r.mobilizations.PENDING : 0,
+        listsRead: "lists" in r ? r.lists.read : 0,
+        listSchools: "lists" in r ? r.lists.created : 0,
+      },
+    }),
+  );
 }
 
 async function ingest(now: Date) {

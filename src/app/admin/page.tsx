@@ -3,8 +3,12 @@ import { Icon, type IconName } from "@/components/ui/Icon";
 import { publicEnv } from "@/lib/env";
 import { getAdminSession, requireAdmin } from "@/server/admin/auth";
 import { dashboardCounts } from "@/server/admin/dashboard";
+import { lastRuns } from "@/server/admin/imports";
 import { trafficOverview } from "@/server/admin/traffic";
+import { mobilizationsByDay } from "@/server/statistics";
 import { ActionForm } from "./_components/ActionForm";
+import { Automations } from "./_components/Automations";
+import { MovementCard } from "./_components/MovementCard";
 import { ShareLinksPanel } from "./_components/ShareLinksPanel";
 import { TrafficPanel } from "./_components/TrafficPanel";
 import { freezeAction, secondOpinionAction } from "./actions";
@@ -54,7 +58,7 @@ function Toggle({
 
 export default async function AdminHome() {
   await requireAdmin();
-  const [c, traffic, session] = await Promise.all([dashboardCounts(), trafficOverview(), getAdminSession()]);
+  const [c, traffic, session, runs, days] = await Promise.all([dashboardCounts(), trafficOverview(), getAdminSession(), lastRuns(), mobilizationsByDay(new Date())]);
 
   const todo: { href: string; icon: IconName; value: number; label: string; urgent?: boolean }[] = [
     { href: "/admin/moderation", icon: "alert", value: c.urgent, label: c.urgent > 1 ? "signalements urgents" : "signalement urgent", urgent: true },
@@ -113,6 +117,16 @@ export default async function AdminHome() {
           </div>
         )}
       </section>
+
+      <div className="adm-duo">
+        <MovementCard days={days} activeNow={c.activeMobs} pending={c.pendingMobs} />
+        <section className="adm-card adm-stack" aria-labelledby="autos-h">
+          <h2 id="autos-h" className="adm-h2">
+            Automatisations
+          </h2>
+          <Automations research={runs.research} press={runs.press} />
+        </section>
+      </div>
 
       <TrafficPanel t={traffic} />
 

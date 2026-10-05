@@ -67,3 +67,19 @@ export function InternalReasonField() {
     </label>
   );
 }
+
+/** « à l'instant », « il y a 12 min », « il y a 3 h », puis la date. */
+export function formatAgo(d: Date | null | undefined, now = new Date()): string {
+  if (!d) return "jamais";
+  const min = Math.round((now.getTime() - d.getTime()) / 60_000);
+  if (min < 1) return "à l’instant";
+  if (min < 60) return `il y a ${min} min`;
+  if (min < 24 * 60) return `il y a ${Math.round(min / 60)} h`;
+  return formatDateTime(d);
+}
+
+export function formatDuration(start: Date, end: Date | null | undefined): string {
+  if (!end) return "en cours";
+  const s = Math.max(0, Math.round((end.getTime() - start.getTime()) / 1000));
+  return s < 60 ? `${s} s` : `${Math.floor(s / 60)} min ${String(s % 60).padStart(2, "0")} s`;
+}

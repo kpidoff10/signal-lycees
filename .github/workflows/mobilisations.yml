@@ -1,0 +1,22 @@
+# Recherche des lycées mobilisés du jour, deux fois par jour (8 h 15 et 14 h 15, heure de Paris en été).
+# Les lycées trouvés arrivent à valider dans /admin/mobilisations. Secret requis : CRON_SECRET.
+name: Recherche des mobilisations
+
+on:
+  schedule:
+    - cron: "15 6,12 * * *"
+  workflow_dispatch:
+
+permissions: {}
+
+jobs:
+  research:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - name: Lancer la recherche
+        env:
+          CRON_SECRET: ${{ secrets.CRON_SECRET }}
+        run: |
+          if [ -z "$CRON_SECRET" ]; then echo "Secret CRON_SECRET absent" >&2; exit 1; fi
+          curl -fsS --max-time 320 -H "authorization: Bearer $CRON_SECRET" https://signal-lycees.fr/api/cron/mobilisations

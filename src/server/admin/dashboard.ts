@@ -7,7 +7,7 @@ import { queueCounts } from "./moderation";
 import { limiterKind } from "../rate-limit";
 
 export async function dashboardCounts() {
-  const [queue, flagged, openReports, pendingRequests, frozen, secondIssues, secondPress, secondMobs, pendingMobs, pendingPress] = await Promise.all([
+  const [queue, flagged, openReports, pendingRequests, frozen, secondIssues, secondPress, secondMobs, pendingMobs, activeMobs, pendingPress] = await Promise.all([
     queueCounts(),
     prisma.issue.count({ where: { flaggedForReview: true, moderationStatus: { in: ["PUBLISHED", "AUTO_APPROVED"] } } }),
     prisma.contentReport.count({ where: { status: "OPEN" } }),
@@ -17,6 +17,7 @@ export async function dashboardCounts() {
     isSecondOpinionEnabled("press"),
     isSecondOpinionEnabled("mobilizations"),
     prisma.mobilization.count({ where: { status: "PENDING", expiresAt: { gt: new Date() } } }),
+    prisma.mobilization.findMany({ where: { status: "PUBLISHED", expiresAt: { gt: new Date() } }, distinct: ["schoolId"], select: { schoolId: true } }).then((r) => r.length),
     prisma.pressArticle.count({ where: { status: "PENDING" } }).catch(() => 0),
   ]);
   return {
@@ -30,6 +31,7 @@ export async function dashboardCounts() {
     frozenByEnv: env().MODERATION_FREEZE,
     secondOpinion: { issues: secondIssues, press: secondPress, mobilizations: secondMobs },
     pendingMobs,
+    activeMobs,
     pendingPress,
   };
 }

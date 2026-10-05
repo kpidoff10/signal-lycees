@@ -32,7 +32,7 @@ export interface Statistics {
 }
 
 /** Lycées mobilisés par jour (mobilisations publiées, chaque lycée compté une fois par jour), jours sans mobilisation compris. */
-async function mobilizationsByDay(today: Date): Promise<DayCount[]> {
+export async function mobilizationsByDay(today: Date): Promise<DayCount[]> {
   const rows = await prisma.$queryRaw<{ day: Date; schools: bigint }[]>`
     SELECT "happenedOn"::date AS day, count(DISTINCT "schoolId") AS schools
       FROM "Mobilization"

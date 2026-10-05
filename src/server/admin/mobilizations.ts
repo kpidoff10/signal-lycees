@@ -56,6 +56,16 @@ export async function approveMobilizationsFromSource(adminId: string, sourceUrl:
   });
 }
 
+/** Publie d'un coup les mobilisations en attente d'une recherche automatique (lot « recherche-<date> »). */
+export async function approveMobilizationsFromBatch(adminId: string, importBatch: string) {
+  await prisma.$transaction(async (tx) => {
+    const ids = (await tx.mobilization.findMany({ where: { status: "PENDING", importBatch }, select: { id: true } })).map((m) => m.id);
+    if (!ids.length) throw new AdminError("Plus rien à valider pour cette recherche.");
+    await tx.mobilization.updateMany({ where: { id: { in: ids } }, data: { status: "PUBLISHED", reviewedAt: new Date() } });
+    await adminLog(tx, { adminId, action: "MOBILIZATION_APPROVE_BATCH", targetType: "Mobilization", targetId: ids[0], before: { status: "PENDING" }, after: { status: "PUBLISHED", count: ids.length, importBatch } });
+  });
+}
+
 export async function rejectMobilization(adminId: string, id: string) {
   await change(adminId, id, "MOBILIZATION_REJECT", { status: "REJECTED" });
 }

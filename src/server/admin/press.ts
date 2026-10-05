@@ -40,6 +40,6 @@ export async function setPressStatus(adminId: string, id: string, status: "PUBLI
   });
 }
 
-export async function fetchPressNow() {
-  return runPressJob();
+export async function fetchPressNow(adminId?: string) {
+  return runPressJob(new Date(), "MANUAL", adminId);
 }

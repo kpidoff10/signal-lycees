@@ -16,7 +16,8 @@ export type NotifyEvent =
   | { type: "mobilization"; mobilizationId: string; flagged: boolean; press?: boolean; note?: string }
   | { type: "mobilizationRefused"; schoolId: string; title: string; source: string; url: string; reason: string }
   | { type: "press"; pending: number }
-  | { type: "pressList"; source: string; created: number; unmatched: string[] };
+  | { type: "pressList"; source: string; created: number; unmatched: string[] }
+  | { type: "research"; created: number; unmatched: number; date: string };
 
 interface IssueInfo {
   school: string;
@@ -57,6 +58,8 @@ export function formatNotification(e: NotifyEvent, info: IssueInfo | null, siteU
       const missing = e.unmatched.length ? `\nIntrouvables dans l'annuaire (à ajouter à la main si besoin) : ${esc(e.unmatched.slice(0, 15).join(", "))}${e.unmatched.length > 15 ? "…" : ""}` : "";
       return `📣 <b>Liste de ${e.created} lycée${e.created > 1 ? "s" : ""} fermé${e.created > 1 ? "s" : ""} ou bloqué${e.created > 1 ? "s" : ""}</b> (${esc(e.source)}), à valider${missing}\n${admin}/mobilisations`;
     }
+    case "research":
+      return `🔎 <b>Recherche du jour : ${e.created} lycée${e.created > 1 ? "s" : ""} mobilisé${e.created > 1 ? "s" : ""} à valider</b>${e.unmatched ? ` (${e.unmatched} introuvable${e.unmatched > 1 ? "s" : ""} dans l'annuaire)` : ""}\n${admin}/mobilisations`;
     case "privacy":
       return `📨 <b>${e.kind === "DELETION" ? "Demande de suppression" : "Nouveau message de contact"}</b>${e.linked ? " (liée à un signalement)" : ""}\n${admin}/requests`;
   }

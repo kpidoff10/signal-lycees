@@ -5,7 +5,7 @@ import { requireAdmin } from "@/server/admin/auth";
 import { listMobilizations } from "@/server/admin/mobilizations";
 import { ActionForm } from "../_components/ActionForm";
 import { Badge, Empty, formatDate, formatDateTime, PageHeader, Submit } from "../_components/ui";
-import { addAction, approveAction, approveListAction, endAction, rejectAction } from "./actions";
+import { addAction, approveAction, approveBatchAction, approveListAction, endAction, rejectAction } from "./actions";
 
 export const metadata: Metadata = { title: "Mobilisations" };
 export const dynamic = "force-dynamic";
@@ -17,8 +17,11 @@ export default async function MobilizationsPage() {
   const { pending, active, recent } = await listMobilizations();
   const ttl = env().MOBILIZATION_TTL_HOURS;
   const today = new Date().toISOString().slice(0, 10);
-  // Listes de lycées fermés tirées d'un même article : validables d'un coup.
-  const lists = [...Map.groupBy(pending.filter((m) => m.origin === "PRESS" && m.sourceUrl), (m) => m.sourceUrl!)].filter(([, ms]) => ms.length > 1);
+  // Recherches automatiques (un lot par jour) et listes tirées d'un même article : validables d'un coup.
+  const research = [...Map.groupBy(pending.filter((m) => m.importBatch?.startsWith("recherche-")), (m) => m.importBatch!)];
+  const lists = [...Map.groupBy(pending.filter((m) => m.origin === "PRESS" && m.sourceUrl && !m.importBatch?.startsWith("recherche-")), (m) => m.sourceUrl!)].filter(
+    ([, ms]) => ms.length > 1,
+  );
 
   return (
     <div className="grid gap-8">
@@ -29,6 +32,18 @@ export default async function MobilizationsPage() {
 
       <section>
         <h2 className="adm-h2">À valider ({pending.length})</h2>
+        {research.map(([batch, ms]) => (
+          <ActionForm key={batch} action={approveBatchAction} className="adm-form adm-bulk">
+            <input type="hidden" name="importBatch" value={batch} />
+            <p className="m-0">
+              <b>🔎 Recherche automatique du {formatDate(ms[0]!.happenedOn)}</b> : {ms.length} lycée{ms.length > 1 ? "s" : ""} trouvé{ms.length > 1 ? "s" : ""} dans la
+              presse. Survole la liste, refuse ceux qui seraient mal reconnus (homonymes), puis publie le reste.
+            </p>
+            <div className="adm-actions">
+              <Submit>Publier les {ms.length} lycées de cette recherche</Submit>
+            </div>
+          </ActionForm>
+        ))}
         {lists.map(([url, [first, ...rest]]) => (
           <ActionForm key={url} action={approveListAction} className="adm-form">
             <input type="hidden" name="sourceUrl" value={url} />
@@ -63,17 +78,24 @@ export default async function MobilizationsPage() {
                     </a>
                   )}
                 </span>
-                <ActionForm action={approveAction} className="adm-form">
-                  <input type="hidden" name="id" value={m.id} />
-                  <label className="adm-label">
-                    Motifs (corrige-les si besoin : rien qui vise une personne)
-                    <textarea name="reasons" className="field" maxLength={200} defaultValue={m.reasons ?? ""} />
-                  </label>
-                  <div className="adm-actions">
+                {m.origin === "STUDENT" ? (
+                  <ActionForm action={approveAction} className="adm-form">
+                    <input type="hidden" name="id" value={m.id} />
+                    <label className="adm-label">
+                      Motifs (corrige-les si besoin : rien qui vise une personne)
+                      <textarea name="reasons" className="field" maxLength={200} defaultValue={m.reasons ?? ""} />
+                    </label>
+                    <div className="adm-actions">
+                      <Submit>Publier</Submit>
+                    </div>
+                  </ActionForm>
+                ) : (
+                  <ActionForm action={approveAction} className="adm-inline-form">
+                    <input type="hidden" name="id" value={m.id} />
                     <Submit>Publier</Submit>
-                  </div>
-                </ActionForm>
-                <ActionForm action={rejectAction} className="adm-form">
+                  </ActionForm>
+                )}
+                <ActionForm action={rejectAction} className="adm-inline-form">
                   <input type="hidden" name="id" value={m.id} />
                   <Submit variant="secondary">Refuser</Submit>
                 </ActionForm>
@@ -83,8 +105,13 @@ export default async function MobilizationsPage() {
         )}
       </section>
 
-      <section>
-        <h2 className="adm-h2">En cours sur la carte ({active.length})</h2>
+      <details className="adm-card adm-fold" open={active.length <= 20}>
+        <summary>
+          <span className="adm-fold-title">
+            <span className="adm-h2">En cours sur la carte ({active.length})</span>
+          </span>
+        </summary>
+        <div className="adm-fold-body">
         {active.length === 0 ? (
           <Empty>Aucune mobilisation affichée.</Empty>
         ) : (
@@ -114,11 +141,17 @@ export default async function MobilizationsPage() {
             ))}
           </ul>
         )}
-      </section>
+      </div>
+      </details>
 
-      <section>
-        <h2 className="adm-h2">Ajouter une mobilisation</h2>
-        <ActionForm action={addAction} className="adm-form adm-card">
+      <details className="adm-card adm-fold">
+        <summary>
+          <span className="adm-fold-title">
+            <span className="adm-h2">Ajouter une mobilisation à la main</span>
+          </span>
+        </summary>
+        <div className="adm-fold-body">
+        <ActionForm action={addAction} className="adm-form">
           <label className="adm-label">
             Identifiant du lycée (fin de l’URL de sa fiche, ex. lycee-victor-hugo-poitiers)
             <input name="schoolSlug" className="field" required maxLength={120} />
@@ -143,11 +176,17 @@ export default async function MobilizationsPage() {
             <Submit>Ajouter</Submit>
           </div>
         </ActionForm>
-      </section>
+      </div>
+      </details>
 
       {recent.length > 0 && (
-        <section>
-          <h2 className="adm-h2">Terminées ou refusées récemment</h2>
+        <details className="adm-card adm-fold">
+        <summary>
+          <span className="adm-fold-title">
+            <span className="adm-h2">Terminées ou refusées récemment</span>
+          </span>
+        </summary>
+        <div className="adm-fold-body">
           <ul className="adm-list">
             {recent.map((m) => (
               <li key={m.id} className="adm-row">
@@ -161,7 +200,8 @@ export default async function MobilizationsPage() {
               </li>
             ))}
           </ul>
-        </section>
+        </div>
+      </details>
       )}
     </div>
   );

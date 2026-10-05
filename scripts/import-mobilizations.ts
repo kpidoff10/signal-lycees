@@ -5,6 +5,7 @@
 import { readFile } from "node:fs/promises";
 import { z } from "zod";
 import { expiryFor, startOfDay } from "../src/lib/mobilization";
+import { finishRun, startRun } from "../src/server/research/runs";
 import { scriptPrisma } from "./lib/prisma";
 
 const fileSchema = z.object({
@@ -20,12 +21,15 @@ async function main() {
   const ttl = Number(process.env.MOBILIZATION_TTL_HOURS ?? 72);
   const data = fileSchema.parse(JSON.parse(await readFile(path, "utf8")));
   const prisma = scriptPrisma();
+  const run = await startRun(prisma, { kind: "FILE", trigger: "CLI", label: `Import du lot « ${data.batch} »` });
   let created = 0;
+  const missing: string[] = [];
   let expired = 0;
   for (const m of data.mobilizations) {
     const school = await prisma.school.findUnique({ where: { slug: m.school }, select: { id: true, name: true } });
     if (!school) {
       console.warn(`Lycée introuvable : ${m.school}`);
+      missing.push(m.school);
       continue;
     }
     const happenedOn = startOfDay(new Date(`${m.date}T12:00:00Z`));
@@ -52,6 +56,11 @@ async function main() {
     created++;
   }
   console.log(`${created} mobilisation(s) importée(s) dans le lot « ${data.batch} » (${expired} déjà expirée(s), ignorée(s)).`);
+  await finishRun(prisma, run.id, {
+    ok: true,
+    stats: { inFile: data.mobilizations.length, created, expired, missing: missing.length },
+    details: { batch: data.batch, missing },
+  });
   await prisma.$disconnect();
 }
 

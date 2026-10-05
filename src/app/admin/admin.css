@@ -202,3 +202,51 @@ a.adm-row:hover { border-color: var(--border-strong); }
 .adm-contact { padding: var(--space-2) var(--space-3); border: 1px solid var(--border); border-radius: var(--radius-md); }
 .adm-contact > summary::after { width: 26px; height: 26px; font-size: 16px; }
 .adm-contact .adm-fold-body { margin-top: var(--space-2); }
+
+/* Menu groupé : titres de section sur ordinateur, masqués dans la rangée de pastilles mobile. */
+.adm-nav-group { display: none; }
+@media (min-width: 1024px) {
+  .adm-nav-group { display: block; margin: var(--space-4) 12px 6px; font-size: 11px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--ink-muted); }
+  .adm-nav-group:first-child { margin-top: 0; }
+  .adm-side { overflow-y: auto; }
+}
+
+/* Automatisations et historique des imports */
+.adm-autos { display: grid; gap: var(--space-3); }
+@media (min-width: 900px) { .adm-autos { grid-template-columns: repeat(2, minmax(0, 1fr)); } .adm-auto-link { grid-column: 1 / -1; } }
+.adm-auto { display: grid; gap: var(--space-3); align-content: start; padding: var(--space-4); border: 1px solid var(--border); border-radius: var(--radius-lg); background: var(--surface); }
+.adm-auto-head { display: flex; gap: var(--space-3); align-items: center; }
+.adm-auto-head > span:last-child { display: grid; gap: 2px; }
+.adm-auto-icon { flex: none; display: grid; place-items: center; width: 40px; height: 40px; border-radius: 12px; background: var(--signal-soft); color: var(--signal-ink); }
+.adm-auto-figures { margin: 0; font-size: 14px; color: var(--ink-muted); }
+.adm-auto-figures b { font-size: 20px; color: var(--ink); }
+.adm-auto-action { display: flex; }
+.adm-run-status { display: inline-flex; align-items: center; gap: 8px; font-size: 14px; font-weight: 600; }
+.adm-run-dot { width: 10px; height: 10px; border-radius: 50%; background: var(--border-strong); }
+.adm-run-status.is-ok .adm-run-dot { background: var(--resolved); }
+.adm-run-status.is-error .adm-run-dot { background: var(--signal); }
+.adm-run-status.is-running .adm-run-dot { background: var(--focus); animation: sl-ping-dot 1.2s ease-in-out infinite; }
+@keyframes sl-ping-dot { 50% { opacity: .35; } }
+.adm-run-headline { font-weight: 700; font-variant-numeric: tabular-nums; }
+.adm-chips { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 6px; }
+.adm-chips li { padding: 4px 10px; border-radius: var(--radius-pill); background: var(--surface-sunken); }
+
+/* Tableau de bord : mouvement lycéen + automatisations côte à côte */
+.adm-duo { display: grid; gap: var(--space-4); }
+@media (min-width: 1100px) { .adm-duo { grid-template-columns: minmax(0, 1fr) minmax(0, 1.25fr); align-items: start; } .adm-duo .adm-autos { grid-template-columns: 1fr; } }
+.adm-move { display: grid; gap: var(--space-4); }
+.adm-move-head { display: flex; align-items: baseline; justify-content: space-between; gap: var(--space-3); }
+.adm-move-head .adm-h2 { margin: 0; }
+.adm-move-figures { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--space-3); }
+.adm-move-figures > * { display: grid; gap: 2px; padding: var(--space-3); border-radius: var(--radius-md); background: var(--surface-sunken); }
+.adm-move-figures b { font-family: var(--font-display); font-size: 26px; line-height: 1.1; font-variant-numeric: tabular-nums; }
+.adm-move-figures .is-todo { background: var(--signal-soft); }
+.adm-move-figures .is-todo b { color: var(--signal-ink); }
+.adm-move-bars { display: grid; grid-auto-flow: column; grid-auto-columns: minmax(0, 1fr); gap: 6px; height: 120px; align-items: end; }
+.adm-move-col { display: grid; grid-template-rows: 1fr auto; height: 100%; gap: 4px; }
+.adm-move-col > .adm-move-bar { align-self: end; width: 100%; border-radius: 4px 4px 0 0; background: var(--signal); }
+.adm-move-day { font-size: 11px; color: var(--ink-muted); text-align: center; white-space: nowrap; overflow: hidden; }
+.adm-inline-form { display: inline-flex; }
+.adm-row:has(> .adm-inline-form) { display: flex; flex-wrap: wrap; align-items: center; gap: var(--space-2); }
+.adm-row:has(> .adm-inline-form) > .adm-meta { flex: 1 1 320px; }
+.adm-bulk { padding: var(--space-4); border-radius: var(--radius-lg); background: var(--signal-soft); margin-bottom: var(--space-3); }

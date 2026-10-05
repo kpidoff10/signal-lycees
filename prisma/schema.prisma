@@ -462,3 +462,41 @@ model OutreachVisit {
 
   @@index([contactId, at])
 }
+
+enum ImportKind {
+  RESEARCH // recherche Perplexity des lycées mobilisés (région par région ou articles)
+  PRESS // revue de presse (flux RSS, Jev, listes de lycées)
+  FILE // lot JSON importé en ligne de commande
+}
+
+enum ImportTrigger {
+  AUTO // tâche planifiée
+  MANUAL // bouton de l'admin
+  CLI // ligne de commande
+}
+
+enum ImportStatus {
+  RUNNING
+  OK
+  ERROR
+}
+
+// Historique des imports et des passages automatiques (page /admin/imports).
+model ImportRun {
+  id         String        @id @default(cuid())
+  kind       ImportKind
+  trigger    ImportTrigger
+  status     ImportStatus  @default(RUNNING)
+  label      String // ex. « Recherche du 6 octobre (14 régions) »
+  // Compteurs propres à chaque type (trouvés, créés, déjà connus, publiés…).
+  stats      Json?
+  // Lycées cités mais introuvables dans l'annuaire, erreurs détaillées.
+  details    Json?
+  error      String?
+  adminId    String?
+  startedAt  DateTime      @default(now())
+  finishedAt DateTime?
+
+  @@index([startedAt])
+  @@index([kind, startedAt])
+}

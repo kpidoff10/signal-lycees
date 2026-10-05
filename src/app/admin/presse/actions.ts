@@ -23,10 +23,10 @@ export async function rejectPressAction(_prev: ActionState, fd: FormData): Promi
 }
 
 export async function fetchPressAction(): Promise<ActionState> {
-  await requireAdmin();
+  const admin = await requireAdmin();
   let summary = "";
   const res = await runAction(async () => {
-    const r = await fetchPressNow();
+    const r = await fetchPressNow(admin.id);
     const rc = r.rechecked;
     summary =
       ("PUBLISHED" in r ? `${r.added} nouveaux : ${r.PUBLISHED} publiés, ${r.PENDING} à vérifier, ${r.REJECTED} écartés.` : "Aucun nouvel article.") +
