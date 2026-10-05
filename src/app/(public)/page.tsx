@@ -100,6 +100,7 @@ export default async function HomePage() {
           <StatCounters
             items={[
               { value: stats.activeIssues, label: plural(stats.activeIssues, "problème actif", "problèmes actifs"), tone: "signal" },
+              { value: stats.activeMobilizations, label: plural(stats.activeMobilizations, "mobilisation en cours", "mobilisations en cours"), tone: "mobilization" },
               { value: stats.schoolsConcerned, label: plural(stats.schoolsConcerned, "lycée concerné", "lycées concernés") },
               { value: stats.confirmations, label: plural(stats.confirmations, "confirmation") },
               { value: stats.resolvedIssues, label: plural(stats.resolvedIssues, "problème résolu", "problèmes résolus"), tone: "resolved" },

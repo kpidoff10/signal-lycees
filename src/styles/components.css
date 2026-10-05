@@ -73,6 +73,7 @@
 .sl-stat-label { margin-top: 2px; font-size: 14px; line-height: 20px; color: var(--ink-muted); }
 .sl-stat-signal { border-top-color: var(--signal); }
 .sl-stat-resolved { border-top-color: var(--resolved); }
+.sl-stat-mobilization { border-top-color: var(--marker-2); }
 .sl-stats.is-compact { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--space-4) var(--space-4); }
 .sl-stats.is-compact .sl-stat-value { font-size: 30px; line-height: 34px; }
 

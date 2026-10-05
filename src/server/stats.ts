@@ -2,9 +2,13 @@ import "server-only";
 import { prisma } from "@/lib/db";
 import type { CategoryId } from "@/lib/categories";
 import { PUBLIC_ISSUE_WHERE } from "./issues";
+import { activeWhere } from "./mobilizations";
 
 export interface NationalStats {
   activeIssues: number;
+  /** Lycées où une mobilisation est en cours (affichée sur la carte). */
+  activeMobilizations: number;
+  /** Lycées avec un problème actif ou une mobilisation en cours. */
   schoolsConcerned: number;
   confirmations: number;
   resolvedIssues: number;
@@ -12,13 +16,15 @@ export interface NationalStats {
 
 /** Statistiques nationales calculées en base (jamais de classement). */
 export async function nationalStats(): Promise<NationalStats> {
-  const [active, schools, conf, resolved] = await Promise.all([
+  const [active, schools, mobilized, conf, resolved] = await Promise.all([
     prisma.issue.count({ where: { ...PUBLIC_ISSUE_WHERE, status: { not: "RESOLVED" } } }),
     prisma.issue.findMany({ where: { ...PUBLIC_ISSUE_WHERE, status: { not: "RESOLVED" } }, distinct: ["schoolId"], select: { schoolId: true } }),
+    prisma.mobilization.findMany({ where: activeWhere(), distinct: ["schoolId"], select: { schoolId: true } }),
     prisma.issue.aggregate({ where: PUBLIC_ISSUE_WHERE, _sum: { upCount: true } }),
     prisma.issue.count({ where: { ...PUBLIC_ISSUE_WHERE, status: "RESOLVED" } }),
   ]);
-  return { activeIssues: active, schoolsConcerned: schools.length, confirmations: conf._sum.upCount ?? 0, resolvedIssues: resolved };
+  const concerned = new Set([...schools, ...mobilized].map((s) => s.schoolId));
+  return { activeIssues: active, activeMobilizations: mobilized.length, schoolsConcerned: concerned.size, confirmations: conf._sum.upCount ?? 0, resolvedIssues: resolved };
 }
 
 export interface TodayActivity {
