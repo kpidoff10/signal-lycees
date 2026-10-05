@@ -1,0 +1,126 @@
+{
+  "batch": "mobilisations-2026-10-05-articles",
+  "note": "Recherche Perplexity du 2026-10-05T16:23 (6 requête(s)), lycées absents de la carte pour ce jour. Retrait : npm run import:remove-mobilizations -- mobilisations-2026-10-05-articles",
+  "mobilizations": [
+    {
+      "school": "section-d-enseignement-professionnel-du-lycee-polyvalent-deodat-de-severac-toulouse",
+      "date": "2026-10-05",
+      "sourceName": "La Dépêche",
+      "sourceUrl": "https://www.ladepeche.fr/2026/10/04/blocage-des-lycees-voici-la-liste-des-seize-etablissements-de-lacademie-de-toulouse-qui-resteront-fermes-ce-lundi-13583329.php"
+    },
+    {
+      "school": "lycee-professionnel-stephane-hessel-toulouse",
+      "date": "2026-10-05",
+      "sourceName": "La Dépêche",
+      "sourceUrl": "https://www.ladepeche.fr/2026/10/04/blocage-des-lycees-voici-la-liste-des-seize-etablissements-de-lacademie-de-toulouse-qui-resteront-fermes-ce-lundi-13583329.php"
+    },
+    {
+      "school": "section-d-enseignement-general-et-technologique-du-lycee-professionnel-roland-garros-toulo",
+      "date": "2026-10-05",
+      "sourceName": "La Dépêche",
+      "sourceUrl": "https://www.ladepeche.fr/2026/10/04/blocage-des-lycees-voici-la-liste-des-seize-etablissements-de-lacademie-de-toulouse-qui-resteront-fermes-ce-lundi-13583329.php"
+    },
+    {
+      "school": "section-enseignement-professionnel-du-lycee-polyvalent-joseph-gallieni-toulouse",
+      "date": "2026-10-05",
+      "sourceName": "La Dépêche",
+      "sourceUrl": "https://www.ladepeche.fr/2026/10/04/blocage-des-lycees-voici-la-liste-des-seize-etablissements-de-lacademie-de-toulouse-qui-resteront-fermes-ce-lundi-13583329.php"
+    },
+    {
+      "school": "section-professionnelle-du-lycee-polyvalent-prive-emilie-de-rodat-toulouse",
+      "date": "2026-10-05",
+      "sourceName": "La Dépêche",
+      "sourceUrl": "https://www.ladepeche.fr/2026/10/04/blocage-des-lycees-voici-la-liste-des-seize-etablissements-de-lacademie-de-toulouse-qui-resteront-fermes-ce-lundi-13583329.php"
+    },
+    {
+      "school": "lycee-polyvalent-hotellerie-et-tourisme-d-occitanie-toulouse",
+      "date": "2026-10-05",
+      "sourceName": "La Dépêche",
+      "sourceUrl": "https://www.ladepeche.fr/2026/10/04/blocage-des-lycees-voici-la-liste-des-seize-etablissements-de-lacademie-de-toulouse-qui-resteront-fermes-ce-lundi-13583329.php"
+    },
+    {
+      "school": "section-enseignement-professionnel-du-lycee-polyvalent-bellevue-toulouse",
+      "date": "2026-10-05",
+      "sourceName": "La Dépêche",
+      "sourceUrl": "https://www.ladepeche.fr/2026/10/04/blocage-des-lycees-voici-la-liste-des-seize-etablissements-de-lacademie-de-toulouse-qui-resteront-fermes-ce-lundi-13583329.php"
+    },
+    {
+      "school": "section-d-enseignement-professionnel-du-lycee-charles-de-gaulle-muret",
+      "date": "2026-10-05",
+      "sourceName": "La Dépêche",
+      "sourceUrl": "https://www.ladepeche.fr/2026/10/04/blocage-des-lycees-voici-la-liste-des-seize-etablissements-de-lacademie-de-toulouse-qui-resteront-fermes-ce-lundi-13583329.php"
+    },
+    {
+      "school": "section-d-enseignement-professionnel-du-lycee-polyvalent-pierre-aragon-muret",
+      "date": "2026-10-05",
+      "sourceName": "La Dépêche",
+      "sourceUrl": "https://www.ladepeche.fr/2026/10/04/blocage-des-lycees-voici-la-liste-des-seize-etablissements-de-lacademie-de-toulouse-qui-resteront-fermes-ce-lundi-13583329.php"
+    },
+    {
+      "school": "lycee-professionnel-clement-marot-cahors",
+      "date": "2026-10-05",
+      "sourceName": "La Dépêche",
+      "sourceUrl": "https://www.ladepeche.fr/2026/10/04/blocage-des-lycees-voici-la-liste-des-seize-etablissements-de-lacademie-de-toulouse-qui-resteront-fermes-ce-lundi-13583329.php"
+    },
+    {
+      "school": "lycee-professionnel-j-f-champollion-figeac",
+      "date": "2026-10-05",
+      "sourceName": "La Dépêche",
+      "sourceUrl": "https://www.ladepeche.fr/2026/10/04/blocage-des-lycees-voici-la-liste-des-seize-etablissements-de-lacademie-de-toulouse-qui-resteront-fermes-ce-lundi-13583329.php"
+    },
+    {
+      "school": "lycee-section-enseignement-professionnel-bourdelle-montauban",
+      "date": "2026-10-05",
+      "sourceName": "La Dépêche",
+      "sourceUrl": "https://www.ladepeche.fr/2026/10/04/blocage-des-lycees-voici-la-liste-des-seize-etablissements-de-lacademie-de-toulouse-qui-resteront-fermes-ce-lundi-13583329.php"
+    },
+    {
+      "school": "section-d-enseignement-professionnel-du-lycee-polyvalent-claude-nougaro-monteils",
+      "date": "2026-10-05",
+      "sourceName": "La Dépêche",
+      "sourceUrl": "https://www.ladepeche.fr/2026/10/04/blocage-des-lycees-voici-la-liste-des-seize-etablissements-de-lacademie-de-toulouse-qui-resteront-fermes-ce-lundi-13583329.php"
+    },
+    {
+      "school": "lycee-professionnel-alexis-monteil-rodez",
+      "date": "2026-10-05",
+      "sourceName": "La Dépêche",
+      "sourceUrl": "https://www.ladepeche.fr/2026/10/04/blocage-des-lycees-voici-la-liste-des-seize-etablissements-de-lacademie-de-toulouse-qui-resteront-fermes-ce-lundi-13583329.php"
+    },
+    {
+      "school": "lycee-professionnel-jules-michelet-fontenay-sous-bois",
+      "date": "2026-10-05",
+      "sourceName": "Le Monde",
+      "sourceUrl": "https://www.lemonde.fr/societe/live/2026/10/05/en-direct-blocage-des-lycees-le-point-sur-la-situation-dans-les-grandes-villes_6788487_3224.html"
+    },
+    {
+      "school": "lycee-faidherbe-lille",
+      "date": "2026-10-05",
+      "sourceName": "France 3 Régions",
+      "sourceUrl": "https://france3-regions.franceinfo.fr/hauts-de-france/nord-0/lille/blocage-des-lycees-etablissements-fermes-appel-a-une-mobilisation-pacifiste-premiers-incidents-debut-de-semaine-sous-tension-pour-l-education-nationale-3427923.html"
+    },
+    {
+      "school": "lycee-fenelon-lille",
+      "date": "2026-10-05",
+      "sourceName": "France 3 Régions",
+      "sourceUrl": "https://france3-regions.franceinfo.fr/hauts-de-france/nord-0/lille/blocage-des-lycees-etablissements-fermes-appel-a-une-mobilisation-pacifiste-premiers-incidents-debut-de-semaine-sous-tension-pour-l-education-nationale-3427923.html"
+    },
+    {
+      "school": "lycee-professionnel-cesar-baggio-lille",
+      "date": "2026-10-05",
+      "sourceName": "France 3 Régions",
+      "sourceUrl": "https://france3-regions.franceinfo.fr/hauts-de-france/nord-0/lille/blocage-des-lycees-etablissements-fermes-appel-a-une-mobilisation-pacifiste-premiers-incidents-debut-de-semaine-sous-tension-pour-l-education-nationale-3427923.html"
+    },
+    {
+      "school": "lycee-professionnel-auguste-behal-lens",
+      "date": "2026-10-05",
+      "sourceName": "Le Dauphiné Libéré",
+      "sourceUrl": "https://www.ledauphine.com/faits-divers-justice/2026/10/05/blocus-des-lycees-a-lens-un-eleve-de-15-ans-a-eu-la-main-arrachee-a-cause-d-une-grenade"
+    },
+    {
+      "school": "lycee-auguste-behal-lens",
+      "date": "2026-10-05",
+      "sourceName": "Le Dauphiné Libéré",
+      "sourceUrl": "https://www.ledauphine.com/faits-divers-justice/2026/10/05/blocus-des-lycees-a-lens-un-eleve-de-15-ans-a-eu-la-main-arrachee-a-cause-d-une-grenade"
+    }
+  ]
+}
