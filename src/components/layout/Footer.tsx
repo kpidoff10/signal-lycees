@@ -10,6 +10,7 @@ const LINKS = [
   { href: "/mentions-legales", label: "Mentions légales" },
   { href: "/affiches", label: "Affiches à imprimer" },
   { href: "/presse", label: "Presse" },
+  { href: "/statistiques", label: "Statistiques" },
   { href: "/contact", label: "Contact et suppression" },
 ];
 
