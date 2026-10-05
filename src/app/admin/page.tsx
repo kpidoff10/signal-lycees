@@ -154,6 +154,17 @@ export default async function AdminHome() {
             hint={c.secondOpinion.press ? "Quand Jev hésite, GPT publie ou écarte l'article." : "Désactivé : les doutes de Jev arrivent dans Presse."}
             fields={{ scope: "press", enabled: c.secondOpinion.press ? "0" : "1" }}
           />
+          <Toggle
+            action={secondOpinionAction}
+            on={c.secondOpinion.mobilizations}
+            label="Second avis GPT : mobilisations de presse"
+            hint={
+              c.secondOpinion.mobilizations
+                ? "Quand Jev hésite sur un blocage, GPT publie, te laisse valider ou écarte en te prévenant sur Telegram."
+                : "Désactivé : les blocages où Jev hésite arrivent dans Mobilisations."
+            }
+            fields={{ scope: "mobilizations", enabled: c.secondOpinion.mobilizations ? "0" : "1" }}
+          />
         </div>
         <p className="m-0 mt-3 adm-small adm-muted">
           Limitation anti-abus : {c.limiter === "upstash" ? "partagée (Upstash) ✓" : "en mémoire (développement)"}

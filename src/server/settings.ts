@@ -17,8 +17,12 @@ export async function setModerationFrozen(frozen: boolean) {
   });
 }
 
-export type SecondOpinionScope = "issues" | "press";
-const SECOND_OPINION_KEYS: Record<SecondOpinionScope, string> = { issues: "secondOpinionIssues", press: "secondOpinionPress" };
+export type SecondOpinionScope = "issues" | "press" | "mobilizations";
+export const SECOND_OPINION_KEYS: Record<SecondOpinionScope, string> = {
+  issues: "secondOpinionIssues",
+  press: "secondOpinionPress",
+  mobilizations: "secondOpinionMobilizations",
+};
 
 /** Second avis GPT (actif par défaut) : désactivable depuis le tableau de bord. */
 export async function isSecondOpinionEnabled(scope: SecondOpinionScope): Promise<boolean> {

@@ -26,6 +26,6 @@ export async function secondOpinionAction(_prev: ActionState, fd: FormData): Pro
   const admin = await requireAdmin();
   const p = parseForm(secondOpinionSchema, fd);
   if (!p.ok) return { error: p.error };
-  const what = p.data.scope === "issues" ? "signalements" : "revue de presse";
+  const what = { issues: "signalements", press: "revue de presse", mobilizations: "mobilisations de presse" }[p.data.scope];
   return runAction(() => setSecondOpinion(admin.id, p.data.scope, p.data.enabled), `Second avis GPT ${p.data.enabled ? "réactivé" : "désactivé"} (${what}).`);
 }

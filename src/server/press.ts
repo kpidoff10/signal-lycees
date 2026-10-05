@@ -287,7 +287,7 @@ async function ingest(now: Date) {
         continue;
       }
       const school = schoolsById.get(schoolId) ?? "lycée";
-      const gpt = (await isSecondOpinionEnabled("press")) ? await mobilizationOpinion(item, school, scores!.mobilization!) : null;
+      const gpt = (await isSecondOpinionEnabled("mobilizations")) ? await mobilizationOpinion(item, school, scores!.mobilization!) : null;
       const outcome = decideMobilizationWithSecondOpinion(scores!.mobilization!, gpt, d.status);
       if (!outcome) continue;
       if (outcome.action === "REFUSED") {

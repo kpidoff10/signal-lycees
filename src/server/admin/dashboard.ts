@@ -1,13 +1,13 @@
 import "server-only";
 import { prisma } from "@/lib/db";
 import { env } from "@/lib/env";
-import { isModerationFrozen, isSecondOpinionEnabled, setModerationFrozen, setSecondOpinionEnabled, type SecondOpinionScope } from "../settings";
+import { isModerationFrozen, isSecondOpinionEnabled, SECOND_OPINION_KEYS, setModerationFrozen, setSecondOpinionEnabled, type SecondOpinionScope } from "../settings";
 import { adminLog } from "./log";
 import { queueCounts } from "./moderation";
 import { limiterKind } from "../rate-limit";
 
 export async function dashboardCounts() {
-  const [queue, flagged, openReports, pendingRequests, frozen, secondIssues, secondPress, pendingMobs, pendingPress] = await Promise.all([
+  const [queue, flagged, openReports, pendingRequests, frozen, secondIssues, secondPress, secondMobs, pendingMobs, pendingPress] = await Promise.all([
     queueCounts(),
     prisma.issue.count({ where: { flaggedForReview: true, moderationStatus: { in: ["PUBLISHED", "AUTO_APPROVED"] } } }),
     prisma.contentReport.count({ where: { status: "OPEN" } }),
@@ -15,6 +15,7 @@ export async function dashboardCounts() {
     isModerationFrozen(),
     isSecondOpinionEnabled("issues"),
     isSecondOpinionEnabled("press"),
+    isSecondOpinionEnabled("mobilizations"),
     prisma.mobilization.count({ where: { status: "PENDING", expiresAt: { gt: new Date() } } }),
     prisma.pressArticle.count({ where: { status: "PENDING" } }).catch(() => 0),
   ]);
@@ -27,7 +28,7 @@ export async function dashboardCounts() {
     pendingRequests,
     frozen,
     frozenByEnv: env().MODERATION_FREEZE,
-    secondOpinion: { issues: secondIssues, press: secondPress },
+    secondOpinion: { issues: secondIssues, press: secondPress, mobilizations: secondMobs },
     pendingMobs,
     pendingPress,
   };
@@ -53,7 +54,7 @@ export async function setSecondOpinion(adminId: string, scope: SecondOpinionScop
     adminId,
     action: enabled ? "SECOND_OPINION_ON" : "SECOND_OPINION_OFF",
     targetType: "AppSetting",
-    targetId: scope === "issues" ? "secondOpinionIssues" : "secondOpinionPress",
+    targetId: SECOND_OPINION_KEYS[scope],
     before: { enabled: before },
     after: { enabled },
   });
