@@ -54,7 +54,8 @@ export default async function StatistiquesPage() {
             </p>
             <DailyBars data={s.mobilizationsByDay} label="Lycées mobilisés par jour depuis le 30 septembre" />
             <p className="text-[14px] text-ink-muted">
-              Un chiffre plancher : seuls les lycées précisément nommés sont comptés. Quand un rectorat annonce « tous les lycées d’une ville
+              Les week-ends apparaissent à zéro : pas de cours, donc pas de blocus. Un chiffre plancher : seuls les lycées précisément nommés
+              sont comptés. Quand un rectorat annonce « tous les lycées d’une ville
               fermés » sans les nommer, ils ne figurent pas ici.{" "}
               <a href="/api/statistiques/mobilisations" download>Télécharger (CSV)</a>
             </p>

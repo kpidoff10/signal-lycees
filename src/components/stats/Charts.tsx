@@ -7,6 +7,8 @@ const fmtDay = (iso: string) => new Intl.DateTimeFormat("fr-FR", { day: "numeric
 const fmtDayLong = (iso: string) =>
   new Intl.DateTimeFormat("fr-FR", { weekday: "long", day: "numeric", month: "long", timeZone: "UTC" }).format(new Date(`${iso}T12:00:00Z`));
 
+const isWeekend = (iso: string) => [0, 6].includes(new Date(`${iso}T12:00:00Z`).getUTCDay());
+
 /** Arrondi « lisible » au-dessus du maximum, pour les graduations. */
 function niceMax(v: number): number {
   if (v <= 5) return 5;
@@ -87,7 +89,7 @@ function Bars({
           const labelled = d === peak || d === last;
           return (
             <g key={d.day} className="sl-chart-hit">
-              <title>{`${fmtDayLong(d.day)} : ${formatNumber(d.schools)} lycée${d.schools > 1 ? "s" : ""} mobilisé${d.schools > 1 ? "s" : ""}`}</title>
+              <title>{`${fmtDayLong(d.day)} : ${formatNumber(d.schools)} lycée${d.schools > 1 ? "s" : ""} mobilisé${d.schools > 1 ? "s" : ""}${isWeekend(d.day) ? " (week-end, pas de cours)" : ""}`}</title>
               {/* Zone de survol plus large que la barre. */}
               <rect x={pad.left + i * step} y={pad.top} width={step} height={innerH} fill="transparent" />
               {h > 0 && <path d={roundedTop(x, y(0) - h, barW, h, Math.min(4, barW / 2))} className="sl-chart-bar" />}
