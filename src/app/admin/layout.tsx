@@ -2,10 +2,12 @@ import type { Metadata } from "next";
 import type { ReactNode } from "react";
 import { prisma } from "@/lib/db";
 import { getAdminSession } from "@/server/admin/auth";
+import { syncState } from "@/server/admin/imports";
 import { queueCounts } from "@/server/admin/moderation";
 import Link from "next/link";
 import { Icon } from "@/components/ui/Icon";
 import { AdminNav } from "./_components/AdminNav";
+import { SyncBanner } from "./_components/SyncBanner";
 import { logoutAction } from "./actions";
 import "./admin.css";
 
@@ -34,6 +36,7 @@ export default async function AdminLayout({ children }: { children: ReactNode })
     : null;
 
   if (!session || !counts) return <div className="adm container-page">{children}</div>;
+  const sync = await syncState().catch(() => ({ running: [], finished: [] }));
 
   const logoutForm = (
     <form action={logoutAction}>
@@ -81,7 +84,10 @@ export default async function AdminLayout({ children }: { children: ReactNode })
           </Link>
         </div>
       </aside>
-      <main className="adm-main">{children}</main>
+      <main className="adm-main">
+        <SyncBanner initial={{ running: sync.running, finished: [] }} />
+        {children}
+      </main>
     </div>
   );
 }

@@ -255,8 +255,10 @@ a.adm-row:hover { border-color: var(--border-strong); }
 .adm-burger { display: none; }
 .adm-nav-foot { display: none; }
 @media (max-width: 1023px) {
-  .adm-side { padding-bottom: var(--space-3); }
-  .adm-burger { position: absolute; top: 10px; right: var(--space-4); display: inline-flex; align-items: center; gap: 8px; height: 44px; padding: 0 14px; border-radius: var(--radius-pill); border: 1px solid var(--border); background: var(--surface); font: inherit; font-size: 15px; font-weight: 700; color: var(--ink); cursor: pointer; }
+  /* Logo et bouton Menu sur une même ligne, centrés verticalement ; le panneau s'ouvre sous la barre. */
+  .adm-side { display: flex; align-items: center; gap: var(--space-3); padding: var(--space-3) var(--space-4); }
+  .adm-brand-row { flex: 1; min-width: 0; }
+  .adm-burger { flex: none; display: inline-flex; align-items: center; gap: 8px; height: 44px; padding: 0 14px; border-radius: var(--radius-pill); border: 1px solid var(--border); background: var(--surface); font: inherit; font-size: 15px; font-weight: 700; color: var(--ink); cursor: pointer; }
   .adm-burger[aria-expanded="true"] { background: var(--surface-sunken); }
   .adm-burger .adm-count { min-width: 22px; height: 22px; padding: 0 6px; border-radius: var(--radius-pill); background: var(--signal); color: var(--on-signal); font-size: 12px; line-height: 22px; text-align: center; font-variant-numeric: tabular-nums; }
   .adm-nav { display: none; }
@@ -271,3 +273,13 @@ a.adm-row:hover { border-color: var(--border-strong); }
   .adm-nav.is-open .adm-nav-foot .adm-logout-label { position: static; width: auto; height: auto; clip: auto; }
 }
 @media (max-width: 430px) { .adm-brand-tag { display: none; } }
+
+/* Bandeau de synchronisation (en cours, terminée, échec) */
+.adm-sync { position: sticky; top: var(--space-2); z-index: 15; display: flex; align-items: flex-start; gap: var(--space-3); margin-bottom: var(--space-4); padding: var(--space-3) var(--space-4); border-radius: var(--radius-lg); border: 1px solid var(--border); background: var(--surface); box-shadow: 0 10px 24px -16px var(--scrim); font-size: 15px; }
+.adm-sync.is-running { border-color: var(--focus); }
+.adm-sync.is-done { border-color: var(--resolved); background: var(--resolved-soft); }
+.adm-sync.is-error { border-color: var(--signal); background: var(--signal-soft); }
+.adm-sync-line { display: block; }
+.adm-sync-hint { display: block; font-size: 13px; color: var(--ink-muted); }
+.adm-sync-spinner { flex: none; width: 18px; height: 18px; margin-top: 2px; border-radius: 50%; border: 2.5px solid var(--border); border-top-color: var(--focus); animation: sl-spin .8s linear infinite; }
+@media (max-width: 1023px) { .adm-sync { top: 76px; } }
