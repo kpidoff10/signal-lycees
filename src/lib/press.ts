@@ -1,4 +1,5 @@
 // Revue de presse : lecture des flux RSS et règles de décision (fonctions pures, testées).
+import { z } from "zod";
 
 export interface FeedItem {
   title: string;
@@ -49,6 +50,43 @@ export function fold(s: string): string {
 
 function foldCased(s: string): string {
   return ` ${s.normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/[^A-Za-z0-9]+/g, " ").trim()} `;
+}
+
+/**
+ * Titre qui annonce une liste d'établissements fermés ou bloqués (« Quels lycées sont fermés lundi ? »,
+ * « 27 établissements fermés », « Voici les lycées bloqués ») : l'article est alors lu pour en tirer la liste.
+ */
+export function announcesSchoolList(title: string): boolean {
+  const t = fold(title);
+  const shut = /\s(fermes?|fermees?|fermeture|bloques?|bloquees?|distance|distanciel)\s/.test(t);
+  const many = /\s(quels?|quelles?|liste|voici|\d+|dizaine|six|sept|huit|neuf|dix|onze|douze|plusieurs)\s(\S+\s){0,4}(lycees|etablissements)\s/.test(t);
+  return shut && many;
+}
+
+const listSchema = z.object({
+  url: z.string().url(),
+  date: z.string().regex(/^\d{4}-\d{2}-\d{2}$/),
+  schools: z.array(z.object({ name: z.string().min(2).max(120), city: z.string().min(2).max(80) })).max(200),
+});
+export type SchoolList = z.infer<typeof listSchema>;
+
+/**
+ * Lit la réponse JSON du modèle (blocs de code tolérés). Prudence : l'URL doit faire partie des sources
+ * citées, et la date de fermeture tomber entre la veille de la parution et quatre jours après.
+ */
+export function parseSchoolList(text: string, citedUrls: string[], publishedAt: Date): SchoolList | null {
+  const json = text.slice(text.indexOf("{"), text.lastIndexOf("}") + 1);
+  let parsed: SchoolList;
+  try {
+    parsed = listSchema.parse(JSON.parse(json));
+  } catch {
+    return null;
+  }
+  if (!citedUrls.includes(parsed.url)) return null;
+  const day = Date.parse(`${parsed.date}T12:00:00Z`);
+  const from = publishedAt.getTime() - 36 * 3600_000;
+  if (!(day >= from && day <= publishedAt.getTime() + 4 * 86400_000)) return null;
+  return parsed;
 }
 
 /** Premier tri, sans IA : le titre doit parler de lycée(s) ou de lycéens. */

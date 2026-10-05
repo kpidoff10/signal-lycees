@@ -5,7 +5,7 @@ import { requireAdmin } from "@/server/admin/auth";
 import { listMobilizations } from "@/server/admin/mobilizations";
 import { ActionForm } from "../_components/ActionForm";
 import { Badge, Empty, formatDate, formatDateTime, PageHeader, Submit } from "../_components/ui";
-import { addAction, approveAction, endAction, rejectAction } from "./actions";
+import { addAction, approveAction, approveListAction, endAction, rejectAction } from "./actions";
 
 export const metadata: Metadata = { title: "Mobilisations" };
 export const dynamic = "force-dynamic";
@@ -17,6 +17,8 @@ export default async function MobilizationsPage() {
   const { pending, active, recent } = await listMobilizations();
   const ttl = env().MOBILIZATION_TTL_HOURS;
   const today = new Date().toISOString().slice(0, 10);
+  // Listes de lycées fermés tirées d'un même article : validables d'un coup.
+  const lists = [...Map.groupBy(pending.filter((m) => m.origin === "PRESS" && m.sourceUrl), (m) => m.sourceUrl!)].filter(([, ms]) => ms.length > 1);
 
   return (
     <div className="grid gap-8">
@@ -27,6 +29,21 @@ export default async function MobilizationsPage() {
 
       <section>
         <h2 className="adm-h2">À valider ({pending.length})</h2>
+        {lists.map(([url, [first, ...rest]]) => (
+          <ActionForm key={url} action={approveListAction} className="adm-form">
+            <input type="hidden" name="sourceUrl" value={url} />
+            <p className="m-0 adm-small">
+              Liste de {rest.length + 1} lycées le {formatDate(first!.happenedOn)} :{" "}
+              <a href={url} className="link" target="_blank" rel="noopener noreferrer">
+                {first!.sourceName ?? "article"}
+              </a>{" "}
+              (vérifie l’article, puis refuse un par un ceux qui seraient mal reconnus)
+            </p>
+            <div className="adm-actions">
+              <Submit>Publier les {rest.length + 1} lycées de cette liste</Submit>
+            </div>
+          </ActionForm>
+        ))}
         {pending.length === 0 ? (
           <Empty>Aucune mobilisation en attente (élèves ou presse).</Empty>
         ) : (

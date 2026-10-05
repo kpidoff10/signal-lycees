@@ -46,6 +46,16 @@ export async function approveMobilization(adminId: string, id: string, reasons: 
   await change(adminId, id, "MOBILIZATION_APPROVE", { status: "PUBLISHED", reasons });
 }
 
+/** Publie d'un coup toutes les mobilisations en attente tirées d'un même article (liste de lycées fermés). */
+export async function approveMobilizationsFromSource(adminId: string, sourceUrl: string) {
+  await prisma.$transaction(async (tx) => {
+    const ids = (await tx.mobilization.findMany({ where: { status: "PENDING", origin: "PRESS", sourceUrl }, select: { id: true } })).map((m) => m.id);
+    if (!ids.length) throw new AdminError("Plus rien à valider pour cette liste.");
+    await tx.mobilization.updateMany({ where: { id: { in: ids } }, data: { status: "PUBLISHED", reviewedAt: new Date() } });
+    await adminLog(tx, { adminId, action: "MOBILIZATION_APPROVE_LIST", targetType: "Mobilization", targetId: ids[0], before: { status: "PENDING" }, after: { status: "PUBLISHED", count: ids.length, sourceUrl } });
+  });
+}
+
 export async function rejectMobilization(adminId: string, id: string) {
   await change(adminId, id, "MOBILIZATION_REJECT", { status: "REJECTED" });
 }

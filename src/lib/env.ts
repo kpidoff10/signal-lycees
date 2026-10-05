@@ -22,6 +22,8 @@ const serverSchema = z.object({
   VERCEL_OIDC_TOKEN: optional,
   JEV_GATEWAY_MODEL: z.string().default("typesafe-ai/jev"),
   PRESS_SECOND_MODEL: z.string().default("openai/gpt-5-mini"),
+  // Modèle avec recherche web qui lit les listes de lycées fermés publiées par la presse.
+  PRESS_LIST_MODEL: z.string().default("perplexity/sonar"),
   SECOND_OPINION_MODEL: z.string().default("openai/gpt-5-mini"),
   SECOND_OPINION_DAILY_LIMIT: z.coerce.number().int().positive().default(300),
   TYPESAFE_API_KEY: optional,

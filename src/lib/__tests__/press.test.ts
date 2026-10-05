@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { decidePress, decidePressMobilization, decideWithSecondOpinion, matchPlaces, mentionsHighSchool, parseRss } from "../press";
+import { announcesSchoolList, decidePress, decidePressMobilization, decideWithSecondOpinion, matchPlaces, mentionsHighSchool, parseRss, parseSchoolList } from "../press";
 
 const rss = `<?xml version="1.0"?><rss><channel>
 <item><title>Blocus au lycée Ampère : les élèves réclament des moyens - Lyon Capitale</title>
@@ -75,5 +75,22 @@ describe("revue de presse", () => {
     expect(decidePressMobilization(0.3, "PUBLISHED")).toBeNull();
     expect(decidePressMobilization(0.95, "REJECTED")).toBeNull();
     expect(decidePressMobilization(undefined, "PUBLISHED")).toBeNull();
+  });
+  it("repère les titres qui annoncent une liste de lycées fermés", () => {
+    expect(announcesSchoolList("Quels lycées sont fermés lundi 5 octobre dans les Alpes-Maritimes ?")).toBe(true);
+    expect(announcesSchoolList("Mouvement lycéen : 27 établissements de l'Eure et de la Seine-Maritime fermés lundi")).toBe(true);
+    expect(announcesSchoolList("Blocage des lycées. Dans le Morbihan, six établissements seront fermés ce lundi 5 octobre")).toBe(true);
+    expect(announcesSchoolList("Voici les 10 lycées de Bordeaux et la métropole qui sont fermés aujourd'hui")).toBe(true);
+    expect(announcesSchoolList("Blocus au lycée Ampère : les élèves réclament des moyens")).toBe(false);
+    expect(announcesSchoolList("Quels lycées ont les meilleurs résultats au bac ?")).toBe(false);
+  });
+  it("lit une liste seulement si l'article est cité et la date plausible", () => {
+    const url = "https://www.ouest-france.fr/a";
+    const json = `\`\`\`json\n{"url":"${url}","date":"2026-10-05","schools":[{"name":"Charles-de-Gaulle","city":"Vannes"}]}\n\`\`\``;
+    const pub = new Date("2026-10-03T18:00:00Z");
+    expect(parseSchoolList(json, [url], pub)?.schools).toEqual([{ name: "Charles-de-Gaulle", city: "Vannes" }]);
+    expect(parseSchoolList(json, ["https://autre.fr"], pub)).toBeNull(); // URL inventée
+    expect(parseSchoolList(json, [url], new Date("2026-09-20T10:00:00Z"))).toBeNull(); // date trop éloignée
+    expect(parseSchoolList("Je n'ai pas trouvé l'article.", [url], pub)).toBeNull();
   });
 });

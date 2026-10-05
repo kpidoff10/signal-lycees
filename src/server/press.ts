@@ -1,7 +1,8 @@
 // Revue de presse automatique : flux RSS → tri par mots-clés → vérification par Jev → publication,
 // sinon second avis (GPT) pour départager, et mise en attente pour la modération si le doute demeure. On ne reprend que le titre, la source,
 // la date et le lien : jamais le contenu des articles. Un titre qui rapporte un blocus dans un lycée précis
-// devient aussi une mobilisation 📣 (publiée si Jev est sûr, sinon à valider dans /admin/mobilisations).
+// devient aussi une mobilisation 📣 (publiée si Jev est sûr, sinon à valider dans /admin/mobilisations) ;
+// un titre qui annonce une liste de lycées fermés est lu par press-lists.ts.
 import "server-only";
 import { after } from "next/server";
 import { z } from "zod";
@@ -9,6 +10,7 @@ import { prisma } from "@/lib/db";
 import { env } from "@/lib/env";
 import { expiryFor, startOfDay } from "@/lib/mobilization";
 import {
+  announcesSchoolList,
   decidePress,
   decidePressMobilization,
   decideWithSecondOpinion,
@@ -22,6 +24,7 @@ import {
   type SecondOpinion,
 } from "@/lib/press";
 import { directory } from "./places";
+import { importSchoolList } from "./press-lists";
 import { notify } from "./notify";
 import { isSecondOpinionEnabled } from "./settings";
 
@@ -40,6 +43,7 @@ export const PRESS_FEEDS: { id: string; url: string; source: string }[] = [
 const LAST_RUN_KEY = "pressLastRun";
 const MAX_JEV_PER_RUN = 40;
 const MAX_AGE_DAYS = 10;
+const MAX_LISTS_PER_RUN = 5;
 
 async function fetchFeed(f: (typeof PRESS_FEEDS)[number]): Promise<FeedItem[]> {
   try {
@@ -215,6 +219,7 @@ async function ingest(now: Date) {
   const cities = await cityRefs();
   const counts = { PUBLISHED: 0, PENDING: 0, REJECTED: 0 };
   const mobilizations = { PUBLISHED: 0, PENDING: 0 };
+  const lists = { read: 0, created: 0 };
   for (const item of fresh) {
     const scores = await scoreWithJev(item);
     const d = await judge(item, scores);
@@ -239,9 +244,13 @@ async function ingest(now: Date) {
     counts[d.status]++;
     const m = decidePressMobilization(scores?.mobilization, d.status);
     if (m) for (const schoolId of places.schoolIds) if (await addPressMobilization(schoolId, m, item, now)) mobilizations[m]++;
+    if (d.status !== "REJECTED" && lists.read < MAX_LISTS_PER_RUN && announcesSchoolList(item.title)) {
+      lists.read++;
+      lists.created += (await importSchoolList(item, cities, now))?.created ?? 0;
+    }
   }
   if (counts.PENDING) notify({ type: "press", pending: counts.PENDING });
-  return { fetched: all.length, candidates: candidates.length, added: fresh.length, ...counts, mobilizations };
+  return { fetched: all.length, candidates: candidates.length, added: fresh.length, ...counts, mobilizations, lists };
 }
 
 const AUTO_BATCH = "presse-auto";

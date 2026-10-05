@@ -4,7 +4,7 @@ import { z } from "zod";
 import { cleanUserText } from "@/lib/text";
 import { requireAdmin } from "@/server/admin/auth";
 import { idSchema, parseForm, type ActionState } from "@/server/admin/forms";
-import { addMobilization, approveMobilization, endMobilization, rejectMobilization } from "@/server/admin/mobilizations";
+import { addMobilization, approveMobilization, approveMobilizationsFromSource, endMobilization, rejectMobilization } from "@/server/admin/mobilizations";
 import { runAction } from "@/server/admin/run";
 
 const reasons = z
@@ -28,6 +28,15 @@ export async function approveAction(_prev: ActionState, fd: FormData): Promise<A
   const p = parseForm(approveSchema, fd);
   if (!p.ok) return { error: p.error };
   return runAction(() => approveMobilization(admin.id, p.data.id, p.data.reasons || null), "Mobilisation publiée.");
+}
+
+const sourceOnly = z.object({ sourceUrl: z.string().trim().url().max(500) });
+
+export async function approveListAction(_prev: ActionState, fd: FormData): Promise<ActionState> {
+  const admin = await requireAdmin();
+  const p = parseForm(sourceOnly, fd);
+  if (!p.ok) return { error: p.error };
+  return runAction(() => approveMobilizationsFromSource(admin.id, p.data.sourceUrl), "Liste publiée.");
 }
 
 export async function rejectAction(_prev: ActionState, fd: FormData): Promise<ActionState> {
