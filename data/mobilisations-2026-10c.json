@@ -1,0 +1,1632 @@
+{
+  "batch": "mobilisations-2026-10c",
+  "note": "Lycées bloqués, mobilisés ou fermés à cause du mouvement lycéen le lundi 5 octobre 2026, nommés dans la presse (recherche par régions). Affichés 72 h. Retrait : npm run import:remove-mobilizations -- mobilisations-2026-10c",
+  "mobilizations": [
+    {
+      "school": "lycee-augustin-fresnel-caen",
+      "date": "2026-10-05",
+      "sourceName": "France 3 Normandie",
+      "sourceUrl": "https://france3-regions.franceinfo.fr/normandie/seine-maritime/rouen/blocages-des-lycees-34-etablissements-fermes-lundi-5-octobre-en-normandie-y-en-a-t-il-pres-de-chez-vous-3427251.html"
+    },
+    {
+      "school": "lycee-francois-de-malherbe-caen",
+      "date": "2026-10-05",
+      "sourceName": "France 3 Normandie",
+      "sourceUrl": "https://france3-regions.franceinfo.fr/normandie/seine-maritime/rouen/blocages-des-lycees-34-etablissements-fermes-lundi-5-octobre-en-normandie-y-en-a-t-il-pres-de-chez-vous-3427251.html"
+    },
+    {
+      "school": "lycee-jean-rostand-caen",
+      "date": "2026-10-05",
+      "sourceName": "France 3 Normandie",
+      "sourceUrl": "https://france3-regions.franceinfo.fr/normandie/seine-maritime/rouen/blocages-des-lycees-34-etablissements-fermes-lundi-5-octobre-en-normandie-y-en-a-t-il-pres-de-chez-vous-3427251.html"
+    },
+    {
+      "school": "lycee-laplace-dumont-d-urville-caen",
+      "date": "2026-10-05",
+      "sourceName": "France 3 Normandie",
+      "sourceUrl": "https://france3-regions.franceinfo.fr/normandie/seine-maritime/rouen/blocages-des-lycees-34-etablissements-fermes-lundi-5-octobre-en-normandie-y-en-a-t-il-pres-de-chez-vous-3427251.html"
+    },
+    {
+      "school": "lycee-salvador-allende-herouville-saint-clair",
+      "date": "2026-10-05",
+      "sourceName": "France 3 Normandie",
+      "sourceUrl": "https://france3-regions.franceinfo.fr/normandie/seine-maritime/rouen/blocages-des-lycees-34-etablissements-fermes-lundi-5-octobre-en-normandie-y-en-a-t-il-pres-de-chez-vous-3427251.html"
+    },
+    {
+      "school": "lycee-andre-maurois-deauville",
+      "date": "2026-10-05",
+      "sourceName": "Tendance Ouest",
+      "sourceUrl": "https://www.tendanceouest.com/actualite-443070-mouvement-lyceen-quels-lycees-seront-fermes-lundi-5-octobre-dans-le-calvados-l-eure-et-la-seine-maritime"
+    },
+    {
+      "school": "lycee-jean-guehenno-flers",
+      "date": "2026-10-05",
+      "sourceName": "France 3 Normandie",
+      "sourceUrl": "https://france3-regions.franceinfo.fr/normandie/seine-maritime/rouen/blocages-des-lycees-34-etablissements-fermes-lundi-5-octobre-en-normandie-y-en-a-t-il-pres-de-chez-vous-3427251.html"
+    },
+    {
+      "school": "lycee-augustin-fresnel-bernay",
+      "date": "2026-10-05",
+      "sourceName": "Tendance Ouest",
+      "sourceUrl": "https://www.tendanceouest.com/actualite-443070-mouvement-lyceen-quels-lycees-seront-fermes-lundi-5-octobre-dans-le-calvados-l-eure-et-la-seine-maritime"
+    },
+    {
+      "school": "lycee-leopold-sedar-senghor-evreux",
+      "date": "2026-10-05",
+      "sourceName": "ICI Normandie",
+      "sourceUrl": "https://www.ici.fr/normandie/eure-27/mouvement-lyceen-28-etablissements-de-l-eure-et-de-la-seine-maritime-fermes-lundi-2757622"
+    },
+    {
+      "school": "lycee-general-et-technologique-aristide-briand-evreux",
+      "date": "2026-10-05",
+      "sourceName": "ICI Normandie",
+      "sourceUrl": "https://www.ici.fr/normandie/eure-27/mouvement-lyceen-28-etablissements-de-l-eure-et-de-la-seine-maritime-fermes-lundi-2757622"
+    },
+    {
+      "school": "lycee-louis-modeste-leroy-evreux",
+      "date": "2026-10-05",
+      "sourceName": "ICI Normandie",
+      "sourceUrl": "https://www.ici.fr/normandie/eure-27/mouvement-lyceen-28-etablissements-de-l-eure-et-de-la-seine-maritime-fermes-lundi-2757622"
+    },
+    {
+      "school": "lycee-polyvalent-les-fontenelles-louviers",
+      "date": "2026-10-05",
+      "sourceName": "ICI Normandie",
+      "sourceUrl": "https://www.ici.fr/normandie/eure-27/mouvement-lyceen-28-etablissements-de-l-eure-et-de-la-seine-maritime-fermes-lundi-2757622"
+    },
+    {
+      "school": "lycee-de-la-vallee-du-cailly-deville-les-rouen",
+      "date": "2026-10-05",
+      "sourceName": "France 3 Normandie",
+      "sourceUrl": "https://france3-regions.franceinfo.fr/normandie/seine-maritime/rouen/blocages-des-lycees-34-etablissements-fermes-lundi-5-octobre-en-normandie-y-en-a-t-il-pres-de-chez-vous-3427251.html"
+    },
+    {
+      "school": "lycee-andre-maurois-elbeuf",
+      "date": "2026-10-05",
+      "sourceName": "France 3 Normandie",
+      "sourceUrl": "https://france3-regions.franceinfo.fr/normandie/seine-maritime/rouen/blocages-des-lycees-34-etablissements-fermes-lundi-5-octobre-en-normandie-y-en-a-t-il-pres-de-chez-vous-3427251.html"
+    },
+    {
+      "school": "lycee-des-metiers-ferdinand-buisson-elbeuf",
+      "date": "2026-10-05",
+      "sourceName": "France 3 Normandie",
+      "sourceUrl": "https://france3-regions.franceinfo.fr/normandie/seine-maritime/rouen/blocages-des-lycees-34-etablissements-fermes-lundi-5-octobre-en-normandie-y-en-a-t-il-pres-de-chez-vous-3427251.html"
+    },
+    {
+      "school": "lycee-professionnel-fernand-leger-grand-couronne",
+      "date": "2026-10-05",
+      "sourceName": "France 3 Normandie",
+      "sourceUrl": "https://france3-regions.franceinfo.fr/normandie/seine-maritime/rouen/blocages-des-lycees-34-etablissements-fermes-lundi-5-octobre-en-normandie-y-en-a-t-il-pres-de-chez-vous-3427251.html"
+    },
+    {
+      "school": "lycee-val-de-seine-le-grand-quevilly",
+      "date": "2026-10-05",
+      "sourceName": "France 3 Normandie",
+      "sourceUrl": "https://france3-regions.franceinfo.fr/normandie/seine-maritime/rouen/blocages-des-lycees-34-etablissements-fermes-lundi-5-octobre-en-normandie-y-en-a-t-il-pres-de-chez-vous-3427251.html"
+    },
+    {
+      "school": "lycee-professionnel-bernard-palissy-maromme",
+      "date": "2026-10-05",
+      "sourceName": "France 3 Normandie",
+      "sourceUrl": "https://france3-regions.franceinfo.fr/normandie/seine-maritime/rouen/blocages-des-lycees-34-etablissements-fermes-lundi-5-octobre-en-normandie-y-en-a-t-il-pres-de-chez-vous-3427251.html"
+    },
+    {
+      "school": "lycee-professionnel-jean-baptiste-colbert-le-petit-quevilly",
+      "date": "2026-10-05",
+      "sourceName": "France 3 Normandie",
+      "sourceUrl": "https://france3-regions.franceinfo.fr/normandie/seine-maritime/rouen/blocages-des-lycees-34-etablissements-fermes-lundi-5-octobre-en-normandie-y-en-a-t-il-pres-de-chez-vous-3427251.html"
+    },
+    {
+      "school": "lycee-elisa-lemonnier-le-petit-quevilly",
+      "date": "2026-10-05",
+      "sourceName": "France 3 Normandie",
+      "sourceUrl": "https://france3-regions.franceinfo.fr/normandie/seine-maritime/rouen/blocages-des-lycees-34-etablissements-fermes-lundi-5-octobre-en-normandie-y-en-a-t-il-pres-de-chez-vous-3427251.html"
+    },
+    {
+      "school": "lycee-blaise-pascal-rouen",
+      "date": "2026-10-05",
+      "sourceName": "France 3 Normandie",
+      "sourceUrl": "https://france3-regions.franceinfo.fr/normandie/seine-maritime/rouen/blocages-des-lycees-34-etablissements-fermes-lundi-5-octobre-en-normandie-y-en-a-t-il-pres-de-chez-vous-3427251.html"
+    },
+    {
+      "school": "lycee-camille-saint-saens-rouen",
+      "date": "2026-10-05",
+      "sourceName": "France 3 Normandie",
+      "sourceUrl": "https://france3-regions.franceinfo.fr/normandie/seine-maritime/rouen/blocages-des-lycees-34-etablissements-fermes-lundi-5-octobre-en-normandie-y-en-a-t-il-pres-de-chez-vous-3427251.html"
+    },
+    {
+      "school": "lycee-gustave-flaubert-rouen",
+      "date": "2026-10-05",
+      "sourceName": "France 3 Normandie",
+      "sourceUrl": "https://france3-regions.franceinfo.fr/normandie/seine-maritime/rouen/blocages-des-lycees-34-etablissements-fermes-lundi-5-octobre-en-normandie-y-en-a-t-il-pres-de-chez-vous-3427251.html"
+    },
+    {
+      "school": "lycee-le-corbusier-saint-etienne-du-rouvray",
+      "date": "2026-10-05",
+      "sourceName": "France 3 Normandie",
+      "sourceUrl": "https://france3-regions.franceinfo.fr/normandie/seine-maritime/rouen/blocages-des-lycees-34-etablissements-fermes-lundi-5-octobre-en-normandie-y-en-a-t-il-pres-de-chez-vous-3427251.html"
+    },
+    {
+      "school": "lycee-les-bruyeres-sotteville-les-rouen",
+      "date": "2026-10-05",
+      "sourceName": "France 3 Normandie",
+      "sourceUrl": "https://france3-regions.franceinfo.fr/normandie/seine-maritime/rouen/blocages-des-lycees-34-etablissements-fermes-lundi-5-octobre-en-normandie-y-en-a-t-il-pres-de-chez-vous-3427251.html"
+    },
+    {
+      "school": "lycee-marcel-sembat-sotteville-les-rouen",
+      "date": "2026-10-05",
+      "sourceName": "France 3 Normandie",
+      "sourceUrl": "https://france3-regions.franceinfo.fr/normandie/seine-maritime/rouen/blocages-des-lycees-34-etablissements-fermes-lundi-5-octobre-en-normandie-y-en-a-t-il-pres-de-chez-vous-3427251.html"
+    },
+    {
+      "school": "lycee-claude-monet-le-havre",
+      "date": "2026-10-05",
+      "sourceName": "France 3 Normandie",
+      "sourceUrl": "https://france3-regions.franceinfo.fr/normandie/seine-maritime/rouen/blocages-des-lycees-34-etablissements-fermes-lundi-5-octobre-en-normandie-y-en-a-t-il-pres-de-chez-vous-3427251.html"
+    },
+    {
+      "school": "lycee-francois-1er-le-havre",
+      "date": "2026-10-05",
+      "sourceName": "France 3 Normandie",
+      "sourceUrl": "https://france3-regions.franceinfo.fr/normandie/seine-maritime/rouen/blocages-des-lycees-34-etablissements-fermes-lundi-5-octobre-en-normandie-y-en-a-t-il-pres-de-chez-vous-3427251.html"
+    },
+    {
+      "school": "lycee-francoise-de-grace-le-havre",
+      "date": "2026-10-05",
+      "sourceName": "France 3 Normandie",
+      "sourceUrl": "https://france3-regions.franceinfo.fr/normandie/seine-maritime/rouen/blocages-des-lycees-34-etablissements-fermes-lundi-5-octobre-en-normandie-y-en-a-t-il-pres-de-chez-vous-3427251.html"
+    },
+    {
+      "school": "lycee-jules-le-cesne-le-havre",
+      "date": "2026-10-05",
+      "sourceName": "France 3 Normandie",
+      "sourceUrl": "https://france3-regions.franceinfo.fr/normandie/seine-maritime/rouen/blocages-des-lycees-34-etablissements-fermes-lundi-5-octobre-en-normandie-y-en-a-t-il-pres-de-chez-vous-3427251.html"
+    },
+    {
+      "school": "lycee-general-et-technologique-jules-siegfried-le-havre",
+      "date": "2026-10-05",
+      "sourceName": "France 3 Normandie",
+      "sourceUrl": "https://france3-regions.franceinfo.fr/normandie/seine-maritime/rouen/blocages-des-lycees-34-etablissements-fermes-lundi-5-octobre-en-normandie-y-en-a-t-il-pres-de-chez-vous-3427251.html"
+    },
+    {
+      "school": "lycee-antoine-laurent-de-lavoisier-le-havre",
+      "date": "2026-10-05",
+      "sourceName": "France 3 Normandie",
+      "sourceUrl": "https://france3-regions.franceinfo.fr/normandie/seine-maritime/rouen/blocages-des-lycees-34-etablissements-fermes-lundi-5-octobre-en-normandie-y-en-a-t-il-pres-de-chez-vous-3427251.html"
+    },
+    {
+      "school": "lycee-porte-oceane-le-havre",
+      "date": "2026-10-05",
+      "sourceName": "France 3 Normandie",
+      "sourceUrl": "https://france3-regions.franceinfo.fr/normandie/seine-maritime/rouen/blocages-des-lycees-34-etablissements-fermes-lundi-5-octobre-en-normandie-y-en-a-t-il-pres-de-chez-vous-3427251.html"
+    },
+    {
+      "school": "lycee-schuman-perret-le-havre",
+      "date": "2026-10-05",
+      "sourceName": "France 3 Normandie",
+      "sourceUrl": "https://france3-regions.franceinfo.fr/normandie/seine-maritime/rouen/blocages-des-lycees-34-etablissements-fermes-lundi-5-octobre-en-normandie-y-en-a-t-il-pres-de-chez-vous-3427251.html"
+    },
+    {
+      "school": "lycee-jean-prevost-montivilliers",
+      "date": "2026-10-05",
+      "sourceName": "France 3 Normandie",
+      "sourceUrl": "https://france3-regions.franceinfo.fr/normandie/seine-maritime/rouen/blocages-des-lycees-34-etablissements-fermes-lundi-5-octobre-en-normandie-y-en-a-t-il-pres-de-chez-vous-3427251.html"
+    },
+    {
+      "school": "lycee-professionnel-et-sgt-coetlogon-rennes",
+      "date": "2026-10-05",
+      "sourceName": "ICI Bretagne",
+      "sourceUrl": "https://www.ici.fr/bretagne/ille-et-vilaine-35/mouvement-lyceen-24-lycees-portes-closes-lundi-en-ille-et-vilaine-8846259"
+    },
+    {
+      "school": "lycee-brequigny-rennes",
+      "date": "2026-10-05",
+      "sourceName": "ICI Bretagne",
+      "sourceUrl": "https://www.ici.fr/bretagne/ille-et-vilaine-35/mouvement-lyceen-24-lycees-portes-closes-lundi-en-ille-et-vilaine-8846259"
+    },
+    {
+      "school": "lycee-professionnel-charles-tillon-rennes",
+      "date": "2026-10-05",
+      "sourceName": "ICI Bretagne",
+      "sourceUrl": "https://www.ici.fr/bretagne/ille-et-vilaine-35/mouvement-lyceen-24-lycees-portes-closes-lundi-en-ille-et-vilaine-8846259"
+    },
+    {
+      "school": "lycee-professionnel-jean-jaures-rennes",
+      "date": "2026-10-05",
+      "sourceName": "ICI Bretagne",
+      "sourceUrl": "https://www.ici.fr/bretagne/ille-et-vilaine-35/mouvement-lyceen-24-lycees-portes-closes-lundi-en-ille-et-vilaine-8846259"
+    },
+    {
+      "school": "lycee-polyvalent-pierre-mendes-france-rennes",
+      "date": "2026-10-05",
+      "sourceName": "ICI Bretagne",
+      "sourceUrl": "https://www.ici.fr/bretagne/ille-et-vilaine-35/mouvement-lyceen-24-lycees-portes-closes-lundi-en-ille-et-vilaine-8846259"
+    },
+    {
+      "school": "lycee-emile-zola-rennes",
+      "date": "2026-10-05",
+      "sourceName": "ICI Bretagne",
+      "sourceUrl": "https://www.ici.fr/bretagne/ille-et-vilaine-35/mouvement-lyceen-24-lycees-portes-closes-lundi-en-ille-et-vilaine-8846259"
+    },
+    {
+      "school": "lycee-jean-mace-rennes",
+      "date": "2026-10-05",
+      "sourceName": "ICI Bretagne",
+      "sourceUrl": "https://www.ici.fr/bretagne/ille-et-vilaine-35/mouvement-lyceen-24-lycees-portes-closes-lundi-en-ille-et-vilaine-8846259"
+    },
+    {
+      "school": "lycee-victor-et-helene-basch-rennes",
+      "date": "2026-10-05",
+      "sourceName": "ICI Bretagne",
+      "sourceUrl": "https://www.ici.fr/bretagne/ille-et-vilaine-35/mouvement-lyceen-24-lycees-portes-closes-lundi-en-ille-et-vilaine-8846259"
+    },
+    {
+      "school": "lycee-chateaubriand-rennes",
+      "date": "2026-10-05",
+      "sourceName": "ICI Bretagne",
+      "sourceUrl": "https://www.ici.fr/bretagne/ille-et-vilaine-35/mouvement-lyceen-24-lycees-portes-closes-lundi-en-ille-et-vilaine-8846259"
+    },
+    {
+      "school": "lycee-joliot-curie-rennes",
+      "date": "2026-10-05",
+      "sourceName": "ICI Bretagne",
+      "sourceUrl": "https://www.ici.fr/bretagne/ille-et-vilaine-35/mouvement-lyceen-24-lycees-portes-closes-lundi-en-ille-et-vilaine-8846259"
+    },
+    {
+      "school": "lycee-professionnel-louis-guilloux-rennes",
+      "date": "2026-10-05",
+      "sourceName": "ICI Bretagne",
+      "sourceUrl": "https://www.ici.fr/bretagne/ille-et-vilaine-35/mouvement-lyceen-24-lycees-portes-closes-lundi-en-ille-et-vilaine-8846259"
+    },
+    {
+      "school": "lycee-rene-descartes-rennes",
+      "date": "2026-10-05",
+      "sourceName": "ICI Bretagne",
+      "sourceUrl": "https://www.ici.fr/bretagne/ille-et-vilaine-35/mouvement-lyceen-24-lycees-portes-closes-lundi-en-ille-et-vilaine-8846259"
+    },
+    {
+      "school": "lycee-de-la-salle-rennes",
+      "date": "2026-10-05",
+      "sourceName": "ICI Bretagne",
+      "sourceUrl": "https://www.ici.fr/bretagne/ille-et-vilaine-35/mouvement-lyceen-24-lycees-portes-closes-lundi-en-ille-et-vilaine-8846259"
+    },
+    {
+      "school": "lycee-saint-martin-quartier-sainte-anne-rennes",
+      "date": "2026-10-05",
+      "sourceName": "ICI Bretagne",
+      "sourceUrl": "https://www.ici.fr/bretagne/ille-et-vilaine-35/mouvement-lyceen-24-lycees-portes-closes-lundi-en-ille-et-vilaine-8846259"
+    },
+    {
+      "school": "lycee-saint-martin-quartier-sainte-genevieve-rennes",
+      "date": "2026-10-05",
+      "sourceName": "ICI Bretagne",
+      "sourceUrl": "https://www.ici.fr/bretagne/ille-et-vilaine-35/mouvement-lyceen-24-lycees-portes-closes-lundi-en-ille-et-vilaine-8846259"
+    },
+    {
+      "school": "lycee-polyvalent-jeanne-d-arc-rennes",
+      "date": "2026-10-05",
+      "sourceName": "ICI Bretagne",
+      "sourceUrl": "https://www.ici.fr/bretagne/ille-et-vilaine-35/mouvement-lyceen-24-lycees-portes-closes-lundi-en-ille-et-vilaine-8846259"
+    },
+    {
+      "school": "lycee-polyvalent-saint-vincent-providence-rennes",
+      "date": "2026-10-05",
+      "sourceName": "ICI Bretagne",
+      "sourceUrl": "https://www.ici.fr/bretagne/ille-et-vilaine-35/mouvement-lyceen-24-lycees-portes-closes-lundi-en-ille-et-vilaine-8846259"
+    },
+    {
+      "school": "lycee-polyvalent-frederic-ozanam-cesson-sevigne",
+      "date": "2026-10-05",
+      "sourceName": "ICI Bretagne",
+      "sourceUrl": "https://www.ici.fr/bretagne/ille-et-vilaine-35/mouvement-lyceen-24-lycees-portes-closes-lundi-en-ille-et-vilaine-8846259"
+    },
+    {
+      "school": "lycee-sevigne-cesson-sevigne",
+      "date": "2026-10-05",
+      "sourceName": "ICI Bretagne",
+      "sourceUrl": "https://www.ici.fr/bretagne/ille-et-vilaine-35/mouvement-lyceen-24-lycees-portes-closes-lundi-en-ille-et-vilaine-8846259"
+    },
+    {
+      "school": "lycee-polyvalent-jacques-cartier-saint-malo",
+      "date": "2026-10-05",
+      "sourceName": "ICI Bretagne",
+      "sourceUrl": "https://www.ici.fr/bretagne/ille-et-vilaine-35/mouvement-lyceen-24-lycees-portes-closes-lundi-en-ille-et-vilaine-8846259"
+    },
+    {
+      "school": "lycee-maupertuis-saint-malo",
+      "date": "2026-10-05",
+      "sourceName": "ICI Bretagne",
+      "sourceUrl": "https://www.ici.fr/bretagne/ille-et-vilaine-35/mouvement-lyceen-24-lycees-portes-closes-lundi-en-ille-et-vilaine-8846259"
+    },
+    {
+      "school": "lycee-beaumont-redon",
+      "date": "2026-10-05",
+      "sourceName": "ICI Bretagne",
+      "sourceUrl": "https://www.ici.fr/bretagne/ille-et-vilaine-35/mouvement-lyceen-24-lycees-portes-closes-lundi-en-ille-et-vilaine-8846259"
+    },
+    {
+      "school": "lycee-professionnel-alphonse-pelle-dol-de-bretagne",
+      "date": "2026-10-05",
+      "sourceName": "ICI Bretagne",
+      "sourceUrl": "https://www.ici.fr/bretagne/ille-et-vilaine-35/mouvement-lyceen-24-lycees-portes-closes-lundi-en-ille-et-vilaine-8846259"
+    },
+    {
+      "school": "lycee-professionnel-bel-air-tinteniac",
+      "date": "2026-10-05",
+      "sourceName": "ICI Bretagne",
+      "sourceUrl": "https://www.ici.fr/bretagne/ille-et-vilaine-35/mouvement-lyceen-24-lycees-portes-closes-lundi-en-ille-et-vilaine-8846259"
+    },
+    {
+      "school": "lycee-anita-conti-bruz",
+      "date": "2026-10-05",
+      "sourceName": "ICI Bretagne",
+      "sourceUrl": "https://www.ici.fr/bretagne/mouvement-lyceen-le-point-sur-les-fermetures-d-etablissements-ce-lundi-en-bretagne-9754971"
+    },
+    {
+      "school": "lycee-diwan-carhaix-plouguer",
+      "date": "2026-10-05",
+      "sourceName": "ICI Bretagne",
+      "sourceUrl": "https://www.ici.fr/bretagne/mouvement-lyceen-le-point-sur-les-fermetures-d-etablissements-ce-lundi-en-bretagne-9754971"
+    },
+    {
+      "school": "lycee-charles-de-gaulle-vannes",
+      "date": "2026-10-05",
+      "sourceName": "France 3 Bretagne",
+      "sourceUrl": "https://france3-regions.franceinfo.fr/bretagne/blocus-des-lycees-la-mobilisation-se-durcit-en-bretagne-des-dizaines-d-etablissements-fermes-lundi-3427365.html"
+    },
+    {
+      "school": "lycee-professionnel-jean-guehenno-vannes",
+      "date": "2026-10-05",
+      "sourceName": "France 3 Bretagne",
+      "sourceUrl": "https://france3-regions.franceinfo.fr/bretagne/blocus-des-lycees-la-mobilisation-se-durcit-en-bretagne-des-dizaines-d-etablissements-fermes-lundi-3427365.html"
+    },
+    {
+      "school": "lycee-saint-joseph-la-salle-vannes",
+      "date": "2026-10-05",
+      "sourceName": "France 3 Bretagne",
+      "sourceUrl": "https://france3-regions.franceinfo.fr/bretagne/blocus-des-lycees-la-mobilisation-se-durcit-en-bretagne-des-dizaines-d-etablissements-fermes-lundi-3427365.html"
+    },
+    {
+      "school": "lycee-polyvalent-jean-baptiste-colbert-lorient",
+      "date": "2026-10-05",
+      "sourceName": "France 3 Bretagne",
+      "sourceUrl": "https://france3-regions.franceinfo.fr/bretagne/blocus-des-lycees-la-mobilisation-se-durcit-en-bretagne-des-dizaines-d-etablissements-fermes-lundi-3427365.html"
+    },
+    {
+      "school": "lycee-professionnel-marie-le-franc-lorient",
+      "date": "2026-10-05",
+      "sourceName": "France 3 Bretagne",
+      "sourceUrl": "https://france3-regions.franceinfo.fr/bretagne/blocus-des-lycees-la-mobilisation-se-durcit-en-bretagne-des-dizaines-d-etablissements-fermes-lundi-3427365.html"
+    },
+    {
+      "school": "lycee-saint-louis-lorient",
+      "date": "2026-10-05",
+      "sourceName": "France 3 Bretagne",
+      "sourceUrl": "https://france3-regions.franceinfo.fr/bretagne/blocus-des-lycees-la-mobilisation-se-durcit-en-bretagne-des-dizaines-d-etablissements-fermes-lundi-3427365.html"
+    },
+    {
+      "school": "lycee-sainte-anne-brest",
+      "date": "2026-10-05",
+      "sourceName": "France 3 Bretagne",
+      "sourceUrl": "https://france3-regions.franceinfo.fr/bretagne/blocus-des-lycees-la-mobilisation-se-durcit-en-bretagne-des-dizaines-d-etablissements-fermes-lundi-3427365.html"
+    },
+    {
+      "school": "lycee-charles-de-foucauld-estran-brest",
+      "date": "2026-10-05",
+      "sourceName": "France 3 Bretagne",
+      "sourceUrl": "https://france3-regions.franceinfo.fr/bretagne/blocus-des-lycees-la-mobilisation-se-durcit-en-bretagne-des-dizaines-d-etablissements-fermes-lundi-3427365.html"
+    },
+    {
+      "school": "lycee-fenelon-estran-brest",
+      "date": "2026-10-05",
+      "sourceName": "France 3 Bretagne",
+      "sourceUrl": "https://france3-regions.franceinfo.fr/bretagne/blocus-des-lycees-la-mobilisation-se-durcit-en-bretagne-des-dizaines-d-etablissements-fermes-lundi-3427365.html"
+    },
+    {
+      "school": "lycee-polyvalent-la-croix-rouge-la-salle-brest",
+      "date": "2026-10-05",
+      "sourceName": "France 3 Bretagne",
+      "sourceUrl": "https://france3-regions.franceinfo.fr/bretagne/blocus-des-lycees-la-mobilisation-se-durcit-en-bretagne-des-dizaines-d-etablissements-fermes-lundi-3427365.html"
+    },
+    {
+      "school": "lycee-javouhey-brest",
+      "date": "2026-10-05",
+      "sourceName": "France 3 Bretagne",
+      "sourceUrl": "https://france3-regions.franceinfo.fr/bretagne/blocus-des-lycees-la-mobilisation-se-durcit-en-bretagne-des-dizaines-d-etablissements-fermes-lundi-3427365.html"
+    },
+    {
+      "school": "lycee-le-likes-quimper",
+      "date": "2026-10-05",
+      "sourceName": "France 3 Bretagne",
+      "sourceUrl": "https://france3-regions.franceinfo.fr/bretagne/blocus-des-lycees-la-mobilisation-se-durcit-en-bretagne-des-dizaines-d-etablissements-fermes-lundi-3427365.html"
+    },
+    {
+      "school": "lycee-sainte-therese-quimper",
+      "date": "2026-10-05",
+      "sourceName": "France 3 Bretagne",
+      "sourceUrl": "https://france3-regions.franceinfo.fr/bretagne/blocus-des-lycees-la-mobilisation-se-durcit-en-bretagne-des-dizaines-d-etablissements-fermes-lundi-3427365.html"
+    },
+    {
+      "school": "lycee-polyvalent-le-paraclet-quimper",
+      "date": "2026-10-05",
+      "sourceName": "France 3 Bretagne",
+      "sourceUrl": "https://france3-regions.franceinfo.fr/bretagne/blocus-des-lycees-la-mobilisation-se-durcit-en-bretagne-des-dizaines-d-etablissements-fermes-lundi-3427365.html"
+    },
+    {
+      "school": "lycee-agricole-saint-joseph-kerustum-quimper",
+      "date": "2026-10-05",
+      "sourceName": "France 3 Bretagne",
+      "sourceUrl": "https://france3-regions.franceinfo.fr/bretagne/blocus-des-lycees-la-mobilisation-se-durcit-en-bretagne-des-dizaines-d-etablissements-fermes-lundi-3427365.html"
+    },
+    {
+      "school": "lycee-campus-talensac-nantes",
+      "date": "2026-10-05",
+      "sourceName": "ICI Pays de la Loire",
+      "sourceUrl": "https://www.ici.fr/pays-de-la-loire/loire-atlantique-44/nantes/les-lycees-prives-de-la-metropole-nantaise-fermes-lundi-et-mardi-decision-au-cas-pas-cas-pour-les-lycees-publics-5554299"
+    },
+    {
+      "school": "lycee-polyvalent-sacre-coeur-la-salle-nantes",
+      "date": "2026-10-05",
+      "sourceName": "ICI Pays de la Loire",
+      "sourceUrl": "https://www.ici.fr/pays-de-la-loire/loire-atlantique-44/nantes/les-lycees-prives-de-la-metropole-nantaise-fermes-lundi-et-mardi-decision-au-cas-pas-cas-pour-les-lycees-publics-5554299"
+    },
+    {
+      "school": "lycee-polyvalent-les-bourdonnieres-nantes",
+      "date": "2026-10-05",
+      "sourceName": "ICI Pays de la Loire",
+      "sourceUrl": "https://www.ici.fr/pays-de-la-loire/loire-atlantique-44/nantes/les-lycees-prives-de-la-metropole-nantaise-fermes-lundi-et-mardi-decision-au-cas-pas-cas-pour-les-lycees-publics-5554299"
+    },
+    {
+      "school": "lycee-polyvalent-nicolas-appert-orvault",
+      "date": "2026-10-05",
+      "sourceName": "ICI Pays de la Loire",
+      "sourceUrl": "https://www.ici.fr/pays-de-la-loire/loire-atlantique-44/nantes/les-lycees-prives-de-la-metropole-nantaise-fermes-lundi-et-mardi-decision-au-cas-pas-cas-pour-les-lycees-publics-5554299"
+    },
+    {
+      "school": "lycee-aristide-briand-saint-nazaire",
+      "date": "2026-10-05",
+      "sourceName": "ICI Pays de la Loire",
+      "sourceUrl": "https://www.ici.fr/pays-de-la-loire/loire-atlantique-44/nantes/les-lycees-prives-de-la-metropole-nantaise-fermes-lundi-et-mardi-decision-au-cas-pas-cas-pour-les-lycees-publics-5554299"
+    },
+    {
+      "school": "lycee-nelson-mandela-nantes",
+      "date": "2026-10-05",
+      "sourceName": "Infos Média Nantes",
+      "sourceUrl": "https://infos-media-nantes.fr/greve-6-octobre-lycees-fermes-blocages-loire-atlantique/"
+    },
+    {
+      "school": "lycee-balzac-tours",
+      "date": "2026-10-05",
+      "sourceName": "France 3 Centre-Val de Loire",
+      "sourceUrl": "https://france3-regions.franceinfo.fr/centre-val-de-loire/indre-loire/tours/blocage-des-lycees-en-marge-des-manifestations-plusieurs-magasins-pilles-dans-le-centre-ville-de-tours-3427119.html"
+    },
+    {
+      "school": "lycee-professionnel-gustave-eiffel-tours",
+      "date": "2026-10-05",
+      "sourceName": "France 3 Centre-Val de Loire",
+      "sourceUrl": "https://france3-regions.franceinfo.fr/centre-val-de-loire/indre-loire/tours/blocage-des-lycees-en-marge-des-manifestations-plusieurs-magasins-pilles-dans-le-centre-ville-de-tours-3427119.html"
+    },
+    {
+      "school": "lycee-choiseul-tours",
+      "date": "2026-10-05",
+      "sourceName": "France 3 Centre-Val de Loire",
+      "sourceUrl": "https://france3-regions.franceinfo.fr/centre-val-de-loire/indre-loire/tours/blocage-des-lycees-en-marge-des-manifestations-plusieurs-magasins-pilles-dans-le-centre-ville-de-tours-3427119.html"
+    },
+    {
+      "school": "lycee-professionnel-henri-becquerel-tours",
+      "date": "2026-10-05",
+      "sourceName": "France 3 Centre-Val de Loire",
+      "sourceUrl": "https://france3-regions.franceinfo.fr/centre-val-de-loire/indre-loire/tours/blocage-des-lycees-en-marge-des-manifestations-plusieurs-magasins-pilles-dans-le-centre-ville-de-tours-3427119.html"
+    },
+    {
+      "school": "lycee-polyvalent-albert-bayet-tours",
+      "date": "2026-10-05",
+      "sourceName": "France 3 Centre-Val de Loire",
+      "sourceUrl": "https://france3-regions.franceinfo.fr/centre-val-de-loire/indre-loire/tours/blocage-des-lycees-en-marge-des-manifestations-plusieurs-magasins-pilles-dans-le-centre-ville-de-tours-3427119.html"
+    },
+    {
+      "school": "lycee-paul-louis-courier-tours",
+      "date": "2026-10-05",
+      "sourceName": "France 3 Centre-Val de Loire",
+      "sourceUrl": "https://france3-regions.franceinfo.fr/centre-val-de-loire/indre-loire/tours/blocage-des-lycees-en-marge-des-manifestations-plusieurs-magasins-pilles-dans-le-centre-ville-de-tours-3427119.html"
+    },
+    {
+      "school": "lycee-professionnel-francois-clouet-tours",
+      "date": "2026-10-05",
+      "sourceName": "France 3 Centre-Val de Loire",
+      "sourceUrl": "https://france3-regions.franceinfo.fr/centre-val-de-loire/indre-loire/tours/blocage-des-lycees-en-marge-des-manifestations-plusieurs-magasins-pilles-dans-le-centre-ville-de-tours-3427119.html"
+    },
+    {
+      "school": "lycee-grandmont-tours",
+      "date": "2026-10-05",
+      "sourceName": "France 3 Centre-Val de Loire",
+      "sourceUrl": "https://france3-regions.franceinfo.fr/centre-val-de-loire/indre-loire/tours/blocage-des-lycees-en-marge-des-manifestations-plusieurs-magasins-pilles-dans-le-centre-ville-de-tours-3427119.html"
+    },
+    {
+      "school": "lycee-jacques-de-vaucanson-tours",
+      "date": "2026-10-05",
+      "sourceName": "France 3 Centre-Val de Loire",
+      "sourceUrl": "https://france3-regions.franceinfo.fr/centre-val-de-loire/indre-loire/tours/blocage-des-lycees-en-marge-des-manifestations-plusieurs-magasins-pilles-dans-le-centre-ville-de-tours-3427119.html"
+    },
+    {
+      "school": "lycee-jean-monnet-joue-les-tours",
+      "date": "2026-10-05",
+      "sourceName": "France 3 Centre-Val de Loire",
+      "sourceUrl": "https://france3-regions.franceinfo.fr/centre-val-de-loire/indre-loire/tours/blocage-des-lycees-en-marge-des-manifestations-plusieurs-magasins-pilles-dans-le-centre-ville-de-tours-3427119.html"
+    },
+    {
+      "school": "lycee-polyvalent-maurice-genevoix-ingre",
+      "date": "2026-10-05",
+      "sourceName": "ICI Orléans",
+      "sourceUrl": "https://www.ici.fr/centre-val-de-loire/loiret-45/mouvement-lyceen-deux-lycees-du-loiret-resteront-encore-fermes-lundi-et-mardi-par-mesure-de-securite-3587237"
+    },
+    {
+      "school": "lycee-durzy-villemandeur",
+      "date": "2026-10-05",
+      "sourceName": "ICI Orléans",
+      "sourceUrl": "https://www.ici.fr/centre-val-de-loire/loiret-45/mouvement-lyceen-deux-lycees-du-loiret-resteront-encore-fermes-lundi-et-mardi-par-mesure-de-securite-3587237"
+    },
+    {
+      "school": "lycee-polyvalent-jules-verne-chateau-thierry",
+      "date": "2026-10-05",
+      "sourceName": "France 3 Hauts-de-France",
+      "sourceUrl": "https://france3-regions.franceinfo.fr/hauts-de-france/somme/blocage-des-lycees-fermetures-enseignement-a-distance-a-quoi-faut-il-s-attendre-ce-lundi-5-octobre-dans-les-hauts-de-france-3427737.html"
+    },
+    {
+      "school": "lycee-polyvalent-jean-de-la-fontaine-chateau-thierry",
+      "date": "2026-10-05",
+      "sourceName": "France 3 Hauts-de-France",
+      "sourceUrl": "https://france3-regions.franceinfo.fr/hauts-de-france/somme/blocage-des-lycees-fermetures-enseignement-a-distance-a-quoi-faut-il-s-attendre-ce-lundi-5-octobre-dans-les-hauts-de-france-3427737.html"
+    },
+    {
+      "school": "lycee-paul-claudel-laon",
+      "date": "2026-10-05",
+      "sourceName": "France 3 Hauts-de-France",
+      "sourceUrl": "https://france3-regions.franceinfo.fr/hauts-de-france/somme/blocage-des-lycees-fermetures-enseignement-a-distance-a-quoi-faut-il-s-attendre-ce-lundi-5-octobre-dans-les-hauts-de-france-3427737.html"
+    },
+    {
+      "school": "lycee-professionnel-julie-daubie-laon",
+      "date": "2026-10-05",
+      "sourceName": "France 3 Hauts-de-France",
+      "sourceUrl": "https://france3-regions.franceinfo.fr/hauts-de-france/somme/blocage-des-lycees-fermetures-enseignement-a-distance-a-quoi-faut-il-s-attendre-ce-lundi-5-octobre-dans-les-hauts-de-france-3427737.html"
+    },
+    {
+      "school": "lycee-polyvalent-pierre-mechain-laon",
+      "date": "2026-10-05",
+      "sourceName": "France 3 Hauts-de-France",
+      "sourceUrl": "https://france3-regions.franceinfo.fr/hauts-de-france/somme/blocage-des-lycees-fermetures-enseignement-a-distance-a-quoi-faut-il-s-attendre-ce-lundi-5-octobre-dans-les-hauts-de-france-3427737.html"
+    },
+    {
+      "school": "lycee-condorcet-saint-quentin",
+      "date": "2026-10-05",
+      "sourceName": "France 3 Hauts-de-France",
+      "sourceUrl": "https://france3-regions.franceinfo.fr/hauts-de-france/somme/blocage-des-lycees-fermetures-enseignement-a-distance-a-quoi-faut-il-s-attendre-ce-lundi-5-octobre-dans-les-hauts-de-france-3427737.html"
+    },
+    {
+      "school": "lycee-cassini-clermont",
+      "date": "2026-10-05",
+      "sourceName": "France 3 Hauts-de-France",
+      "sourceUrl": "https://france3-regions.franceinfo.fr/hauts-de-france/somme/blocage-des-lycees-fermetures-enseignement-a-distance-a-quoi-faut-il-s-attendre-ce-lundi-5-octobre-dans-les-hauts-de-france-3427737.html"
+    },
+    {
+      "school": "lycee-mireille-grenet-compiegne",
+      "date": "2026-10-05",
+      "sourceName": "France 3 Hauts-de-France",
+      "sourceUrl": "https://france3-regions.franceinfo.fr/hauts-de-france/somme/blocage-des-lycees-fermetures-enseignement-a-distance-a-quoi-faut-il-s-attendre-ce-lundi-5-octobre-dans-les-hauts-de-france-3427737.html"
+    },
+    {
+      "school": "lycee-jules-uhry-creil",
+      "date": "2026-10-05",
+      "sourceName": "France 3 Hauts-de-France",
+      "sourceUrl": "https://france3-regions.franceinfo.fr/hauts-de-france/somme/blocage-des-lycees-fermetures-enseignement-a-distance-a-quoi-faut-il-s-attendre-ce-lundi-5-octobre-dans-les-hauts-de-france-3427737.html"
+    },
+    {
+      "school": "lycee-marie-curie-nogent-sur-oise",
+      "date": "2026-10-05",
+      "sourceName": "France 3 Hauts-de-France",
+      "sourceUrl": "https://france3-regions.franceinfo.fr/hauts-de-france/somme/blocage-des-lycees-fermetures-enseignement-a-distance-a-quoi-faut-il-s-attendre-ce-lundi-5-octobre-dans-les-hauts-de-france-3427737.html"
+    },
+    {
+      "school": "lycee-jean-baptiste-delambre-amiens",
+      "date": "2026-10-05",
+      "sourceName": "France 3 Hauts-de-France",
+      "sourceUrl": "https://france3-regions.franceinfo.fr/hauts-de-france/somme/blocage-des-lycees-fermetures-enseignement-a-distance-a-quoi-faut-il-s-attendre-ce-lundi-5-octobre-dans-les-hauts-de-france-3427737.html"
+    },
+    {
+      "school": "lycee-professionnel-montaigne-amiens",
+      "date": "2026-10-05",
+      "sourceName": "France 3 Hauts-de-France",
+      "sourceUrl": "https://france3-regions.franceinfo.fr/hauts-de-france/somme/blocage-des-lycees-fermetures-enseignement-a-distance-a-quoi-faut-il-s-attendre-ce-lundi-5-octobre-dans-les-hauts-de-france-3427737.html"
+    },
+    {
+      "school": "lycee-edouard-gand-amiens",
+      "date": "2026-10-05",
+      "sourceName": "France 3 Hauts-de-France",
+      "sourceUrl": "https://france3-regions.franceinfo.fr/hauts-de-france/somme/blocage-des-lycees-fermetures-enseignement-a-distance-a-quoi-faut-il-s-attendre-ce-lundi-5-octobre-dans-les-hauts-de-france-3427737.html"
+    },
+    {
+      "school": "lycee-professionnel-edouard-gand-amiens",
+      "date": "2026-10-05",
+      "sourceName": "France 3 Hauts-de-France",
+      "sourceUrl": "https://france3-regions.franceinfo.fr/hauts-de-france/somme/blocage-des-lycees-fermetures-enseignement-a-distance-a-quoi-faut-il-s-attendre-ce-lundi-5-octobre-dans-les-hauts-de-france-3427737.html"
+    },
+    {
+      "school": "lycee-edouard-branly-amiens",
+      "date": "2026-10-05",
+      "sourceName": "France 3 Hauts-de-France",
+      "sourceUrl": "https://france3-regions.franceinfo.fr/hauts-de-france/somme/blocage-des-lycees-fermetures-enseignement-a-distance-a-quoi-faut-il-s-attendre-ce-lundi-5-octobre-dans-les-hauts-de-france-3427737.html"
+    },
+    {
+      "school": "lycee-professionnel-edouard-branly-amiens",
+      "date": "2026-10-05",
+      "sourceName": "France 3 Hauts-de-France",
+      "sourceUrl": "https://france3-regions.franceinfo.fr/hauts-de-france/somme/blocage-des-lycees-fermetures-enseignement-a-distance-a-quoi-faut-il-s-attendre-ce-lundi-5-octobre-dans-les-hauts-de-france-3427737.html"
+    },
+    {
+      "school": "lycee-louis-thuillier-amiens",
+      "date": "2026-10-05",
+      "sourceName": "France 3 Hauts-de-France",
+      "sourceUrl": "https://france3-regions.franceinfo.fr/hauts-de-france/somme/blocage-des-lycees-fermetures-enseignement-a-distance-a-quoi-faut-il-s-attendre-ce-lundi-5-octobre-dans-les-hauts-de-france-3427737.html"
+    },
+    {
+      "school": "lycee-jules-mousseron-denain",
+      "date": "2026-10-05",
+      "sourceName": "ICI Nord",
+      "sourceUrl": "https://www.ici.fr/hauts-de-france/nord-59/mobilisation-lyceenne-des-cours-assures-en-distanciel-lundi-dans-plusieurs-etablissements-du-nord-et-du-pas-de-calais-6106769?at_locale=36"
+    },
+    {
+      "school": "lycee-alfred-kastler-denain",
+      "date": "2026-10-05",
+      "sourceName": "ICI Nord",
+      "sourceUrl": "https://www.ici.fr/hauts-de-france/nord-59/mobilisation-lyceenne-des-cours-assures-en-distanciel-lundi-dans-plusieurs-etablissements-du-nord-et-du-pas-de-calais-6106769?at_locale=36"
+    },
+    {
+      "school": "lycee-polyvalent-elisa-lemonnier-douai",
+      "date": "2026-10-05",
+      "sourceName": "ICI Nord",
+      "sourceUrl": "https://www.ici.fr/hauts-de-france/nord-59/mobilisation-lyceenne-des-cours-assures-en-distanciel-lundi-dans-plusieurs-etablissements-du-nord-et-du-pas-de-calais-6106769?at_locale=36"
+    },
+    {
+      "school": "lycee-polyvalent-beaupre-haubourdin",
+      "date": "2026-10-05",
+      "sourceName": "ICI Nord",
+      "sourceUrl": "https://www.ici.fr/hauts-de-france/nord-59/mobilisation-lyceenne-des-cours-assures-en-distanciel-lundi-dans-plusieurs-etablissements-du-nord-et-du-pas-de-calais-6106769?at_locale=36"
+    },
+    {
+      "school": "lycee-valentine-labbe-la-madeleine",
+      "date": "2026-10-05",
+      "sourceName": "ICI Nord",
+      "sourceUrl": "https://www.ici.fr/hauts-de-france/nord-59/mobilisation-lyceenne-des-cours-assures-en-distanciel-lundi-dans-plusieurs-etablissements-du-nord-et-du-pas-de-calais-6106769?at_locale=36"
+    },
+    {
+      "school": "lycee-international-montebello-lille",
+      "date": "2026-10-05",
+      "sourceName": "ICI Nord",
+      "sourceUrl": "https://www.ici.fr/hauts-de-france/nord-59/mobilisation-lyceenne-des-cours-assures-en-distanciel-lundi-dans-plusieurs-etablissements-du-nord-et-du-pas-de-calais-6106769?at_locale=36"
+    },
+    {
+      "school": "lycee-cesar-baggio-lille",
+      "date": "2026-10-05",
+      "sourceName": "ICI Nord",
+      "sourceUrl": "https://www.ici.fr/hauts-de-france/nord-59/mobilisation-lyceenne-des-cours-assures-en-distanciel-lundi-dans-plusieurs-etablissements-du-nord-et-du-pas-de-calais-6106769?at_locale=36"
+    },
+    {
+      "school": "lycee-professionnel-aime-cesaire-lille",
+      "date": "2026-10-05",
+      "sourceName": "ICI Nord",
+      "sourceUrl": "https://www.ici.fr/hauts-de-france/nord-59/mobilisation-lyceenne-des-cours-assures-en-distanciel-lundi-dans-plusieurs-etablissements-du-nord-et-du-pas-de-calais-6106769?at_locale=36"
+    },
+    {
+      "school": "lycee-louis-pasteur-lille",
+      "date": "2026-10-05",
+      "sourceName": "ICI Nord",
+      "sourceUrl": "https://www.ici.fr/hauts-de-france/nord-59/mobilisation-lyceenne-des-cours-assures-en-distanciel-lundi-dans-plusieurs-etablissements-du-nord-et-du-pas-de-calais-6106769?at_locale=36"
+    },
+    {
+      "school": "lycee-yves-kernanec-marcq-en-baroeul",
+      "date": "2026-10-05",
+      "sourceName": "ICI Nord",
+      "sourceUrl": "https://www.ici.fr/hauts-de-france/nord-59/mobilisation-lyceenne-des-cours-assures-en-distanciel-lundi-dans-plusieurs-etablissements-du-nord-et-du-pas-de-calais-6106769?at_locale=36"
+    },
+    {
+      "school": "lycee-polyvalent-andre-lurcat-maubeuge",
+      "date": "2026-10-05",
+      "sourceName": "ICI Nord",
+      "sourceUrl": "https://www.ici.fr/hauts-de-france/nord-59/mobilisation-lyceenne-des-cours-assures-en-distanciel-lundi-dans-plusieurs-etablissements-du-nord-et-du-pas-de-calais-6106769?at_locale=36"
+    },
+    {
+      "school": "lycee-polyvalent-pierre-forest-maubeuge",
+      "date": "2026-10-05",
+      "sourceName": "ICI Nord",
+      "sourceUrl": "https://www.ici.fr/hauts-de-france/nord-59/mobilisation-lyceenne-des-cours-assures-en-distanciel-lundi-dans-plusieurs-etablissements-du-nord-et-du-pas-de-calais-6106769?at_locale=36"
+    },
+    {
+      "school": "lycee-charles-baudelaire-roubaix",
+      "date": "2026-10-05",
+      "sourceName": "ICI Nord",
+      "sourceUrl": "https://www.ici.fr/hauts-de-france/nord-59/mobilisation-lyceenne-des-cours-assures-en-distanciel-lundi-dans-plusieurs-etablissements-du-nord-et-du-pas-de-calais-6106769?at_locale=36"
+    },
+    {
+      "school": "lycee-polyvalent-jean-moulin-roubaix",
+      "date": "2026-10-05",
+      "sourceName": "ICI Nord",
+      "sourceUrl": "https://www.ici.fr/hauts-de-france/nord-59/mobilisation-lyceenne-des-cours-assures-en-distanciel-lundi-dans-plusieurs-etablissements-du-nord-et-du-pas-de-calais-6106769?at_locale=36"
+    },
+    {
+      "school": "lycee-professionnel-les-hauts-de-flandre-seclin",
+      "date": "2026-10-05",
+      "sourceName": "ICI Nord",
+      "sourceUrl": "https://www.ici.fr/hauts-de-france/nord-59/mobilisation-lyceenne-des-cours-assures-en-distanciel-lundi-dans-plusieurs-etablissements-du-nord-et-du-pas-de-calais-6106769?at_locale=36"
+    },
+    {
+      "school": "lycee-arthur-rimbaud-sin-le-noble",
+      "date": "2026-10-05",
+      "sourceName": "ICI Nord",
+      "sourceUrl": "https://www.ici.fr/hauts-de-france/nord-59/mobilisation-lyceenne-des-cours-assures-en-distanciel-lundi-dans-plusieurs-etablissements-du-nord-et-du-pas-de-calais-6106769?at_locale=36"
+    },
+    {
+      "school": "lycee-de-l-escaut-valenciennes",
+      "date": "2026-10-05",
+      "sourceName": "ICI Nord",
+      "sourceUrl": "https://www.ici.fr/hauts-de-france/nord-59/mobilisation-lyceenne-des-cours-assures-en-distanciel-lundi-dans-plusieurs-etablissements-du-nord-et-du-pas-de-calais-6106769?at_locale=36"
+    },
+    {
+      "school": "lycee-fernand-darchicourt-henin-beaumont",
+      "date": "2026-10-05",
+      "sourceName": "ICI Nord",
+      "sourceUrl": "https://www.ici.fr/hauts-de-france/nord-59/mobilisation-lyceenne-des-cours-assures-en-distanciel-lundi-dans-plusieurs-etablissements-du-nord-et-du-pas-de-calais-6106769?at_locale=36"
+    },
+    {
+      "school": "lycee-polyvalent-louis-pasteur-henin-beaumont",
+      "date": "2026-10-05",
+      "sourceName": "ICI Nord",
+      "sourceUrl": "https://www.ici.fr/hauts-de-france/nord-59/mobilisation-lyceenne-des-cours-assures-en-distanciel-lundi-dans-plusieurs-etablissements-du-nord-et-du-pas-de-calais-6106769?at_locale=36"
+    },
+    {
+      "school": "lycee-professionnel-jean-moulin-le-chesnay-rocquencourt",
+      "date": "2026-10-05",
+      "sourceName": "Mantes Actu",
+      "sourceUrl": "https://www.mantes-actu.net/yvelines-blocus-des-lycees-10-etablissements-fermes-ce-lundi-5-octobre-dont-3-dans-le-mantois/"
+    },
+    {
+      "school": "lycee-polyvalent-pierre-corneille-la-celle-saint-cloud",
+      "date": "2026-10-05",
+      "sourceName": "Mantes Actu",
+      "sourceUrl": "https://www.mantes-actu.net/yvelines-blocus-des-lycees-10-etablissements-fermes-ce-lundi-5-octobre-dont-3-dans-le-mantois/"
+    },
+    {
+      "school": "lycee-professionnel-lucien-rene-duchesne-la-celle-saint-cloud",
+      "date": "2026-10-05",
+      "sourceName": "Mantes Actu",
+      "sourceUrl": "https://www.mantes-actu.net/yvelines-blocus-des-lycees-10-etablissements-fermes-ce-lundi-5-octobre-dont-3-dans-le-mantois/"
+    },
+    {
+      "school": "lycee-condorcet-limay",
+      "date": "2026-10-05",
+      "sourceName": "Mantes Actu",
+      "sourceUrl": "https://www.mantes-actu.net/yvelines-blocus-des-lycees-10-etablissements-fermes-ce-lundi-5-octobre-dont-3-dans-le-mantois/"
+    },
+    {
+      "school": "lycee-leopold-sedar-senghor-magnanville",
+      "date": "2026-10-05",
+      "sourceName": "Mantes Actu",
+      "sourceUrl": "https://www.mantes-actu.net/yvelines-blocus-des-lycees-10-etablissements-fermes-ce-lundi-5-octobre-dont-3-dans-le-mantois/"
+    },
+    {
+      "school": "lycee-saint-exupery-mantes-la-jolie",
+      "date": "2026-10-05",
+      "sourceName": "Mantes Actu",
+      "sourceUrl": "https://www.mantes-actu.net/yvelines-blocus-des-lycees-10-etablissements-fermes-ce-lundi-5-octobre-dont-3-dans-le-mantois/"
+    },
+    {
+      "school": "lycee-emilie-de-breteuil-montigny-le-bretonneux",
+      "date": "2026-10-05",
+      "sourceName": "Mantes Actu",
+      "sourceUrl": "https://www.mantes-actu.net/yvelines-blocus-des-lycees-10-etablissements-fermes-ce-lundi-5-octobre-dont-3-dans-le-mantois/"
+    },
+    {
+      "school": "lycee-le-corbusier-poissy",
+      "date": "2026-10-05",
+      "sourceName": "Mantes Actu",
+      "sourceUrl": "https://www.mantes-actu.net/yvelines-blocus-des-lycees-10-etablissements-fermes-ce-lundi-5-octobre-dont-3-dans-le-mantois/"
+    },
+    {
+      "school": "lycee-professionnel-jacques-prevert-versailles",
+      "date": "2026-10-05",
+      "sourceName": "Mantes Actu",
+      "sourceUrl": "https://www.mantes-actu.net/yvelines-blocus-des-lycees-10-etablissements-fermes-ce-lundi-5-octobre-dont-3-dans-le-mantois/"
+    },
+    {
+      "school": "lycee-jules-ferry-versailles",
+      "date": "2026-10-05",
+      "sourceName": "Mantes Actu",
+      "sourceUrl": "https://www.mantes-actu.net/yvelines-blocus-des-lycees-10-etablissements-fermes-ce-lundi-5-octobre-dont-3-dans-le-mantois/"
+    },
+    {
+      "school": "lycee-polyvalent-francois-arago-reims",
+      "date": "2026-10-05",
+      "sourceName": "France 3 Grand Est",
+      "sourceUrl": "https://france3-regions.franceinfo.fr/grand-est/marne/reims/blocages-des-lyceens-de-plus-en-plus-de-non-lyceens-dans-les-corteges-les-violences-en-hausse-3427389.html"
+    },
+    {
+      "school": "lycee-libergier-reims",
+      "date": "2026-10-05",
+      "sourceName": "France 3 Grand Est",
+      "sourceUrl": "https://france3-regions.franceinfo.fr/grand-est/marne/reims/blocages-des-lyceens-de-plus-en-plus-de-non-lyceens-dans-les-corteges-les-violences-en-hausse-3427389.html"
+    },
+    {
+      "school": "lycee-professionnel-joliot-curie-reims",
+      "date": "2026-10-05",
+      "sourceName": "France 3 Grand Est",
+      "sourceUrl": "https://france3-regions.franceinfo.fr/grand-est/marne/reims/blocages-des-lyceens-de-plus-en-plus-de-non-lyceens-dans-les-corteges-les-violences-en-hausse-3427389.html"
+    },
+    {
+      "school": "lycee-polyvalent-georges-briere-reims",
+      "date": "2026-10-05",
+      "sourceName": "France 3 Grand Est",
+      "sourceUrl": "https://france3-regions.franceinfo.fr/grand-est/marne/reims/blocages-des-lyceens-de-plus-en-plus-de-non-lyceens-dans-les-corteges-les-violences-en-hausse-3427389.html"
+    },
+    {
+      "school": "lycee-polyvalent-jean-talon-chalons-en-champagne",
+      "date": "2026-10-05",
+      "sourceName": "France 3 Grand Est",
+      "sourceUrl": "https://france3-regions.franceinfo.fr/grand-est/marne/reims/blocages-des-lyceens-de-plus-en-plus-de-non-lyceens-dans-les-corteges-les-violences-en-hausse-3427389.html"
+    },
+    {
+      "school": "lycee-professionnel-leonard-de-vinci-metiers-du-batiment-et-des-travaux-publics-montigny-l",
+      "date": "2026-10-05",
+      "sourceName": "ICI Lorraine",
+      "sourceUrl": "https://www.ici.fr/grand-est/moselle-57/metz/la-prefecture-interdit-les-rassemblements-aux-abords-de-plusieurs-lycees-mosellans-1741389?at_locale=50"
+    },
+    {
+      "school": "lycee-fabert-metz",
+      "date": "2026-10-05",
+      "sourceName": "ICI Lorraine",
+      "sourceUrl": "https://www.ici.fr/grand-est/moselle-57/metz/la-prefecture-interdit-les-rassemblements-aux-abords-de-plusieurs-lycees-mosellans-1741389?at_locale=50"
+    },
+    {
+      "school": "lycee-jean-moulin-forbach",
+      "date": "2026-10-05",
+      "sourceName": "ICI Lorraine",
+      "sourceUrl": "https://www.ici.fr/grand-est/moselle-57/metz/la-prefecture-interdit-les-rassemblements-aux-abords-de-plusieurs-lycees-mosellans-1741389?at_locale=50"
+    },
+    {
+      "school": "lycee-professionnel-pierre-et-marie-curie-freyming-merlebach",
+      "date": "2026-10-05",
+      "sourceName": "ICI Lorraine",
+      "sourceUrl": "https://www.ici.fr/grand-est/moselle-57/metz/la-prefecture-interdit-les-rassemblements-aux-abords-de-plusieurs-lycees-mosellans-1741389?at_locale=50"
+    },
+    {
+      "school": "lycee-professionnel-ernest-cuvelette-freyming-merlebach",
+      "date": "2026-10-05",
+      "sourceName": "ICI Lorraine",
+      "sourceUrl": "https://www.ici.fr/grand-est/moselle-57/metz/la-prefecture-interdit-les-rassemblements-aux-abords-de-plusieurs-lycees-mosellans-1741389?at_locale=50"
+    },
+    {
+      "school": "lycee-polyvalent-julie-daubie-rombas",
+      "date": "2026-10-05",
+      "sourceName": "ICI Lorraine",
+      "sourceUrl": "https://www.ici.fr/grand-est/moselle-57/metz/la-prefecture-interdit-les-rassemblements-aux-abords-de-plusieurs-lycees-mosellans-1741389?at_locale=50"
+    },
+    {
+      "school": "section-d-enseignement-professionnel-du-lycee-polyvalent-julie-daubie-rombas",
+      "date": "2026-10-05",
+      "sourceName": "ICI Lorraine",
+      "sourceUrl": "https://www.ici.fr/grand-est/moselle-57/metz/la-prefecture-interdit-les-rassemblements-aux-abords-de-plusieurs-lycees-mosellans-1741389?at_locale=50"
+    },
+    {
+      "school": "lycee-jean-monnet-strasbourg",
+      "date": "2026-10-05",
+      "sourceName": "ICI Alsace",
+      "sourceUrl": "https://www.ici.fr/grand-est/alsace-cea/strasbourg/mobilisation-lyceenne-en-alsace-les-lycees-strasbourgeois-et-huit-etablissements-du-haut-rhin-fermes-lundi-3207506?at_locale=90"
+    },
+    {
+      "school": "lycee-polyvalent-louis-couffignal-strasbourg",
+      "date": "2026-10-05",
+      "sourceName": "ICI Alsace",
+      "sourceUrl": "https://www.ici.fr/grand-est/alsace-cea/strasbourg/mobilisation-lyceenne-en-alsace-les-lycees-strasbourgeois-et-huit-etablissements-du-haut-rhin-fermes-lundi-3207506?at_locale=90"
+    },
+    {
+      "school": "lycee-kleber-strasbourg",
+      "date": "2026-10-05",
+      "sourceName": "ICI Alsace",
+      "sourceUrl": "https://www.ici.fr/grand-est/alsace-cea/strasbourg/mobilisation-lyceenne-en-alsace-les-lycees-strasbourgeois-et-huit-etablissements-du-haut-rhin-fermes-lundi-3207506?at_locale=90"
+    },
+    {
+      "school": "lycee-guillaume-apollinaire-nice",
+      "date": "2026-10-05",
+      "sourceName": "France 3 Provence-Alpes-Côte d'Azur",
+      "sourceUrl": "https://france3-regions.franceinfo.fr/provence-alpes-cote-d-azur/alpes-maritimes/mobilisation-lyceenne-a-quoi-faut-il-s-attendre-lundi-et-mardi-dans-les-etablissements-des-alpes-maritimes-et-du-var-3427674.html"
+    },
+    {
+      "school": "lycee-albert-calmette-nice",
+      "date": "2026-10-05",
+      "sourceName": "France 3 Provence-Alpes-Côte d'Azur",
+      "sourceUrl": "https://france3-regions.franceinfo.fr/provence-alpes-cote-d-azur/alpes-maritimes/mobilisation-lyceenne-a-quoi-faut-il-s-attendre-lundi-et-mardi-dans-les-etablissements-des-alpes-maritimes-et-du-var-3427674.html"
+    },
+    {
+      "school": "lycee-don-bosco-nice",
+      "date": "2026-10-05",
+      "sourceName": "France 3 Provence-Alpes-Côte d'Azur",
+      "sourceUrl": "https://france3-regions.franceinfo.fr/provence-alpes-cote-d-azur/alpes-maritimes/mobilisation-lyceenne-a-quoi-faut-il-s-attendre-lundi-et-mardi-dans-les-etablissements-des-alpes-maritimes-et-du-var-3427674.html"
+    },
+    {
+      "school": "lycee-professionnel-don-bosco-nice",
+      "date": "2026-10-05",
+      "sourceName": "France 3 Provence-Alpes-Côte d'Azur",
+      "sourceUrl": "https://france3-regions.franceinfo.fr/provence-alpes-cote-d-azur/alpes-maritimes/mobilisation-lyceenne-a-quoi-faut-il-s-attendre-lundi-et-mardi-dans-les-etablissements-des-alpes-maritimes-et-du-var-3427674.html"
+    },
+    {
+      "school": "lycee-honore-d-estienne-d-orves-nice",
+      "date": "2026-10-05",
+      "sourceName": "France 3 Provence-Alpes-Côte d'Azur",
+      "sourceUrl": "https://france3-regions.franceinfo.fr/provence-alpes-cote-d-azur/alpes-maritimes/mobilisation-lyceenne-a-quoi-faut-il-s-attendre-lundi-et-mardi-dans-les-etablissements-des-alpes-maritimes-et-du-var-3427674.html"
+    },
+    {
+      "school": "lycee-les-eucalyptus-nice",
+      "date": "2026-10-05",
+      "sourceName": "France 3 Provence-Alpes-Côte d'Azur",
+      "sourceUrl": "https://france3-regions.franceinfo.fr/provence-alpes-cote-d-azur/alpes-maritimes/mobilisation-lyceenne-a-quoi-faut-il-s-attendre-lundi-et-mardi-dans-les-etablissements-des-alpes-maritimes-et-du-var-3427674.html"
+    },
+    {
+      "school": "lycee-professionnel-les-eucalyptus-nice",
+      "date": "2026-10-05",
+      "sourceName": "France 3 Provence-Alpes-Côte d'Azur",
+      "sourceUrl": "https://france3-regions.franceinfo.fr/provence-alpes-cote-d-azur/alpes-maritimes/mobilisation-lyceenne-a-quoi-faut-il-s-attendre-lundi-et-mardi-dans-les-etablissements-des-alpes-maritimes-et-du-var-3427674.html"
+    },
+    {
+      "school": "lycee-professionnel-les-palmiers-nice",
+      "date": "2026-10-05",
+      "sourceName": "France 3 Provence-Alpes-Côte d'Azur",
+      "sourceUrl": "https://france3-regions.franceinfo.fr/provence-alpes-cote-d-azur/alpes-maritimes/mobilisation-lyceenne-a-quoi-faut-il-s-attendre-lundi-et-mardi-dans-les-etablissements-des-alpes-maritimes-et-du-var-3427674.html"
+    },
+    {
+      "school": "lycee-professionnel-magnan-nice",
+      "date": "2026-10-05",
+      "sourceName": "France 3 Provence-Alpes-Côte d'Azur",
+      "sourceUrl": "https://france3-regions.franceinfo.fr/provence-alpes-cote-d-azur/alpes-maritimes/mobilisation-lyceenne-a-quoi-faut-il-s-attendre-lundi-et-mardi-dans-les-etablissements-des-alpes-maritimes-et-du-var-3427674.html"
+    },
+    {
+      "school": "lycee-melinee-et-missak-manouchian-nice",
+      "date": "2026-10-05",
+      "sourceName": "France 3 Provence-Alpes-Côte d'Azur",
+      "sourceUrl": "https://france3-regions.franceinfo.fr/provence-alpes-cote-d-azur/alpes-maritimes/mobilisation-lyceenne-a-quoi-faut-il-s-attendre-lundi-et-mardi-dans-les-etablissements-des-alpes-maritimes-et-du-var-3427674.html"
+    },
+    {
+      "school": "lycee-du-parc-imperial-nice",
+      "date": "2026-10-05",
+      "sourceName": "France 3 Provence-Alpes-Côte d'Azur",
+      "sourceUrl": "https://france3-regions.franceinfo.fr/provence-alpes-cote-d-azur/alpes-maritimes/mobilisation-lyceenne-a-quoi-faut-il-s-attendre-lundi-et-mardi-dans-les-etablissements-des-alpes-maritimes-et-du-var-3427674.html"
+    },
+    {
+      "school": "lycee-professionnel-vauban-nice",
+      "date": "2026-10-05",
+      "sourceName": "France 3 Provence-Alpes-Côte d'Azur",
+      "sourceUrl": "https://france3-regions.franceinfo.fr/provence-alpes-cote-d-azur/alpes-maritimes/mobilisation-lyceenne-a-quoi-faut-il-s-attendre-lundi-et-mardi-dans-les-etablissements-des-alpes-maritimes-et-du-var-3427674.html"
+    },
+    {
+      "school": "lycee-amiral-de-grasse-grasse",
+      "date": "2026-10-05",
+      "sourceName": "France 3 Provence-Alpes-Côte d'Azur",
+      "sourceUrl": "https://france3-regions.franceinfo.fr/provence-alpes-cote-d-azur/alpes-maritimes/mobilisation-lyceenne-a-quoi-faut-il-s-attendre-lundi-et-mardi-dans-les-etablissements-des-alpes-maritimes-et-du-var-3427674.html"
+    },
+    {
+      "school": "lycee-professionnel-leon-chiris-grasse",
+      "date": "2026-10-05",
+      "sourceName": "France 3 Provence-Alpes-Côte d'Azur",
+      "sourceUrl": "https://france3-regions.franceinfo.fr/provence-alpes-cote-d-azur/alpes-maritimes/mobilisation-lyceenne-a-quoi-faut-il-s-attendre-lundi-et-mardi-dans-les-etablissements-des-alpes-maritimes-et-du-var-3427674.html"
+    },
+    {
+      "school": "lycee-professionnel-francis-de-croisset-grasse",
+      "date": "2026-10-05",
+      "sourceName": "France 3 Provence-Alpes-Côte d'Azur",
+      "sourceUrl": "https://france3-regions.franceinfo.fr/provence-alpes-cote-d-azur/alpes-maritimes/mobilisation-lyceenne-a-quoi-faut-il-s-attendre-lundi-et-mardi-dans-les-etablissements-des-alpes-maritimes-et-du-var-3427674.html"
+    },
+    {
+      "school": "lycee-alexis-de-tocqueville-grasse",
+      "date": "2026-10-05",
+      "sourceName": "France 3 Provence-Alpes-Côte d'Azur",
+      "sourceUrl": "https://france3-regions.franceinfo.fr/provence-alpes-cote-d-azur/alpes-maritimes/mobilisation-lyceenne-a-quoi-faut-il-s-attendre-lundi-et-mardi-dans-les-etablissements-des-alpes-maritimes-et-du-var-3427674.html"
+    },
+    {
+      "school": "lycee-jacques-audiberti-antibes",
+      "date": "2026-10-05",
+      "sourceName": "France 3 Provence-Alpes-Côte d'Azur",
+      "sourceUrl": "https://france3-regions.franceinfo.fr/provence-alpes-cote-d-azur/alpes-maritimes/mobilisation-lyceenne-a-quoi-faut-il-s-attendre-lundi-et-mardi-dans-les-etablissements-des-alpes-maritimes-et-du-var-3427674.html"
+    },
+    {
+      "school": "lycee-professionnel-jacques-dolle-antibes",
+      "date": "2026-10-05",
+      "sourceName": "France 3 Provence-Alpes-Côte d'Azur",
+      "sourceUrl": "https://france3-regions.franceinfo.fr/provence-alpes-cote-d-azur/alpes-maritimes/mobilisation-lyceenne-a-quoi-faut-il-s-attendre-lundi-et-mardi-dans-les-etablissements-des-alpes-maritimes-et-du-var-3427674.html"
+    },
+    {
+      "school": "lycee-leonard-de-vinci-antibes",
+      "date": "2026-10-05",
+      "sourceName": "France 3 Provence-Alpes-Côte d'Azur",
+      "sourceUrl": "https://france3-regions.franceinfo.fr/provence-alpes-cote-d-azur/alpes-maritimes/mobilisation-lyceenne-a-quoi-faut-il-s-attendre-lundi-et-mardi-dans-les-etablissements-des-alpes-maritimes-et-du-var-3427674.html"
+    },
+    {
+      "school": "lycee-professionnel-auguste-escoffier-cagnes-sur-mer",
+      "date": "2026-10-05",
+      "sourceName": "France 3 Provence-Alpes-Côte d'Azur",
+      "sourceUrl": "https://france3-regions.franceinfo.fr/provence-alpes-cote-d-azur/alpes-maritimes/mobilisation-lyceenne-a-quoi-faut-il-s-attendre-lundi-et-mardi-dans-les-etablissements-des-alpes-maritimes-et-du-var-3427674.html"
+    },
+    {
+      "school": "lycee-auguste-renoir-cagnes-sur-mer",
+      "date": "2026-10-05",
+      "sourceName": "France 3 Provence-Alpes-Côte d'Azur",
+      "sourceUrl": "https://france3-regions.franceinfo.fr/provence-alpes-cote-d-azur/alpes-maritimes/mobilisation-lyceenne-a-quoi-faut-il-s-attendre-lundi-et-mardi-dans-les-etablissements-des-alpes-maritimes-et-du-var-3427674.html"
+    },
+    {
+      "school": "lycee-bristol-cannes",
+      "date": "2026-10-05",
+      "sourceName": "France 3 Provence-Alpes-Côte d'Azur",
+      "sourceUrl": "https://france3-regions.franceinfo.fr/provence-alpes-cote-d-azur/alpes-maritimes/mobilisation-lyceenne-a-quoi-faut-il-s-attendre-lundi-et-mardi-dans-les-etablissements-des-alpes-maritimes-et-du-var-3427674.html"
+    },
+    {
+      "school": "lycee-carnot-cannes",
+      "date": "2026-10-05",
+      "sourceName": "France 3 Provence-Alpes-Côte d'Azur",
+      "sourceUrl": "https://france3-regions.franceinfo.fr/provence-alpes-cote-d-azur/alpes-maritimes/mobilisation-lyceenne-a-quoi-faut-il-s-attendre-lundi-et-mardi-dans-les-etablissements-des-alpes-maritimes-et-du-var-3427674.html"
+    },
+    {
+      "school": "lycee-professionnel-alfred-hutinel-cannes",
+      "date": "2026-10-05",
+      "sourceName": "France 3 Provence-Alpes-Côte d'Azur",
+      "sourceUrl": "https://france3-regions.franceinfo.fr/provence-alpes-cote-d-azur/alpes-maritimes/mobilisation-lyceenne-a-quoi-faut-il-s-attendre-lundi-et-mardi-dans-les-etablissements-des-alpes-maritimes-et-du-var-3427674.html"
+    },
+    {
+      "school": "lycee-jules-ferry-cannes",
+      "date": "2026-10-05",
+      "sourceName": "France 3 Provence-Alpes-Côte d'Azur",
+      "sourceUrl": "https://france3-regions.franceinfo.fr/provence-alpes-cote-d-azur/alpes-maritimes/mobilisation-lyceenne-a-quoi-faut-il-s-attendre-lundi-et-mardi-dans-les-etablissements-des-alpes-maritimes-et-du-var-3427674.html"
+    },
+    {
+      "school": "lycee-professionnel-les-coteaux-cannes",
+      "date": "2026-10-05",
+      "sourceName": "France 3 Provence-Alpes-Côte d'Azur",
+      "sourceUrl": "https://france3-regions.franceinfo.fr/provence-alpes-cote-d-azur/alpes-maritimes/mobilisation-lyceenne-a-quoi-faut-il-s-attendre-lundi-et-mardi-dans-les-etablissements-des-alpes-maritimes-et-du-var-3427674.html"
+    },
+    {
+      "school": "lycee-professionnel-paul-valery-menton",
+      "date": "2026-10-05",
+      "sourceName": "France 3 Provence-Alpes-Côte d'Azur",
+      "sourceUrl": "https://france3-regions.franceinfo.fr/provence-alpes-cote-d-azur/alpes-maritimes/mobilisation-lyceenne-a-quoi-faut-il-s-attendre-lundi-et-mardi-dans-les-etablissements-des-alpes-maritimes-et-du-var-3427674.html"
+    },
+    {
+      "school": "lycee-pierre-et-marie-curie-menton",
+      "date": "2026-10-05",
+      "sourceName": "France 3 Provence-Alpes-Côte d'Azur",
+      "sourceUrl": "https://france3-regions.franceinfo.fr/provence-alpes-cote-d-azur/alpes-maritimes/mobilisation-lyceenne-a-quoi-faut-il-s-attendre-lundi-et-mardi-dans-les-etablissements-des-alpes-maritimes-et-du-var-3427674.html"
+    },
+    {
+      "school": "lycee-professionnel-pierre-et-marie-curie-menton",
+      "date": "2026-10-05",
+      "sourceName": "France 3 Provence-Alpes-Côte d'Azur",
+      "sourceUrl": "https://france3-regions.franceinfo.fr/provence-alpes-cote-d-azur/alpes-maritimes/mobilisation-lyceenne-a-quoi-faut-il-s-attendre-lundi-et-mardi-dans-les-etablissements-des-alpes-maritimes-et-du-var-3427674.html"
+    },
+    {
+      "school": "lycee-rene-goscinny-drap",
+      "date": "2026-10-05",
+      "sourceName": "France 3 Provence-Alpes-Côte d'Azur",
+      "sourceUrl": "https://france3-regions.franceinfo.fr/provence-alpes-cote-d-azur/alpes-maritimes/mobilisation-lyceenne-a-quoi-faut-il-s-attendre-lundi-et-mardi-dans-les-etablissements-des-alpes-maritimes-et-du-var-3427674.html"
+    },
+    {
+      "school": "lycee-international-de-valbonne-valbonne",
+      "date": "2026-10-05",
+      "sourceName": "France 3 Provence-Alpes-Côte d'Azur",
+      "sourceUrl": "https://france3-regions.franceinfo.fr/provence-alpes-cote-d-azur/alpes-maritimes/mobilisation-lyceenne-a-quoi-faut-il-s-attendre-lundi-et-mardi-dans-les-etablissements-des-alpes-maritimes-et-du-var-3427674.html"
+    },
+    {
+      "school": "lycee-perier-marseille",
+      "date": "2026-10-05",
+      "sourceName": "France 3 Provence-Alpes",
+      "sourceUrl": "https://france3-regions.franceinfo.fr/provence-alpes-cote-d-azur/bouches-du-rhone/marseille/cours-a-distance-lycees-fermes-interdictions-a-quoi-faut-il-s-attendre-lundi-et-mardi-dans-les-etablissements-des-bouches-du-rhone-3427890.html"
+    },
+    {
+      "school": "lycee-thiers-marseille",
+      "date": "2026-10-05",
+      "sourceName": "France 3 Provence-Alpes",
+      "sourceUrl": "https://france3-regions.franceinfo.fr/provence-alpes-cote-d-azur/bouches-du-rhone/marseille/cours-a-distance-lycees-fermes-interdictions-a-quoi-faut-il-s-attendre-lundi-et-mardi-dans-les-etablissements-des-bouches-du-rhone-3427890.html"
+    },
+    {
+      "school": "lycee-technologique-regional-marie-curie-marseille",
+      "date": "2026-10-05",
+      "sourceName": "France 3 Provence-Alpes",
+      "sourceUrl": "https://france3-regions.franceinfo.fr/provence-alpes-cote-d-azur/bouches-du-rhone/marseille/cours-a-distance-lycees-fermes-interdictions-a-quoi-faut-il-s-attendre-lundi-et-mardi-dans-les-etablissements-des-bouches-du-rhone-3427890.html"
+    },
+    {
+      "school": "lycee-marseilleveyre-marseille",
+      "date": "2026-10-05",
+      "sourceName": "France 3 Provence-Alpes",
+      "sourceUrl": "https://france3-regions.franceinfo.fr/provence-alpes-cote-d-azur/bouches-du-rhone/marseille/cours-a-distance-lycees-fermes-interdictions-a-quoi-faut-il-s-attendre-lundi-et-mardi-dans-les-etablissements-des-bouches-du-rhone-3427890.html"
+    },
+    {
+      "school": "lycee-polyvalent-vauvenargues-aix-en-provence",
+      "date": "2026-10-05",
+      "sourceName": "France 3 Provence-Alpes",
+      "sourceUrl": "https://france3-regions.franceinfo.fr/provence-alpes-cote-d-azur/bouches-du-rhone/marseille/cours-a-distance-lycees-fermes-interdictions-a-quoi-faut-il-s-attendre-lundi-et-mardi-dans-les-etablissements-des-bouches-du-rhone-3427890.html"
+    },
+    {
+      "school": "lycee-polyvalent-philippe-de-girard-avignon",
+      "date": "2026-10-05",
+      "sourceName": "La Provence (via Headtopics)",
+      "sourceUrl": "https://fr.headtopics.com/news/mobilisation-lyceenne-un-lundi-calme-a-priori-dans-le-88447610"
+    },
+    {
+      "school": "lycee-simone-weil-saint-priest-en-jarez",
+      "date": "2026-10-05",
+      "sourceName": "ICI Saint-Étienne Loire",
+      "sourceUrl": "https://www.ici.fr/auvergne-rhone-alpes/loire-42/saint-etienne/mouvement-lyceen-des-cours-a-distance-dans-14-etablissements-de-la-loire-dont-deux-colleges-5296811"
+    },
+    {
+      "school": "lycee-honore-d-urfe-saint-etienne",
+      "date": "2026-10-05",
+      "sourceName": "ICI Saint-Étienne Loire",
+      "sourceUrl": "https://www.ici.fr/auvergne-rhone-alpes/loire-42/saint-etienne/mouvement-lyceen-des-cours-a-distance-dans-14-etablissements-de-la-loire-dont-deux-colleges-5296811"
+    },
+    {
+      "school": "lycee-etienne-mimard-saint-etienne",
+      "date": "2026-10-05",
+      "sourceName": "ICI Saint-Étienne Loire",
+      "sourceUrl": "https://www.ici.fr/auvergne-rhone-alpes/loire-42/saint-etienne/mouvement-lyceen-des-cours-a-distance-dans-14-etablissements-de-la-loire-dont-deux-colleges-5296811"
+    },
+    {
+      "school": "lycee-claude-fauriel-saint-etienne",
+      "date": "2026-10-05",
+      "sourceName": "ICI Saint-Étienne Loire",
+      "sourceUrl": "https://www.ici.fr/auvergne-rhone-alpes/loire-42/saint-etienne/mouvement-lyceen-des-cours-a-distance-dans-14-etablissements-de-la-loire-dont-deux-colleges-5296811"
+    },
+    {
+      "school": "lycee-cite-scolaire-monnet-fourneyron-legt-jean-monnet-saint-etienne",
+      "date": "2026-10-05",
+      "sourceName": "ICI Saint-Étienne Loire",
+      "sourceUrl": "https://www.ici.fr/auvergne-rhone-alpes/loire-42/saint-etienne/mouvement-lyceen-des-cours-a-distance-dans-14-etablissements-de-la-loire-dont-deux-colleges-5296811"
+    },
+    {
+      "school": "cite-scolaire-monnet-fourneyron-lycee-professionnel-benoit-fourneyron-site-metare-saint-et",
+      "date": "2026-10-05",
+      "sourceName": "ICI Saint-Étienne Loire",
+      "sourceUrl": "https://www.ici.fr/auvergne-rhone-alpes/loire-42/saint-etienne/mouvement-lyceen-des-cours-a-distance-dans-14-etablissements-de-la-loire-dont-deux-colleges-5296811"
+    },
+    {
+      "school": "lycee-francois-mauriac-forez-andrezieux-boutheon",
+      "date": "2026-10-05",
+      "sourceName": "ICI Saint-Étienne Loire",
+      "sourceUrl": "https://www.ici.fr/auvergne-rhone-alpes/loire-42/saint-etienne/mouvement-lyceen-des-cours-a-distance-dans-14-etablissements-de-la-loire-dont-deux-colleges-5296811"
+    },
+    {
+      "school": "lycee-professionnel-pierre-desgranges-andrezieux-boutheon",
+      "date": "2026-10-05",
+      "sourceName": "ICI Saint-Étienne Loire",
+      "sourceUrl": "https://www.ici.fr/auvergne-rhone-alpes/loire-42/saint-etienne/mouvement-lyceen-des-cours-a-distance-dans-14-etablissements-de-la-loire-dont-deux-colleges-5296811"
+    },
+    {
+      "school": "lycee-claude-lebois-saint-chamond",
+      "date": "2026-10-05",
+      "sourceName": "ICI Saint-Étienne Loire",
+      "sourceUrl": "https://www.ici.fr/auvergne-rhone-alpes/loire-42/saint-etienne/mouvement-lyceen-des-cours-a-distance-dans-14-etablissements-de-la-loire-dont-deux-colleges-5296811"
+    },
+    {
+      "school": "lycee-professionnel-rene-cassin-rive-de-gier",
+      "date": "2026-10-05",
+      "sourceName": "ICI Saint-Étienne Loire",
+      "sourceUrl": "https://www.ici.fr/auvergne-rhone-alpes/loire-42/saint-etienne/mouvement-lyceen-des-cours-a-distance-dans-14-etablissements-de-la-loire-dont-deux-colleges-5296811"
+    },
+    {
+      "school": "lycee-du-forez-feurs",
+      "date": "2026-10-05",
+      "sourceName": "ICI Saint-Étienne Loire",
+      "sourceUrl": "https://www.ici.fr/auvergne-rhone-alpes/loire-42/saint-etienne/mouvement-lyceen-des-cours-a-distance-dans-14-etablissements-de-la-loire-dont-deux-colleges-5296811"
+    },
+    {
+      "school": "lycee-jacob-holtzer-firminy",
+      "date": "2026-10-05",
+      "sourceName": "ICI Saint-Étienne Loire",
+      "sourceUrl": "https://www.ici.fr/auvergne-rhone-alpes/loire-42/saint-etienne/mouvement-lyceen-des-cours-a-distance-dans-14-etablissements-de-la-loire-dont-deux-colleges-5296811"
+    },
+    {
+      "school": "lycee-des-horizons-chazelles-sur-lyon",
+      "date": "2026-10-05",
+      "sourceName": "ICI Saint-Étienne Loire",
+      "sourceUrl": "https://www.ici.fr/auvergne-rhone-alpes/loire-42/saint-etienne/mouvement-lyceen-des-cours-a-distance-dans-14-etablissements-de-la-loire-dont-deux-colleges-5296811"
+    },
+    {
+      "school": "lycee-albert-camus-firminy",
+      "date": "2026-10-05",
+      "sourceName": "ICI Saint-Étienne Loire",
+      "sourceUrl": "https://www.ici.fr/auvergne-rhone-alpes/loire-42/saint-etienne/mouvement-lyceen-des-cours-a-distance-dans-14-etablissements-de-la-loire-dont-deux-colleges-5296811"
+    },
+    {
+      "school": "lycee-professionnel-adrien-testud-le-chambon-feugerolles",
+      "date": "2026-10-05",
+      "sourceName": "ICI Saint-Étienne Loire",
+      "sourceUrl": "https://www.ici.fr/auvergne-rhone-alpes/loire-42/saint-etienne/mouvement-lyceen-des-cours-a-distance-dans-14-etablissements-de-la-loire-dont-deux-colleges-5296811"
+    },
+    {
+      "school": "lycee-polyvalent-du-dauphine-romans-sur-isere",
+      "date": "2026-10-05",
+      "sourceName": "ICI Drôme Ardèche",
+      "sourceUrl": "https://www.ici.fr/auvergne-rhone-alpes/drome-26/mobilisation-des-lyceens-a-quoi-s-attendre-cette-semaine-en-drome-et-en-ardeche-4749720"
+    },
+    {
+      "school": "lycee-general-albert-triboulet-romans-sur-isere",
+      "date": "2026-10-05",
+      "sourceName": "ICI Drôme Ardèche",
+      "sourceUrl": "https://www.ici.fr/auvergne-rhone-alpes/drome-26/mobilisation-des-lyceens-a-quoi-s-attendre-cette-semaine-en-drome-et-en-ardeche-4749720"
+    },
+    {
+      "school": "lycee-professionnel-auguste-bouvet-romans-sur-isere",
+      "date": "2026-10-05",
+      "sourceName": "ICI Drôme Ardèche",
+      "sourceUrl": "https://www.ici.fr/auvergne-rhone-alpes/drome-26/mobilisation-des-lyceens-a-quoi-s-attendre-cette-semaine-en-drome-et-en-ardeche-4749720"
+    },
+    {
+      "school": "lycee-general-emile-loubet-valence",
+      "date": "2026-10-05",
+      "sourceName": "ICI Drôme Ardèche",
+      "sourceUrl": "https://www.ici.fr/auvergne-rhone-alpes/drome-26/mobilisation-des-lyceens-a-quoi-s-attendre-cette-semaine-en-drome-et-en-ardeche-4749720"
+    },
+    {
+      "school": "lycee-polyvalent-les-catalins-montelimar",
+      "date": "2026-10-05",
+      "sourceName": "ICI Drôme Ardèche",
+      "sourceUrl": "https://www.ici.fr/auvergne-rhone-alpes/drome-26/mobilisation-des-lyceens-a-quoi-s-attendre-cette-semaine-en-drome-et-en-ardeche-4749720"
+    },
+    {
+      "school": "lycee-polyvalent-gustave-jaume-pierrelatte",
+      "date": "2026-10-05",
+      "sourceName": "ICI Drôme Ardèche",
+      "sourceUrl": "https://www.ici.fr/auvergne-rhone-alpes/drome-26/mobilisation-des-lyceens-a-quoi-s-attendre-cette-semaine-en-drome-et-en-ardeche-4749720"
+    },
+    {
+      "school": "lycee-polyvalent-galilee-vienne",
+      "date": "2026-10-05",
+      "sourceName": "Vivre villes",
+      "sourceUrl": "https://www.vivre-villes.fr/vienne/vienne-a-la-une/2026/10/04/19-lycees-resteront-fermes-ce-lundi-en-isere-dont-galilee-a-vienne-et-ella-fitzgerald-de-st-romain-en-gal/"
+    },
+    {
+      "school": "lycee-polyvalent-ella-fitzgerald-vienne",
+      "date": "2026-10-05",
+      "sourceName": "Vivre villes",
+      "sourceUrl": "https://www.vivre-villes.fr/vienne/vienne-a-la-une/2026/10/04/19-lycees-resteront-fermes-ce-lundi-en-isere-dont-galilee-a-vienne-et-ella-fitzgerald-de-st-romain-en-gal/"
+    },
+    {
+      "school": "lycee-ecole-superieure-d-arts-appliques-la-martiniere-diderot-lyon",
+      "date": "2026-10-05",
+      "sourceName": "Lyon Mag",
+      "sourceUrl": "https://www.lyonmag.com/article/154269/mobilisation-lyceenne-a-lyon-rassemblements-interdits-autour-de-plusieurs-etablissements-lundi"
+    },
+    {
+      "school": "lycee-edouard-herriot-lyon",
+      "date": "2026-10-05",
+      "sourceName": "Lyon Mag",
+      "sourceUrl": "https://www.lyonmag.com/article/154269/mobilisation-lyceenne-a-lyon-rassemblements-interdits-autour-de-plusieurs-etablissements-lundi"
+    },
+    {
+      "school": "lycee-cite-scolaire-internationale-lyon",
+      "date": "2026-10-05",
+      "sourceName": "Lyon Mag",
+      "sourceUrl": "https://www.lyonmag.com/article/154269/mobilisation-lyceenne-a-lyon-rassemblements-interdits-autour-de-plusieurs-etablissements-lundi"
+    },
+    {
+      "school": "lycee-docteur-charles-merieux-lyon",
+      "date": "2026-10-05",
+      "sourceName": "Lyon Mag",
+      "sourceUrl": "https://www.lyonmag.com/article/154269/mobilisation-lyceenne-a-lyon-rassemblements-interdits-autour-de-plusieurs-etablissements-lundi"
+    },
+    {
+      "school": "lycee-polyvalent-hector-guimard-lyon",
+      "date": "2026-10-05",
+      "sourceName": "Lyon Mag",
+      "sourceUrl": "https://www.lyonmag.com/article/154269/mobilisation-lyceenne-a-lyon-rassemblements-interdits-autour-de-plusieurs-etablissements-lundi"
+    },
+    {
+      "school": "lycee-la-martiniere-monplaisir-lyon",
+      "date": "2026-10-05",
+      "sourceName": "Lyon Mag",
+      "sourceUrl": "https://www.lyonmag.com/article/154269/mobilisation-lyceenne-a-lyon-rassemblements-interdits-autour-de-plusieurs-etablissements-lundi"
+    },
+    {
+      "school": "lycee-professionnel-danielle-casanova-givors",
+      "date": "2026-10-05",
+      "sourceName": "Lyon Mag",
+      "sourceUrl": "https://www.lyonmag.com/article/154269/mobilisation-lyceenne-a-lyon-rassemblements-interdits-autour-de-plusieurs-etablissements-lundi"
+    },
+    {
+      "school": "lycee-polyvalent-aragon-picasso-givors",
+      "date": "2026-10-05",
+      "sourceName": "Lyon Mag",
+      "sourceUrl": "https://www.lyonmag.com/article/154269/mobilisation-lyceenne-a-lyon-rassemblements-interdits-autour-de-plusieurs-etablissements-lundi"
+    },
+    {
+      "school": "lycee-polyvalent-louis-armand-villefranche-sur-saone",
+      "date": "2026-10-05",
+      "sourceName": "Le Patriote Beaujolais",
+      "sourceUrl": "https://mesinfos.fr/69400-villefranche-sur-saone/blocages-tous-les-lycees-de-villefranche-fermes-lundi-340246.html"
+    },
+    {
+      "school": "lycee-polyvalent-claude-bernard-villefranche-sur-saone",
+      "date": "2026-10-05",
+      "sourceName": "Le Patriote Beaujolais",
+      "sourceUrl": "https://mesinfos.fr/69400-villefranche-sur-saone/blocages-tous-les-lycees-de-villefranche-fermes-lundi-340246.html"
+    },
+    {
+      "school": "lycee-notre-dame-villefranche-sur-saone",
+      "date": "2026-10-05",
+      "sourceName": "Le Patriote Beaujolais",
+      "sourceUrl": "https://mesinfos.fr/69400-villefranche-sur-saone/blocages-tous-les-lycees-de-villefranche-fermes-lundi-340246.html"
+    },
+    {
+      "school": "lycee-notre-dame-de-mongre-villefranche-sur-saone",
+      "date": "2026-10-05",
+      "sourceName": "Le Patriote Beaujolais",
+      "sourceUrl": "https://mesinfos.fr/69400-villefranche-sur-saone/blocages-tous-les-lycees-de-villefranche-fermes-lundi-340246.html"
+    },
+    {
+      "school": "lycee-polyvalent-prive-robin-institution-robin-vienne",
+      "date": "2026-10-05",
+      "sourceName": "Lyon Mag",
+      "sourceUrl": "https://www.lyonmag.com/article/154269/mobilisation-lyceenne-a-lyon-rassemblements-interdits-autour-de-plusieurs-etablissements-lundi"
+    },
+    {
+      "school": "lycee-rene-descartes-saint-genis-laval",
+      "date": "2026-10-05",
+      "sourceName": "Lyon Mag",
+      "sourceUrl": "https://www.lyonmag.com/article/154269/mobilisation-lyceenne-a-lyon-rassemblements-interdits-autour-de-plusieurs-etablissements-lundi"
+    },
+    {
+      "school": "lycee-condorcet-saint-priest",
+      "date": "2026-10-05",
+      "sourceName": "Lyon Mag",
+      "sourceUrl": "https://www.lyonmag.com/article/154269/mobilisation-lyceenne-a-lyon-rassemblements-interdits-autour-de-plusieurs-etablissements-lundi"
+    },
+    {
+      "school": "lycee-professionnel-les-canuts-vaulx-en-velin",
+      "date": "2026-10-05",
+      "sourceName": "Lyon Mag",
+      "sourceUrl": "https://www.lyonmag.com/article/154269/mobilisation-lyceenne-a-lyon-rassemblements-interdits-autour-de-plusieurs-etablissements-lundi"
+    },
+    {
+      "school": "lycee-robert-doisneau-vaulx-en-velin",
+      "date": "2026-10-05",
+      "sourceName": "Lyon Mag",
+      "sourceUrl": "https://www.lyonmag.com/article/154269/mobilisation-lyceenne-a-lyon-rassemblements-interdits-autour-de-plusieurs-etablissements-lundi"
+    },
+    {
+      "school": "lycee-polyvalent-jacques-brel-venissieux",
+      "date": "2026-10-05",
+      "sourceName": "Lyon Mag",
+      "sourceUrl": "https://www.lyonmag.com/article/154269/mobilisation-lyceenne-a-lyon-rassemblements-interdits-autour-de-plusieurs-etablissements-lundi"
+    },
+    {
+      "school": "lycee-marcel-sembat-venissieux",
+      "date": "2026-10-05",
+      "sourceName": "Lyon Mag",
+      "sourceUrl": "https://www.lyonmag.com/article/154269/mobilisation-lyceenne-a-lyon-rassemblements-interdits-autour-de-plusieurs-etablissements-lundi"
+    },
+    {
+      "school": "lycee-professionnel-marc-seguin-venissieux",
+      "date": "2026-10-05",
+      "sourceName": "Lyon Mag",
+      "sourceUrl": "https://www.lyonmag.com/article/154269/mobilisation-lyceenne-a-lyon-rassemblements-interdits-autour-de-plusieurs-etablissements-lundi"
+    },
+    {
+      "school": "lycee-polyvalent-frederic-fays-villeurbanne",
+      "date": "2026-10-05",
+      "sourceName": "Lyon Mag",
+      "sourceUrl": "https://www.lyonmag.com/article/154269/mobilisation-lyceenne-a-lyon-rassemblements-interdits-autour-de-plusieurs-etablissements-lundi"
+    },
+    {
+      "school": "lycee-professionnel-germain-sommeiller-annecy",
+      "date": "2026-10-05",
+      "sourceName": "ICI Pays de Savoie",
+      "sourceUrl": "https://www.ici.fr/auvergne-rhone-alpes/savoie-73/mobilisation-lyceenne-de-nouvelles-interpellations-en-savoie-et-haute-savoie-6744697"
+    },
+    {
+      "school": "lycee-general-et-technologique-baudelaire-annecy",
+      "date": "2026-10-05",
+      "sourceName": "ICI Pays de Savoie",
+      "sourceUrl": "https://www.ici.fr/auvergne-rhone-alpes/savoie-73/mobilisation-lyceenne-de-nouvelles-interpellations-en-savoie-et-haute-savoie-6744697"
+    },
+    {
+      "school": "lycee-general-berthollet-annecy",
+      "date": "2026-10-05",
+      "sourceName": "ICI Pays de Savoie",
+      "sourceUrl": "https://www.ici.fr/auvergne-rhone-alpes/savoie-73/mobilisation-lyceenne-de-nouvelles-interpellations-en-savoie-et-haute-savoie-6744697"
+    },
+    {
+      "school": "lycee-general-et-technologique-gabriel-faure-annecy",
+      "date": "2026-10-05",
+      "sourceName": "ICI Pays de Savoie",
+      "sourceUrl": "https://www.ici.fr/auvergne-rhone-alpes/savoie-73/mobilisation-lyceenne-de-nouvelles-interpellations-en-savoie-et-haute-savoie-6744697"
+    },
+    {
+      "school": "lycee-polyvalent-louis-lachenal-annecy",
+      "date": "2026-10-05",
+      "sourceName": "ICI Pays de Savoie",
+      "sourceUrl": "https://www.ici.fr/auvergne-rhone-alpes/savoie-73/mobilisation-lyceenne-de-nouvelles-interpellations-en-savoie-et-haute-savoie-6744697"
+    },
+    {
+      "school": "lycee-polyvalent-deodat-de-severac-toulouse",
+      "date": "2026-10-05",
+      "sourceName": "ICI Occitanie",
+      "sourceUrl": "https://www.ici.fr/occitanie/haute-garonne-31/toulouse/blocages-des-lycees-la-liste-des-etablissements-fermes-ce-lundi-dans-l-academie-de-toulouse-9133622"
+    },
+    {
+      "school": "lycee-general-et-technologique-marcelin-berthelot-toulouse",
+      "date": "2026-10-05",
+      "sourceName": "ICI Occitanie",
+      "sourceUrl": "https://www.ici.fr/occitanie/haute-garonne-31/toulouse/blocages-des-lycees-la-liste-des-etablissements-fermes-ce-lundi-dans-l-academie-de-toulouse-9133622"
+    },
+    {
+      "school": "lycee-general-et-technologique-stephane-hessel-toulouse",
+      "date": "2026-10-05",
+      "sourceName": "France 3 Occitanie",
+      "sourceUrl": "https://france3-regions.franceinfo.fr/occitanie/haute-garonne/toulouse/blocage-des-lycees-16-lycees-de-la-region-de-toulouse-fermes-ce-lundi-a-la-veille-d-une-mobilisation-qui-s-annonce-tres-forte-3427851.html"
+    },
+    {
+      "school": "lycee-polyvalent-roland-garros-toulouse",
+      "date": "2026-10-05",
+      "sourceName": "France 3 Occitanie",
+      "sourceUrl": "https://france3-regions.franceinfo.fr/occitanie/haute-garonne/toulouse/blocage-des-lycees-16-lycees-de-la-region-de-toulouse-fermes-ce-lundi-a-la-veille-d-une-mobilisation-qui-s-annonce-tres-forte-3427851.html"
+    },
+    {
+      "school": "lycee-general-et-technologique-henri-de-toulouse-lautrec-toulouse",
+      "date": "2026-10-05",
+      "sourceName": "France 3 Occitanie",
+      "sourceUrl": "https://france3-regions.franceinfo.fr/occitanie/haute-garonne/toulouse/blocage-des-lycees-16-lycees-de-la-region-de-toulouse-fermes-ce-lundi-a-la-veille-d-une-mobilisation-qui-s-annonce-tres-forte-3427851.html"
+    },
+    {
+      "school": "lycee-polyvalent-joseph-gallieni-toulouse",
+      "date": "2026-10-05",
+      "sourceName": "France 3 Occitanie",
+      "sourceUrl": "https://france3-regions.franceinfo.fr/occitanie/haute-garonne/toulouse/blocage-des-lycees-16-lycees-de-la-region-de-toulouse-fermes-ce-lundi-a-la-veille-d-une-mobilisation-qui-s-annonce-tres-forte-3427851.html"
+    },
+    {
+      "school": "lycee-general-et-technologique-des-arenes-toulouse",
+      "date": "2026-10-05",
+      "sourceName": "France 3 Occitanie",
+      "sourceUrl": "https://france3-regions.franceinfo.fr/occitanie/haute-garonne/toulouse/blocage-des-lycees-16-lycees-de-la-region-de-toulouse-fermes-ce-lundi-a-la-veille-d-une-mobilisation-qui-s-annonce-tres-forte-3427851.html"
+    },
+    {
+      "school": "lycee-polyvalent-prive-emilie-de-rodat-toulouse",
+      "date": "2026-10-05",
+      "sourceName": "France 3 Occitanie",
+      "sourceUrl": "https://france3-regions.franceinfo.fr/occitanie/haute-garonne/toulouse/blocage-des-lycees-16-lycees-de-la-region-de-toulouse-fermes-ce-lundi-a-la-veille-d-une-mobilisation-qui-s-annonce-tres-forte-3427851.html"
+    },
+    {
+      "school": "lycee-polyvalent-bellevue-toulouse",
+      "date": "2026-10-05",
+      "sourceName": "France 3 Occitanie",
+      "sourceUrl": "https://france3-regions.franceinfo.fr/occitanie/haute-garonne/toulouse/blocage-des-lycees-16-lycees-de-la-region-de-toulouse-fermes-ce-lundi-a-la-veille-d-une-mobilisation-qui-s-annonce-tres-forte-3427851.html"
+    },
+    {
+      "school": "lycee-polyvalent-charles-de-gaulle-muret",
+      "date": "2026-10-05",
+      "sourceName": "France 3 Occitanie",
+      "sourceUrl": "https://france3-regions.franceinfo.fr/occitanie/haute-garonne/toulouse/blocage-des-lycees-16-lycees-de-la-region-de-toulouse-fermes-ce-lundi-a-la-veille-d-une-mobilisation-qui-s-annonce-tres-forte-3427851.html"
+    },
+    {
+      "school": "lycee-polyvalent-pierre-d-aragon-muret",
+      "date": "2026-10-05",
+      "sourceName": "France 3 Occitanie",
+      "sourceUrl": "https://france3-regions.franceinfo.fr/occitanie/haute-garonne/toulouse/blocage-des-lycees-16-lycees-de-la-region-de-toulouse-fermes-ce-lundi-a-la-veille-d-une-mobilisation-qui-s-annonce-tres-forte-3427851.html"
+    },
+    {
+      "school": "lycee-polyvalent-antoine-bourdelle-montauban",
+      "date": "2026-10-05",
+      "sourceName": "France 3 Occitanie",
+      "sourceUrl": "https://france3-regions.franceinfo.fr/occitanie/haute-garonne/toulouse/blocage-des-lycees-16-lycees-de-la-region-de-toulouse-fermes-ce-lundi-a-la-veille-d-une-mobilisation-qui-s-annonce-tres-forte-3427851.html"
+    },
+    {
+      "school": "lycee-general-jules-michelet-montauban",
+      "date": "2026-10-05",
+      "sourceName": "France 3 Occitanie",
+      "sourceUrl": "https://france3-regions.franceinfo.fr/occitanie/haute-garonne/toulouse/blocage-des-lycees-16-lycees-de-la-region-de-toulouse-fermes-ce-lundi-a-la-veille-d-une-mobilisation-qui-s-annonce-tres-forte-3427851.html"
+    },
+    {
+      "school": "lycee-polyvalent-claude-nougaro-monteils",
+      "date": "2026-10-05",
+      "sourceName": "France 3 Occitanie",
+      "sourceUrl": "https://france3-regions.franceinfo.fr/occitanie/haute-garonne/toulouse/blocage-des-lycees-16-lycees-de-la-region-de-toulouse-fermes-ce-lundi-a-la-veille-d-une-mobilisation-qui-s-annonce-tres-forte-3427851.html"
+    },
+    {
+      "school": "lycee-general-et-technologique-clement-marot-cahors",
+      "date": "2026-10-05",
+      "sourceName": "France 3 Occitanie",
+      "sourceUrl": "https://france3-regions.franceinfo.fr/occitanie/haute-garonne/toulouse/blocage-des-lycees-16-lycees-de-la-region-de-toulouse-fermes-ce-lundi-a-la-veille-d-une-mobilisation-qui-s-annonce-tres-forte-3427851.html"
+    },
+    {
+      "school": "lycee-general-et-technologique-champollion-figeac",
+      "date": "2026-10-05",
+      "sourceName": "France 3 Occitanie",
+      "sourceUrl": "https://france3-regions.franceinfo.fr/occitanie/haute-garonne/toulouse/blocage-des-lycees-16-lycees-de-la-region-de-toulouse-fermes-ce-lundi-a-la-veille-d-une-mobilisation-qui-s-annonce-tres-forte-3427851.html"
+    },
+    {
+      "school": "lycee-general-et-technologique-alexis-monteil-rodez",
+      "date": "2026-10-05",
+      "sourceName": "France 3 Occitanie",
+      "sourceUrl": "https://france3-regions.franceinfo.fr/occitanie/haute-garonne/toulouse/blocage-des-lycees-16-lycees-de-la-region-de-toulouse-fermes-ce-lundi-a-la-veille-d-une-mobilisation-qui-s-annonce-tres-forte-3427851.html"
+    },
+    {
+      "school": "lycee-jean-condorcet-bordeaux",
+      "date": "2026-10-05",
+      "sourceName": "Quoi faire à Bordeaux",
+      "sourceUrl": "https://quoifaireabordeaux.com/voici-les-10-lycees-de-bordeaux-et-la-metropole-qui-sont-fermes-aujourdhui/"
+    },
+    {
+      "school": "lycee-francois-mauriac-bordeaux",
+      "date": "2026-10-05",
+      "sourceName": "Quoi faire à Bordeaux",
+      "sourceUrl": "https://quoifaireabordeaux.com/voici-les-10-lycees-de-bordeaux-et-la-metropole-qui-sont-fermes-aujourdhui/"
+    },
+    {
+      "school": "lycee-polyvalent-victor-louis-talence",
+      "date": "2026-10-05",
+      "sourceName": "Quoi faire à Bordeaux",
+      "sourceUrl": "https://quoifaireabordeaux.com/voici-les-10-lycees-de-bordeaux-et-la-metropole-qui-sont-fermes-aujourdhui/"
+    },
+    {
+      "school": "lycee-polyvalent-alfred-kastler-talence",
+      "date": "2026-10-05",
+      "sourceName": "Quoi faire à Bordeaux",
+      "sourceUrl": "https://quoifaireabordeaux.com/voici-les-10-lycees-de-bordeaux-et-la-metropole-qui-sont-fermes-aujourdhui/"
+    },
+    {
+      "school": "lycee-professionnel-jacques-brel-lormont",
+      "date": "2026-10-05",
+      "sourceName": "Quoi faire à Bordeaux",
+      "sourceUrl": "https://quoifaireabordeaux.com/voici-les-10-lycees-de-bordeaux-et-la-metropole-qui-sont-fermes-aujourdhui/"
+    },
+    {
+      "school": "lycee-pape-clement-pessac",
+      "date": "2026-10-05",
+      "sourceName": "Quoi faire à Bordeaux",
+      "sourceUrl": "https://quoifaireabordeaux.com/voici-les-10-lycees-de-bordeaux-et-la-metropole-qui-sont-fermes-aujourdhui/"
+    },
+    {
+      "school": "lycee-elisee-reclus-sainte-foy-la-grande",
+      "date": "2026-10-05",
+      "sourceName": "Quoi faire à Bordeaux",
+      "sourceUrl": "https://quoifaireabordeaux.com/voici-les-10-lycees-de-bordeaux-et-la-metropole-qui-sont-fermes-aujourdhui/"
+    },
+    {
+      "school": "lycee-polyvalent-louis-de-foix-bayonne",
+      "date": "2026-10-05",
+      "sourceName": "La Semaine des Pyrénées",
+      "sourceUrl": "https://www.lasemainedespyrenees.fr/pyrenees-atlantiques-la-prefecture-renforce-le-dispositif-de-securite-autour-des-lycees-pour-le-5-octobre/"
+    },
+    {
+      "school": "lycee-professionnel-paul-bert-bayonne",
+      "date": "2026-10-05",
+      "sourceName": "La Semaine des Pyrénées",
+      "sourceUrl": "https://www.lasemainedespyrenees.fr/pyrenees-atlantiques-la-prefecture-renforce-le-dispositif-de-securite-autour-des-lycees-pour-le-5-octobre/"
+    },
+    {
+      "school": "lycee-professionnel-dumas-jean-joseph-fort-de-france",
+      "date": "2026-10-05",
+      "sourceName": "Outremers360",
+      "sourceUrl": "https://outremers360.com/bassin-atlantique-appli/mobilisation-des-lyceens-en-martinique-des-etablissements-de-fort-de-france-et-de-trinite-passent-en-distanciel-ce-lundi"
+    },
+    {
+      "school": "lycee-general-et-technologique-joseph-gaillard-fort-de-france",
+      "date": "2026-10-05",
+      "sourceName": "Outremers360",
+      "sourceUrl": "https://outremers360.com/bassin-atlantique-appli/mobilisation-des-lyceens-en-martinique-des-etablissements-de-fort-de-france-et-de-trinite-passent-en-distanciel-ce-lundi"
+    },
+    {
+      "school": "lycee-general-et-technologique-de-bellevue-fort-de-france",
+      "date": "2026-10-05",
+      "sourceName": "Outremers360",
+      "sourceUrl": "https://outremers360.com/bassin-atlantique-appli/mobilisation-des-lyceens-en-martinique-des-etablissements-de-fort-de-france-et-de-trinite-passent-en-distanciel-ce-lundi"
+    },
+    {
+      "school": "lycee-general-et-technologique-frantz-fanon-la-trinite",
+      "date": "2026-10-05",
+      "sourceName": "Outremers360",
+      "sourceUrl": "https://outremers360.com/bassin-atlantique-appli/mobilisation-des-lyceens-en-martinique-des-etablissements-de-fort-de-france-et-de-trinite-passent-en-distanciel-ce-lundi"
+    }
+  ]
+}
