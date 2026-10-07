@@ -32,7 +32,7 @@ export function parseRss(xml: string, defaultSource: string): FeedItem[] {
   for (const m of xml.matchAll(/<item\b[\s\S]*?<\/item>/gi)) {
     const block = m[0];
     const rawTitle = decodeXml(tag(block, "title") ?? "");
-    const url = decodeXml(tag(block, "link") ?? "");
+    const url = unwrapRedirect(decodeXml(tag(block, "link") ?? ""));
     const date = new Date(decodeXml(tag(block, "pubDate") ?? ""));
     const source = decodeXml(tag(block, "source") ?? "") || defaultSource;
     if (!rawTitle || !/^https?:\/\//.test(url) || Number.isNaN(date.getTime())) continue;
@@ -41,6 +41,17 @@ export function parseRss(xml: string, defaultSource: string): FeedItem[] {
     items.push({ title: title.slice(0, 300), url: url.slice(0, 1000), source: source.slice(0, 120), publishedAt: date });
   }
   return items;
+}
+
+/** Bing Actualités renvoie vers son propre traceur (…/apiclick.aspx?url=<article>) : on garde l'adresse de l'article. */
+export function unwrapRedirect(url: string): string {
+  try {
+    const u = new URL(url);
+    const target = u.hostname.endsWith("bing.com") ? u.searchParams.get("url") : null;
+    return target && /^https?:\/\//.test(target) ? target : url;
+  } catch {
+    return url;
+  }
 }
 
 /** Texte comparable : minuscules, sans accents, ponctuation réduite à des espaces. */
@@ -92,6 +103,20 @@ export function parseSchoolList(text: string, citedUrls: string[], publishedAt: 
 /** Premier tri, sans IA : le titre doit parler de lycée(s) ou de lycéens. */
 export function mentionsHighSchool(title: string): boolean {
   return /\s(lycee|lycees|lyceen|lyceenne|lyceens|lyceennes)\s/.test(fold(title));
+}
+
+/** Le titre évoque une mobilisation (blocus, fermeture, rassemblement, grève…) : jugé en priorité. */
+export function mentionsMobilization(title: string): boolean {
+  return /\s(blocus|bloque|bloques|bloquee|bloquees|bloquent|bloquer|barricades?|poubelles|mobilisation|mobilises?|mobilisees?|rassemblement|greve|manifestation|manifestent|fermes?|fermees?|fermeture|distanciel)\s/.test(
+    fold(title),
+  );
+}
+
+/** Ordre de passage devant Jev : les titres de mobilisation d'abord, puis les plus récents. */
+export function byPressPriority(a: { title: string; publishedAt: Date }, b: { title: string; publishedAt: Date }): number {
+  const ma = mentionsMobilization(a.title) ? 1 : 0;
+  const mb = mentionsMobilization(b.title) ? 1 : 0;
+  return mb - ma || b.publishedAt.getTime() - a.publishedAt.getTime();
 }
 
 export interface PressScores {

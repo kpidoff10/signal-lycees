@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { announcesSchoolList, decidePress, decideMobilizationWithSecondOpinion, decidePressMobilization, decideWithSecondOpinion, matchPlaces, mentionsHighSchool, parseRss, parseSchoolList } from "../press";
+import { announcesSchoolList, byPressPriority, decidePress, decideMobilizationWithSecondOpinion, decidePressMobilization, decideWithSecondOpinion, matchPlaces, mentionsHighSchool, mentionsMobilization, parseRss, parseSchoolList, unwrapRedirect } from "../press";
 
 const rss = `<?xml version="1.0"?><rss><channel>
 <item><title>Blocus au lycée Ampère : les élèves réclament des moyens - Lyon Capitale</title>
@@ -102,5 +102,30 @@ describe("revue de presse", () => {
     expect(parseSchoolList(json, ["https://autre.fr"], pub)).toBeNull(); // URL inventée
     expect(parseSchoolList(json, [url], new Date("2026-09-20T10:00:00Z"))).toBeNull(); // date trop éloignée
     expect(parseSchoolList("Je n'ai pas trouvé l'article.", [url], pub)).toBeNull();
+  });
+  it("garde l'adresse de l'article derrière le traceur de Bing", () => {
+    const article = "https://www.ouest-france.fr/bretagne/brest/blocus-au-lycee-1.html";
+    expect(unwrapRedirect(`https://www.bing.com/news/apiclick.aspx?ref=FexRss&aid=&tid=x&url=${encodeURIComponent(article)}&c=1`)).toBe(article);
+    expect(unwrapRedirect("https://news.google.com/rss/articles/abc")).toBe("https://news.google.com/rss/articles/abc");
+    expect(unwrapRedirect("https://www.bing.com/news/apiclick.aspx?url=javascript:alert(1)")).toBe("https://www.bing.com/news/apiclick.aspx?url=javascript:alert(1)");
+    expect(unwrapRedirect("pas-une-url")).toBe("pas-une-url");
+  });
+  it("fait passer les titres de mobilisation en premier devant Jev", () => {
+    expect(mentionsMobilization("Blocus au lycée Ampère ce matin")).toBe(true);
+    expect(mentionsMobilization("Lycée Clemenceau : les élèves bloquent l'entrée")).toBe(true);
+    expect(mentionsMobilization("Trois lycées fermés lundi à Nantes")).toBe(true);
+    expect(mentionsMobilization("Le lycée Ampère inaugure son nouveau gymnase")).toBe(false);
+    const old = new Date("2026-10-07T06:00:00Z");
+    const recent = new Date("2026-10-07T09:00:00Z");
+    const items = [
+      { title: "Nouveau self au lycée Carnot", publishedAt: recent },
+      { title: "Blocus au lycée Mathias", publishedAt: old },
+      { title: "Rassemblement devant le lycée Montaigne", publishedAt: recent },
+    ];
+    expect([...items].sort(byPressPriority).map((i) => i.title)).toEqual([
+      "Rassemblement devant le lycée Montaigne",
+      "Blocus au lycée Mathias",
+      "Nouveau self au lycée Carnot",
+    ]);
   });
 });

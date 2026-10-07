@@ -12,6 +12,7 @@ import { env } from "@/lib/env";
 import { expiryFor, startOfDay } from "@/lib/mobilization";
 import {
   announcesSchoolList,
+  byPressPriority,
   decidePress,
   decideMobilizationWithSecondOpinion,
   decidePressMobilization,
@@ -32,12 +33,32 @@ import { notify } from "./notify";
 import { withRun } from "./research/runs";
 import { isSecondOpinionEnabled } from "./settings";
 
-const google = (q: string) => `https://news.google.com/rss/search?q=${encodeURIComponent(`${q} when:3d`)}&hl=fr&gl=FR&ceid=FR:fr`;
+// Google Actualités renvoie au plus 100 articles par requête : en plein mouvement, « lycée blocus » sur 24 h
+// dépasse ce plafond. D'où des fenêtres courtes (la revue tourne toutes les heures, avec des trous de quelques
+// heures côté GitHub Actions) et des requêtes par média régional, chacune sous le plafond (mesuré le 7/10).
+const google = (q: string, window = "3d") => `https://news.google.com/rss/search?q=${encodeURIComponent(`${q} when:${window}`)}&hl=fr&gl=FR&ceid=FR:fr`;
+const bing = (q: string) => `https://www.bing.com/news/search?q=${encodeURIComponent(q)}&format=rss&setlang=fr-FR&cc=FR`;
+
+const REGIONAL_SITES = [
+  "ouest-france.fr", "actu.fr", "ladepeche.fr", "leparisien.fr", "ici.fr", "france3-regions.franceinfo.fr", "lavoixdunord.fr",
+  "sudouest.fr", "leprogres.fr", "letelegramme.fr", "ledauphine.com", "laprovence.com", "midilibre.fr", "estrepublicain.fr",
+  "larep.fr", "nicematin.com", "dna.fr", "lunion.fr", "lamontagne.fr", "lanouvellerepublique.fr", "paris-normandie.fr",
+  "courrier-picard.fr", "lindependant.fr", "bfmtv.com",
+];
 
 export const PRESS_FEEDS: { id: string; url: string; source: string }[] = [
-  { id: "gn-blocus", url: google("lycée blocus"), source: "Google Actualités" },
-  { id: "gn-lyceens", url: google("lycéens mobilisation"), source: "Google Actualités" },
-  { id: "gn-lycee-greve", url: google("lycée grève OR manifestation OR rassemblement"), source: "Google Actualités" },
+  { id: "gn-blocus", url: google("lycée blocus", "12h"), source: "Google Actualités" },
+  { id: "gn-blocus-2h", url: google("lycée blocus", "2h"), source: "Google Actualités" },
+  { id: "gn-blocus-seul", url: google("blocus", "12h"), source: "Google Actualités" },
+  { id: "gn-bloques", url: google("lycées bloqués", "12h"), source: "Google Actualités" },
+  { id: "gn-ferme", url: google("lycée fermé", "12h"), source: "Google Actualités" },
+  { id: "gn-lyceens", url: google("lycéens mobilisation", "6h"), source: "Google Actualités" },
+  { id: "gn-lyceens-manif", url: google("lycéens manifestation", "12h"), source: "Google Actualités" },
+  { id: "gn-lyceens-rassemblement", url: google("lycéens rassemblement", "12h"), source: "Google Actualités" },
+  { id: "gn-lycee-greve", url: google("lycée grève", "12h"), source: "Google Actualités" },
+  ...REGIONAL_SITES.map((site) => ({ id: `gn-site-${site}`, url: google(`lycée blocus site:${site}`, "1d"), source: "Google Actualités" })),
+  { id: "bing-blocus", url: bing("lycée blocus"), source: "Bing Actualités" },
+  { id: "bing-lyceens", url: bing("lycéens mobilisation"), source: "Bing Actualités" },
   { id: "gn-lycee-locaux", url: google("lycée chauffage OR sanitaires OR cantine OR travaux"), source: "Google Actualités" },
   { id: "gn-lycee-profs", url: google("lycée professeurs non remplacés"), source: "Google Actualités" },
   { id: "cafe-pedagogique", url: "https://www.cafepedagogique.net/feed/", source: "Le Café pédagogique" },
@@ -45,7 +66,12 @@ export const PRESS_FEEDS: { id: string; url: string; source: string }[] = [
 ];
 
 const LAST_RUN_KEY = "pressLastRun";
-const MAX_JEV_PER_RUN = 40;
+// Titres nouveaux jugés par passage, les mobilisations d'abord ; le budget de temps garde de la marge
+// sous la limite de 300 s de la fonction (environ 1 s par titre).
+const MAX_JEV_PER_RUN = 120;
+const JUDGE_BUDGET_MS = 180_000;
+const MAX_RECHECK_PER_RUN = 40;
+const FETCH_CONCURRENCY = 6;
 const MAX_AGE_DAYS = 10;
 const MAX_LISTS_PER_RUN = 5;
 
@@ -194,7 +220,7 @@ async function judge(item: { title: string; source: string }, scores: PressScore
  * on les juge à nouveau, 40 par passage. Une IA toujours indisponible : on réessaiera au suivant.
  */
 async function recheckPending(now: Date) {
-  const rows = await prisma.pressArticle.findMany({ where: { status: "PENDING" }, orderBy: { publishedAt: "desc" }, take: MAX_JEV_PER_RUN });
+  const rows = await prisma.pressArticle.findMany({ where: { status: "PENDING" }, orderBy: { publishedAt: "desc" }, take: MAX_RECHECK_PER_RUN });
   const counts = { PUBLISHED: 0, PENDING: 0, REJECTED: 0 };
   for (const a of rows) {
     const scores = a.relevance != null ? { relevance: a.relevance, sensitive: a.sensitive ?? 0, offTopic: a.offTopic ?? 0 } : await scoreWithJev(a);
@@ -247,7 +273,7 @@ async function ingest(now: Date) {
   await prisma.appSetting.upsert({ where: { key: LAST_RUN_KEY }, create: { key: LAST_RUN_KEY, value: now.toISOString() }, update: { value: now.toISOString() } });
 
   const minDate = new Date(now.getTime() - MAX_AGE_DAYS * 86400_000);
-  const all = (await Promise.all(PRESS_FEEDS.map(async (f) => (await fetchFeed(f)).map((i) => ({ ...i, feed: f.id }))))).flat();
+  const all = (await mapLimit(PRESS_FEEDS, FETCH_CONCURRENCY, async (f) => (await fetchFeed(f)).map((i) => ({ ...i, feed: f.id })))).flat();
   const byUrl = new Map<string, (typeof all)[number]>();
   const seenTitles = new Set<string>();
   for (const i of all) {
@@ -268,7 +294,7 @@ async function ingest(now: Date) {
   const skipTitle = new Set(knownTitles.map((k) => k.title));
   const fresh = candidates
     .filter((c) => !skipUrl.has(c.url) && !skipTitle.has(c.title))
-    .sort((a, b) => b.publishedAt.getTime() - a.publishedAt.getTime())
+    .sort(byPressPriority)
     .slice(0, MAX_JEV_PER_RUN);
   if (!fresh.length) return { fetched: all.length, candidates: candidates.length, added: 0 };
 
@@ -277,7 +303,12 @@ async function ingest(now: Date) {
   const mobilizations = { PUBLISHED: 0, PENDING: 0, REFUSED: 0 };
   const schoolsById = new Map(cities.flatMap((c) => c.schools.map((sc) => [sc.id, `${sc.name} (${c.name})`] as const)));
   const lists = { read: 0, created: 0 };
+  const started = Date.now();
+  let judged = 0;
   for (const item of fresh) {
+    // Budget épuisé : les titres restants seront repris au passage suivant (ils ne sont pas encore en base).
+    if (Date.now() - started > JUDGE_BUDGET_MS) break;
+    judged++;
     const scores = await scoreWithJev(item);
     const d = await judge(item, scores);
     const places = matchPlaces(item.title, cities);
@@ -322,7 +353,22 @@ async function ingest(now: Date) {
     }
   }
   if (counts.PENDING) notify({ type: "press", pending: counts.PENDING });
-  return { fetched: all.length, candidates: candidates.length, added: fresh.length, ...counts, mobilizations, lists };
+  return { fetched: all.length, candidates: candidates.length, added: judged, ...counts, mobilizations, lists };
+}
+
+/** Comme Promise.all, avec au plus `limit` appels simultanés (ne pas solliciter Google d'un coup). */
+async function mapLimit<T, R>(items: T[], limit: number, fn: (item: T) => Promise<R>): Promise<R[]> {
+  const out: R[] = new Array(items.length);
+  let next = 0;
+  await Promise.all(
+    Array.from({ length: Math.min(limit, items.length) }, async () => {
+      while (next < items.length) {
+        const i = next++;
+        out[i] = await fn(items[i]!);
+      }
+    }),
+  );
+  return out;
 }
 
 const AUTO_BATCH = "presse-auto";

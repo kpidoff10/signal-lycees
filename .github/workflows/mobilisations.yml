@@ -1,10 +1,12 @@
-# Recherche des lycées mobilisés du jour, deux fois par jour (8 h 15 et 14 h 15, heure de Paris en été).
-# Les lycées trouvés arrivent à valider dans /admin/mobilisations. Secret requis : CRON_SECRET.
+# Recherche des lycées mobilisés du jour, quatre fois par jour (8 h 15, 10 h 45, 14 h 15 et 17 h 45, heure de Paris en été) :
+# les articles sur les blocus du matin paraissent surtout entre 9 h et midi.
+# Les lycées trouvés sont relus par l'IA puis publiés ou laissés à valider dans /admin/mobilisations. Secret requis : CRON_SECRET.
 name: Recherche des mobilisations
 
 on:
   schedule:
     - cron: "15 6,12 * * *"
+    - cron: "45 8,15 * * *"
   workflow_dispatch:
 
 permissions: {}
