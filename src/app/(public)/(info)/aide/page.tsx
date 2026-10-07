@@ -48,6 +48,38 @@ export default function AidePage() {
         </ul>
         <p>Si la première personne ne t’écoute pas comme tu le voudrais, essaie avec une autre. Ça vaut le coup.</p>
 
+        <h2 id="temoigner">Témoin ou victime de violences pendant un blocus ou une manifestation ?</h2>
+        <p>
+          Si toi ou d’autres élèves avez été blessés ou maltraités, y compris par des adultes ou par les forces de l’ordre, ce que tu
+          as vu compte. Voici ce qui peut vraiment aider :
+        </p>
+        <ul>
+          <li>
+            <strong>Faire constater les blessures</strong> par un médecin, rapidement et si possible avec un parent : le certificat
+            médical est la pièce la plus utile pour la suite.
+          </li>
+          <li>
+            <strong>Saisir le Défenseur des droits</strong> : une autorité indépendante qui contrôle le comportement des forces de
+            l’ordre et défend les droits des enfants. C’est gratuit, un mineur peut le faire lui-même, en ligne sur{" "}
+            <a href="https://www.defenseurdesdroits.fr" target="_blank" rel="noopener noreferrer">
+              defenseurdesdroits.fr
+            </a>{" "}
+            ou au <a href="tel:0969390000">09 69 39 00 00</a>.
+          </li>
+          <li>
+            <strong>Porter plainte</strong>, de préférence accompagné·e d’un parent ou d’un adulte de confiance.
+          </li>
+          <li>
+            <strong>Garder les vidéos</strong> dans leur version d’origine, sans les retoucher, et éviter de les publier en ligne si
+            l’on y reconnaît des élèves.
+          </li>
+        </ul>
+        <p>
+          Signal Lycées ne peut pas publier ce type de témoignage ni enquêter : le site ne met jamais en cause des personnes. Pour
+          que les faits soient vérifiés et racontés, adresse-toi directement aux rédactions locales (journal, radio, télé de ta
+          région).
+        </p>
+
         <h2>Et Signal Lycées dans tout ça ?</h2>
         <p>
           Signal Lycées sert à faire remonter des problèmes <strong>collectifs</strong> dans un lycée (chauffage, toilettes, cours non

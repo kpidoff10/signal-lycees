@@ -38,6 +38,11 @@ export default async function ContactPage({ searchParams }: { searchParams: Prom
             <strong>« Signaler un contenu »</strong> sur le problème. Si tu es en danger ou si tu ne vas pas bien, va plutôt sur{" "}
             <Link href="/aide">Besoin d’aide ?</Link>
           </p>
+          <p>
+            Tu as été témoin ou victime de violences pendant un blocus ou une manifestation ? Signal Lycées ne peut ni publier ce
+            témoignage ni enquêter, mais on t’explique <Link href="/aide#temoigner">vers qui te tourner</Link> (médecin, Défenseur
+            des droits, plainte, médias).
+          </p>
 
           <ContactForm defaultKind={type === "suppression" ? "DELETION" : type === "contact" ? "CONTACT" : undefined} defaultRef={ref} />
 
